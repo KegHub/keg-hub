@@ -2,13 +2,13 @@ import React, { useState } from 'react'
 import { Sidebar } from './sidebar'
 import { StoryWrap } from 'StoryWrap'
 import { Text } from '../typography/text'
-import { Link } from '../link'
 import { Label } from '../typography/label'
 import { Subtitle } from '../typography/subtitle'
+
 import { SectionList } from '../list/sectionList'
 
 const goatData = [{
-  title: `Sections`,
+  title: `Goat Sections`,
   data: [
     'Goat of Olde',
     'Goat Bio',
@@ -21,93 +21,36 @@ const sideBarConfig = {
   bounciness: 1,
 }
 
-const listStyles = {
-  main: {
-    width: '100%',
-    padding: 10,
-  },
-  content: {
-    divider: {},
-    container: {
-      width: '100%',
-    },
-    list: {},
-    hidden: {},
-  },
-}
-
-const sidebarStyles = {
-  main: {
-    paddingTop: 0,
-  },
-  container: {
-    paddingTop: 20,
-    alignItems: 'center',
-  }
-}
-
 export const Basic = props => {
   
   const [toggled, setToggled] = useState(false)
 
   return (
-    <Sidebar
-      to={0}
-      initial={-200}
-      type={'spring'}
-      toggled={toggled}
-      onToggled={setToggled}
-      config={sideBarConfig}
-      styles={sidebarStyles}
-    >
-      <SectionList
-        activeSection={0}
-        sections={goatData}
-        styles={listStyles}
-        keyExtractor={item => item}
-        renderSectionHeader={({ section }) => {
-          return (
-            <Label
-              key={section.title}
-              style={{
-                marginBottom: 10,
-                paddingLeft: 0,
-                paddingBottom: 5,
-                borderBottom: `1px solid #edf2f9`,
-              }}
-            >
+    <StoryWrap>
+      <Sidebar
+        to={0}
+        initial={-150}
+        type={'spring'}
+        toggled={toggled}
+        onToggled={setToggled}
+        config={sideBarConfig}
+      >
+        <SectionList
+          sections={goatData}
+          renderSectionHeader={({ section }) => (
+            <Label style={{ marginBottom: 5 }}>
               { section.title }
             </Label>
-          )
-        }}
-        renderItem={({ item }) => {
-          return (
-            <Subtitle style={{ marginBottom: 10, paddingLeft: 10 }}>
-              <Link style={{ fontSize: 14, textDecorationLine: 'none' }} >
+          )}
+          renderItem={({ item }) => {
+            return (
+              <Subtitle style={{ marginBottom: 5, paddingLeft: 10 }}>
                 { item }
-              </Link>
-            </Subtitle>
-          )
-        }}
-      />
-    </Sidebar>
+              </Subtitle>
+            )
+          }}
+        />
+      </Sidebar>
+    </StoryWrap>
   )
 }
-
-/**
- * Tells the story wrap decorator to not wrap the component in a container
- */
-Basic.noStoreWrap = true
-
-Sidebar.defaultProps = {
-  initial: 0,
-  type: 'timing',
-  to: 0,
-  onToggled: () => {},
-  className: '',
-  config: {},
-  styles: {},
-  sidebarPos: 'left',
-}
-
-export { Sidebar }
