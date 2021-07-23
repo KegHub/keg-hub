@@ -1,12 +1,15 @@
 <!--- Touchable.stories.mdx -->
 
 import { Story, Meta, Preview, Props, Description } from '@storybook/addon-docs/blocks'
-import {Basic, Sidebar} from './sidebar.examples.js'
+
+import { Sidebar } from './sidebar'
+import {Basic} from './sidebar.examples.js'
 
 <Meta title="Components/Sidebar" component={Sidebar}/>
 
 # Sidebar
-Sidebar navigtation drawer that is fixed to the side of the screen. It should placed close to the root of the component tree to ensure a proper layout. By default it will fill the full height of its parent.
+
+Sidebar navigtation component
 
 ## Examples
 
@@ -21,7 +24,7 @@ Sidebar navigtation drawer that is fixed to the side of the screen. It should pl
 
 <br/>
 
-## Props
+### Full Prop List
 
-<Props of={Sidebar} />
+<Props of={Basic} />
 
