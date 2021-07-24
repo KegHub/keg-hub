@@ -308,6 +308,14 @@ const useRenderItem = (renderItem, onSectionChange) => {
   )
 }
 
+const useKeyExtractor = (keyExtractor) => {
+  return useCallback((item, index) => {
+    return isFunc(keyExtractor)
+      ? keyExtractor(item, index)
+      : isObj(item) ? item.key || item.index || index : isStr(item) ? item : index
+  }, [ keyExtractor ])
+}
+
 /**
  * Helper hook to memoize the keyExtractor function for the SectionList
  * @param {function} keyExtractor - method to extract the key for the item
