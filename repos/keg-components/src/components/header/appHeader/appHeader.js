@@ -3,7 +3,7 @@ import { ItemHeader } from '../itemHeader'
 import { useClassList } from 'KegClassList'
 /**
  * AppHeader
- * @todo implement native status bar functionality. ref: https://jira.simpleviewtools.com/browse/ZEN-362
+ * @todo implement native status bar functionality
  * @param {object} props
  */
 export const AppHeader = props => {
