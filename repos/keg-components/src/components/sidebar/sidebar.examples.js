@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
 import { Sidebar } from './sidebar'
-import { StoryWrap } from 'StoryWrap'
-import { Text } from '../typography/text'
 import { Link } from '../link'
 import { Label } from '../typography/label'
 import { Subtitle } from '../typography/subtitle'
