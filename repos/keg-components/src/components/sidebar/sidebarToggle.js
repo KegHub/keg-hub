@@ -69,7 +69,7 @@ const useIconProps = (toggled, themeStyles) => {
  *
  */
 const ToggleContainer = props => {
-  const { text, styles, toggled, onPress, setIsToggled, sidebarSize, Icon=ToggleIcon } = props
+  const { text, styles, toggled, onPress, setIsToggled, Icon=ToggleIcon } = props
 
   const [ ref, themeStyles ] = useThemeHover(styles, styles?.hover)
   const iconProps = useIconProps(toggled, themeStyles)
