@@ -4,8 +4,8 @@ import { isValidComponent } from 'KegUtils'
 import { useStyle, useDimensions } from '@keg-hub/re-theme'
 import { SidebarToggle } from './sidebarToggle'
 import { SidebarContainer, getSidebarWidth } from './sidebar.restyle'
-import { checkCall, noOpObj, noOp, isNum } from '@keg-hub/jsutils'
-import React, {
+import { checkCall, noOpObj, noOp } from '@keg-hub/jsutils'
+import React, { 
   useMemo,
   useState,
   useCallback,
@@ -174,7 +174,6 @@ export const Sidebar = props => {
   } = props
 
   const {
-    toggled,
     isToggled,
     setIsToggled,
     onTogglePress,

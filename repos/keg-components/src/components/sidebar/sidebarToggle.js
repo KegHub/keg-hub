@@ -1,13 +1,11 @@
-import React, { useEffect, useMemo } from 'react'
+import React, { useMemo } from 'react'
 import { View } from 'KegView'
-import { Touchable } from '../touchable'
+import PropTypes from 'prop-types'
 import { Text } from '../typography/text'
-import { ChevronDown } from 'KegIcons/chevronDown'
-import { reStyle } from '@keg-hub/re-theme/reStyle'
 import { useWindowClick } from 'KegUseWindowClick'
 import { useStyle, useThemeHover, useTheme } from '@keg-hub/re-theme'
 import { useToggledStyles } from '../../hooks/useToggledStyles'
-import { ToggleMain, ToggleAction, ToggleContent, ToggleText, ToggleIcon } from './sidebar.restyle'
+import { ToggleMain, ToggleAction, ToggleIcon } from './sidebar.restyle'
 
 /**
  * Helper to listen for click events
