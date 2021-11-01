@@ -30,12 +30,25 @@ export const getSidebarWidth = (width, initial, styles = noOpObj) => {
         : 200
 }
 
-const getToggleLocation = (width, to, initial, styles, location) => {
+/**
+ * Gets the location of the Sidebar based on the passed in props
+ * @type {function}
+ *
+ * @returns {string|number} - Initial Location of the Sidebar component
+ */
+const getToggleLocation = (width, initial, styles, location) => {
   const fullWidth = getSidebarWidth(width, initial, styles)
 
-  return location === 'left' ? fullWidth : ToggleElWidth // Width of the toggle component, measured from the right side in
+  // Width of the toggle component, measured from the right side in
+  return location === 'left' ? fullWidth : ToggleElWidth
 }
 
+/**
+ * Restyles View component for the Main Sidebar Component
+ * @type {React.Component}
+ *
+ * @returns {React.Component} - Wrapped reStyle View Component
+ */
 export const SidebarMain = reStyle(View)({
   h: '100%',
 })
@@ -67,18 +80,10 @@ export const SidebarContainer = reStyle(View)((theme, props) => ({
   w: getSidebarWidth(props.sidebarWidth, props.initial, props.styles),
 }))
 
-/**
- * Restyles View component
- * @type {React.Component}
- * @export
- * @public
- * @param {Object} theme - Global theme object
- * @param {Object} props
- *
- * @returns {React.Component} - Wrapped reStyle View Component
- */
-export const ToggleMain = reStyle(View)({
-  position: 'absolute',
+export const ToggleMain = reStyle(View)((theme, props) => {
+  return {
+    position: 'absolute',
+  }
 })
 
 /**
@@ -120,7 +125,6 @@ export const ToggleAction = reStyle(({ styles, location, ...props }) => {
     transitionProperty: 'width height background-color',
     [props.location || 'left']: getToggleLocation(
       props.sidebarWidth,
-      props.to,
       props.initial,
       props.styles,
       props.location
