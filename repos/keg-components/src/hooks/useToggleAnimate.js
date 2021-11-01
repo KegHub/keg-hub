@@ -1,4 +1,4 @@
-import React, { useState, useLayoutEffect, useRef } from 'react'
+import { useState, useLayoutEffect, useRef } from 'react'
 import { Animated, Easing } from 'react-native'
 import { checkCall, isObj } from '@keg-hub/jsutils'
 
