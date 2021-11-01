@@ -5,7 +5,15 @@ import { useScroll } from 'KegUseScroll'
 import { useClassName } from 'KegClassName'
 import { useThemePath } from '../../hooks/useThemePath'
 import { useScrollClassName } from 'KegScrollClassName'
-import { checkCall, noPropObj, noPropArr, get, isFunc, isObj, isStr } from '@keg-hub/jsutils'
+import {
+  checkCall,
+  noPropObj,
+  noPropArr,
+  get,
+  isFunc,
+  isObj,
+  isStr,
+} from '@keg-hub/jsutils'
 import React, {
   useCallback,
   useRef,
@@ -34,7 +42,8 @@ const useIndexedSections = (sections, indexBy) => {
     return sections.map((section, index) => {
       return {
         ...section,
-        __kegIndex: get(section, indexBy) || section.key || section.index || index,
+        __kegIndex:
+          get(section, indexBy) || section.key || section.index || index,
       }
     })
   }, [sections])
@@ -308,26 +317,25 @@ const useRenderItem = (renderItem, onSectionChange) => {
   )
 }
 
-const useKeyExtractor = (keyExtractor) => {
-  return useCallback((item, index) => {
-    return isFunc(keyExtractor)
-      ? keyExtractor(item, index)
-      : isObj(item) ? item.key || item.index || index : isStr(item) ? item : index
-  }, [ keyExtractor ])
-}
-
 /**
  * Helper hook to memoize the keyExtractor function for the SectionList
  * @param {function} keyExtractor - method to extract the key for the item
  *
  * @returns {function} - Memoized keyExtractor function
  */
-const useKeyExtractor = (keyExtractor) => {
-  return useCallback((item, index) => {
-    return isFunc(keyExtractor)
-      ? keyExtractor(item, index)
-      : isObj(item) ? item.key || item.index || index : isStr(item) ? item : index
-  }, [ keyExtractor ])
+const useKeyExtractor = keyExtractor => {
+  return useCallback(
+    (item, index) => {
+      return isFunc(keyExtractor)
+        ? keyExtractor(item, index)
+        : isObj(item)
+          ? item.key || item.index || index
+          : isStr(item)
+            ? item
+            : index
+    },
+    [keyExtractor]
+  )
 }
 
 /**
