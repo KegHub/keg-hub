@@ -13,11 +13,6 @@ const goatData = [
   },
 ]
 
-const sideBarConfig = {
-  speed: 1,
-  bounciness: 1,
-}
-
 const sidebarProps = {
   to: 0,
   initial: -200,
@@ -53,7 +48,6 @@ const listStyles = {
     hidden: {},
   },
 }
-
 
 export const Basic = props => {
   const [ toggled, setToggled ] = useState(false)

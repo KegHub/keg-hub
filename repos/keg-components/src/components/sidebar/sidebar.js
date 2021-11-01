@@ -4,7 +4,11 @@ import { isValidComponent } from '../../utils'
 import { SidebarToggle } from './sidebarToggle'
 import { useStyle, useDimensions } from '@keg-hub/re-theme'
 import { checkCall, noOpObj, noOp } from '@keg-hub/jsutils'
-import { SidebarMain, SidebarContainer, getSidebarWidth } from './sidebar.restyle'
+import {
+  SidebarMain,
+  SidebarContainer,
+  getSidebarWidth,
+} from './sidebar.restyle'
 import React, {
   useMemo,
   useState,
@@ -231,7 +235,6 @@ Sidebar.defaultProps = {
   ToggleComponent: SidebarToggle,
 }
 
-
 Sidebar.propTypes = {
   /**
    * Final position of the sidebar on the X axis when toggled
@@ -248,7 +251,7 @@ Sidebar.propTypes = {
   /**
    * Location the sidebar should be attached to ( left || right ). Defaults to left
    */
-   location: PropTypes.string,
+  location: PropTypes.string,
   /**
    * Class name applied to the root-element of the Sidebar
    */
@@ -257,14 +260,14 @@ Sidebar.propTypes = {
    * Custom styles for the sidebar
    */
   styles: PropTypes.object,
-   /**
-    * Type of animation to use ( e.g. 'spring' )
-    */
+  /**
+   * Type of animation to use ( e.g. 'spring' )
+   */
   type: PropTypes.string,
   /**
    * Config object for the toggle animation
    */
-   config: PropTypes.object,
+  config: PropTypes.object,
   /**
    * Called when the Sidebar is toggled open or closed
    */
