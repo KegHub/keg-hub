@@ -25,10 +25,10 @@ env:
   # --- DOCKER ENV CONTEXT --- #
 
   # Image to use when building keg-components
-  KEG_BASE_IMAGE: ghcr.io/lancetipton/tap:develop
+  KEG_BASE_IMAGE: ghcr.io/KegHub/tap:develop
 
   # Image to use when running keg-components
-  KEG_IMAGE_FROM: ghcr.io/lancetipton/keg-components:develop
+  KEG_IMAGE_FROM: ghcr.io/KegHub/keg-components:develop
 
   # Location of the application within the docker container
   # Defines the working directory within the Dockerfile and docker-compose.yml
