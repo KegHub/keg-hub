@@ -7,13 +7,13 @@
   "author": "lancetipton <lancetipton04@gmail.com>",
   "license": "MIT",
   "repository": {
-    "url": "git+https://github.com/lancetipton/keg-hub.git",
+    "url": "git+https://github.com/KegHub/keg-hub.git",
     "type": "git"
   },
   "bugs": {
-    "url": "https://github.com/lancetipton/keg-hub/issues"
+    "url": "https://github.com/KegHub/keg-hub/issues"
   },
-  "homepage": "https://github.com/lancetipton/keg-hub#readme",
+  "homepage": "https://github.com/KegHub/keg-hub#readme",
   "files": [
     "build",
     "src/node"
@@ -65,7 +65,7 @@
     "gh-pages": "2.2.0",
     "ink-docstrap": "1.3.2",
     "jest": "26.6.3",
-    "jestlib": "git+https://github.com/simpleviewinc/jestlib.git#4d215e59992faa7111c9cd07780fcac2679359b0",
+    "jestlib": "git+https://github.com/KegHub/jestlib.git#4d215e59992faa7111c9cd07780fcac2679359b0",
     "jsdoc": "3.6.3",
     "jsutils": "file:./",
     "jsvalidator": "^1.2.0",

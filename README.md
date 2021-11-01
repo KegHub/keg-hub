@@ -1,5 +1,5 @@
-![keg-build](https://github.com/lancetipton/keg-hub/workflows/keg-build/badge.svg)
-![keg-tests](https://github.com/lancetipton/keg-hub/workflows/keg-tests/badge.svg)
+![keg-build](https://github.com/KegHub/keg-hub/workflows/keg-build/badge.svg)
+![keg-tests](https://github.com/KegHub/keg-hub/workflows/keg-tests/badge.svg)
 
 <br/>
 
