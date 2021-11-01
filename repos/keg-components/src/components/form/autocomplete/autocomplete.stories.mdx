@@ -1,5 +1,5 @@
 <!--- autocomplete.stories.mdx -->
-import { Story, Meta, Preview, Props, Description } from '@storybook/addon-docs'
+import { Story, Meta, Canvas, ArgsTable, Description } from '@storybook/addon-docs'
 import { Autocomplete } from './autocomplete'
 import { Basic } from './autocomplete.example'
 
@@ -15,12 +15,12 @@ the matching items will appear in a scrollable list below the text input.
 
 ### Basic
 
-<Preview>
+<Canvas>
   <Story name='Basic'>
     <Basic />
   </Story>
-</Preview>
+</Canvas>
 
 ### Props
 
-<Props of={Autocomplete} />
+<ArgsTable of={Autocomplete} />

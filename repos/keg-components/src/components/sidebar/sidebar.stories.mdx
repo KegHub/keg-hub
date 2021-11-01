@@ -1,6 +1,6 @@
 <!--- Touchable.stories.mdx -->
 
-import { Story, Meta, Preview, Props, Description } from '@storybook/addon-docs/blocks'
+import { Story, Meta, Canvas, ArgsTable, Description } from '@storybook/addon-docs'
 
 import { Sidebar } from './sidebar'
 import {Basic} from './sidebar.examples.js'
@@ -15,15 +15,15 @@ Sidebar navigtation drawer that is fixed to the side of the screen. It should pl
 <br/>
 
 ### Basic
-<Preview>
+<Canvas>
   <Story name="Basic">
     <Basic />
   </Story>
-</Preview>
+</Canvas>
 
 <br/>
 
 ## Props
 
-<Props of={Sidebar} />
+<ArgsTable of={Sidebar} />
 

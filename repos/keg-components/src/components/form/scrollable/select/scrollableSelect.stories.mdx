@@ -1,5 +1,5 @@
 <!--- scrollableSelect.stories.mdx -->
-import { Story, Meta, Preview, Props, Description } from '@storybook/addon-docs'
+import { Story, Meta, Canvas, ArgsTable, Description } from '@storybook/addon-docs'
 import { BasicExample, AdjustableHeight } from './scrollableSelect.example'
 import { ScrollableSelect } from './scrollableSelect.js'
 
@@ -14,23 +14,23 @@ that selects or deselects all the grouped checkboxes when pressed.
 
 ### Basic
 
-<Preview>
+<Canvas>
   <Story name='Basic'>
     <BasicExample />
   </Story>
-</Preview>
+</Canvas>
 
 ### Adjustable Height
 
-<Preview>
+<Canvas>
   <Story name='AdjustableHeight'>
     <AdjustableHeight />
   </Story>
-</Preview>
+</Canvas>
 
 ### Props
 
-<Props of={ScrollableSelect} />
+<ArgsTable of={ScrollableSelect} />
 
 
 

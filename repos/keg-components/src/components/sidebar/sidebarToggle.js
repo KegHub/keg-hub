@@ -3,7 +3,7 @@ import { View } from 'KegView'
 import { Text } from '../typography/text'
 import { useWindowClick } from 'KegUseWindowClick'
 import { useStyle, useTheme } from '@keg-hub/re-theme'
-import { useToggledStyles } from 'SVHooks/styles/useToggledStyles'
+import { useToggledStyles } from '../../hooks/useToggledStyles'
 import { ToggleMain, ToggleAction, ToggleIcon } from './sidebar.restyle'
 
 /**

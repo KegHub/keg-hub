@@ -1,11 +1,11 @@
 import React from 'react'
 import { View } from 'KegView'
 import { Touchable } from '../touchable'
-import { ChevronDown } from 'SVAssets/icons'
+import { ChevronDown } from '../../assets/icons'
 import { noOpObj, isNum } from '@keg-hub/jsutils'
 import { reStyle } from '@keg-hub/re-theme/reStyle'
 import { useStyle, useThemeHover } from '@keg-hub/re-theme'
-import { isCssUnits } from '../../utils/helpers/styles/isCssUnits'
+import { isCssUnits } from '../../utils/helpers/isCssUnits'
 
 const ToggleElWidth = 20
 
@@ -35,6 +35,11 @@ const getToggleLocation = (width, to, initial, styles, location) => {
 
   return location === 'left' ? fullWidth : ToggleElWidth // Width of the toggle component, measured from the right side in
 }
+
+
+export const SidebarMain = reStyle(View)({
+  h: '100%',
+})
 
 /**
  * Restyles View component
@@ -91,51 +96,53 @@ export const ToggleAction = reStyle(({ styles, location, ...props }) => {
   const locStyles = useStyle(styles.main, styles[location])
   const [ ref, style ] = useThemeHover(locStyles, styles.hover)
 
-  return <Touchable
-    {...props}
-    style={style}
-    touchRef={ref}
-  />
+  return (
+    <Touchable
+      {...props}
+      style={style}
+      touchRef={ref}
+    />
+  )
 }, 'styles')((theme, props) => ({
-  main: {
-    w: ToggleElWidth,
-    pH: 1,
-    pV: 15,
-    tp: `45vh`,
-    bRad: 3,
-    minH: 50,
-    alI: 'center',
-    jtC: 'center',
-    pos: 'relative',
-    shadowRadius: 2,
-    shadowOpacity: 0.2,
-    transitionDuration: '0.8s',
-    bgC: theme?.colors?.palette?.black01,
-    shadowOffset: { width: 2, height: 2 },
-    shadowColor: theme?.colors?.palette?.black03,
-    transitionProperty: 'width height background-color',
-    [props.location || 'left']: getToggleLocation(
-      props.sidebarWidth,
-      props.to,
-      props.initial,
-      props.styles,
-      props.location
-    ),
-  },
-  hover: {
-    minH: 75,
-    width: 30,
-    bgC: theme?.tapColors?.primary,
-    ...(props.location === 'right' && { right: 30 }),
-  },
-  left: {
-    borderTopLeftRadius: 0,
-    borderBottomLeftRadius: 0,
-  },
-  right: {
-    borderTopRightRadius: 0,
-    borderBottomRightRadius: 0,
-  },
+    main: {
+      w: ToggleElWidth,
+      pH: 1,
+      pV: 15,
+      tp: `45vh`,
+      bRad: 3,
+      minH: 50,
+      alI: 'center',
+      jtC: 'center',
+      pos: 'relative',
+      shadowRadius: 2,
+      shadowOpacity: 0.2,
+      transitionDuration: '0.8s',
+      bgC: theme?.colors?.palette?.black01,
+      shadowOffset: { width: 2, height: 2 },
+      shadowColor: theme?.colors?.palette?.black03,
+      transitionProperty: 'width height background-color',
+      [props.location || 'left']: getToggleLocation(
+        props.sidebarWidth,
+        props.to,
+        props.initial,
+        props.styles,
+        props.location
+      ),
+    },
+    hover: {
+      minH: 75,
+      width: 30,
+      bgC: theme?.colors.palette?.blue02,
+      ...(props.location === 'right' && { right: 30 }),
+    },
+    left: {
+      borderTopLeftRadius: 0,
+      borderBottomLeftRadius: 0,
+    },
+    right: {
+      borderTopRightRadius: 0,
+      borderBottomRightRadius: 0,
+    }
 }))
 
 /**

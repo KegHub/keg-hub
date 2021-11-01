@@ -1,6 +1,6 @@
 <!--- Theme.stories.mdx -->
 
-import { Story, Meta, Preview, Props, Description } from '@storybook/addon-docs'
+import { Story, Meta, Canvas, Props, Description } from '@storybook/addon-docs'
 import { GreenText, HoverButton } from './reStyle.examples'
 
 
@@ -16,11 +16,11 @@ import { GreenText, HoverButton } from './reStyle.examples'
 ### Style Object
 Example of overriding the styles with a `Style Object` (Css in JS)
 
-<Preview>
+<Canvas>
   <Story name='Text'>
     <GreenText />
   </Story>
-</Preview>
+</Canvas>
 
 ```js
 import React from 'react'
@@ -43,11 +43,11 @@ Example of overriding the styles with a `Style Function`. Receives **two argumen
   * `Argument 1` - Global ReTheme theme object
   * `Argument 2` - Props passed to the component
 
-<Preview>
+<Canvas>
   <Story name='Hover'>
     <HoverButton />
   </Story>
-</Preview>
+</Canvas>
 
 ```js
 import React from 'react'

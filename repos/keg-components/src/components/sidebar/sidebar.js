@@ -1,9 +1,10 @@
 import { Animated } from 'react-native'
+import PropTypes from 'prop-types'
+import { isValidComponent } from '../../utils'
 import { SidebarToggle } from './sidebarToggle'
 import { useStyle, useDimensions } from '@keg-hub/re-theme'
-import { isValidComponent, View } from '@keg-hub/keg-components'
 import { checkCall, noOpObj, noOp } from '@keg-hub/jsutils'
-import { SidebarContainer, getSidebarWidth } from './sidebar.restyle'
+import { SidebarMain, SidebarContainer, getSidebarWidth } from './sidebar.restyle'
 import React, {
   useMemo,
   useState,
@@ -44,6 +45,8 @@ const useSidebarStyles = ({ initial, styles, sidebarWidth, location }) => {
       flex: 1,
       zIndex: 5,
       position: 'fixed',
+      top: 0,
+      bottom: 0,
       height: dims.height,
       ...sidebarStyles?.main,
       width: width,
@@ -175,7 +178,7 @@ export const Sidebar = props => {
     location,
     onOffClick,
     sidebarWidth,
-    ToggleComponent = SidebarToggle,
+    ToggleComponent,
   } = props
 
   const { isToggled, setIsToggled, onTogglePress } = useSidebarToggle(props)
@@ -199,7 +202,7 @@ export const Sidebar = props => {
   return (
     <>
       <Animated.View style={[ mainStyles, { [location]: animation }]}>
-        <View
+        <SidebarMain
           className='sidebar-main'
           style={sidebarStyles?.main}
         >
@@ -213,7 +216,7 @@ export const Sidebar = props => {
             { children }
           </SidebarContainer>
           { location !== 'right' && Toggler }
-        </View>
+        </SidebarMain>
       </Animated.View>
     </>
   )
@@ -222,5 +225,60 @@ export const Sidebar = props => {
 // Add the toggle component helper
 Sidebar.Toggle = SidebarToggle
 Sidebar.defaultProps = {
+  config: noOpObj,
   location: 'left',
+  type: 'timing',
+  ToggleComponent: SidebarToggle,
+}
+
+
+Sidebar.propTypes = {
+  /**
+   * Final position of the sidebar on the X axis when toggled
+   */
+  to: PropTypes.oneOfType([ PropTypes.string, PropTypes.number ]),
+  /**
+   * Initial position of the sidebar on the X axis
+   */
+  initial: PropTypes.oneOfType([ PropTypes.string, PropTypes.number ]),
+  /**
+   * Width of the Sidebar. Defaults to styles.main.width or 200px if it does not exist
+   */
+  sidebarWidth: PropTypes.oneOfType([ PropTypes.string, PropTypes.number ]),
+  /**
+   * Location the sidebar should be attached to ( left || right ). Defaults to left
+   */
+   location: PropTypes.string,
+  /**
+   * Class name applied to the root-element of the Sidebar
+   */
+  className: PropTypes.string,
+  /**
+   * Custom styles for the sidebar
+   */
+  styles: PropTypes.object,
+   /**
+    * Type of animation to use ( e.g. 'spring' )
+    */
+  type: PropTypes.string,
+  /**
+   * Config object for the toggle animation
+   */
+   config: PropTypes.object,
+  /**
+   * Called when the Sidebar is toggled open or closed
+   */
+  onToggle: PropTypes.func,
+  /**
+   * Called when the Sidebar is toggled open and a click event is fired outside of the component
+   */
+  onOffClick: PropTypes.func,
+  /**
+   * Default state of the toggle state for the Sidebar component
+   */
+  toggled: PropTypes.bool,
+  /**
+   * Component to override the default Toggle Component
+   */
+  ToggleComponent: PropTypes.oneOfType([ PropTypes.node, PropTypes.func ]),
 }

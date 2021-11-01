@@ -1,6 +1,6 @@
 <!--- Touchable.stories.mdx -->
 
-import { Story, Meta, Preview, Props, Description } from '@storybook/addon-docs'
+import { Story, Meta, Canvas, ArgsTable, Description } from '@storybook/addon-docs'
 
 import { SvgIcon } from './svgIcon'
 import { SvgIcon as SvgIconNative } from './svgIcon.native'
@@ -18,27 +18,27 @@ Utilizes [react-native-svg](https://github.com/react-native-svg/react-native-svg
 <br/>
 
 ### Basic
-<Preview>
+<Canvas>
   <Story name="Basic">
     <Basic />
   </Story>
-</Preview>
+</Canvas>
 
 ### Animated
-<Preview>
+<Canvas>
   <Story name="Loading">
     <Loading />
   </Story>
-</Preview>
+</Canvas>
 
 <br/>
 
 ### With Children
-<Preview>
+<Canvas>
   <Story name="With Children">
     <WithChildren />
   </Story>
-</Preview>
+</Canvas>
 
 <br/>
 
@@ -71,5 +71,5 @@ Utilizes [react-native-svg](https://github.com/react-native-svg/react-native-svg
 
 ### Full Prop List
 
-<Props of={SvgIconNative} />
+<ArgsTable of={SvgIconNative} />
 

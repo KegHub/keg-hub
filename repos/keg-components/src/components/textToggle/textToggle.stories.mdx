@@ -1,6 +1,6 @@
 <!--- Drawer.stories.mdx -->
 
-import { Story, Meta, Preview, Props, Description } from '@storybook/addon-docs'
+import { Story, Meta, Canvas, ArgsTable, Description } from '@storybook/addon-docs'
 import { Basic, CustomToggle, TogglePosition, NoToggle, DynamicCollapsedHeight } from './textToggle.examples'
 import { TextToggle } from './textToggle'
 
@@ -14,40 +14,40 @@ Component for toggling text by interacting with the show more/less button
 ## Examples
 
 ### Basic
-<Preview>
+<Canvas>
   <Story name='Basic'>
     <Basic />
   </Story>
-</Preview>
+</Canvas>
 
 ### Custom Toggle Component
-<Preview>
+<Canvas>
   <Story name='Custom toggle'>
     <CustomToggle />
   </Story>
-</Preview>
+</Canvas>
 
 ### Set the position of the toggle component
-<Preview>
+<Canvas>
   <Story name='Toggle position'>
     <TogglePosition />
   </Story>
-</Preview>
+</Canvas>
 
 ### Does not show the toggle button if the given collapsedHeight fits the entire Text
-<Preview>
+<Canvas>
   <Story name='No toggle'>
     <NoToggle />
   </Story>
-</Preview>
+</Canvas>
 
 ### Optionally setting the 'collapsedHeight' value
-<Preview>
+<Canvas>
   <Story name='Dynamic collapsed height'>
     <DynamicCollapsedHeight />
   </Story>
-</Preview>
+</Canvas>
 
 ### Props
 
-<Props of={TextToggle} />
+<ArgsTable of={TextToggle} />
