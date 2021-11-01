@@ -5,13 +5,13 @@ import { useStyle, useDimensions } from '@keg-hub/re-theme'
 import { SidebarToggle } from './sidebarToggle'
 import { SidebarContainer, getSidebarWidth } from './sidebar.restyle'
 import { checkCall, noOpObj, noOp } from '@keg-hub/jsutils'
-import React, { 
+import React, {
   useMemo,
   useState,
   useCallback,
   useLayoutEffect,
   useEffect,
-  useRef
+  useRef,
 } from 'react'
 
 /**
@@ -35,8 +35,13 @@ const noAnimate = (toggled, current, { initial, to }) =>
  *
  * @returns {Object} - Contains main animated.View and child sidebar styles from the theme
  */
-const useSidebarStyles = ({ initial, styles, sidebarWidth, sidebarPos='left' }) => {
-  const dims = useDimensions()  
+const useSidebarStyles = ({
+  initial,
+  styles,
+  sidebarWidth,
+  sidebarPos = 'left',
+}) => {
+  const dims = useDimensions()
   const sidebarStyles = useStyle('sidebar', styles)
   const width = getSidebarWidth(sidebarWidth, initial, sidebarStyles)
 
@@ -49,13 +54,11 @@ const useSidebarStyles = ({ initial, styles, sidebarWidth, sidebarPos='left' }) 
       height: dims.height,
       ...sidebarStyles?.main,
       width: width,
-      [location]: initial
+      [location]: initial,
     }
-  
-  }, [sidebarPos, width, initial, sidebarStyles?.main, dims?.height])
+  }, [ sidebarPos, width, initial, sidebarStyles?.main, dims?.height ])
 
   return { mainStyles, sidebarStyles }
-
 }
 
 /**
@@ -67,7 +70,7 @@ const useSidebarStyles = ({ initial, styles, sidebarWidth, sidebarPos='left' }) 
  * @returns {Object} - Contains current toggle state, and methods to update it
  */
 const useSidebarToggle = props => {
-  const { toggled, onToggled=noOp, initial, to } = props
+  const { toggled, onToggled = noOp, initial, to } = props
 
   // Store the toggled state for reference later
   const [ isToggled, setIsToggled ] = useState(toggled)
@@ -78,7 +81,7 @@ const useSidebarToggle = props => {
   // This allows changing the toggled prop outside the sidebar
   // And still allowing the sidebar to update
   useEffect(() => {
-    if(originalToggled === toggled) return
+    if (originalToggled === toggled) return
 
     setOriginalToggled(toggled)
     setIsToggled(toggled)
@@ -86,11 +89,14 @@ const useSidebarToggle = props => {
 
   // Wrapper to toggle the sidebar
   // Also calls the onToggled prop if it's passed in
-  const onTogglePress = useCallback(event => {
-    const toggleUpdate = !isToggled
-    setIsToggled(toggleUpdate)
-    checkCall(onToggled, toggleUpdate)
-  }, [ isToggled, setIsToggled, initial, to ])
+  const onTogglePress = useCallback(
+    event => {
+      const toggleUpdate = !isToggled
+      setIsToggled(toggleUpdate)
+      checkCall(onToggled, toggleUpdate)
+    },
+    [ isToggled, setIsToggled, initial, to ]
+  )
 
   return {
     toggled,
@@ -110,7 +116,7 @@ const useSidebarToggle = props => {
  * @returns {Object} - Contains sidebar animation and a method to update it
  */
 const useSidebarAnimate = (props, isToggled) => {
-  const { config=noOpObj, initial, to, type='timing' } = props
+  const { config = noOpObj, initial, to, type = 'timing' } = props
 
   // Define the animated value as a ref
   const [ animation, setAnimation ] = useState(new Animated.Value(initial))
@@ -122,7 +128,7 @@ const useSidebarAnimate = (props, isToggled) => {
   // To Open: isToggled === true === should animate open
   // To Close: isToggled === false === should animate close
   useLayoutEffect(() => {
-    if(!xPosRef.current) return
+    if (!xPosRef.current) return
 
     // Check if we should animate the slider
     // If the values have not changed, no need to animate
@@ -145,9 +151,9 @@ const useSidebarAnimate = (props, isToggled) => {
     Animated[type](animation, animationConfig).start()
 
     // Add isToggled as a dep, so anytime it changes, we run the hook code
-  }, [isToggled, type, config])
+  }, [ isToggled, type, config ])
 
-  return {animation, setAnimation}
+  return { animation, setAnimation }
 }
 
 /**
@@ -167,24 +173,16 @@ const useSidebarAnimate = (props, isToggled) => {
  *
  */
 export const Sidebar = props => {
-  const {
-    children,
-    sidebarWidth,
-    ToggleComponent=SidebarToggle,
-  } = props
+  const { children, sidebarWidth, ToggleComponent = SidebarToggle } = props
 
-  const {
-    isToggled,
-    setIsToggled,
-    onTogglePress,
-  } = useSidebarToggle(props)
+  const { isToggled, setIsToggled, onTogglePress } = useSidebarToggle(props)
   const { animation } = useSidebarAnimate(props, isToggled)
-  const { mainStyles, sidebarStyles} = useSidebarStyles(props)
+  const { mainStyles, sidebarStyles } = useSidebarStyles(props)
 
   return (
     <>
-      <Animated.View style={[mainStyles, { left: animation }]}>
-        <SidebarContainer 
+      <Animated.View style={[ mainStyles, { left: animation }]}>
+        <SidebarContainer
           className='sidebar-container'
           style={sidebarStyles?.container}
         >
@@ -198,7 +196,7 @@ export const Sidebar = props => {
             onPress={onTogglePress}
             sidebarSize={sidebarWidth}
           />
-        )}
+        ) }
       </Animated.View>
     </>
   )

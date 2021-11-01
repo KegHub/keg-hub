@@ -6,14 +6,12 @@ import { Subtitle } from '../typography/subtitle'
 
 import { SectionList } from '../list/sectionList'
 
-const goatData = [{
-  title: `Sections`,
-  data: [
-    'Goat of Olde',
-    'Goat Bio',
-    'Goat Grub'
-  ],
-}]
+const goatData = [
+  {
+    title: `Sections`,
+    data: [ 'Goat of Olde', 'Goat Bio', 'Goat Grub' ],
+  },
+]
 
 const sideBarConfig = {
   speed: 1,
@@ -42,12 +40,11 @@ const sidebarStyles = {
   container: {
     paddingTop: 20,
     alignItems: 'center',
-  }
+  },
 }
 
 export const Basic = props => {
-  
-  const [toggled, setToggled] = useState(false)
+  const [ toggled, setToggled ] = useState(false)
 
   return (
     <Sidebar
@@ -82,7 +79,7 @@ export const Basic = props => {
         renderItem={({ item }) => {
           return (
             <Subtitle style={{ marginBottom: 10, paddingLeft: 10 }}>
-              <Link style={{ fontSize: 14, textDecorationLine: 'none' }} >
+              <Link style={{ fontSize: 14, textDecorationLine: 'none' }}>
                 { item }
               </Link>
             </Subtitle>

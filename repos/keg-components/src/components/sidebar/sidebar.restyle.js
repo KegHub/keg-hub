@@ -4,7 +4,7 @@ import { noOpObj, isNum } from '@keg-hub/jsutils'
 import { ChevronDown } from 'KegIcons/chevronDown'
 import { reStyle } from '@keg-hub/re-theme/reStyle'
 
-export const getSidebarWidth = (width, initial, styles=noOpObj) => {
+export const getSidebarWidth = (width, initial, styles = noOpObj) => {
   return isNum(width)
     ? width
     : isNum(styles?.main?.width)
@@ -39,7 +39,7 @@ export const ToggleAction = reStyle(Touchable)((theme, props) => {
     top: `45vh`,
     minHeight: 50,
     shadowRadius: 2,
-    shadowOpacity: 0.20,
+    shadowOpacity: 0.2,
     paddingVertical: 15,
     paddingHorizontal: 1,
     alignItems: 'center',
@@ -57,15 +57,11 @@ export const ToggleAction = reStyle(Touchable)((theme, props) => {
   }
 })
 export const ToggleContent = reStyle(View)((theme, props) => {
-  return {
-
-  }
+  return {}
 })
 
 export const ToggleText = reStyle(Text)((theme, props) => {
-  return {
-
-  }
+  return {}
 })
 
 export const ToggleIcon = reStyle(ChevronDown)((theme, props) => {

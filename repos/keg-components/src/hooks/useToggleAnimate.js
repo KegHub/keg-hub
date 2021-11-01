@@ -21,9 +21,8 @@ const defConfig = {
  *
  * @returns {boolean} - If the animation should NOT run
  */
-const noAnimate = (toggled, current, { from, to }) => (
-  !toggled && current === from) || (toggled && current === to
-)
+const noAnimate = (toggled, current, { from, to }) =>
+  (!toggled && current === from) || (toggled && current === to)
 
 /**
  * Builds the config passed to the Animation timing method
@@ -34,11 +33,13 @@ const noAnimate = (toggled, current, { from, to }) => (
  * @returns {Object} - Built animation config
  */
 const buildConfig = (config, values) => {
-  return checkCall(config, defConfig, values) || {
-    ...defConfig,
-    ...(isObj(config) ? config : {}),
-    toValue: values.to,
-  }
+  return (
+    checkCall(config, defConfig, values) || {
+      ...defConfig,
+      ...(isObj(config) ? config : {}),
+      toValue: values.to,
+    }
+  )
 }
 
 /**
@@ -58,27 +59,25 @@ export const useToggleAnimate = props => {
   const values = useRef({ from: 0, to: 0, ...props.values })
 
   // Define the animated value with a state hook
-  const [ animation ] = useState(new Animated.Value(values.current.from))
+  const [animation] = useState(new Animated.Value(values.current.from))
 
   useLayoutEffect(() => {
-    if(noAnimate(toggled, animation._value, values.current)) return
+    if (noAnimate(toggled, animation._value, values.current)) return
 
     // Define the from and to values for the animation based on toggled flag
     const { from, to } = values.current
-    const aniChanges = toggled
-      ? values.current
-      : { from: to, to: from }
+    const aniChanges = toggled ? values.current : { from: to, to: from }
 
     // Update the animation value to animate from
     animation.setValue(aniChanges.from)
 
     // Setup and from the animation
-    Animated.timing(animation, buildConfig(config, aniChanges))
-      .start(() => checkCall(onFinish, props, animation, values))
+    Animated.timing(animation, buildConfig(config, aniChanges)).start(() =>
+      checkCall(onFinish, props, animation, values)
+    )
 
-  // Add toggled as a dep, so anytime it changes, we run the hook code
-  }, [ toggled ])
+    // Add toggled as a dep, so anytime it changes, we run the hook code
+  }, [toggled])
 
   return { animation, values }
-
 }
