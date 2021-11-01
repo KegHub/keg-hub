@@ -1,6 +1,6 @@
 <!--- Touchable.stories.mdx -->
 
-import { Story, Meta, Preview, Props, Description } from '@storybook/addon-docs'
+import { Story, Meta, Canvas, ArgsTable, Description } from '@storybook/addon-docs'
 
 import { Touchable } from './touchable'
 import {Touchable as TouchableNative} from './touchable.native.js'
@@ -16,11 +16,11 @@ Utilizes react-native [Pressable](https://reactnative.dev/docs/pressable) under 
 ## Examples
 
 ### Basic
-<Preview>
+<Canvas>
   <Story name="Basic">
     <Basic />
   </Story>
-</Preview>
+</Canvas>
 
 ### With States
 You can have control over the states by passing in `children` as a function.
@@ -30,15 +30,15 @@ It gives you access to these 3 states: **pressed**(`web, native`), **hovered**(`
   children={({ pressed, hovered }) => {}
 />
 ```
-<Preview>
+<Canvas>
   <Story name='With States'>
     <WithStates/>
   </Story>
-</Preview>
+</Canvas>
 
 ## Props
 Supports all props on [Pressable](https://reactnative.dev/docs/pressable#props) 
 along with: 
 
-<Props of={TouchableNative} />
+<ArgsTable of={TouchableNative} />
 

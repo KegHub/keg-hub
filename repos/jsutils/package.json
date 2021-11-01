@@ -7,13 +7,13 @@
   "author": "lancetipton <lancetipton04@gmail.com>",
   "license": "MIT",
   "repository": {
-    "url": "git+https://github.com/lancetipton/keg-hub.git",
+    "url": "git+https://github.com/KegHub/keg-hub.git",
     "type": "git"
   },
   "bugs": {
-    "url": "https://github.com/lancetipton/keg-hub/issues"
+    "url": "https://github.com/KegHub/keg-hub/issues"
   },
-  "homepage": "https://github.com/lancetipton/keg-hub#readme",
+  "homepage": "https://github.com/KegHub/keg-hub#readme",
   "files": [
     "build",
     "src/node"

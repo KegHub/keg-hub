@@ -72,7 +72,7 @@ describe('items reducer', () => {
 
   const matt = {
     name: 'Matt',
-    company: { name: 'simpleviewinc', location: 'tucson' },
+    company: { name: 'KegHub', location: 'tucson' },
   }
 
   const mattUpdate = {

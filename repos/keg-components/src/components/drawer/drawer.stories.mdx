@@ -1,6 +1,6 @@
 <!--- Drawer.stories.mdx -->
 
-import { Story, Meta, Preview, Props, Description } from '@storybook/addon-docs'
+import { Story, Meta, Canvas, ArgsTable, Description } from '@storybook/addon-docs'
 
 import { Basic } from './drawer.examples'
 import { Drawer } from './drawer'
@@ -14,13 +14,13 @@ Base component for slide toggling the display of child content
 
 ### Example
 
-<Preview>
+<Canvas>
   <Story name="Basic">
     <Basic />
   </Story>
-</Preview>
+</Canvas>
 
 
 ### Props
 
-<Props of={Drawer} />
+<ArgsTable of={Drawer} />

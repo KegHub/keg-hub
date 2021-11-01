@@ -1,6 +1,6 @@
 <!--- Theme.stories.mdx -->
 
-import { Story, Meta, Preview, Props, Description } from '@storybook/addon-docs'
+import { Story, Meta, Canvas, Props, Description } from '@storybook/addon-docs'
 
 import { Button } from '../components/button'
 import { View } from '../components/view'
@@ -79,7 +79,7 @@ For example adding a `type` to the `colors` object of the theme defaults, will m
 
 ### Custom Type
 
-<Preview>
+<Canvas>
   <View style={{ maxWidth: '80vw', margin: 'auto', marginTop: 30 }}>
     <ReThemeProvider theme={theme({
       defaults: {
@@ -98,7 +98,7 @@ For example adding a `type` to the `colors` object of the theme defaults, will m
         </Button>
     </ReThemeProvider>
   </View>
-</Preview>
+</Canvas>
 
 The above example, the `type` prop is passed the value of `storybook` on the `Button` component.
 Because `storybook` is not a default button type, normally the button would render without a background color.

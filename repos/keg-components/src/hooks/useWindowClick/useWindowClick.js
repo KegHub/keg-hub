@@ -12,11 +12,10 @@ import { useCallback, useEffect } from 'react'
  * @returns {void}
  */
 export const useWindowClick = (cb, ...args) => {
-  const onWindowClick = useCallback(cb.bind(window, ...args), [cb, ...args])
+  const onWindowClick = useCallback(cb.bind(window, ...args), [ cb, ...args ])
 
   useEffect(() => {
     window.addEventListener('click', onWindowClick)
     return () => window.removeEventListener('click', onWindowClick)
   }, [onWindowClick])
-  
 }

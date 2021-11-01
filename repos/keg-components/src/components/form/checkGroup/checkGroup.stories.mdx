@@ -1,6 +1,6 @@
 <!--- CheckGroup.stories.mdx -->
 
-import { Story, Meta, Preview, Props, Description } from '@storybook/addon-docs'
+import { Story, Meta, Canvas, ArgsTable, Description } from '@storybook/addon-docs'
 import { 
   Basic, 
   DisabledHeader, 
@@ -23,60 +23,60 @@ that selects or deselects all the grouped checkboxes when pressed.
 
 ### Basic (no select-all box)
 
-<Preview>
+<Canvas>
   <Story name='Basic'>
     <Basic />
   </Story>
-</Preview>
+</Canvas>
 
 ### Select-all
 
-<Preview>
+<Canvas>
   <Story name='With Select-All'>
     <SelectAll />
   </Story>
-</Preview>
+</Canvas>
 
 ### Select-all, but children are defined discretely without `.map`
 
-<Preview>
+<Canvas>
   <Story name='Discrete Select-All'>
     <SelectAllNoArray />
   </Story>
-</Preview>
+</Canvas>
 
 ### With other toggleable components, like Switch
 
-<Preview>
+<Canvas>
   <Story name='With Switch'>
     <WithSwitch />
   </Story>
-</Preview>
+</Canvas>
 
 ### Controlling a child component with a ref
 
-<Preview>
+<Canvas>
   <Story name='Child Ref Control'>
     <ChildRefControl />
   </Story>
-</Preview>
+</Canvas>
 
 ### Controlling the header-checkbox with a ref
 
-<Preview>
+<Canvas>
   <Story name='Header Ref Control'>
     <HeaderRefControl />
   </Story>
-</Preview>
+</Canvas>
 
 ### Disabled header
 
-<Preview>
+<Canvas>
   <Story name='Disabled Header'>
     <DisabledHeader />
   </Story>
-</Preview>
+</Canvas>
 
 ### Props
 
-<Props of={CheckGroup} />
+<ArgsTable of={CheckGroup} />

@@ -1,17 +1,21 @@
-import PropTypes from 'prop-types'
 import { Animated } from 'react-native'
-import { isValidComponent } from 'KegUtils'
-import { useStyle, useDimensions } from '@keg-hub/re-theme'
+import PropTypes from 'prop-types'
+import { isValidComponent } from '../../utils'
 import { SidebarToggle } from './sidebarToggle'
-import { SidebarContainer, getSidebarWidth } from './sidebar.restyle'
-import { checkCall, noOpObj, noOp, isNum } from '@keg-hub/jsutils'
-import React, { 
+import { useStyle, useDimensions } from '@keg-hub/re-theme'
+import { checkCall, noOpObj, noOp } from '@keg-hub/jsutils'
+import {
+  SidebarMain,
+  SidebarContainer,
+  getSidebarWidth,
+} from './sidebar.restyle'
+import React, {
   useMemo,
   useState,
   useCallback,
   useLayoutEffect,
   useEffect,
-  useRef
+  useRef,
 } from 'react'
 
 /**
@@ -35,27 +39,26 @@ const noAnimate = (toggled, current, { initial, to }) =>
  *
  * @returns {Object} - Contains main animated.View and child sidebar styles from the theme
  */
-const useSidebarStyles = ({ initial, styles, sidebarWidth, sidebarPos='left' }) => {
-  const dims = useDimensions()  
+const useSidebarStyles = ({ initial, styles, sidebarWidth, location }) => {
+  const dims = useDimensions()
   const sidebarStyles = useStyle('sidebar', styles)
   const width = getSidebarWidth(sidebarWidth, initial, sidebarStyles)
 
   const mainStyles = useMemo(() => {
-    const location = sidebarPos === 'right' ? sidebarPos : 'left'
     return {
       flex: 1,
       zIndex: 5,
       position: 'fixed',
+      top: 0,
+      bottom: 0,
       height: dims.height,
       ...sidebarStyles?.main,
       width: width,
-      [location]: initial
+      [location === 'right' ? location : 'left']: initial,
     }
-  
-  }, [sidebarPos, width, initial, sidebarStyles?.main, dims?.height])
+  }, [ location, width, initial, sidebarStyles?.main, dims?.height ])
 
   return { mainStyles, sidebarStyles }
-
 }
 
 /**
@@ -67,7 +70,7 @@ const useSidebarStyles = ({ initial, styles, sidebarWidth, sidebarPos='left' }) 
  * @returns {Object} - Contains current toggle state, and methods to update it
  */
 const useSidebarToggle = props => {
-  const { toggled, onToggled=noOp, initial, to } = props
+  const { toggled, onToggled = noOp, initial, to } = props
 
   // Store the toggled state for reference later
   const [ isToggled, setIsToggled ] = useState(toggled)
@@ -78,7 +81,7 @@ const useSidebarToggle = props => {
   // This allows changing the toggled prop outside the sidebar
   // And still allowing the sidebar to update
   useEffect(() => {
-    if(originalToggled === toggled) return
+    if (originalToggled === toggled) return
 
     setOriginalToggled(toggled)
     setIsToggled(toggled)
@@ -86,11 +89,14 @@ const useSidebarToggle = props => {
 
   // Wrapper to toggle the sidebar
   // Also calls the onToggled prop if it's passed in
-  const onTogglePress = useCallback(event => {
-    const toggleUpdate = !isToggled
-    setIsToggled(toggleUpdate)
-    checkCall(onToggled, toggleUpdate)
-  }, [ isToggled, setIsToggled, initial, to ])
+  const onTogglePress = useCallback(
+    event => {
+      const toggleUpdate = !isToggled
+      setIsToggled(toggleUpdate)
+      checkCall(onToggled, toggleUpdate)
+    },
+    [ isToggled, setIsToggled, initial, to ]
+  )
 
   return {
     toggled,
@@ -110,7 +116,7 @@ const useSidebarToggle = props => {
  * @returns {Object} - Contains sidebar animation and a method to update it
  */
 const useSidebarAnimate = (props, isToggled) => {
-  const { config=noOpObj, initial, to, type='timing' } = props
+  const { config = noOpObj, initial, to, type = 'timing' } = props
 
   // Define the animated value as a ref
   const [ animation, setAnimation ] = useState(new Animated.Value(initial))
@@ -122,7 +128,7 @@ const useSidebarAnimate = (props, isToggled) => {
   // To Open: isToggled === true === should animate open
   // To Close: isToggled === false === should animate close
   useLayoutEffect(() => {
-    if(!xPosRef.current) return
+    if (!xPosRef.current) return
 
     // Check if we should animate the slider
     // If the values have not changed, no need to animate
@@ -142,23 +148,25 @@ const useSidebarAnimate = (props, isToggled) => {
     const animationConfig = config
       ? { ...config, toValue: xPosChanges.to }
       : { toValue: xPosChanges.to }
+
+    animationConfig.useNativeDriver = false
     Animated[type](animation, animationConfig).start()
 
     // Add isToggled as a dep, so anytime it changes, we run the hook code
-  }, [isToggled, type, config])
+  }, [ isToggled, type, config ])
 
-  return {animation, setAnimation}
+  return { animation, setAnimation }
 }
 
 /**
  * Sidebar
- * @param {Object} props - see Sidebar PropTypes below
+ * @param {Object} props
  * @param {Object} props.config - Defines the animation of the sidebar
  * @param {Array|Object|React.Component} props.children - Children to render inside the sidebar
  * @param {string} props.className - Root className of the sidebar
  * @param {number} props.initial - Initial position of the sidebar on the X axis
  * @param {function} props.onToggled - Called when the sidebar is toggled
- * @param {string} props.sidebarPos - Location of the sidebar on the page ( Left or Right )
+ * @param {string} props.location - Location of the sidebar on the page ( Left or Right )
  * @param {number} props.sidebarWidth - Width of the sidebar in pixels
  * @param {Object} props.styles - Styles to apply to the sidebar and its children
  * @param {number} props.to - Final position of the sidebar on the X axis when toggled
@@ -168,38 +176,51 @@ const useSidebarAnimate = (props, isToggled) => {
  */
 export const Sidebar = props => {
   const {
+    to,
+    initial,
     children,
+    location,
+    onOffClick,
     sidebarWidth,
-    ToggleComponent=SidebarToggle,
+    ToggleComponent,
   } = props
 
-  const {
-    toggled,
-    isToggled,
-    setIsToggled,
-    onTogglePress,
-  } = useSidebarToggle(props)
+  const { isToggled, setIsToggled, onTogglePress } = useSidebarToggle(props)
   const { animation } = useSidebarAnimate(props, isToggled)
-  const { mainStyles, sidebarStyles} = useSidebarStyles(props)
+  const { mainStyles, sidebarStyles } = useSidebarStyles(props)
+
+  const Toggler = isValidComponent(ToggleComponent) && (
+    <ToggleComponent
+      to={to}
+      initial={initial}
+      location={location}
+      toggled={isToggled}
+      onOffClick={onOffClick}
+      onPress={onTogglePress}
+      sidebarWidth={sidebarWidth}
+      setIsToggled={setIsToggled}
+      styles={sidebarStyles?.toggle}
+    />
+  )
 
   return (
     <>
-      <Animated.View style={[mainStyles, { left: animation }]}>
-        <SidebarContainer 
-          className='sidebar-container'
-          style={sidebarStyles?.container}
+      <Animated.View style={[ mainStyles, { [location]: animation }]}>
+        <SidebarMain
+          className='sidebar-main'
+          style={sidebarStyles?.main}
         >
-          { children }
-        </SidebarContainer>
-        { isValidComponent(ToggleComponent) && (
-          <ToggleComponent
-            toggled={isToggled}
-            setIsToggled={setIsToggled}
-            styles={sidebarStyles?.toggle}
-            onPress={onTogglePress}
-            sidebarSize={sidebarWidth}
-          />
-        )}
+          { location === 'right' && Toggler }
+          <SidebarContainer
+            location={location}
+            sidebarWidth={sidebarWidth}
+            className='sidebar-container'
+            style={sidebarStyles?.container}
+          >
+            { children }
+          </SidebarContainer>
+          { location !== 'right' && Toggler }
+        </SidebarMain>
       </Animated.View>
     </>
   )
@@ -207,44 +228,60 @@ export const Sidebar = props => {
 
 // Add the toggle component helper
 Sidebar.Toggle = SidebarToggle
+Sidebar.defaultProps = {
+  config: noOpObj,
+  location: 'left',
+  type: 'timing',
+  ToggleComponent: SidebarToggle,
+}
 
 Sidebar.propTypes = {
   /**
-   * Configuration for the animation of the sidebar open and close
+   * Final position of the sidebar on the X axis when toggled
    */
-  config: PropTypes.object,
-  children: PropTypes.node,
-  className: PropTypes.oneOfType([ PropTypes.string, PropTypes.array ]),
+  to: PropTypes.oneOfType([ PropTypes.string, PropTypes.number ]),
   /**
    * Initial position of the sidebar on the X axis
    */
-  initial: PropTypes.number.isRequired,
+  initial: PropTypes.oneOfType([ PropTypes.string, PropTypes.number ]),
   /**
-   * Function to call when the sidebar is toggled
+   * Width of the Sidebar. Defaults to styles.main.width or 200px if it does not exist
    */
-  onToggled: PropTypes.func,
+  sidebarWidth: PropTypes.oneOfType([ PropTypes.string, PropTypes.number ]),
   /**
-   * Location of the sidebar on the page ( Left or Right )
+   * Location the sidebar should be attached to ( left || right ). Defaults to left
    */
-  sidebarPos: PropTypes.string,
+  location: PropTypes.string,
   /**
-   * Width of the sidebar in pixels
+   * Class name applied to the root-element of the Sidebar
    */
-  sidebarWidth: PropTypes.number,
+  className: PropTypes.string,
   /**
-   * Styles to apply to the sidebar and its children
+   * Custom styles for the sidebar
    */
   styles: PropTypes.object,
-  /**
-   * Final position of the sidebar on the X axis when toggled
-   */
-  to: PropTypes.number,
-  /**
-   * Component to override the default toggle component
-   */
-  ToggleComponent: PropTypes.oneOfType([ PropTypes.func, PropTypes.node ]),
   /**
    * Type of animation to use ( e.g. 'spring' )
    */
   type: PropTypes.string,
+  /**
+   * Config object for the toggle animation
+   */
+  config: PropTypes.object,
+  /**
+   * Called when the Sidebar is toggled open or closed
+   */
+  onToggle: PropTypes.func,
+  /**
+   * Called when the Sidebar is toggled open and a click event is fired outside of the component
+   */
+  onOffClick: PropTypes.func,
+  /**
+   * Default state of the toggle state for the Sidebar component
+   */
+  toggled: PropTypes.bool,
+  /**
+   * Component to override the default Toggle Component
+   */
+  ToggleComponent: PropTypes.oneOfType([ PropTypes.node, PropTypes.func ]),
 }

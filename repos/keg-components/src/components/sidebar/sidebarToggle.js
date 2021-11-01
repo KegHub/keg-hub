@@ -1,14 +1,10 @@
-import React, { useEffect, useMemo } from 'react'
+import React, { useMemo } from 'react'
 import { View } from 'KegView'
-import PropTypes from 'prop-types'
-import { Touchable } from '../touchable'
 import { Text } from '../typography/text'
-import { ChevronDown } from 'KegIcons/chevronDown'
-import { reStyle } from '@keg-hub/re-theme/reStyle'
 import { useWindowClick } from 'KegUseWindowClick'
-import { useStyle, useThemeHover, useTheme } from '@keg-hub/re-theme'
+import { useStyle, useTheme } from '@keg-hub/re-theme'
 import { useToggledStyles } from '../../hooks/useToggledStyles'
-import { ToggleMain, ToggleAction, ToggleContent, ToggleIcon } from './sidebar.restyle'
+import { ToggleMain, ToggleAction, ToggleIcon } from './sidebar.restyle'
 
 /**
  * Helper to listen for click events
@@ -22,7 +18,7 @@ import { ToggleMain, ToggleAction, ToggleContent, ToggleIcon } from './sidebar.r
  * @returns {void}
  */
 const onWindowClick = (toggled, setIsToggled, event) => {
-  if(!toggled) return
+  if (!toggled) return
 
   const sideBarEl = event && event.target.closest('.sidebar-main')
   !sideBarEl && setIsToggled(false)
@@ -32,9 +28,15 @@ const onWindowClick = (toggled, setIsToggled, event) => {
  * Styles to rotate the Icon. Defined outside the component to keep reference identity
  * @type {Object}
  */
-const iconRotate = {
-  on: { transform: 'rotate(90deg)' },
-  off: { transform: 'rotate(270deg)' }
+const iconRotateOptions = {
+  left: {
+    on: { transform: 'rotate(90deg)' },
+    off: { transform: 'rotate(270deg)' },
+  },
+  right: {
+    on: { transform: 'rotate(270deg)' },
+    off: { transform: 'rotate(90deg)' },
+  },
 }
 
 /**
@@ -46,16 +48,24 @@ const iconRotate = {
  *
  * @returns {Object} - Memoized Icon props
  */
-const useIconProps = (toggled, themeStyles) => {
+const useIconProps = (toggled, themeStyles, location = 'left') => {
   const theme = useTheme()
-  const iconStyle = useStyle(themeStyles.icon, toggled ? iconRotate.on : iconRotate.off)
+  const iconRotate = iconRotateOptions[location]
+  const iconStyle = useStyle(
+    themeStyles.icon,
+    toggled ? iconRotate.on : iconRotate.off
+  )
+
   return useMemo(() => {
     return {
-      style: iconStyle,
+      styles: { main: iconStyle },
       size: themeStyles?.icon?.fontSize || theme?.typography?.default?.fontSize,
-      stroke: themeStyles?.icon?.c || themeStyles?.icon?.color || theme.colors.palette.white01
+      stroke:
+        themeStyles?.icon?.c ||
+        themeStyles?.icon?.color ||
+        theme.colors.palette.white01,
     }
-  }, [theme, themeStyles, iconStyle])
+  }, [ theme, themeStyles, iconStyle ])
 }
 
 /**
@@ -72,36 +82,53 @@ const useIconProps = (toggled, themeStyles) => {
  *
  */
 const ToggleContainer = props => {
-  const { text, styles, toggled, onPress, setIsToggled, sidebarSize, Icon=ToggleIcon } = props
+  const {
+    to,
+    text,
+    styles,
+    initial,
+    toggled,
+    onPress,
+    location,
+    setIsToggled,
+    sidebarWidth,
+    Icon = ToggleIcon,
+    onOffClick = onWindowClick,
+  } = props
 
-  const [ ref, themeStyles ] = useThemeHover(styles, styles?.hover)
-  const iconProps = useIconProps(toggled, themeStyles)
-
-  useWindowClick(onWindowClick, toggled, setIsToggled)
+  const iconProps = useIconProps(toggled, styles, location)
+  useWindowClick(onOffClick, toggled, setIsToggled)
 
   return (
     <ToggleAction
-      touchRef={ref}
-      className={`sidebar-toggle-action`}
+      to={to}
+      initial={initial}
       onPress={onPress}
-      style={themeStyles?.action}
+      location={location}
+      styles={styles?.action}
+      sidebarWidth={sidebarWidth}
+      className={`sidebar-toggle-action`}
     >
-      <View
-        className={`sidebar-toggle-content`}
-        style={themeStyles?.content}
-      >
-        { !text
-          ? (<Icon {...iconProps}/>)
-          : (
-              <Text
-                className={`sidebar-toggle-text`}
-                style={themeStyles?.text}
-              >
-                { text }
-              </Text>
-            )
-        }
-      </View>
+      { ({ hovered }) => (
+        <View
+          className={`sidebar-toggle-content`}
+          style={styles?.content}
+        >
+          { !text ? (
+            <Icon
+              {...iconProps}
+              hovered={hovered}
+            />
+          ) : (
+            <Text
+              className={`sidebar-toggle-text`}
+              style={styles?.text}
+            >
+              { text }
+            </Text>
+          ) }
+        </View>
+      ) }
     </ToggleAction>
   )
 }
@@ -121,12 +148,16 @@ const ToggleContainer = props => {
  */
 export const SidebarToggle = props => {
   const {
+    to,
+    text,
+    styles,
+    initial,
     onPress,
     toggled,
-    styles,
-    text,
+    location,
     children,
-    setIsToggled
+    setIsToggled,
+    sidebarWidth,
   } = props
 
   const joinedStyles = useStyle('sidebar.toggle', styles)
@@ -137,43 +168,19 @@ export const SidebarToggle = props => {
       className={`sidebar-toggle-main`}
       style={toggleStyles?.main}
     >
-    {children || (
+      { children || (
         <ToggleContainer
+          to={to}
           text={text}
-          toggled={toggled}
-          setIsToggled={setIsToggled}
-          styles={toggleStyles}
           onPress={onPress}
+          initial={initial}
+          toggled={toggled}
+          location={location}
+          styles={toggleStyles}
+          sidebarWidth={sidebarWidth}
+          setIsToggled={setIsToggled}
         />
-      )}
+      ) }
     </ToggleMain>
   )
-}
-
-SidebarToggle.propTypes = {
-  children: PropTypes.node,
-  /**
-   * Method called when the component is pressed
-   */
-  onPress: PropTypes.func,
-  /**
-   * State of the sidebar, true if sidebar is open
-   */
-  toggled: PropTypes.bool,
-  /**
-   * Method called when the component is pressed
-   */
-  setIsToggled: PropTypes.func,
-  /**
-   * Defines how the component should look
-   */
-  styles: PropTypes.object,
-  /**
-   * Text to display when no icon is shown
-   */
-  text: PropTypes.string,
-  /**
-   * Width of the sidebar in pixels
-   */
-  sidebarWidth: PropTypes.number
 }
