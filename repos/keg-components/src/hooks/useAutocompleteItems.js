@@ -54,7 +54,7 @@ const textMatches = (text, item) => {
  * @param {Array<string | Object>} possibleValues - string or object { text, key? } array
  * @returns {Array<Object>} the new array of items, without duplicates
  */
-export const getItemsMatchingText = (text, possibleValues) => {
+export const getItemsMatchingText = (text, possibleValues, emptyDisplayAll) => {
   if (!isStr(text)) return []
 
   // in one pass: format values, keep the matching ones, and ignore duplicates (by key) and invalid items
@@ -68,7 +68,7 @@ export const getItemsMatchingText = (text, possibleValues) => {
 
       // add the item if it matches the text and we haven't seen its key before
       if (
-        textMatches(text, formattedItem) &&
+        ((!text && emptyDisplayAll) || textMatches(text, formattedItem)) &&
         !state.keys.has(formattedItem.key)
       ) {
         state.keys.add(formattedItem.key)
@@ -99,14 +99,14 @@ export const getItemsMatchingText = (text, possibleValues) => {
  *  selectedItem: the currently selected item
  * ]
  */
-export const useAutocompleteItems = (text, menuItems) => {
+export const useAutocompleteItems = (text, menuItems, emptyDisplayAll) => {
   const [ selectedItem, setSelectedItem ] = useState(null)
 
   const items = useMemo(
     () =>
-      isEmpty(text) || selectedItem?.text === text
+      !emptyDisplayAll && (isEmpty(text) || selectedItem?.text === text)
         ? []
-        : getItemsMatchingText(text, menuItems),
+        : getItemsMatchingText(text, menuItems, emptyDisplayAll),
     [ text, menuItems, selectedItem ]
   )
 

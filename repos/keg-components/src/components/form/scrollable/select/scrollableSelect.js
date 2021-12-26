@@ -2,13 +2,25 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { SelectItem } from '../item/item'
 import { SelectView } from './selectView'
+import { noOpObj } from '@keg-hub/jsutils'
 import { withScrollIntoView } from 'KegHocs'
+import { useStyle } from '@keg-hub/re-theme'
 
 /**
  * Wrapper around SelectItem that ensures it stays in the view
  * of the ScrollableSelect list (by automatically scrolling it)
  */
 const InViewSelectItem = withScrollIntoView(SelectItem, false)
+
+/**
+ * Holds the display style for the down based on visible state
+ * @type {Object} 
+ */
+const display = {
+  hidden: { display: 'none' },
+  visible: { display: 'block'},
+}
+
 
 /**
  * A scrollable menu list of items, with prop-adjustable height and visibility
@@ -22,15 +34,23 @@ const InViewSelectItem = withScrollIntoView(SelectItem, false)
 export const ScrollableSelect = ({
   items,
   styles,
+  height,
   visible = true,
   onSelect,
+  renderItem,
   selectedItem,
-  height,
+  itemProps=noOpObj,
 }) => {
+
+  const selectStyle = useStyle(
+    styles?.main,
+    visible ? display.visible : display.hidden
+  )
+
   return (
     <SelectView
-      style={styles?.main}
       visible={visible}
+      style={selectStyle}
       height={height ?? 150}
     >
       { items.map(item => {
@@ -38,11 +58,13 @@ export const ScrollableSelect = ({
         return (
           <InViewSelectItem
             key={item.key || item.text}
+            {...itemProps}
             item={item}
             onSelect={onSelect}
+            renderItem={renderItem}
             highlighted={highlighted}
             scrollIntoView={highlighted}
-            style={styles?.content}
+            styles={styles?.content}
           />
         )
       }) }
@@ -52,8 +74,11 @@ export const ScrollableSelect = ({
 
 ScrollableSelect.propTypes = {
   styles: PropTypes.object,
-  items: PropTypes.arrayOf(PropTypes.object).isRequired,
+  height: PropTypes.number,
   visible: PropTypes.bool,
   onSelect: PropTypes.func,
-  height: PropTypes.number,
+  renderItem: PropTypes.func,
+  itemProps: PropTypes.object,
+  selectedItem: PropTypes.object,
+  items: PropTypes.arrayOf(PropTypes.object).isRequired,
 }

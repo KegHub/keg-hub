@@ -13,7 +13,6 @@ export const SelectView = reStyle(View)((_, props) => {
     height: props.height,
     ...(getPlatform() === 'web'
       ? {
-          display: props.visible ? 'block' : 'none',
           width: '100%',
           overflowY: 'auto',
           overflowX: 'hidden',

@@ -1,13 +1,13 @@
 import React, { useState, useCallback } from 'react'
-import PropTypes from 'prop-types'
-import { noOpObj, noPropArr } from '@keg-hub/jsutils'
-import { getTextFromChangeEvent } from 'KegUtils'
-import { useAutocompleteItems } from 'KegHooks'
-import { reStyle } from '@keg-hub/re-theme/reStyle'
-import { ScrollableSelect } from '../scrollable/select/scrollableSelect'
 import { View } from 'KegView'
-import { AutocompleteInput } from './autocompleteInput'
+import PropTypes from 'prop-types'
 import { withOutsideDetect } from 'KegHocs'
+import { useAutocompleteItems } from 'KegHooks'
+import { getTextFromChangeEvent } from 'KegUtils'
+import { reStyle } from '@keg-hub/re-theme/reStyle'
+import { AutocompleteInput } from './autocompleteInput'
+import { noOpObj, noPropArr, isObj, checkCall, exists } from '@keg-hub/jsutils'
+import { ScrollableSelect } from '../scrollable/select/scrollableSelect'
 
 /**
  * An absolutely-positioned scrollable select
@@ -23,6 +23,62 @@ const FloatingScrollableSelect = reStyle(
  * View wrapped with out-of-bounds click detection.
  */
 const AutocompleteView = withOutsideDetect(View)
+
+const useSetDrop = (callback, setShowDropdown, showDropdown, setTo) => {
+  return useCallback((...data) => {
+    checkCall(callback, ...data)
+    setShowDropdown(setTo)
+  }, [
+    callback,
+    setShowDropdown,
+    showDropdown,
+    setTo,
+  ])
+}
+
+
+const useDropdownActions = (props, inputText, updateText, selectedItem, setSelectedItem) => {
+
+  const {onSelect, onFocus, onOutsideClick} = props
+  const [ showDropdown, setShowDropdown ] = useState(false)
+
+  const onSelectItemHandler = useCallback(
+    item => {
+      // Ensure we always call the callback when it exists
+      item && onSelect?.(item)
+
+      // Only update the text if the text has actually changed
+      item.text &&
+        inputText !== item.text &&
+        updateText(item.text)
+
+      setSelectedItem(item)
+    },
+    [
+      onSelect,
+      inputText,
+      updateText,
+      selectedItem,
+      setSelectedItem,
+    ]
+  )
+
+  const onOutsideClickHandler = useCallback((evt) => {
+    onOutsideClick?.(inputText, evt)
+  }, [inputText, onOutsideClick])
+
+  const onFocusCB = useSetDrop(onFocus, setShowDropdown, showDropdown, true)
+  const onSelectItemCB = useSetDrop(onSelectItemHandler, setShowDropdown, showDropdown, false)
+  const onOutsideClickCB = useSetDrop(onOutsideClickHandler, setShowDropdown, showDropdown, false)
+
+  return {
+    onFocusCB,
+    showDropdown,
+    setShowDropdown,
+    onSelectItemCB,
+    onOutsideClickCB
+  }
+}
 
 /**
  * Provides text input with autocomplete functionality. As user types, shows a menu of autocomplete options that contain user input as a substring.
@@ -44,71 +100,81 @@ const AutocompleteView = withOutsideDetect(View)
 export const Autocomplete = props => {
   const {
     onChange,
+    onFocus,
+    onOutsideClick,
     onSelect,
-    placeholder = '',
-    text = null,
-    styles = noOpObj,
-    inputRef = null,
-    values = noPropArr,
+    text = '',
     menuHeight,
+    renderItem,
+    inputRef = null,
+    emptyDisplayAll=false,
+    styles = noOpObj,
+    placeholder = '',
+    itemProps=noOpObj,
+    values = noPropArr,
     ...inputProps
   } = props
 
-  const [ inputText, updateText ] = useState(text || '')
-  const [ autocompleteItems, setSelectedItem, selectedItem ] =
-    useAutocompleteItems(inputText, values)
 
-  const onSelectItem = useCallback(
-    item => {
-      updateText(item?.text || '')
-      setSelectedItem(item)
-      item && onSelect?.(item)
-    },
-    [ setSelectedItem, updateText ]
+  const [ inputText, updateText ] = useState(text)
+  const [ autocompleteItems, setSelectedItem, selectedItem ] = useAutocompleteItems(
+    inputText,
+    values,
+    emptyDisplayAll
   )
 
   const handleInputChange = useCallback(
-    event => {
-      const text = getTextFromChangeEvent(event)
-      updateText(text)
-      onChange?.(text)
+    evt => {
+      const text = getTextFromChangeEvent(evt)
+      updateText(text || '')
+      onChange?.(text, evt)
     },
-    [ onChange, updateText ]
+    [inputText, onChange, updateText]
   )
 
-  const onOutsideClick = useCallback(() => {
-    // if the FloatingScrollableSelect is visible, hide it by resetting input
-    autocompleteItems.length && updateText(selectedItem?.text)
-  }, [ onSelectItem, autocompleteItems ])
-
+  const {
+    onFocusCB,
+    showDropdown,
+    onSelectItemCB,
+    onOutsideClickCB
+  } = useDropdownActions(
+    props,
+    inputText,
+    updateText,
+    selectedItem,
+    setSelectedItem
+  )
+  
   return (
     <AutocompleteView
       style={styles?.main}
-      onOutsideClick={onOutsideClick}
+      onOutsideClick={onOutsideClickCB}
     >
       <AutocompleteInput
-        highlightedIndex={selectedItem?.index}
-        highlightItem={setSelectedItem}
-        selectItem={onSelectItem}
+        ref={inputRef}
+        value={inputText}
+        onFocus={onFocusCB}
         items={autocompleteItems}
+        selectItem={onSelectItemCB}
         placeholder={placeholder}
         onChange={handleInputChange}
-        value={inputText}
-        ref={inputRef}
         style={styles?.content?.input}
+        highlightItem={setSelectedItem}
+        highlightedIndex={selectedItem?.index}
         {...inputProps}
       />
 
       { /* nest select in view so that it appears below the input and still absolute-positioned */ }
-      <View>
+      <View style={styles.container} >
         <FloatingScrollableSelect
           height={menuHeight}
-          styles={styles?.content?.menu}
-          visible={autocompleteItems.length > 0}
+          itemProps={itemProps}
+          visible={showDropdown}
+          renderItem={renderItem}
+          onSelect={onSelectItemCB}
           items={autocompleteItems}
-          onSelect={onSelectItem}
           selectedItem={selectedItem}
-          animationDuration={100}
+          styles={styles?.content?.menu}
         />
       </View>
     </AutocompleteView>
@@ -125,8 +191,11 @@ Autocomplete.propTypes = {
       }),
     ])
   ),
+  onFocus: PropTypes.func,
   onSelect: PropTypes.func,
   onChange: PropTypes.func,
+  onOutsideClick: PropTypes.func,
+  emptyDisplayAll: PropTypes.bool,
   placeholder: PropTypes.string,
   text: PropTypes.string,
   styles: PropTypes.object,
