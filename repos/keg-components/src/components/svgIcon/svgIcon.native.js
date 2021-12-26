@@ -4,10 +4,10 @@ import Svg, { Path } from 'react-native-svg'
 import { useTheme, useStyle } from '@keg-hub/re-theme'
 import {
   get,
-  deepMerge,
   isArr,
-  noPropObj,
   isStr,
+  deepMerge,
+  noPropObj,
   eitherArr,
 } from '@keg-hub/jsutils'
 import { getPlatform } from 'KegGetPlatform'
