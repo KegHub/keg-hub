@@ -104,10 +104,11 @@ export const Autocomplete = props => {
     onOutsideClick,
     onSelect,
     text = '',
+    className,
     menuHeight,
     renderItem,
     inputRef = null,
-    emptyDisplayAll=false,
+    emptyShowList=false,
     styles = noOpObj,
     placeholder = '',
     itemProps=noOpObj,
@@ -115,12 +116,11 @@ export const Autocomplete = props => {
     ...inputProps
   } = props
 
-
   const [ inputText, updateText ] = useState(text)
   const [ autocompleteItems, setSelectedItem, selectedItem ] = useAutocompleteItems(
     inputText,
     values,
-    emptyDisplayAll
+    emptyShowList
   )
 
   const handleInputChange = useCallback(
@@ -144,11 +144,12 @@ export const Autocomplete = props => {
     selectedItem,
     setSelectedItem
   )
-  
+
   return (
     <AutocompleteView
       style={styles?.main}
       onOutsideClick={onOutsideClickCB}
+      className={['keg-autocomplete-main', className]}
     >
       <AutocompleteInput
         ref={inputRef}
@@ -161,11 +162,12 @@ export const Autocomplete = props => {
         style={styles?.content?.input}
         highlightItem={setSelectedItem}
         highlightedIndex={selectedItem?.index}
+        className='keg-autocomplete-input'
         {...inputProps}
       />
 
       { /* nest select in view so that it appears below the input and still absolute-positioned */ }
-      <View style={styles.container} >
+      <View className='keg-autocomplete-dropdown' style={styles.container} >
         <FloatingScrollableSelect
           height={menuHeight}
           itemProps={itemProps}
@@ -195,7 +197,7 @@ Autocomplete.propTypes = {
   onSelect: PropTypes.func,
   onChange: PropTypes.func,
   onOutsideClick: PropTypes.func,
-  emptyDisplayAll: PropTypes.bool,
+  emptyShowList: PropTypes.bool,
   placeholder: PropTypes.string,
   text: PropTypes.string,
   styles: PropTypes.object,

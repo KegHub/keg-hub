@@ -53,6 +53,7 @@ const SelectButton = reStyle(
 export const SelectItem = React.forwardRef((props, ref) => {
   const {
     item,
+    className,
     renderItem,
     onSelect = noOp,
     highlighted = false,
@@ -68,6 +69,7 @@ export const SelectItem = React.forwardRef((props, ref) => {
         ref,
         item,
         styles,
+        className,
         highlighted,
         onSelect: handlePress,
       })
@@ -79,6 +81,7 @@ export const SelectItem = React.forwardRef((props, ref) => {
           content={item.text}
           onPress={handlePress}
           highlighted={highlighted}
+          className={[`keg-select-button`, className]}
         />
       )
 })

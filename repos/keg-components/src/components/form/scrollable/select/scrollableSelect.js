@@ -37,6 +37,7 @@ export const ScrollableSelect = ({
   height,
   visible = true,
   onSelect,
+  className,
   renderItem,
   selectedItem,
   itemProps=noOpObj,
@@ -52,6 +53,7 @@ export const ScrollableSelect = ({
       visible={visible}
       style={selectStyle}
       height={height ?? 150}
+      className={['keg-scrollable-select', className]}
     >
       { items.map(item => {
         const highlighted = selectedItem && item.key === selectedItem.key

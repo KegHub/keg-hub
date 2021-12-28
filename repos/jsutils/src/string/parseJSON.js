@@ -6,12 +6,12 @@
  * @param {string} string
  * @return {Object} - JSON object
  */
-export const parseJSON = str => {
+export const parseJSON = (str, logErr=true) => {
   try {
     return JSON.parse(str)
   }
   catch (e){
-    console.error(e.message)
+    logErr && console.error(e.message)
     return null
   }
 }
