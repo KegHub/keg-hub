@@ -159,7 +159,7 @@ export const Autocomplete = props => {
         selectItem={onSelectItemCB}
         placeholder={placeholder}
         onChange={handleInputChange}
-        style={styles?.content?.input}
+        style={styles?.content?.input || styles?.input}
         highlightItem={setSelectedItem}
         highlightedIndex={selectedItem?.index}
         className='keg-autocomplete-input'
@@ -167,7 +167,7 @@ export const Autocomplete = props => {
       />
 
       { /* nest select in view so that it appears below the input and still absolute-positioned */ }
-      <View className='keg-autocomplete-dropdown' style={styles.container} >
+      <View className='keg-autocomplete-dropdown' style={styles.dropdown} >
         <FloatingScrollableSelect
           height={menuHeight}
           itemProps={itemProps}
@@ -176,7 +176,7 @@ export const Autocomplete = props => {
           onSelect={onSelectItemCB}
           items={autocompleteItems}
           selectedItem={selectedItem}
-          styles={styles?.content?.menu}
+          styles={styles?.content?.menu || styles?.menu}
         />
       </View>
     </AutocompleteView>

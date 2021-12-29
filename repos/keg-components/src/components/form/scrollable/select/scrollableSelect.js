@@ -66,7 +66,7 @@ export const ScrollableSelect = ({
             renderItem={renderItem}
             highlighted={highlighted}
             scrollIntoView={highlighted}
-            styles={styles?.content}
+            styles={styles?.content?.item || styles?.item}
           />
         )
       }) }
