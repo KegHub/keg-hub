@@ -1,15 +1,4 @@
-actions:
-  tap:
-    build:
-      cmds:
-        - yarn sb:build
-        - rm -rf {{ envs.DOC_BUILD_PATH }}
-        - cp -R {{ envs.DOC_APP_PATH }}/docs {{ envs.DOC_BUILD_PATH }}
-    serve:
-      cmds:
-        - npx serve {{ envs.DOC_BUILD_PATH }} --cors -n -l {{ envs.KEG_PROXY_PORT }}
 env:
-
   # --- KEG-CLI ENV CONTEXT --- #
 
   # Set the paths to the linked external app
@@ -48,3 +37,34 @@ env:
   CONTAINER_NAME: retheme
   VERSION: 1.0.0
   CHOKIDAR_USEPOLLING: 1
+actions:
+  tap:
+    build:
+      cmds:
+        - yarn sb:build
+        - rm -rf {{ envs.DOC_BUILD_PATH }}
+        - cp -R {{ envs.DOC_APP_PATH }}/docs {{ envs.DOC_BUILD_PATH }}
+    serve:
+      cmds:
+        - npx serve {{ envs.DOC_BUILD_PATH }} --cors -n -l {{ envs.KEG_PROXY_PORT }}
+  jsutils:
+    install:
+      location: /keg/tap/node_modules/@keg-hub/jsutils
+      privileged: true
+      cmds:
+        - yarn install
+    build:
+      location: /keg/tap/node_modules/@keg-hub/jsutils
+      privileged: true
+      cmds:
+        - yarn build
+    start:
+      location: /keg/tap/node_modules/@keg-hub/jsutils
+      privileged: true
+      cmds:
+        - yarn dev
+    att:
+      location: /keg/tap/node_modules/@keg-hub/jsutils
+      privileged: true
+      cmds:
+        - bash

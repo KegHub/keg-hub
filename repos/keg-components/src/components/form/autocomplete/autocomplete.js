@@ -45,12 +45,12 @@ const useDropdownActions = (props, inputText, updateText, selectedItem, setSelec
   const onSelectItemHandler = useCallback(
     item => {
       // Ensure we always call the callback when it exists
-      item && onSelect?.(item)
+      onSelect?.(item)
 
       // Only update the text if the text has actually changed
-      item.text &&
-        inputText !== item.text &&
-        updateText(item.text)
+      item?.text &&
+        inputText !== item?.text &&
+        updateText(item?.text)
 
       setSelectedItem(item)
     },
