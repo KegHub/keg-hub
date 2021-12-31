@@ -1,0 +1,36 @@
+{
+  "name": "@keghub/keg-hub",
+  "version": "1.3.0",
+  "description": "KegHub mono-repo for the core repositories",
+  "main": "./runTask.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "url": "git+https://github.com/KegHub/keg-hub.git",
+    "type": "git"
+  },
+  "bugs": {
+    "url": "https://github.com/KegHub/keg-hub/issues"
+  },
+  "author": "Lance Tipton <lancetipton04@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "postinstall": "node ../scripts/postinstall/index.js",
+    "task": "node ./runTask.js"
+  },
+  "dependencies": {
+    "@keg-hub/args-parse": "7.0.0",
+    "@keg-hub/cli-utils": "0.4.2",
+    "@keg-hub/jsutils": "8.7.0",
+    "@keg-hub/parse-config": "^0.2.1",
+    "@keg-hub/spawn-cmd": "^0.2.0",
+    "semver": "7.3.5"
+  },
+  "resolutions": {
+    "@keg-hub/jsutils": "8.7.0",
+    "@keg-hub/args-parse": "7.0.0",
+    "@keg-hub/cli-utils": "0.4.2"
+  }
+}
