@@ -7,7 +7,7 @@ Example Tap app used with the Keg
 
 **Step 1**
   * Download the repo locally
-  * `git clone https://github.com/KegHub/tap-release-client.git`
+  * `git clone https://github.com/keghub/tap-release-client.git`
 
 **Step 2**
   * Install the dependencies

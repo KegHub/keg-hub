@@ -7,7 +7,7 @@ ARG KEG_NODE_VERSION
 ARG NODE_IMAGE_FROM=node:$KEG_NODE_VERSION
 
 # Add a FROM for the tap-base image to we can copy content from it
-ARG KEG_BASE_IMAGE=ghcr.io/KegHub/tap:develop
+ARG KEG_BASE_IMAGE=ghcr.io/keghub/tap:develop
 FROM $KEG_BASE_IMAGE as tap-base
 
 # Create a new image from the node image

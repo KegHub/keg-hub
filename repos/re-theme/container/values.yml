@@ -24,10 +24,10 @@ env:
   KEG_CONTEXT_PATH: "{{ cli.taps.retheme.path }}"
 
   # Image to use when building retheme
-  KEG_BASE_IMAGE: ghcr.io/KegHub/tap:develop
+  KEG_BASE_IMAGE: ghcr.io/keghub/tap:develop
 
   # Image to use when running retheme
-  KEG_IMAGE_FROM: ghcr.io/KegHub/retheme:develop
+  KEG_IMAGE_FROM: ghcr.io/keghub/retheme:develop
 
   # --- DOCKER ENV CONTEXT --- #
 

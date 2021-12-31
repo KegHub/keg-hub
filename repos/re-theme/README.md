@@ -5,7 +5,7 @@ Tools for styling React or React Native components
 1. Add to your package.json
 
   ```js
-    "re-theme": "git+https://github.com/KegHub/re-theme"
+    "re-theme": "git+https://github.com/keghub/re-theme"
   ```
 
 2. Wrap the entry point of your application with an instance of `ReThemeProvider`, e.g.:
@@ -97,4 +97,4 @@ export const App from Component {
 
 
 ### API
-Checkout the [Example App](https://KegHub.github.io/re-theme/) for documentation.
+Checkout the [Example App](https://keghub.github.io/re-theme/) for documentation.
