@@ -1,4 +1,4 @@
-import { isObj, deepMerge } from '@keg-hub/jsutils'
+import { isObj, deepMerge, isArr } from '@keg-hub/jsutils'
 import { getPlatforms } from './getPlatforms'
 import { getSize, getMergeSizes } from '../dimensions'
 import { getTheme } from './getTheme'
@@ -29,8 +29,12 @@ const extract = (obj, key) => {
  * @param {Object} params.aliases - optional alias map for style rules, defaults to constants.ruleHelpers
  * @returns {Object} compiled stlyes
  */
-export const compileStyles = (styles, params = {}) => {
-  if (!isObj(styles)) return styles
+export const compileStyles = (stylesData, params = {}) => {
+  const styles = isObj(stylesData)
+    ? stylesData
+    : isArr(stylesData) && deepMerge(...stylesData)
+
+  if (!styles) return stylesData
 
   const { platforms, sizes, omit, aliases = ruleHelpers } = params
 

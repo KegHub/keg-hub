@@ -11,6 +11,7 @@ const SelectButton = reStyle(
   Button,
   'styles'
 )((theme, props) => {
+
   const {
     colors: { palette },
   } = theme

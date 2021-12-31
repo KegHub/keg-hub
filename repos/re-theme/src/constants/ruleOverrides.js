@@ -18,4 +18,10 @@ export const ruleOverrides = {
     'pointerEvents',
     'scrollbarWidth',
   ],
+  allowedStyleObject: [
+    'transform',
+    'shadowOffset',
+    'textShadowOffset',
+    'animationKeyframes',
+  ],
 }

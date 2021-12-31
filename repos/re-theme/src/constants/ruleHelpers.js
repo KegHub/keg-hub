@@ -24,6 +24,10 @@ export const ruleHelpers = {
   bS: `borderStyle`,
   bC: `borderColor`,
   bRad: `borderRadius`,
+  bTRR: 'borderTopRightRadius',
+  bTLR: 'borderTopLeftRadius',
+  bBLR: 'borderBottomLeftRadius',
+  bBRR: 'borderBottomRightRadius',
   bTC: `borderTopColor`,
   bTW: `borderTopWidth`,
   bBC: `borderBottomColor`,
@@ -88,4 +92,16 @@ export const ruleHelpers = {
   txAl: `textAlign`,
   txDc: `textDecoration`,
   txDL: 'textDecorationLine',
+
+  // Shadow helpers
+  shC: `shadowColor`,
+  shOf: `shadowOffset`,
+  shOff: `shadowOffset`,
+  shO: `shadowOpacity`,
+  shR: `shadowRadius`,
+
+  // Transition helpers
+  trf: `transform`,
+  trD: `transitionDuration`,
+  trP: `transitionProperty`,
 }

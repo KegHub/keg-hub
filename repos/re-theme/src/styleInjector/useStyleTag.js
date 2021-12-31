@@ -1,6 +1,13 @@
 import { useMemo } from 'react'
 import { addStylesToDom, getSelector, filterRules } from './injectHelpers'
-import { eitherArr, hyphenator, isArr, isObj, flatArr } from '@keg-hub/jsutils'
+import {
+  eitherArr,
+  hyphenator,
+  isArr,
+  isObj,
+  flatArr,
+  noOpObj,
+} from '@keg-hub/jsutils'
 import { useTheme } from '../hooks/useTheme'
 import {
   prefixStyles,
@@ -9,7 +16,6 @@ import {
   createCompileableStyle,
 } from './reactNativeWeb'
 import { ruleOverrides } from '../constants/ruleOverrides'
-import { noOpObj } from '../helpers/noOp'
 
 /**
  * Checks if the rule is enforce and adds !important to it
@@ -60,6 +66,9 @@ export const convertToCss = (style, config) => {
       const { style: cleanStyle, filtered } = filterRules(stl, config?.filter)
       Object.assign(rules.filtered, filtered)
 
+      // If all rules were filtered, then skip compiling them
+      if (!cleanStyle) return rules
+
       const flat = flattenStyle(cleanStyle)
       const compiled = createCompileableStyle(flat)
       rules.blocks.push(createBlock(compiled, config))
@@ -95,10 +104,11 @@ export const useStyleTag = (style, className = '', config) => {
     const { blocks, filtered } = convertToCss(style, config)
 
     // Create a unique selector based on the className and built blocks
-    const { hashClass, selector } = getSelector(
+    const { selector, classNames } = getSelector(
       className,
       blocks.join(''),
-      'keg'
+      config.prefix || 'keg',
+      config.selectorLimit || 2
     )
 
     // Adds the css selector ( className ) to each block
@@ -117,10 +127,8 @@ export const useStyleTag = (style, className = '', config) => {
 
     return {
       css,
+      classNames,
       filteredStyle: filtered,
-      classNames: eitherArr(className, [className])
-        .concat([hashClass])
-        .join(' '),
     }
   }, [ style, className, themeSize, themeKey, config ])
 }

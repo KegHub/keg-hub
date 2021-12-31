@@ -6,7 +6,7 @@ import { useAutocompleteItems } from 'KegHooks'
 import { getTextFromChangeEvent } from 'KegUtils'
 import { reStyle } from '@keg-hub/re-theme/reStyle'
 import { AutocompleteInput } from './autocompleteInput'
-import { noOpObj, noPropArr, isObj, checkCall, exists } from '@keg-hub/jsutils'
+import { noOpObj, noPropArr, checkCall } from '@keg-hub/jsutils'
 import { ScrollableSelect } from '../scrollable/select/scrollableSelect'
 
 /**

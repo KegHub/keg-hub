@@ -2,20 +2,18 @@ import { addThemeEvent } from '../theme/themeEvent'
 import { Constants } from '../constants'
 import { ruleOverrides } from '../constants/ruleOverrides'
 import {
-  hashString,
-  hasDomAccess,
   isArr,
   isStr,
-  exists,
-  omitKeys,
-  pickKeys,
+  isObj,
+  noPropArr,
+  hashString,
+  hasDomAccess,
+  splitByKeys,
 } from '@keg-hub/jsutils'
 
 /**
  * Cache the current environment
  */
-const { NODE_ENV } = process.env
-const isProduction = NODE_ENV === 'production'
 const domAccess = hasDomAccess()
 
 /**
@@ -45,7 +43,9 @@ const selectorExists = selector => selectorCache.has(selector)
  */
 const getKegSheet = () => {
   KegStyleSheet =
-    KegStyleSheet || document.head.querySelector(Constants.KEG_STYLES_TAG_ID)
+    KegStyleSheet ||
+    document.head.querySelector(`#${Constants.KEG_STYLES_TAG_ID}`)
+
   return KegStyleSheet
 }
 
@@ -62,9 +62,42 @@ export const filterRules = (style, filter) => {
   const toFilter = isArr(filter)
     ? ruleOverrides.filter.concat(filter)
     : ruleOverrides.filter
+
+  // Ensure the object is a style object, an not multi-layered object
+  const hasSubStyles = Boolean(
+    Object.entries(style).filter(
+      ([ key, val ]) =>
+        isObj(val) && !ruleOverrides.allowedStyleObject.includes(key)
+    ).length
+  )
+
+  if (hasSubStyles) return { filtered: style }
+
+  const [ filtered, keep ] = splitByKeys(style, toFilter)
+
   return {
-    style: omitKeys(style, toFilter),
-    filtered: pickKeys(style, toFilter),
+    style: keep,
+    filtered: filtered,
+  }
+}
+
+const formatSelectors = (
+  hashClass,
+  classNames,
+  filterPrefix,
+  selectorLimit
+) => {
+  const selectors = classNames
+    .filter(cls => (cls && filterPrefix ? cls.startsWith(filterPrefix) : cls))
+    .reverse()
+    .slice(0, selectorLimit)
+
+  return {
+    selector: `.${selectors.concat([hashClass]).join('.')}`,
+    classNames: classNames
+      .concat([hashClass])
+      .filter(name => name)
+      .join(' '),
   }
 }
 
@@ -77,25 +110,29 @@ export const filterRules = (style, filter) => {
  *
  * @returns {{hashClass:string, selector:string}} - returns selector string and hashClass string
  */
-export const getSelector = (className, cssString, filterPrefix) => {
-  // filter by prefix if passed in
-  const filterWithPrefix = cls => {
-    return cls && filterPrefix ? cls.startsWith(filterPrefix) : cls
-  }
-
-  const selector = !exists(className)
-    ? false
-    : isArr(className)
-      ? className.filter(filterWithPrefix).pop()
-      : isStr(className) && className.split(' ').filter(filterWithPrefix)
-        .pop()
-
+export const getSelector = (
+  className,
+  cssString,
+  filterPrefix,
+  selectorLimit
+) => {
   const hashClass = `keg-${hashString(cssString)}`
+
+  const { selector, classNames } = isArr(className)
+    ? formatSelectors(hashClass, className, filterPrefix, selectorLimit)
+    : isStr(className)
+      ? formatSelectors(
+        hashClass,
+        className.split(' '),
+        filterPrefix,
+        selectorLimit
+      )
+      : formatSelectors(hashClass, noPropArr, filterPrefix, selectorLimit)
+
   return {
     hashClass,
-    selector: selector
-      ? `.${selector.trim()}.${hashClass}`.trim()
-      : `.${hashClass}`.trim(),
+    classNames,
+    selector: selectorExists(selector) ? false : selector,
   }
 }
 
@@ -115,14 +152,7 @@ export const addStylesToDom = (selector, css) => {
   // So next time we can look up if the size changed
   selectorCache.add(selector)
   const KegSheet = getKegSheet()
-  // The insertRule method is a lot faster then append method
-  // But it does not allow you to see the styles in the inspector
-  // So we only want to use it when in production
-  // We have to wrap it in @media all selector
-  // This is due to the limitations of insertRule requiring the css to be wrapped
-  isProduction
-    ? KegSheet.sheet.insertRule(`@media all {${css.all}}`)
-    : KegSheet.append(css.all)
+  KegSheet.sheet.insertRule(`@media all {${css.all}}`)
 }
 
 /**
@@ -152,7 +182,7 @@ addThemeEvent(Constants.BUILD_EVENT, clearStyleSheet)
 ;(() => {
   if (!domAccess) return
 
-  KegStyleSheet = document.head.querySelector(Constants.KEG_STYLES_TAG_ID)
+  KegStyleSheet = document.head.querySelector(`#${Constants.KEG_STYLES_TAG_ID}`)
 
   if (KegStyleSheet) return KegStyleSheet
 

@@ -98,12 +98,19 @@ export const Loading = props => {
 }
 
 Loading.propTypes = {
-  size: PropTypes.number,
+  size: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]),
   text: PropTypes.string,
   type: PropTypes.string,
   color: PropTypes.string,
   styles: PropTypes.object,
-  indicator: PropTypes.node,
+  indicator: PropTypes.oneOfType([
+    PropTypes.node,
+    PropTypes.func,
+    PropTypes.elementType,
+  ]),
   children: PropTypes.object,
   themePath: PropTypes.string,
   className: PropTypes.string,
