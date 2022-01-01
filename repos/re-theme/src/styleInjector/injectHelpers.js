@@ -5,6 +5,7 @@ import {
   isArr,
   isStr,
   isObj,
+  exists,
   noPropArr,
   hashString,
   hasDomAccess,
@@ -67,6 +68,16 @@ export const filterRules = (style, filter) => {
   const hasSubStyles = Boolean(
     Object.entries(style).filter(
       ([ key, val ]) =>
+        /**
+         * Some style rules are allowed to be object
+         * Those rules are defined in the allowedStyleObject Array
+         * So if the value is an object, but not in the allowedStyleObject Array
+         * Then it is assumed to be a multi-layered style object
+         * In this case, we don't want to process these styles
+         * They are skipped and passed on to the component
+         * @example
+         * const styles = {content: {item: {color: '#ffffff'}}}
+         */
         isObj(val) && !ruleOverrides.allowedStyleObject.includes(key)
     ).length
   )
@@ -81,23 +92,27 @@ export const filterRules = (style, filter) => {
   }
 }
 
-const formatSelectors = (
-  hashClass,
-  classNames,
-  filterPrefix,
-  selectorLimit
-) => {
+const formatSelectors = (hashClass, classNames, prefix, maxSelectors) => {
+  /**
+   * Allow setting how many selectors are added to the element via maxSelectors
+   * @example
+   * //                   Index 0      Index 1      Index 2
+   * const selectors = [`selector0`, `selector1`, `selector2`]
+   * const maxSelectors === 2
+   * selectors.slice(0, maxSelectors) === [`selector0`, `selector1`]
+   *
+   */
+  const selectorAmount = exists(maxSelectors) ? maxSelectors : 1
   const selectors = classNames
-    .filter(cls => (cls && filterPrefix ? cls.startsWith(filterPrefix) : cls))
+    .filter(cls => (cls && prefix ? cls.startsWith(prefix) : cls))
     .reverse()
-    .slice(0, selectorLimit)
+    .slice(0, selectorAmount)
+    .sort()
 
   return {
-    selector: `.${selectors.concat([hashClass]).join('.')}`,
-    classNames: classNames
-      .concat([hashClass])
-      .filter(name => name)
-      .join(' '),
+    selector: `.${selectors.concat([hashClass]).join('.')}`.trim(),
+    classNames: classNames.concat([hashClass]).join(' ')
+      .trim(),
   }
 }
 
@@ -106,28 +121,18 @@ const formatSelectors = (
  * @function
  * @param {string|Array<string>} className - Original className(s) used as a css selector
  * @param {string} cssString - Css rules for the className in string format
- * @param {string=} filterPrefix - optional prefix to filter by
+ * @param {string=} prefix - optional prefix to filter by
  *
  * @returns {{hashClass:string, selector:string}} - returns selector string and hashClass string
  */
-export const getSelector = (
-  className,
-  cssString,
-  filterPrefix,
-  selectorLimit
-) => {
-  const hashClass = `keg-${hashString(cssString)}`
+export const getSelector = (className, cssString, prefix, maxSelectors) => {
+  const hashClass = `${prefix}-${hashString(cssString)}`
 
   const { selector, classNames } = isArr(className)
-    ? formatSelectors(hashClass, className, filterPrefix, selectorLimit)
+    ? formatSelectors(hashClass, className, prefix, maxSelectors)
     : isStr(className)
-      ? formatSelectors(
-        hashClass,
-        className.split(' '),
-        filterPrefix,
-        selectorLimit
-      )
-      : formatSelectors(hashClass, noPropArr, filterPrefix, selectorLimit)
+      ? formatSelectors(hashClass, className.split(' '), prefix, maxSelectors)
+      : formatSelectors(hashClass, noPropArr, prefix, maxSelectors)
 
   return {
     hashClass,

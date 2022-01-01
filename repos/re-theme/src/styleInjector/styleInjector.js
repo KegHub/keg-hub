@@ -50,11 +50,11 @@ const BuildWithStyles = React.forwardRef((props, ref) => {
  * It then appends the style props to the Dom
  * Component must accept a className prop to work properly
  * @param {Object} Component - React Component to wrap
- * @param {Object} config - Settings for the Hoc
+ * @param {Object} [config] - Settings for the Hoc
  *
  * @returns {Function} - Anonymous function that wraps the passed in Component
  */
-export const StyleInjector = (Component, config = {}) => {
+export const StyleInjector = (Component, config = noOpObj) => {
   return React.forwardRef((allProps, ref) => {
     const styleProp = allProps.__reStyleStylePropKey__ || 'style'
 

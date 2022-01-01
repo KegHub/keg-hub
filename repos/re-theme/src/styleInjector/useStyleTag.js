@@ -108,7 +108,7 @@ export const useStyleTag = (style, className = '', config) => {
       className,
       blocks.join(''),
       config.prefix || 'keg',
-      config.selectorLimit || 2
+      config.maxSelectors
     )
 
     // Adds the css selector ( className ) to each block
