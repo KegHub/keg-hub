@@ -74,6 +74,10 @@ export const ruleHelpers = {
   alS: `alignSelf`,
   alI: `alignItems`,
 
+  // Alignment helpers
+  vrA: `verticalAlign`,
+  whS: `whiteSpace`,
+
   // Dimension helpers
   w: 'width',
   h: `height`,
