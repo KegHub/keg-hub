@@ -30,11 +30,12 @@ const extract = (obj, key) => {
  * @returns {Object} compiled stlyes
  */
 export const compileStyles = (stylesData, params = {}) => {
-  const styles = isObj(stylesData)
-    ? stylesData
-    : isArr(stylesData) && deepMerge(...stylesData)
+  const styles =
+    isArr(stylesData) && stylesData.length
+      ? deepMerge(...stylesData)
+      : stylesData
 
-  if (!styles) return stylesData
+  if (!isObj(styles)) return stylesData
 
   const { platforms, sizes, omit, aliases = ruleHelpers } = params
 

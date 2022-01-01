@@ -7,7 +7,7 @@ jest.resetAllMocks()
 const useThemeMock = jest.fn(() => theme)
 jest.setMock('../../hooks/useTheme', { useTheme: useThemeMock })
 const mockedHooks = mockReactHooks('useState', 'useMemo', 'useEffect', 'useRef')
-const { useState, useMemo, useEffect } = mockedHooks
+const { useMemo, useRef } = mockedHooks
 
 const {
   getComponentName,
@@ -111,21 +111,21 @@ describe('reStyleHooks', () => {
       expect(useThemeMock).toHaveBeenCalled()
     })
 
-    it('should call the useEffect hook with a boolean', () => {
+    it('should call the useMemo hook with the passed in props', () => {
       const styleData = {}
       const props = { style: { margin: 10 }, test: 1 }
       useReStyles(styleData, props)
 
-      expect(useEffect).toHaveBeenCalled()
-      expect(useEffect.mock.calls[0][1][0]).toBe(true)
+      expect(useMemo).toHaveBeenCalled()
+      expect(useMemo.mock.calls[0][1][0]).toEqual(props)
     })
 
-    it('should call the useState hook with the passed in props', () => {
+    it('should call the useRef hook with the passed in props', () => {
       const styleData = {}
       const props = { style: { margin: 10 }, test: 1 }
       useReStyles(styleData, props)
 
-      expect(useState).toHaveBeenCalledWith(props)
+      expect(useRef).toHaveBeenCalledWith(props)
     })
 
     it('should call styleData when its passed as a function', () => {
