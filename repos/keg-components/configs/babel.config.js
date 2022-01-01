@@ -2,9 +2,9 @@ module.exports = {
   presets: [ '@babel/preset-env', '@babel/preset-react' ],
   plugins: [
     ['@babel/plugin-proposal-optional-chaining'],
-    ['@babel/plugin-proposal-class-properties'],
-    ["@babel/plugin-proposal-private-methods"],
-    ["@babel/plugin-proposal-private-property-in-object"],
+    ['@babel/plugin-proposal-class-properties', { "loose": true }],
+    ["@babel/plugin-proposal-private-methods", { "loose": true }],
+    ["@babel/plugin-proposal-private-property-in-object", { "loose": true }],
     ['transform-react-remove-prop-types', { removeImport: 'true' }],
   ],
 }
