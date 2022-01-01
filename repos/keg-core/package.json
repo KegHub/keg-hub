@@ -21,7 +21,7 @@
     "build:android": "NODE_ENV=production PLATFORM=native expo build:android",
     "build:ios": "NODE_ENV=production PLATFORM=native expo build:ios",
     "build:optimize": "NODE_ENV=production PLATFORM=web npx expo-optimize",
-    "build:web": "yarn clean:web:build; yarn build:optimize; NODE_ENV=production PLATFORM=web expo build:web --no-pwa",
+    "build:web": "yarn clean:web:build; yarn build:optimize; NODE_ENV=production PLATFORM=web expo build:web --clear --no-pwa",
     "clean": "yarn clean:cache && yarn clean:nm",
     "clean:babel": "rimraf ./node_modules/.cache/@babel",
     "clean:cache": "yarn clean:rn && yarn clean:babel; yarn cache clean",
