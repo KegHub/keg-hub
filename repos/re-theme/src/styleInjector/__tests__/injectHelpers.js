@@ -71,11 +71,11 @@ describe('injectHelpers', () => {
     })
 
     it('should not fail when no className is passed in', () => {
-      const { selector } = getSelector(undefined, `my-test-styles`)
+      const { selector } = getSelector(undefined, `my-test-styles`, `keg`)
       expect(selector).toBe(`.keg-275181350`)
     })
 
-    it('should filter out classnames without prefix `keg`', () => {
+    it('should filter out classnames without the passed in prefix', () => {
       // check if string includes all of the values in the array
       const includes = (str, values) => {
         return values.reduce(
@@ -105,6 +105,18 @@ describe('injectHelpers', () => {
       ])
       expect(includeTestClass2).toBe(false)
       expect(selector.includes('keg-text')).toBe(true)
+    })
+
+    it(`should not include more selectors than the passed in maxSelectors amount`, () => {
+      const { selector } = getSelector(
+        [ `keg-no-includes`, `keg-include`, `keg-test-styles` ],
+        `my-test-styles`,
+        `keg`,
+        2
+      )
+
+      expect(selector.includes(`include`)).toBe(true)
+      expect(selector.includes(`no-include`)).toBe(false)
     })
   })
 
