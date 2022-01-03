@@ -2,12 +2,7 @@ const fs = require('fs')
 const path = require('path')
 const { promisify } = require('util')
 const { exec } = require('child_process')
-
 const coreDir = path.join(__dirname, '../../../')
-const coreConf = require(path.join(coreDir, `app.json`))
-
-const kegDir = path.join(coreDir, '../../')
-const { linkTap } = require(path.join(kegDir, `scripts/postinstall/linkRepos.js`))
 
 const cmdExec = promisify(exec)
 
@@ -24,7 +19,7 @@ const cmdOpts = {
  * Runs yarn install from within the keg directory
  */
 const doYarnInstall = async () => {
-  console.log(`--- Running yarn install for Keg ---`)
+  console.log(`  * Running yarn install for Keg-Core`)
   const { stderr } = await cmdExec(`yarn install`, cmdOpts)
   if (stderr) throw new Error(stderr)
 }
@@ -51,9 +46,6 @@ const checkForNodeModules = () => {
 
   try {
     installed.indexOf(false) !== -1 && (await doYarnInstall())
-    const alias = coreConf.keg.alias
-    const linked = linkTap(coreDir, `--name ${alias} --silent`)
-    linked && console.log(`  * Linked "keg-core" to Keg-CLI as "${alias}"`)
   }
   catch (err) {}
 

@@ -10,17 +10,12 @@ const {keg} = require(path.join(rootDir, 'tap.js'))
  * Gets the path to the keg-cli folder from the KEG_CLI_PATH env
  * If not set, then throws an error
  * 
- * @returns {string} - Path to the keg-cli.js executable
+ * @returns {string|undefined} - Path to the keg-cli.js executable
  */
 const getKegCli = () => {
-  const { KEG_CLI_PATH } = process.env
-  if(!KEG_CLI_PATH){
-    console.warn(`Missing ENV "KEG_CLI_PATH", the "KEG_CLI_PATH" env but exist to link keg-hub repos`)
-
-    return false
-  }
-
-  return path.join(KEG_CLI_PATH, `keg-cli.js`)
+  return process.env.KEG_CLI_PATH
+    ? path.join(process.env.KEG_CLI_PATH, `keg-cli.js`)
+    : console.warn(`Missing ENV "KEG_CLI_PATH", which is required to link keg-hub repos`)
 }
 const cli = getKegCli()
 
