@@ -1,8 +1,9 @@
 const semver = require('semver')
 const { Logger } = require('@keg-hub/cli-utils')
-const { getHubRepos } = require('../utils/repos/getHubRepos')
+const { getHubRepos } = require('../../utils/repos/getHubRepos')
+const { cleanVersion } = require('../../utils/semver/cleanVersion')
 const semverCompareLoose = require('semver/functions/compare-loose')
-const { updateVersionInDependencies } = require('../utils/repos/updateVersionInDependencies')
+const { updateVersionInDependencies } = require('../../utils/repos/updateVersionInDependencies')
 const {
   reduceObj,
   mapObj,
@@ -10,17 +11,6 @@ const {
   set,
   isEmptyColl,
 } = require('@keg-hub/jsutils')
-
-/**
- * Cleans the version number so it can be compared
- * @param {string} version - Version number of a dependency from a package.json file
- *
- * @returns {string} - Cleaned Version number
- */
-const cleanVersion = ver => semver.clean(
-  semver.coerce(ver).version || semver.parse(ver).version || ver,
-  { loose: true }
-)
 
 /**
  * Loops over a repos dependencies and compares it with all other repo dependencies
@@ -254,18 +244,20 @@ const updateVersion = (repos, diff) => {
  * @returns {void}
  */
 const hubDeps = async args => {
-  const { params } = args
-  const { update, display, dependencies } = params
-  const depFilters = dependencies && dependencies.length
-    ? dependencies
-    : false
+  // console.log(`------- hub deps -------`)
+  console.log(args.tasks.tap.tasks.dependencies)
+  // const { params } = args
+  // const { update, display, dependencies } = params
+  // const depFilters = dependencies && dependencies.length
+  //   ? dependencies
+  //   : false
 
-  const repos = await getHubRepos(params)
+  // const repos = await getHubRepos(params)
 
-  const diff = compareVersions(repos, display, depFilters)
-  update && updateVersion(repos, diff)
+  // const diff = compareVersions(repos, display, depFilters)
+  // update && updateVersion(repos, diff)
 
-  return repos
+  // return repos
 }
 
 module.exports = {
@@ -275,6 +267,9 @@ module.exports = {
     action: hubDeps,
     description: `Gets information about keg-hub repos dependencies`,
     example: 'keg hub dependencies <options>',
+    tasks: {
+      ...require('./set'),
+    },
     options: {
       context: {
         type: 'array',
