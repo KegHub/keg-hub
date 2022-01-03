@@ -18,7 +18,7 @@ const installRepos = repos => {
     Object.entries(repos)
       .map(([name, repo]) => {
         try {
-          console.log(`\nRunning "yarn install" for ${name}`)
+          console.log(`\n[KEG-HUB] Running "yarn install" for "${name}"`)
           const response = execSync('yarn', {cwd: repo})
           console.log(response.toString())
         // Catch the error here, so it will still try to install for the other repos

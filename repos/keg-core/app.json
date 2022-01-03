@@ -30,6 +30,7 @@
   },
   "keg": {
     "name": "Keg-Core",
+    "alias": "core",
     "routes": {},
     "overrides": {
       "kegName": [

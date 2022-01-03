@@ -55,6 +55,7 @@ const linkTap = (repo, args='') => {
  */
  const linkRepos = repos => {
    try {
+    console.log(`[KEG-HUB] Linking Keg-Hub repos to Keg-CLI`)
      // Get the path to the keg-cli executable
     repos = repos || getRepoPaths()
     // Add the keg-hub root directory to the repos
@@ -66,13 +67,16 @@ const linkTap = (repo, args='') => {
         // This will create a link for repos without a tap config file
         // Check keg.repoAlias for custom alias based on repo name
         // This is for repos that don't contain a tap config
-        created = created || linkTap(repo, `--name ${keg.repoAlias[name] || name} --silent`)
-        created && console.log(`Tap link created for repo ${name}`)
+        const alias = keg.repoAlias[name] || name
+        created = created || linkTap(repo, `--name ${alias} --silent`)
+        created && console.log(`  * Linked "${name}" to Keg-CLI as "${alias}"`)
       })
   }
   catch(err){
     setupError(err, `Failed keg-cli task "keg tap link". Please run the command manually`, 1)
   }
+
+  console.log()
 }
 
 /**
@@ -81,4 +85,4 @@ const linkTap = (repo, args='') => {
  * So we should return the method instead of running it automatically
  * 
 */
-require.main === module ? linkRepos() : (module.exports = { linkRepos })
+require.main === module ? linkRepos() : (module.exports = { linkRepos, linkTap })
