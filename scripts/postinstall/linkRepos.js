@@ -14,8 +14,11 @@ const {keg} = require(path.join(rootDir, 'tap.js'))
  */
 const getKegCli = () => {
   const { KEG_CLI_PATH } = process.env
-  if(!KEG_CLI_PATH)
-    throw new Error(`Missing ENV "KEG_CLI_PATH", the "KEG_CLI_PATH" env but exist to link keg-hub repos`)
+  if(!KEG_CLI_PATH){
+    console.warn(`Missing ENV "KEG_CLI_PATH", the "KEG_CLI_PATH" env but exist to link keg-hub repos`)
+
+    return false
+  }
 
   return path.join(KEG_CLI_PATH, `keg-cli.js`)
 }
@@ -31,6 +34,8 @@ const cli = getKegCli()
  */
 const linkTap = (repo, args='') => {
   try {
+    if(!cli) return false
+
     const response = execSync(
       `${cli} tap link ${args}`.trim(),
       {cwd: repo, env: process.env}
