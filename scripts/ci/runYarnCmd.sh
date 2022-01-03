@@ -3,10 +3,6 @@
 # Exit when any command fails
 set -e
 
-# Source the keg-cli so we have access to it
-export KEG_CLI_PATH=${KEG_CLI_PATH:=../..}
-source $KEG_CLI_PATH/keg
-
 # Load the repos to run the command on
 REPOS=($(cat ../keg-changed-repos.txt))
 
