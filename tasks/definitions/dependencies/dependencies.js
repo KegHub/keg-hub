@@ -244,20 +244,18 @@ const updateVersion = (repos, diff) => {
  * @returns {void}
  */
 const hubDeps = async args => {
-  // console.log(`------- hub deps -------`)
-  console.log(args.tasks.tap.tasks.dependencies)
-  // const { params } = args
-  // const { update, display, dependencies } = params
-  // const depFilters = dependencies && dependencies.length
-  //   ? dependencies
-  //   : false
+  const { params } = args
+  const { update, display, dependencies } = params
+  const depFilters = dependencies && dependencies.length
+    ? dependencies
+    : false
 
-  // const repos = await getHubRepos(params)
+  const repos = await getHubRepos(params)
 
-  // const diff = compareVersions(repos, display, depFilters)
-  // update && updateVersion(repos, diff)
+  const diff = compareVersions(repos, display, depFilters)
+  update && updateVersion(repos, diff)
 
-  // return repos
+  return repos
 }
 
 module.exports = {

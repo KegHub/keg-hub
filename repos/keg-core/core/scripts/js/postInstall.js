@@ -29,7 +29,6 @@ const doYarnInstall = async () => {
  * If not, then calls doYarnInstall
  */
 const checkForNodeModules = () => {
-  console.log(`  * Ensuring Keg-Core node_modules are installed`)
   const checkModules = [
     path.join(coreDir, 'node_modules/expo'),
     path.join(coreDir, 'node_modules/react'),
