@@ -4,9 +4,11 @@ on:
   push:
     branches:
       - develop
+      - next
   workflow_dispatch:
     inputs:
       cliBranch:
+        required: false
         description: "Name of keg-cli git branch to use in this workflow"
 
 jobs:
@@ -18,7 +20,8 @@ jobs:
         shell: bash
     env:
       GIT_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      DEFAULT_KEG_CLI_BRANCH: master
+      # TODO: update this back to develop once next-6-0-0 is merged
+      DEFAULT_KEG_CLI_BRANCH: next-6-0-0
       KEG_CLI_PATH: ${{ github.workspace }}/keg-cli
       KEG_CLI_USER: keg-admin
       KEG_GLOBAL_CONFIG: ${{ github.workspace }}/keg-cli/.kegConfig/cli.config.json
