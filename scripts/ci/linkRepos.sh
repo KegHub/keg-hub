@@ -1,6 +1,8 @@
 #!/bin/bash
 # Description: links any injected tap in the keg-hub/repos directory. Ignores the others.
 
+# Source the keg-cli so we have access to it
+export KEG_CLI_PATH=${KEG_CLI_PATH:=../..}
 source $KEG_CLI_PATH/keg
 
 log_result () {
