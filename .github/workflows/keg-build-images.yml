@@ -19,18 +19,18 @@ jobs:
       run:
         shell: bash
     env:
-      GIT_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GIT_TOKEN: ${{ secrets.GITHUB_ACTION_TOKEN }}
       # TODO: update this back to develop once next-6-0-0 is merged
       DEFAULT_KEG_CLI_BRANCH: next-6-0-0
       KEG_CLI_PATH: ${{ github.workspace }}/keg-cli
-      KEG_CLI_USER: keg-admin
+      KEG_CLI_USER: lancetipton
       KEG_GLOBAL_CONFIG: ${{ github.workspace }}/keg-cli/.kegConfig/cli.config.json
       KEG_HUB_PATH: ${{ github.workspace }}/keg-hub
     steps:
       - name: Cancel Previous Workflows In Progress
         uses: styfle/cancel-workflow-action@0.9.0
         with:
-          access_token: ${{ github.token }}
+          access_token: ${{ secrets.GITHUB_ACTION_TOKEN }}
 
       - name: "Clone Keg-CLI"
         id: clone-cli
@@ -42,7 +42,7 @@ jobs:
         env:
           KEG_ROOT_DIR: ${{ env.KEG_HUB_PATH }}
           KEG_CLI_BRANCH: ${{ github.event.inputs.cliBranch || env.DEFAULT_KEG_CLI_BRANCH }}
-          KEG_CLI_USER: keg-admin
+          KEG_CLI_USER: lancetipton
 
       - name: "Link Keg-Hub Taps"
         id: link-taps
