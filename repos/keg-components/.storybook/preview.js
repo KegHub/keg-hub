@@ -1,12 +1,10 @@
 import React from 'react'
 import { View } from 'KegView'
 import { theme } from '../src/theme'
-import { isStr } from '@keg-hub/jsutils'
 import { Dimensions, Platform } from 'react-native'
 import { configureActions } from '@storybook/addon-actions'
 import { addDecorator, addParameters } from '@storybook/react'
 import { ReThemeProvider, setRNDimensions, setRNPlatform } from '@keg-hub/re-theme'
-import customTheme from './theme.custom.json'
 const componentsTheme = theme({})
 
 const parsePart = (full, part) => {
@@ -20,6 +18,13 @@ const parsePart = (full, part) => {
 }
 
 addParameters({
+  actions: { argTypesRegex: "^on[A-Z].*" },
+  controls: {
+    matchers: {
+      color: /(background|color)$/i,
+      date: /Date$/,
+    },
+  },
   docs: {
     extractComponentDescription: (component, { notes }) => {
       if(component && component.__docgenInfo && component.__docgenInfo.description){
@@ -73,3 +78,22 @@ addDecorator(storyFn => {
 
 setRNPlatform(Platform)
 setRNDimensions(Dimensions)
+
+
+/**
+ * This is a hack to hide the showCode button
+ * No other way to do it that I could tell
+ * It's not really needed, but does remove some confusion
+ */
+;(() => {
+  const styleId = `story-book-style-override`
+  let SBStyleSheet = document.head.querySelector(`#${styleId}`)
+  if (SBStyleSheet) return SBStyleSheet
+
+  SBStyleSheet = document.createElement('style')
+  SBStyleSheet.id = styleId
+  // Hide the show-code button as it doesn't give an good info
+  SBStyleSheet.innerText = `button.docblock-code-toggle {display: none;}`
+  document.head.append(SBStyleSheet)
+})()
+

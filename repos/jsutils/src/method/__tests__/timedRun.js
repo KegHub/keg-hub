@@ -7,14 +7,13 @@ describe('timedRun', () => {
   beforeAll(() => (console.error = jest.fn()))
   afterAll(() => (console.error = oldConsole))
 
-  it('should handle nullish input', async done => {
+  it('should handle nullish input', async () => {
     const [ result, duration ] = await timedRun(null)
     expect(result).toBeUndefined()
     expect(duration).toEqual(-1)
-    done()
   })
 
-  it('should time functions', async done => {
+  it('should time functions', async () => {
     const fnArg = 'some_value'
     const waitTime = 30 //ms
 
@@ -23,7 +22,5 @@ describe('timedRun', () => {
     const [ result, duration ] = await timedRun(fn, fnArg)
     expect(result).toEqual(fnArg)
     expect(duration).toBeGreaterThanOrEqual(waitTime)
-
-    done()
   })
 })

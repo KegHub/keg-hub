@@ -14,55 +14,38 @@ describe('limbo', () => {
 
   beforeEach(() => jest.resetAllMocks())
 
-  it('should return an array with the length of 2', async (done) => {
+  it('should return an array with the length of 2', async () => {
     const response = await Method.limbo(promiseHelper(true))
-
     expect(typeof response).toBe('object')
     expect(isArr(response)).toBe(true)
     expect(response.length).toBe(2)
 
-    done()
   })
 
-  it('should return an error for first slot when the promise is rejected', async (done) => {
+  it('should return an error for first slot when the promise is rejected', async () => {
     const [ err, data ] = await Method.limbo(promiseHelper(false))
-
     expect(err instanceof Error).toBe(true)
     expect(err.message).toEqual(`Promise Error`)
-
-    done()
   })
 
-  it('should return null for first slot when an error is not throw', async (done) => {
+  it('should return null for first slot when an error is not throw', async () => {
     const [ err, data ] = await Method.limbo(promiseHelper(true))
-
     expect(err).toBe(null)
-
-    done()
   })
 
-  it('should return promise response for second slot when error is not throw', async (done) => {
+  it('should return promise response for second slot when error is not throw', async () => {
     const [ err, data ] = await Method.limbo(promiseHelper(true))
-
     expect(data).toEqual(`Promise Valid`)
-
-    done()
   })
 
-  it('should return an error for first slot when no promise is passed in', async (done) => {
+  it('should return an error for first slot when no promise is passed in', async () => {
     const [ err, data ] = await Method.limbo()
-
     expect(err instanceof Error).toBe(true)
-
-    done()
   })
 
-  it('should return an error for first slot when an error is thrown', async (done) => {
+  it('should return an error for first slot when an error is thrown', async () => {
     const [ err, data ] = await Method.limbo()
-
     expect(err instanceof Error).toBe(true)
-
-    done()
   })
 
 })

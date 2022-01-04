@@ -2,13 +2,11 @@
  * export the web specific props for react-router
  */
 export {
-  Router,
-  BrowserRouter as OSRouter,
-  Switch as RouterSwitch,
-  Link as RouterLink,
+  Routes,
   Route,
+  BrowserRouter as Router,
+  Link as RouterLink,
   useParams,
-  withRouter,
   useLocation,
-  useHistory,
+  useNavigate,
 } from 'react-router-dom'

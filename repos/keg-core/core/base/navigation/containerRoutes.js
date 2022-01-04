@@ -1,5 +1,5 @@
 import React from 'react'
-import { RouterSwitch, Route } from 'KegComponents'
+import { Routes, Route } from 'KegComponents'
 import * as containers from 'KegContainers'
 import { PageNotFoundContainer } from '../containers/pageNotFound'
 import { get } from '@keg-hub/jsutils'
@@ -27,19 +27,22 @@ const buildRoutes = props => {
         ? containers[defaultContainerName]
         : PageNotFoundContainer
 
-    return <Route
-      exact
-      key={key}
-      path={key}
-      component={Component}
-    />
+
+    return (
+      <Route
+        exact
+        key={key}
+        path={key}
+        element={<Component />}
+      />
+    )
   })
   RoutesArray.push(
     <Route
       exact
       key={'*'}
       path={'*'}
-      component={PageNotFoundContainer}
+      element={<PageNotFoundContainer />}
     />
   )
   return RoutesArray
@@ -57,5 +60,5 @@ export const ContainerRoutes = React.memo(props => {
   const navigationConfigs = get(props, ['navigationConfigs'])
   if (!navigationConfigs) return null
 
-  return <RouterSwitch>{ buildRoutes(props) }</RouterSwitch>
+  return <Routes>{ buildRoutes(props) }</Routes>
 })

@@ -21,7 +21,7 @@ describe('waitForIt', () => {
 
   afterAll(() => jest.resetAllMocks())
 
-  it('should wait for it', async done => {
+  it('should wait for it', done => {
     validAmount = 4
     waitForIt({
       check,
@@ -31,28 +31,23 @@ describe('waitForIt', () => {
     })
     .then(res => {
       setTimeout(() => {
-
         expect(check).toHaveBeenCalledTimes(5)
         expect(onFinish).toHaveBeenCalledTimes(1)
-
         reset()
-        
+
         waitForIt({
           check,
           onFinish,
         })
         .then(res => {
           setTimeout(() => {
-
             // Expect 9 times called. 5 for the first test, 4 for this test ( default is 4 )
             expect(check).toHaveBeenCalledTimes(9)
             expect(onFinish).toHaveBeenCalledTimes(1)
-
             done()
-          }, 5000)
+          }, 1250)
         })
-        
-      }, 3000)
+      }, 500)
     })
 
   })

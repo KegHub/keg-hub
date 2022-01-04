@@ -5,7 +5,17 @@ module.exports = {
     '../src/**/*.stories.@(js|jsx|ts|tsx)'
   ],
   addons: [
+    {
+      name: '@storybook/preset-create-react-app',
+      options: {
+        tsDocgenLoaderOptions: {},
+      }
+    },
     '@storybook/addon-links',
     '@storybook/addon-essentials'
-  ]
+  ],
+  framework: "@storybook/react",
+  core: {
+    builder: "webpack5"
+  }
 }

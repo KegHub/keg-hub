@@ -5,7 +5,7 @@ import * as Utils from './utils'
 import { Axios } from './axios'
 import { localStorage } from './localStorage'
 
-import { Route, RouterSwitch, mockLocation } from './components'
+import { Route, Routes, mockLocation } from './components'
 
 export {
   Mocks,
@@ -13,7 +13,7 @@ export {
   Redux,
   Axios,
   Route,
-  RouterSwitch,
+  Routes,
   mockLocation,
   Utils,
   localStorage,
