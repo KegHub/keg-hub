@@ -2466,10 +2466,10 @@
   resolved "https://registry.yarnpkg.com/@keg-hub/jsutils/-/jsutils-8.8.0.tgz#a4172d6530354580379ed816a4e6b3a129f07137"
   integrity sha512-vXfto5/E7ohJkLmpAs3lp78gpf0HwG9TqIyRpAzM6BhGi8ZJAcL86ZFU52Oadfdxk/1EH8FRQ+93FG6BDJ/0fw==
 
-"@keg-hub/keg-components@9.5.0":
-  version "9.5.0"
-  resolved "https://registry.yarnpkg.com/@keg-hub/keg-components/-/keg-components-9.5.0.tgz#c3678bdbc5bbb26844989c6fb2fb95a3492e45f0"
-  integrity sha512-BzL6iYnPnTDGojRpb3kqDeZY7yVmvb0Mnm//vNCTbyrgDf9/SA4kTi87q21mmRvwLqhdJh0STRgfbjFISZDpng==
+"@keg-hub/keg-components@10.0.0":
+  version "10.0.0"
+  resolved "https://registry.yarnpkg.com/@keg-hub/keg-components/-/keg-components-10.0.0.tgz#9ace148be25d6664f7bf1df98ba3b196991d56d5"
+  integrity sha512-AmBLwjIKdXn1AOa26uUGLt4ultDzyJJ0cutkQT+k56m/zWitrcoZk9+aGrOZqsDQVYHWM2FfEZ9Tcjip1io2hA==
 
 "@keg-hub/re-theme@10.0.0":
   version "10.0.0"
