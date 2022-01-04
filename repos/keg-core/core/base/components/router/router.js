@@ -1,12 +1,14 @@
 /**
  * export the native specific props for react-router
  */
-export {
-  Route,
-  Routes,
-  NativeRouter as Router,
+ export {
+  Router,
+  NativeRouter as OSRouter,
+  Switch as RouterSwitch,
   Link as RouterLink,
+  Route,
   useParams,
+  withRouter,
   useLocation,
-  useNavigate,
+  useHistory,
 } from 'react-router-native'

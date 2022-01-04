@@ -46,8 +46,7 @@
     "view:reports": "open reports/test-results.html && open reports/coverage/lcov-report/index.html",
     "web": "nodemon --watch ./core/configs --watch ./package.json --exec 'EXPO_DEBUG=true NODE_ENV=development PLATFORM=web expo web --web --dev'",
     "web:build": "yarn build:web",
-    "print:envs": "node core/scripts/js/printKegEnvs.js ./",
-    "prepare": "husky install"
+    "print:envs": "node core/scripts/js/printKegEnvs.js ./"
   },
   "dependencies": {},
   "devDependencies": {
@@ -101,9 +100,9 @@
     "react-native-svg-web": "1.0.9",
     "react-native-web": "0.17.5",
     "react-redux": "7.2.6",
-    "react-router": "6.2.1",
-    "react-router-dom": "6.2.1",
-    "react-router-native": "6.2.1",
+    "react-router": "5.2.0",
+    "react-router-dom": "5.2.0",
+    "react-router-native": "5.2.0",
     "react-test-renderer": "17.0.2",
     "redux": "4.1.2",
     "redux-devtools-extension": "2.13.9",
