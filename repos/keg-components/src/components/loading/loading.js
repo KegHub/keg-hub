@@ -98,10 +98,7 @@ export const Loading = props => {
 }
 
 Loading.propTypes = {
-  size: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-  ]),
+  size: PropTypes.oneOfType([ PropTypes.string, PropTypes.number ]),
   text: PropTypes.string,
   type: PropTypes.string,
   color: PropTypes.string,

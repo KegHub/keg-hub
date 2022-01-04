@@ -20,4 +20,3 @@ export * from './textToggle'
 export * from './touchable'
 export * from './typography'
 export * from './view'
-

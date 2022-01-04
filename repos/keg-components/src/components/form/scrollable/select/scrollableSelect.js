@@ -14,13 +14,12 @@ const InViewSelectItem = withScrollIntoView(SelectItem, false)
 
 /**
  * Holds the display style for the down based on visible state
- * @type {Object} 
+ * @type {Object}
  */
 const display = {
   hidden: { display: 'none' },
-  visible: { display: 'block'},
+  visible: { display: 'block' },
 }
-
 
 /**
  * A scrollable menu list of items, with prop-adjustable height and visibility
@@ -40,9 +39,8 @@ export const ScrollableSelect = ({
   className,
   renderItem,
   selectedItem,
-  itemProps=noOpObj,
+  itemProps = noOpObj,
 }) => {
-
   const selectStyle = useStyle(
     styles?.main,
     visible ? display.visible : display.hidden
@@ -53,7 +51,7 @@ export const ScrollableSelect = ({
       visible={visible}
       style={selectStyle}
       height={height ?? 150}
-      className={['keg-scrollable-select', className]}
+      className={[ 'keg-scrollable-select', className ]}
     >
       { items.map(item => {
         const highlighted = selectedItem && item.key === selectedItem.key

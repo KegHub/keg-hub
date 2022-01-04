@@ -1,7 +1,7 @@
 /**
  * export the native specific props for react-router
  */
- export {
+export {
   Router,
   NativeRouter as OSRouter,
   Switch as RouterSwitch,

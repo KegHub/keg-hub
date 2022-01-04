@@ -11,7 +11,6 @@ import { useTextStyles } from '../../../hooks/useTextStyles'
  * @param {string} element - Name of the text element
  */
 export const KegText = element => {
-
   // Build the Text Component with the StyleInjector
   const Text = StyleInjector(NativeText(element), {
     className: `keg-${element}`,

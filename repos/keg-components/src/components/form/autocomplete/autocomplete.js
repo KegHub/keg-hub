@@ -25,21 +25,23 @@ const FloatingScrollableSelect = reStyle(
 const AutocompleteView = withOutsideDetect(View)
 
 const useSetDrop = (callback, setShowDropdown, showDropdown, setTo) => {
-  return useCallback((...data) => {
-    checkCall(callback, ...data)
-    setShowDropdown(setTo)
-  }, [
-    callback,
-    setShowDropdown,
-    showDropdown,
-    setTo,
-  ])
+  return useCallback(
+    (...data) => {
+      checkCall(callback, ...data)
+      setShowDropdown(setTo)
+    },
+    [ callback, setShowDropdown, showDropdown, setTo ]
+  )
 }
 
-
-const useDropdownActions = (props, inputText, updateText, selectedItem, setSelectedItem) => {
-
-  const {onSelect, onFocus, onOutsideClick} = props
+const useDropdownActions = (
+  props,
+  inputText,
+  updateText,
+  selectedItem,
+  setSelectedItem
+) => {
+  const { onSelect, onFocus, onOutsideClick } = props
   const [ showDropdown, setShowDropdown ] = useState(false)
 
   const onSelectItemHandler = useCallback(
@@ -48,35 +50,40 @@ const useDropdownActions = (props, inputText, updateText, selectedItem, setSelec
       onSelect?.(item)
 
       // Only update the text if the text has actually changed
-      item?.text &&
-        inputText !== item?.text &&
-        updateText(item?.text)
+      item?.text && inputText !== item?.text && updateText(item?.text)
 
       setSelectedItem(item)
     },
-    [
-      onSelect,
-      inputText,
-      updateText,
-      selectedItem,
-      setSelectedItem,
-    ]
+    [ onSelect, inputText, updateText, selectedItem, setSelectedItem ]
   )
 
-  const onOutsideClickHandler = useCallback((evt) => {
-    onOutsideClick?.(inputText, evt)
-  }, [inputText, onOutsideClick])
+  const onOutsideClickHandler = useCallback(
+    evt => {
+      onOutsideClick?.(inputText, evt)
+    },
+    [ inputText, onOutsideClick ]
+  )
 
   const onFocusCB = useSetDrop(onFocus, setShowDropdown, showDropdown, true)
-  const onSelectItemCB = useSetDrop(onSelectItemHandler, setShowDropdown, showDropdown, false)
-  const onOutsideClickCB = useSetDrop(onOutsideClickHandler, setShowDropdown, showDropdown, false)
+  const onSelectItemCB = useSetDrop(
+    onSelectItemHandler,
+    setShowDropdown,
+    showDropdown,
+    false
+  )
+  const onOutsideClickCB = useSetDrop(
+    onOutsideClickHandler,
+    setShowDropdown,
+    showDropdown,
+    false
+  )
 
   return {
     onFocusCB,
     showDropdown,
     setShowDropdown,
     onSelectItemCB,
-    onOutsideClickCB
+    onOutsideClickCB,
   }
 }
 
@@ -108,20 +115,17 @@ export const Autocomplete = props => {
     menuHeight,
     renderItem,
     inputRef = null,
-    emptyShowList=false,
+    emptyShowList = false,
     styles = noOpObj,
     placeholder = '',
-    itemProps=noOpObj,
+    itemProps = noOpObj,
     values = noPropArr,
     ...inputProps
   } = props
 
   const [ inputText, updateText ] = useState(text)
-  const [ autocompleteItems, setSelectedItem, selectedItem ] = useAutocompleteItems(
-    inputText,
-    values,
-    emptyShowList
-  )
+  const [ autocompleteItems, setSelectedItem, selectedItem ] =
+    useAutocompleteItems(inputText, values, emptyShowList)
 
   const handleInputChange = useCallback(
     evt => {
@@ -129,27 +133,23 @@ export const Autocomplete = props => {
       updateText(text || '')
       onChange?.(text, evt)
     },
-    [inputText, onChange, updateText]
+    [ inputText, onChange, updateText ]
   )
 
-  const {
-    onFocusCB,
-    showDropdown,
-    onSelectItemCB,
-    onOutsideClickCB
-  } = useDropdownActions(
-    props,
-    inputText,
-    updateText,
-    selectedItem,
-    setSelectedItem
-  )
+  const { onFocusCB, showDropdown, onSelectItemCB, onOutsideClickCB } =
+    useDropdownActions(
+      props,
+      inputText,
+      updateText,
+      selectedItem,
+      setSelectedItem
+    )
 
   return (
     <AutocompleteView
       style={styles?.main}
       onOutsideClick={onOutsideClickCB}
-      className={['keg-autocomplete-main', className]}
+      className={[ 'keg-autocomplete-main', className ]}
     >
       <AutocompleteInput
         ref={inputRef}
@@ -167,7 +167,10 @@ export const Autocomplete = props => {
       />
 
       { /* nest select in view so that it appears below the input and still absolute-positioned */ }
-      <View className='keg-autocomplete-dropdown' style={styles.dropdown} >
+      <View
+        className='keg-autocomplete-dropdown'
+        style={styles.dropdown}
+      >
         <FloatingScrollableSelect
           height={menuHeight}
           itemProps={itemProps}

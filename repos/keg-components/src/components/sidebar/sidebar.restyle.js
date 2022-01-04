@@ -159,21 +159,18 @@ export const ToggleAction = reStyle(({ styles, location, ...props }) => {
  *
  * @returns {React.Component} - Wrapped reStyle Icon Component
  */
-export const ToggleIcon = reStyle(
-  props => {
-    const { styles, hovered, ...iconProps } = props
-    return (
-      <ChevronDown
-        {...iconProps}
-        width={styles?.width}
-        height={styles?.height}
-        {...(hovered && styles?.hover)}
-        style={styles?.main}
-      />
-    )
-  },
-  'styles'
-)({
+export const ToggleIcon = reStyle(props => {
+  const { styles, hovered, ...iconProps } = props
+  return (
+    <ChevronDown
+      {...iconProps}
+      width={styles?.width}
+      height={styles?.height}
+      {...(hovered && styles?.hover)}
+      style={styles?.main}
+    />
+  )
+}, 'styles')({
   main: {
     lt: -1,
     pos: 'relative',

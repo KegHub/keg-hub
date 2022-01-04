@@ -7,7 +7,7 @@ import { useClassList } from 'KegClassList'
 export const Row = ({ className, children, style, ...props }) => {
   const classNames = useClassList('keg-row', className)
   const containerStyles = useStyle(`layout.grid.row`, style)
-  
+
   return (
     <Container
       {...props}

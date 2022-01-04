@@ -1,17 +1,10 @@
-
 import React, { useMemo } from 'react'
 import * as NativeSvg from './svgIcon.native'
 import { StyleInjector } from '@keg-hub/re-theme/styleInjector'
 import { useTheme, useStyle } from '@keg-hub/re-theme'
-import {
-  get,
-  isArr,
-  deepMerge,
-  noPropObj,
-} from '@keg-hub/jsutils'
+import { get, isArr, deepMerge, noPropObj } from '@keg-hub/jsutils'
 
 const { SvgIcon: KegSvgIcon, ...svgElements } = NativeSvg
-
 
 /**
  * Custom hook to check if the size prop is an array, and merge it. Otherwise just returns the style object
@@ -65,7 +58,6 @@ const useColor = (fill, stroke, color, border, style, theme) => {
     }
   }, [ fill, stroke, color, border, style ])
 }
-
 
 /**
  * SvgIcon

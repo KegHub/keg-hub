@@ -1,4 +1,4 @@
-import React, {useMemo} from 'react'
+import React, { useMemo } from 'react'
 import PropTypes from 'prop-types'
 import { Container } from './container'
 import { useClassList } from 'KegClassList'
@@ -15,7 +15,7 @@ const widthFromSize = (size, theme) => {
 const useColumnWidth = (size, theme) => {
   return useMemo(() => {
     return size ? widthFromSize(size, theme) : { flexGrow: 1 }
-  }, [size, theme])
+  }, [ size, theme ])
 }
 
 export const Column = ({ className, children, size, center, ...props }) => {

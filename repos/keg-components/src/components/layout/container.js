@@ -15,7 +15,7 @@ import { pickKeys, ensureArr, noOpObj } from '@keg-hub/jsutils'
  */
 const useContainerStyle = (styles, flexDir, size) => {
   const flexStyle = useMemo(() => {
-    const hasWidth = (
+    const hasWidth =
       styles
         .map(style => {
           return Boolean(
@@ -24,19 +24,19 @@ const useContainerStyle = (styles, flexDir, size) => {
           )
         })
         .indexOf(true) !== -1
-    )
     // Get flex type based on size or style
-    return flexDir === 'row' && ({
-      flexDirection: flexDir,
-      flex: size ? size : hasWidth ? 0 : 1
-    })
-
-  }, [...styles, flexDir, size])
+    return (
+      flexDir === 'row' && {
+        flexDirection: flexDir,
+        flex: size ? size : hasWidth ? 0 : 1,
+      }
+    )
+  }, [ ...styles, flexDir, size ])
 
   return useStyle(flexStyle, ...styles)
 }
-  
-  // const style = useStyle(flexStyle, ...containerStyles)
+
+// const style = useStyle(flexStyle, ...containerStyles)
 /**
  * Container
  * General Wrapper component that's use to build the Grid / Row / Column components

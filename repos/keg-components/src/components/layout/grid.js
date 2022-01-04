@@ -1,4 +1,4 @@
-import React, {useMemo} from 'react'
+import React, { useMemo } from 'react'
 import { Row } from './row'
 import PropTypes from 'prop-types'
 import { Container } from './container'
@@ -14,8 +14,8 @@ import { useStyle } from '@keg-hub/re-theme'
  */
 const useBuildCenterStyles = isCenter => {
   return useMemo(() => {
-    if(!isCenter) return
-    
+    if (!isCenter) return
+
     return isCenter === 'x' || isCenter === 'xaxis' || isCenter === 'x-axis'
       ? { justifyContent: 'center' }
       : isCenter === 'y' || isCenter === 'yaxis' || isCenter === 'y-axis'
@@ -38,7 +38,7 @@ const useChildAttrs = children => {
         if (!attrs?.isRow && child && child?.type === Row) attrs.isRow = true
         if (!attrs?.isCenter && child && child?.props && child?.props?.center)
           attrs.isCenter = child.props.center.toString().toLowerCase()
-  
+
         return attrs
       },
       { isRow: false, isCenter: false }
@@ -50,12 +50,8 @@ export const Grid = ({ className, children, style, ...props }) => {
   const { isRow, isCenter } = useChildAttrs(ensureArr(children))
   const classNames = useClassList('keg-grid', className)
   const centerStyles = useBuildCenterStyles(isCenter)
-  
-  const containerStyle = useStyle(
-    'layout.grid.wrapper',
-    style,
-    centerStyles
-  )
+
+  const containerStyle = useStyle('layout.grid.wrapper', style, centerStyles)
 
   return (
     <Container

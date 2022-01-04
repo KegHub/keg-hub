@@ -1,7 +1,7 @@
 /**
  * export the web specific props for react-router
  */
- export {
+export {
   Router,
   BrowserRouter as OSRouter,
   Switch as RouterSwitch,

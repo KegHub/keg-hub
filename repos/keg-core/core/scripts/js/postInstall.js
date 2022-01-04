@@ -27,7 +27,10 @@ const doYarnInstall = async () => {
 const ignoreGeneratedAssets = async () => {
   console.log(`  * Ignoring auto-generated assets`)
   const location = path.join(coreDir, `core/base/assets/index.js`)
-  const { stderr } = await cmdExec(`git update-index --assume-unchanged ${location}`, cmdOpts)
+  const { stderr } = await cmdExec(
+    `git update-index --assume-unchanged ${location}`,
+    cmdOpts
+  )
   if (stderr) throw new Error(stderr)
 }
 
@@ -59,7 +62,7 @@ const checkForNodeModules = () => {
     await ignoreGeneratedAssets()
   }
   catch (err) {}
-  
+
   console.log()
   process.exit(0)
 })()

@@ -11,7 +11,6 @@ const SelectButton = reStyle(
   Button,
   'styles'
 )((theme, props) => {
-
   const {
     colors: { palette },
   } = theme
@@ -64,27 +63,27 @@ export const SelectItem = React.forwardRef((props, ref) => {
 
   const handlePress = useCallback(() => onSelect(item), [ item, onSelect ])
 
-  return isFunc(renderItem)
-    ? renderItem({
-        ...btnProps,
-        ref,
-        item,
-        styles,
-        className,
-        highlighted,
-        onSelect: handlePress,
-      })
-    : (
-        <SelectButton
-          {...btnProps}
-          ref={ref}
-          styles={styles}
-          content={item.text}
-          onPress={handlePress}
-          highlighted={highlighted}
-          className={[`keg-select-button`, className]}
-        />
-      )
+  return isFunc(renderItem) ? (
+    renderItem({
+      ...btnProps,
+      ref,
+      item,
+      styles,
+      className,
+      highlighted,
+      onSelect: handlePress,
+    })
+  ) : (
+    <SelectButton
+      {...btnProps}
+      ref={ref}
+      styles={styles}
+      content={item.text}
+      onPress={handlePress}
+      highlighted={highlighted}
+      className={[ `keg-select-button`, className ]}
+    />
+  )
 })
 
 SelectItem.propTypes = {

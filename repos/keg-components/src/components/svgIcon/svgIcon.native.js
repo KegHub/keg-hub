@@ -1,12 +1,7 @@
 import PropTypes from 'prop-types'
 import React, { useMemo } from 'react'
 import Svg, { Path } from 'react-native-svg'
-import {
-  isArr,
-  isStr,
-  noPropObj,
-  eitherArr,
-} from '@keg-hub/jsutils'
+import { isArr, isStr, noPropObj, eitherArr } from '@keg-hub/jsutils'
 import { getPlatform } from 'KegGetPlatform'
 const isWeb = getPlatform() === 'web'
 

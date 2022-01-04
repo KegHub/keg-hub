@@ -1,6 +1,6 @@
 import { View } from 'KegView'
 import { Check } from '../../../assets/icons/check'
-import React, {forwardRef } from 'react'
+import React, { forwardRef } from 'react'
 import { CheckboxWrapper } from './checkbox.wrapper'
 import { noPropObj } from '@keg-hub/jsutils'
 import { useStyle } from '@keg-hub/re-theme'
