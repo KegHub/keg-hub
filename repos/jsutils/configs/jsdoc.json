@@ -27,7 +27,7 @@
       "title": "JS Utils",
       "type": "website",
       "site_name": "jsutils",
-      "url": "https://lancetipton.github.io/jsutils/"
+      "url": "https://keg-hub.github.io/jsutils/"
     },
     "meta": {
       "title": "JS Utils",
@@ -41,7 +41,7 @@
     "scripts": [],
     "menu": {
       "Github repo": {
-        "href":"https://github.com/lancetipton/jsutils",
+        "href":"https://github.com/keg-hub/keg-hub",
         "target":"_blank",
         "class":"menu-item",
         "id":"repository"
