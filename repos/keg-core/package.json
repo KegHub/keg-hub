@@ -7,11 +7,11 @@
     "access": "public"
   },
   "repository": {
-    "url": "git+https://github.com/keghub/keg-hub.git",
+    "url": "git+https://github.com/keg-hub/keg-hub.git",
     "type": "git"
   },
   "bugs": {
-    "url": "https://github.com/keghub/keg-hub/issues"
+    "url": "https://github.com/keg-hub/keg-hub/issues"
   },
   "homepage": "/",
   "license": "MIT",
