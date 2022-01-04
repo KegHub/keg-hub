@@ -62,7 +62,7 @@
     "@expo/webpack-config": "0.16.15",
     "@keg-hub/jsutils": "8.8.0",
     "@keg-hub/keg-components": "9.5.0",
-    "@keg-hub/re-theme": "9.5.0",
+    "@keg-hub/re-theme": "10.0.0",
     "@keg-hub/tap-resolver": "9.0.0",
     "@testing-library/react-hooks": "7.0.2",
     "app-root-path": "3.0.0",
@@ -113,7 +113,7 @@
   "resolutions": {
     "@keg-hub/jsutils": "8.8.0",
     "@keg-hub/keg-components": "9.5.0",
-    "@keg-hub/re-theme": "9.5.0",
+    "@keg-hub/re-theme": "10.0.0",
     "@keg-hub/tap-resolver": "8.0.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",

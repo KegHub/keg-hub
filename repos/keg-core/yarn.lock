@@ -2471,10 +2471,10 @@
   resolved "https://registry.yarnpkg.com/@keg-hub/keg-components/-/keg-components-9.5.0.tgz#c3678bdbc5bbb26844989c6fb2fb95a3492e45f0"
   integrity sha512-BzL6iYnPnTDGojRpb3kqDeZY7yVmvb0Mnm//vNCTbyrgDf9/SA4kTi87q21mmRvwLqhdJh0STRgfbjFISZDpng==
 
-"@keg-hub/re-theme@9.5.0":
-  version "9.5.0"
-  resolved "https://registry.yarnpkg.com/@keg-hub/re-theme/-/re-theme-9.5.0.tgz#864742469caeacd9f4e8f35d4534db68a7411f3d"
-  integrity sha512-k6ZQjHlI7djXhYYPXrbOUNPL37VUvP5+mLrKk+/Lj5gS3BSJoRJvHpp3zT39hYHsi/1AgYEVNr7f6R/3o20RZQ==
+"@keg-hub/re-theme@10.0.0":
+  version "10.0.0"
+  resolved "https://registry.yarnpkg.com/@keg-hub/re-theme/-/re-theme-10.0.0.tgz#7fecbfd33033cd424261f35277db27d08e11e295"
+  integrity sha512-I5mS0dxcLiUBbBXH15UjY0pJTlTf9R0i0NGlKqjaN+11RJZjTQZjovGa3NKcv4V7phtJePME5P9SURDQVGzEmQ==
 
 "@keg-hub/tap-resolver@8.0.0":
   version "8.0.0"
