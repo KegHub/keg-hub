@@ -1,6 +1,6 @@
 {
   "name": "@keg-hub/jsutils",
-  "version": "8.7.0",
+  "version": "8.8.0",
   "description": "Keg common javascript utils",
   "main": "build/umd/index.js",
   "module": "build/esm/index.js",
@@ -43,7 +43,7 @@
     "format": "exit 0",
     "git:update": "git add .; git commit -m \"Version update.\"; git push origin master",
     "package": "yarn build; yarn git:update; yarn deploy",
-    "test": "NODE_ENV=test jest --detectOpenHandles --no-cache --verbose --config=./configs/jest.config.js  --maxWorkers=50%",
+    "test": "NODE_ENV=test jest --no-cache --verbose --config=./configs/jest.config.js  --maxWorkers=50%",
     "web": "http-server ./docs -p 8888 --cors"
   },
   "dependencies": {},
