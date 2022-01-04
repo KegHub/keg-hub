@@ -85,6 +85,7 @@
     "expo-linear-gradient": "11.0.0",
     "fs-extra": "10.0.0",
     "husky": "^7.0.0",
+    "jest": "27.4.5",
     "jest-expo": "44.0.1",
     "jest-html-reporter": "3.4.2",
     "lint-staged": "12.1.5",
