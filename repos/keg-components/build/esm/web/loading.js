@@ -1,8 +1,8 @@
 import React__default from 'react';
-import { V as View } from './view-9c41ec1e.js';
-import { d as _objectWithoutProperties, e as _extends } from './_rollupPluginBabelHelpers-b49fe34a.js';
+import { V as View } from './view-86879139.js';
+import { d as _objectWithoutProperties, e as _extends } from './_rollupPluginBabelHelpers-eca9940e.js';
 import { ActivityIndicator } from 'react-native-web';
-import { I as IndicatorWrapper } from './indicator.wrapper-2c72453d.js';
+import { I as IndicatorWrapper } from './indicator.wrapper-a62b8696.js';
 import { g as getPlatform } from './getPlatform-95568099.js';
 import { u as useClassList } from './useClassList-1d418045.js';
 import { Text } from './text.js';
@@ -11,14 +11,14 @@ import { isValidComponent } from './isValidComponent.js';
 import '@keg-hub/re-theme/colors';
 import { useThemePath } from './useThemePath.js';
 import './useThemeWithHeight.js';
-import './view.native-2491eb60.js';
-import './useClassName-ed83df40.js';
+import './view.native-f56118b2.js';
+import './useClassName-52067a95.js';
 import './updateClassNames.js';
 import './ensureClassArray.js';
 import './handleRefUpdate.js';
 import '@keg-hub/re-theme/styleInjector';
-import './kegText-9f80996b.js';
-import './kegText.native-6bbad9e4.js';
+import './kegText-d18b7a12.js';
+import './kegText.native-ba7d1c9c.js';
 import './useTextAccessibility.js';
 import './useTextStyles.js';
 import '@keg-hub/re-theme';
@@ -37,7 +37,7 @@ var Element = function Element(_ref) {
     className: useClassList('keg-indicator', className)
   }, React__default.createElement(ActivityIndicator, {
     size: size,
-    color: style.color || color
+    color: color || style.color
   }));
 };
 var Indicator = function Indicator(_ref2) {
@@ -47,12 +47,12 @@ var Indicator = function Indicator(_ref2) {
       styles = _ref2.styles,
       props = _objectWithoutProperties(_ref2, _excluded2);
   return React__default.createElement(IndicatorWrapper, _extends({}, props, {
-    alt: alt || 'Loading',
-    size: ['large', 'small'].includes(size) ? size : 'large',
     color: color,
-    Element: Element,
+    isWeb: isWeb,
     styles: styles,
-    isWeb: isWeb
+    Element: Element,
+    alt: alt || 'Loading',
+    size: ['large', 'small'].includes(size) ? size : 'large'
   }));
 };
 
@@ -61,30 +61,33 @@ var Progress = function Progress(props) {
       text = props.text,
       loadIndicator = props.loadIndicator,
       type = props.type,
-      size = props.size;
+      size = props.size,
+      color = props.color;
   var LoadingIndicator = loadIndicator || Indicator;
   return React__default.createElement(View, {
     style: styles.progress,
     className: "keg-progress"
   }, isValidComponent(LoadingIndicator) ? React__default.createElement(LoadingIndicator, {
-    className: 'keg-loading-indicator',
+    type: type,
     size: size,
+    color: color,
     styles: styles.indicator,
-    type: type
+    className: 'keg-loading-indicator'
   }) : text && React__default.createElement(Text, {
     className: "keg-progress-text",
     style: styles.text
   }, text));
 };
 var Loading = function Loading(props) {
-  var className = props.className,
+  var size = props.size,
+      color = props.color,
+      styles = props.styles,
       children = props.children,
+      themePath = props.themePath,
+      className = props.className,
+      indicator = props.indicator,
       _props$text = props.text,
       text = _props$text === void 0 ? 'Loading' : _props$text,
-      indicator = props.indicator,
-      size = props.size,
-      styles = props.styles,
-      themePath = props.themePath,
       _props$type = props.type,
       type = _props$type === void 0 ? 'default' : _props$type;
   var builtStyles = useThemePath(themePath || "loading.".concat(type), styles);
@@ -92,11 +95,12 @@ var Loading = function Loading(props) {
     style: builtStyles.main,
     className: useClassList('keg-loading', className)
   }, children || React__default.createElement(Progress, {
-    styles: builtStyles,
     text: text,
-    loadIndicator: indicator,
     type: type,
-    size: size
+    size: size,
+    color: color,
+    styles: builtStyles,
+    loadIndicator: indicator
   }));
 };
 

@@ -2,9 +2,10 @@ export { TextBox } from './textBox.js';
 export { Button } from './button.js';
 export { Card } from './card.js';
 export { Divider } from './divider.js';
-import React__default, { useImperativeHandle, useMemo, useCallback, forwardRef, useState } from 'react';
-import { V as View } from './view.native-f7a27d15.js';
-export { V as View } from './view.native-f7a27d15.js';
+export { Drawer } from './drawer.js';
+import React__default, { useImperativeHandle, useMemo, useCallback, forwardRef, useState, useEffect, useRef, useLayoutEffect } from 'react';
+import { V as View } from './view.native-16eca0a6.js';
+export { V as View } from './view.native-16eca0a6.js';
 export { Caption } from './caption.js';
 export { H1 } from './h1.js';
 export { H2 } from './h2.js';
@@ -18,22 +19,22 @@ export { P } from './p.js';
 export { Subtitle } from './subtitle.js';
 import { Text as Text$1 } from './text.js';
 export { Text } from './text.js';
-import { d as _objectWithoutProperties, e as _extends, b as _slicedToArray, a as _defineProperty, _ as _objectSpread2 } from './_rollupPluginBabelHelpers-b49fe34a.js';
-import { C as Checkbox } from './checkbox-c0bb7fcc.js';
-export { C as Checkbox } from './checkbox-c0bb7fcc.js';
-import { useStyle, useTheme, withTheme } from '@keg-hub/re-theme';
+import { d as _objectWithoutProperties, e as _extends, b as _slicedToArray, a as _defineProperty, _ as _objectSpread2, c as _toConsumableArray } from './_rollupPluginBabelHelpers-eca9940e.js';
+import { C as Checkbox } from './checkbox-64f62ad7.js';
+export { C as Checkbox } from './checkbox-64f62ad7.js';
+import { useStyle, useTheme, withTheme, useDimensions } from '@keg-hub/re-theme';
 import { u as useClassList } from './useClassList.native-70068878.js';
 export { u as useClassList } from './useClassList.native-70068878.js';
 import { useChildrenWithRefs } from './useChildrenWithRefs.js';
 export { useChildrenWithRefs } from './useChildrenWithRefs.js';
-import { noPropArr, noOp, mapObj, get, isStr, isNum, toBool, checkCall } from '@keg-hub/jsutils';
+import { noPropArr, noOp, mapObj, get, isStr, isNum, toBool, checkCall, noOpObj, isArr, deepMerge, noPropObj } from '@keg-hub/jsutils';
 import '@keg-hub/re-theme/colors';
 import { useThemePath } from './useThemePath.js';
 export { useThemePath } from './useThemePath.js';
 export { useThemeWithHeight } from './useThemeWithHeight.js';
-import { Picker } from 'react-native';
-export { I as Input } from './input-7be053e2.js';
-import { S as Select$1, C as ChevronDown } from './select-bf184c3b.js';
+import { Picker, Animated } from 'react-native';
+export { I as Input } from './input-3f242fd4.js';
+import { S as Select$1 } from './select-3df74998.js';
 import { getValueFromChildren, getInputValueKey } from './getInputValue.js';
 export { getInputValueKey, getValueFromChildren } from './getInputValue.js';
 import { useSelectHandlers } from './useSelectHandlers.js';
@@ -42,9 +43,10 @@ import { u as useClassName } from './useClassName.native-32e8827d.js';
 export { u as useClassName } from './useClassName.native-32e8827d.js';
 import { u as useThemeTypeAsClass } from './useThemeTypeAsClass.native-a05b9a50.js';
 export { u as useThemeTypeAsClass } from './useThemeTypeAsClass.native-a05b9a50.js';
-import './svgIcon.native-4f87bca3.js';
-import { I as Icon } from './icon-d03aaeac.js';
-export { I as Icon } from './icon-d03aaeac.js';
+import './svgIcon.native-5fb8ae44.js';
+import { C as ChevronDown } from './chevronDown-7c76db3a.js';
+import { I as Icon } from './icon-4e464915.js';
+export { I as Icon } from './icon-4e464915.js';
 import { StyleInjector } from '@keg-hub/re-theme/styleInjector';
 import { renderFromType } from './renderFromType.js';
 export { renderFromType } from './renderFromType.js';
@@ -52,32 +54,36 @@ import { getOnChangeHandler } from './getOnChangeHandler.js';
 export { getOnChangeHandler } from './getOnChangeHandler.js';
 import { getChecked } from './getChecked.js';
 export { getChecked } from './getChecked.js';
-import { S as Switch$1 } from './switch-f5bd7d4f.js';
+import { S as Switch$1 } from './switch-49349151.js';
+export { ItemHeader } from './itemHeader.js';
+export { AppHeader } from './appHeader.js';
 export { TouchableIcon } from './touchableIcon.js';
-export { I as Image } from './cardMedia-df8e7497.js';
+export { I as Image } from './cardMedia-d6a3b1d9.js';
 export { Grid } from './grid.js';
 export { Row } from './row.js';
 export { Column } from './column.js';
-import { L as LinkWrapper } from './link.wrapper-a64a3ba8.js';
-import { K as KegText } from './kegText-97d3d571.js';
-import { T as Touchable } from './touchable-ec804bf8.js';
-export { T as Touchable } from './touchable-ec804bf8.js';
+import { L as LinkWrapper } from './link.wrapper-2fd965cc.js';
+import { K as KegText } from './kegText-fe67e05a.js';
+import { T as Touchable } from './touchable-7c6e36c1.js';
+export { T as Touchable } from './touchable-7c6e36c1.js';
 import { g as getPlatform } from './getPlatform-e625f46a.js';
 export { g as getPlatform } from './getPlatform-e625f46a.js';
 export { Loading } from './loading.js';
-export { Section } from './section.js';
 export { Modal } from './modal.js';
-export { ItemHeader } from './itemHeader.js';
-export { AppHeader } from './appHeader.js';
 import { ScrollView as ScrollView$1 } from './scrollView.js';
-import { S as SectionList$1 } from './sectionList.native-ee12bc0d.js';
-export { g as getElementLayout, s as scrollList, u as useScroll } from './sectionList.native-ee12bc0d.js';
-export { Drawer } from './drawer.js';
+import { S as SectionList$1 } from './sectionList.native-8ce91ac1.js';
+export { g as getElementLayout, s as scrollList, u as useScroll } from './sectionList.native-8ce91ac1.js';
+export { Section } from './section.js';
+import { isValidComponent } from './isValidComponent.js';
+export { isValidComponent } from './isValidComponent.js';
+import { SidebarToggle } from './sidebarToggle.js';
+export { SidebarToggle } from './sidebarToggle.js';
+import { SidebarMain, SidebarContainer, getSidebarWidth } from './sidebar.js';
+import { S as SvgIcon$1, N as NativeSvg } from './svgIcon.native-c05f2e64.js';
 export { TextToggle } from './textToggle.js';
-import { S as SvgIcon$1, N as NativeSvg } from './svgIcon.native-4295db6c.js';
 export { withTouch } from './withTouch.js';
 export { withScrollIntoView } from './withScrollIntoView.js';
-export { u as useOutsideDetect, w as withOutsideDetect } from './withOutsideDetect-d13f1631.js';
+export { u as useOutsideDetect, w as withOutsideDetect } from './withOutsideDetect-677c92f0.js';
 export { theme } from './theme.js';
 export { useAccessibilityRole } from './useAccessibilityRole.js';
 export { u as useAnimate, a as useSpin } from './useSpin-f4f44791.js';
@@ -99,26 +105,28 @@ export { getReadOnly } from './getReadOnly.js';
 export { getTarget } from './getTarget.js';
 export { handleRefUpdate } from './handleRefUpdate.js';
 export { updateClassNames } from './updateClassNames.js';
-export { d as buildColorStyles, b as buildSurfaceStyles } from './buildColorStyles-5bcba126.js';
+export { d as buildColorStyles, b as buildSurfaceStyles } from './buildColorStyles-6543b90b.js';
 export { getStyles } from './getStyles.js';
 export { inheritFrom } from './inheritFrom.js';
 export { platformFlatten } from './platformFlatten.js';
 export { buildTheme } from './buildTheme.js';
 export { validateFunctions } from './validateFunctions.js';
-export { isValidComponent } from './isValidComponent.js';
 import './cardContent.js';
 import './cardCallout.js';
 import './cardContainer.js';
 import './cardSection.js';
-import './checkbox.wrapper-a606288b.js';
-import './input-48371ddf.js';
+import './checkbox.wrapper-9755c974.js';
+import './input-52cf8aa6.js';
 import 'react-native-svg';
-import './image-eb160914.js';
+import './image-0c4b497e.js';
 import './container.js';
 import './kegText.js';
 import './useTextStyles.js';
 import './touchable.js';
-import './indicator.wrapper-a8ba0314.js';
+import './indicator.wrapper-e2c86f6b.js';
+import './useToggledStyles.js';
+import '@keg-hub/re-theme/reStyle';
+import './isCssUnits.js';
 import 'expo-linear-gradient';
 import './themeDefaults-ae219f8e.js';
 
@@ -491,14 +499,208 @@ var SectionList = StyleInjector(SectionList$1, {
 });
 SectionList.propTypes = SectionList$1.propTypes;
 
+var noAnimate = function noAnimate(toggled, current, _ref) {
+  var initial = _ref.initial,
+      to = _ref.to;
+  return !toggled && current === initial || toggled && current === to;
+};
+var useSidebarStyles = function useSidebarStyles(_ref2) {
+  var initial = _ref2.initial,
+      styles = _ref2.styles,
+      sidebarWidth = _ref2.sidebarWidth,
+      location = _ref2.location;
+  var dims = useDimensions();
+  var sidebarStyles = useStyle('sidebar', styles);
+  var width = getSidebarWidth(sidebarWidth, initial, sidebarStyles);
+  var mainStyles = useMemo(function () {
+    return _objectSpread2(_objectSpread2({
+      flex: 1,
+      zIndex: 5,
+      position: 'fixed',
+      top: 0,
+      bottom: 0,
+      height: dims.height
+    }, sidebarStyles === null || sidebarStyles === void 0 ? void 0 : sidebarStyles.main), {}, _defineProperty({
+      width: width
+    }, location === 'right' ? location : 'left', initial));
+  }, [location, width, initial, sidebarStyles === null || sidebarStyles === void 0 ? void 0 : sidebarStyles.main, dims === null || dims === void 0 ? void 0 : dims.height]);
+  return {
+    mainStyles: mainStyles,
+    sidebarStyles: sidebarStyles
+  };
+};
+var useSidebarToggle = function useSidebarToggle(props) {
+  var toggled = props.toggled,
+      _props$onToggled = props.onToggled,
+      onToggled = _props$onToggled === void 0 ? noOp : _props$onToggled,
+      initial = props.initial,
+      to = props.to;
+  var _useState = useState(toggled),
+      _useState2 = _slicedToArray(_useState, 2),
+      isToggled = _useState2[0],
+      setIsToggled = _useState2[1];
+  var _useState3 = useState(toggled),
+      _useState4 = _slicedToArray(_useState3, 2),
+      originalToggled = _useState4[0],
+      setOriginalToggled = _useState4[1];
+  useEffect(function () {
+    if (originalToggled === toggled) return;
+    setOriginalToggled(toggled);
+    setIsToggled(toggled);
+  }, [toggled, originalToggled]);
+  var onTogglePress = useCallback(function (event) {
+    var toggleUpdate = !isToggled;
+    setIsToggled(toggleUpdate);
+    checkCall(onToggled, toggleUpdate);
+  }, [isToggled, setIsToggled, initial, to]);
+  return {
+    toggled: toggled,
+    isToggled: isToggled,
+    setIsToggled: setIsToggled,
+    onTogglePress: onTogglePress
+  };
+};
+var useSidebarAnimate = function useSidebarAnimate(props, isToggled) {
+  var _props$config = props.config,
+      config = _props$config === void 0 ? noOpObj : _props$config,
+      initial = props.initial,
+      to = props.to,
+      _props$type = props.type,
+      type = _props$type === void 0 ? 'timing' : _props$type;
+  var _useState5 = useState(new Animated.Value(initial)),
+      _useState6 = _slicedToArray(_useState5, 2),
+      animation = _useState6[0],
+      setAnimation = _useState6[1];
+  var xPosRef = useRef({
+    initial: initial,
+    to: to
+  });
+  useLayoutEffect(function () {
+    if (!xPosRef.current) return;
+    if (noAnimate(isToggled, animation._value, xPosRef.current)) return;
+    var _xPosRef$current = xPosRef.current,
+        initial = _xPosRef$current.initial,
+        to = _xPosRef$current.to;
+    var xPosChanges = isToggled ? {
+      from: initial,
+      to: to
+    } : {
+      from: to,
+      to: initial
+    };
+    animation.setValue(xPosChanges.from);
+    var animationConfig = config ? _objectSpread2(_objectSpread2({}, config), {}, {
+      toValue: xPosChanges.to
+    }) : {
+      toValue: xPosChanges.to
+    };
+    animationConfig.useNativeDriver = false;
+    Animated[type](animation, animationConfig).start();
+  }, [isToggled, type, config]);
+  return {
+    animation: animation,
+    setAnimation: setAnimation
+  };
+};
+var Sidebar = function Sidebar(props) {
+  var to = props.to,
+      initial = props.initial,
+      children = props.children,
+      location = props.location,
+      onOffClick = props.onOffClick,
+      sidebarWidth = props.sidebarWidth,
+      ToggleComponent = props.ToggleComponent;
+  var _useSidebarToggle = useSidebarToggle(props),
+      isToggled = _useSidebarToggle.isToggled,
+      setIsToggled = _useSidebarToggle.setIsToggled,
+      onTogglePress = _useSidebarToggle.onTogglePress;
+  var _useSidebarAnimate = useSidebarAnimate(props, isToggled),
+      animation = _useSidebarAnimate.animation;
+  var _useSidebarStyles = useSidebarStyles(props),
+      mainStyles = _useSidebarStyles.mainStyles,
+      sidebarStyles = _useSidebarStyles.sidebarStyles;
+  var Toggler = isValidComponent(ToggleComponent) && React__default.createElement(ToggleComponent, {
+    to: to,
+    initial: initial,
+    location: location,
+    toggled: isToggled,
+    onOffClick: onOffClick,
+    onPress: onTogglePress,
+    sidebarWidth: sidebarWidth,
+    setIsToggled: setIsToggled,
+    styles: sidebarStyles === null || sidebarStyles === void 0 ? void 0 : sidebarStyles.toggle
+  });
+  return React__default.createElement(React__default.Fragment, null, React__default.createElement(Animated.View, {
+    style: [mainStyles, _defineProperty({}, location, animation)]
+  }, React__default.createElement(SidebarMain, {
+    className: "sidebar-main",
+    style: sidebarStyles === null || sidebarStyles === void 0 ? void 0 : sidebarStyles.main
+  }, location === 'right' && Toggler, React__default.createElement(SidebarContainer, {
+    location: location,
+    sidebarWidth: sidebarWidth,
+    className: "sidebar-container",
+    style: sidebarStyles === null || sidebarStyles === void 0 ? void 0 : sidebarStyles.container
+  }, children), location !== 'right' && Toggler)));
+};
+Sidebar.Toggle = SidebarToggle;
+Sidebar.defaultProps = {
+  config: noOpObj,
+  location: 'left',
+  type: 'timing',
+  ToggleComponent: SidebarToggle
+};
+
 var KegSvgIcon = SvgIcon$1,
     svgElements = _objectWithoutProperties(NativeSvg, ["SvgIcon"]);
-var SvgIcon = StyleInjector(KegSvgIcon, {
+var useIconStyle = function useIconStyle(style) {
+  return useMemo(function () {
+    return isArr(style) ? deepMerge.apply(void 0, _toConsumableArray(style)) : style;
+  }, [style]);
+};
+var useSize = function useSize(size, width, height, style, theme) {
+  return useMemo(function () {
+    var iconSize = size || get(style, 'fontSize');
+    var themeSize = get(theme, 'typography.default.fontSize', 15) * 2;
+    return {
+      height: height || iconSize || get(style, 'height', themeSize),
+      width: width || iconSize || get(style, 'width', themeSize)
+    };
+  }, [size, width, height, style]);
+};
+var useColor = function useColor(fill, stroke, color, border, style, theme) {
+  return useMemo(function () {
+    var themeColor = get(theme, 'typography.default.color');
+    return {
+      stroke: stroke || border || style.border || color || style.color || themeColor,
+      fill: fill || color || style.color || stroke
+    };
+  }, [fill, stroke, color, border, style]);
+};
+var SvgIconInject = StyleInjector(KegSvgIcon, {
   displayName: 'SvgIcon',
   className: 'keg-svg-icon'
 });
+var SvgIcon = React__default.forwardRef(function (props, ref) {
+  var border = props.border,
+      color = props.color,
+      fill = props.fill,
+      height = props.height,
+      size = props.size,
+      stroke = props.stroke,
+      _props$style = props.style,
+      style = _props$style === void 0 ? noPropObj : _props$style,
+      width = props.width;
+  var theme = useTheme();
+  var iconStyle = useIconStyle(style);
+  var sizeStyle = useSize(size, width, height, iconStyle, theme);
+  var svgStyles = useStyle(iconStyle, sizeStyle);
+  var colorStyle = useColor(fill, stroke, color, border, iconStyle, theme);
+  return React__default.createElement(SvgIconInject, _extends({}, props, sizeStyle, colorStyle, {
+    style: svgStyles,
+    ref: ref
+  }));
+});
 Object.assign(SvgIcon, svgElements);
-SvgIcon.propTypes = _objectSpread2({}, KegSvgIcon.propTypes);
 
-export { Link as A, CheckGroup, FilePicker, Form, Link, Option, Radio, ScrollView, SectionList, Select, Slider, SvgIcon, Switch, useKeyPress, useScrollIntoView };
+export { Link as A, CheckGroup, FilePicker, Form, Link, Option, Radio, ScrollView, SectionList, Select, Sidebar, Slider, SvgIcon, SvgIconInject, Switch, useKeyPress, useScrollIntoView };
 //# sourceMappingURL=index.js.map

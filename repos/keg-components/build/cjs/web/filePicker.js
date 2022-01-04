@@ -2,14 +2,14 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var _rollupPluginBabelHelpers = require('./_rollupPluginBabelHelpers-95f0bff4.js');
+var _rollupPluginBabelHelpers = require('./_rollupPluginBabelHelpers-d23df5c1.js');
 var React = require('react');
 var jsutils = require('@keg-hub/jsutils');
 require('@keg-hub/re-theme/colors');
 var useThemePath = require('./useThemePath.js');
 require('./useThemeWithHeight.js');
 require('react-native-web');
-var useThemeTypeAsClass = require('./useThemeTypeAsClass-9fb8a8ab.js');
+var useThemeTypeAsClass = require('./useThemeTypeAsClass-43ee56b4.js');
 require('./caption.js');
 require('./h1.js');
 require('./h2.js');
@@ -22,16 +22,16 @@ var p = require('./p.js');
 require('./subtitle.js');
 require('./text.js');
 var button = require('./button.js');
-var view = require('./view-3fcb25db.js');
+var view = require('./view-cd2faea4.js');
 var styleInjector = require('@keg-hub/re-theme/styleInjector');
-var input_web = require('./input.web-369be1b2.js');
+var input_web = require('./input.web-3e205b72.js');
 require('@keg-hub/re-theme');
 require('./colors-da502c66.js');
 require('./useClassList-89a8dbd4.js');
 require('./ensureClassArray.js');
-require('./kegText-b0f1b442.js');
-require('./kegText.native-100193df.js');
-require('./useClassName-eec4a5f1.js');
+require('./kegText-e14b3c1f.js');
+require('./kegText.native-d2f2e1a3.js');
+require('./useClassName-75c55cf8.js');
 require('./updateClassNames.js');
 require('./handleRefUpdate.js');
 require('./useTextAccessibility.js');
@@ -41,7 +41,7 @@ require('./renderFromType.js');
 require('./isValidComponent.js');
 require('./getPressHandler.js');
 require('./getActiveOpacity.js');
-require('./view.native-895f9104.js');
+require('./view.native-a1d03d45.js');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
@@ -52,7 +52,7 @@ var Input = styleInjector.StyleInjector(input_web.Input, {
   displayName: 'FilePickerInput',
   className: 'keg-file-picker-input'
 });
-var FilePicker = React__default['default'].forwardRef(function (props, _ref) {
+var FilePicker = React__default["default"].forwardRef(function (props, _ref) {
   var className = props.className,
       onChange = props.onChange,
       title = props.title,
@@ -88,18 +88,18 @@ var FilePicker = React__default['default'].forwardRef(function (props, _ref) {
   React.useEffect(function () {
     openOnMount && clickInput();
   }, []);
-  return React__default['default'].createElement(view.View, {
+  return React__default["default"].createElement(view.View, {
     className: useThemeTypeAsClass.useThemeTypeAsClass(themePath || type, 'keg-filepicker', className),
     style: [jsutils.get(componentTheme, 'main'), style]
-  }, React__default['default'].createElement(button.Button, {
+  }, React__default["default"].createElement(button.Button, {
     content: title,
     onClick: clickInput,
     style: jsutils.get(componentTheme, 'content.button'),
     themePath: buttonThemePath
   }, children),
-  showFile && React__default['default'].createElement(p.P, {
+  showFile && React__default["default"].createElement(p.P, {
     style: jsutils.get(componentTheme, 'content.file')
-  }, file.name), React__default['default'].createElement(Input, _rollupPluginBabelHelpers._extends({}, args, {
+  }, file.name), React__default["default"].createElement(Input, _rollupPluginBabelHelpers._extends({}, args, {
     ref: function ref(input) {
       _ref && (_ref.current = input);
       refToInput.current = input;

@@ -2,7 +2,7 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var _rollupPluginBabelHelpers = require('./_rollupPluginBabelHelpers-95f0bff4.js');
+var _rollupPluginBabelHelpers = require('./_rollupPluginBabelHelpers-d23df5c1.js');
 var React = require('react');
 var jsutils = require('@keg-hub/jsutils');
 var touchable = require('./touchable.js');
@@ -14,15 +14,15 @@ require('@keg-hub/re-theme/colors');
 var useThemePath = require('./useThemePath.js');
 require('./useThemeWithHeight.js');
 require('react-native-web');
-var useThemeTypeAsClass = require('./useThemeTypeAsClass-9fb8a8ab.js');
+var useThemeTypeAsClass = require('./useThemeTypeAsClass-43ee56b4.js');
 var reTheme = require('@keg-hub/re-theme');
-require('./useClassName-eec4a5f1.js');
+require('./useClassName-75c55cf8.js');
 require('./updateClassNames.js');
 require('./ensureClassArray.js');
 require('./handleRefUpdate.js');
 require('@keg-hub/re-theme/styleInjector');
-require('./kegText-b0f1b442.js');
-require('./kegText.native-100193df.js');
+require('./kegText-e14b3c1f.js');
+require('./kegText.native-d2f2e1a3.js');
 require('./useTextAccessibility.js');
 require('./useTextStyles.js');
 require('./isValidComponent.js');
@@ -45,7 +45,7 @@ var getChildren = function getChildren(Children, _ref) {
 var checkDisabled = function checkDisabled(mainStyles, btnStyles, disabled) {
   return disabled ? _rollupPluginBabelHelpers._objectSpread2(_rollupPluginBabelHelpers._objectSpread2({}, mainStyles), jsutils.get(btnStyles, 'disabled.main')) : mainStyles;
 };
-var Button = React__default['default'].forwardRef(function (props, ref) {
+var Button = React__default["default"].forwardRef(function (props, ref) {
   var className = props.className,
       children = props.children,
       content = props.content,
@@ -76,7 +76,7 @@ var Button = React__default['default'].forwardRef(function (props, ref) {
       _useThemeActive2 = _rollupPluginBabelHelpers._slicedToArray(_useThemeActive, 2),
       themeRef = _useThemeActive2[0],
       themeStyles = _useThemeActive2[1];
-  return React__default['default'].createElement(touchable.Touchable, _rollupPluginBabelHelpers._extends({
+  return React__default["default"].createElement(touchable.Touchable, _rollupPluginBabelHelpers._extends({
     accessibilityRole: "button",
     className: useThemeTypeAsClass.useThemeTypeAsClass(themePath || type, 'keg-button', className)
   }, elProps, {

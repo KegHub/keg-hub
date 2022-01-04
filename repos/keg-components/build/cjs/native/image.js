@@ -2,11 +2,11 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var _rollupPluginBabelHelpers = require('./_rollupPluginBabelHelpers-95f0bff4.js');
-var view_native = require('./view.native-5d72f4dd.js');
+var _rollupPluginBabelHelpers = require('./_rollupPluginBabelHelpers-d23df5c1.js');
+var view_native = require('./view.native-6338852a.js');
 var loading = require('./loading.js');
 var jsutils = require('@keg-hub/jsutils');
-var image = require('./image-2041d5dc.js');
+var image = require('./image-fed4a14c.js');
 var reTheme = require('@keg-hub/re-theme');
 var React = require('react');
 var getPressHandler = require('./getPressHandler.js');
@@ -18,10 +18,10 @@ require('react-native');
 var useClassList_native = require('./useClassList.native-9e7810c9.js');
 var styleInjector = require('@keg-hub/re-theme/styleInjector');
 require('./useClassName.native-3d1a229b.js');
-require('./indicator.wrapper-969fd2de.js');
+require('./indicator.wrapper-f4b58c20.js');
 require('./getPlatform-24228c6c.js');
 require('./text.js');
-require('./kegText-e1842e1b.js');
+require('./kegText-d4479e6a.js');
 require('./kegText.js');
 require('./useTextAccessibility.js');
 require('./useTextStyles.js');
@@ -73,13 +73,13 @@ var Image = React.forwardRef(function (props, ref) {
     jsutils.checkCall(props.onLoad, props);
     jsutils.isFunc(imgRef) ? imgRef(internalRef.current) : imgRef && (imgRef.current = internalRef.current);
   }, [src, source, internalRef.current]);
-  return React__default['default'].createElement(view_native.View, {
+  return React__default["default"].createElement(view_native.View, {
     className: useClassList_native.useClassList(),
     style: builtStyles.container
-  }, loading$1 && useLoading && React__default['default'].createElement(loading.Loading, {
+  }, loading$1 && useLoading && React__default["default"].createElement(loading.Loading, {
     className: "keg-image-loading",
     styles: builtStyles.loadingComp
-  }), React__default['default'].createElement(KegImage, _rollupPluginBabelHelpers._extends({}, attrs, {
+  }), React__default["default"].createElement(KegImage, _rollupPluginBabelHelpers._extends({}, attrs, {
     style: loading$1 ? loadingStyles : builtStyles.image
   }, getPressHandler.getPressHandler(false, onClick, onPress), getImgSrc.getImgSrc(false, src, source), {
     onLoadEnd: onLoad,

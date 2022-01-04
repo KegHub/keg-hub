@@ -2,11 +2,11 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var _rollupPluginBabelHelpers = require('./_rollupPluginBabelHelpers-95f0bff4.js');
+var _rollupPluginBabelHelpers = require('./_rollupPluginBabelHelpers-d23df5c1.js');
 var React = require('react');
 var reactNativeWeb = require('react-native-web');
-var indicator_wrapper = require('./indicator.wrapper-b537ce8c.js');
-var view = require('./view-3fcb25db.js');
+var indicator_wrapper = require('./indicator.wrapper-1eeb3eb7.js');
+var view = require('./view-cd2faea4.js');
 var getPlatform = require('./getPlatform-ec53cd5e.js');
 var useClassList = require('./useClassList-89a8dbd4.js');
 require('@keg-hub/jsutils');
@@ -14,8 +14,8 @@ require('@keg-hub/re-theme/colors');
 require('./useThemePath.js');
 require('@keg-hub/re-theme');
 require('./useThemeWithHeight.js');
-require('./view.native-895f9104.js');
-require('./useClassName-eec4a5f1.js');
+require('./view.native-a1d03d45.js');
+require('./useClassName-75c55cf8.js');
 require('./updateClassNames.js');
 require('./ensureClassArray.js');
 require('./handleRefUpdate.js');
@@ -35,11 +35,11 @@ var Element = function Element(_ref) {
       size = _ref.size,
       color = _ref.color;
       _rollupPluginBabelHelpers._objectWithoutProperties(_ref, _excluded);
-  return React__default['default'].createElement(view.View, {
+  return React__default["default"].createElement(view.View, {
     className: useClassList.useClassList('keg-indicator', className)
-  }, React__default['default'].createElement(reactNativeWeb.ActivityIndicator, {
+  }, React__default["default"].createElement(reactNativeWeb.ActivityIndicator, {
     size: size,
-    color: style.color || color
+    color: color || style.color
   }));
 };
 var Indicator = function Indicator(_ref2) {
@@ -48,13 +48,13 @@ var Indicator = function Indicator(_ref2) {
       color = _ref2.color,
       styles = _ref2.styles,
       props = _rollupPluginBabelHelpers._objectWithoutProperties(_ref2, _excluded2);
-  return React__default['default'].createElement(indicator_wrapper.IndicatorWrapper, _rollupPluginBabelHelpers._extends({}, props, {
-    alt: alt || 'Loading',
-    size: ['large', 'small'].includes(size) ? size : 'large',
+  return React__default["default"].createElement(indicator_wrapper.IndicatorWrapper, _rollupPluginBabelHelpers._extends({}, props, {
     color: color,
-    Element: Element,
+    isWeb: isWeb,
     styles: styles,
-    isWeb: isWeb
+    Element: Element,
+    alt: alt || 'Loading',
+    size: ['large', 'small'].includes(size) ? size : 'large'
   }));
 };
 

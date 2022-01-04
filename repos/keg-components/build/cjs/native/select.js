@@ -2,10 +2,10 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var _rollupPluginBabelHelpers = require('./_rollupPluginBabelHelpers-95f0bff4.js');
+var _rollupPluginBabelHelpers = require('./_rollupPluginBabelHelpers-d23df5c1.js');
 var React = require('react');
-var view_native = require('./view.native-5d72f4dd.js');
-var select = require('./select-18c3ae0a.js');
+var view_native = require('./view.native-6338852a.js');
+var select = require('./select-ca3120a2.js');
 require('@keg-hub/jsutils');
 var getInputValue = require('./getInputValue.js');
 require('@keg-hub/re-theme/colors');
@@ -15,8 +15,9 @@ require('./useThemeWithHeight.js');
 require('react-native');
 var useClassName_native = require('./useClassName.native-3d1a229b.js');
 var useThemeTypeAsClass_native = require('./useThemeTypeAsClass.native-90f04031.js');
-require('./svgIcon.native-1a38a3f7.js');
-var icon = require('./icon-9317be7c.js');
+require('./svgIcon.native-2127578c.js');
+var chevronDown = require('./chevronDown-b6b4f214.js');
+var icon = require('./icon-a5269604.js');
 var styleInjector = require('@keg-hub/re-theme/styleInjector');
 require('./validateFunctions.js');
 require('@keg-hub/re-theme');
@@ -44,7 +45,7 @@ var getValue = function getValue(props) {
   var valKey = getInputValue.getInputValueKey(false, onChange, onValueChange, readOnly);
   return _rollupPluginBabelHelpers._defineProperty({}, valKey, setValue);
 };
-var Select = React__default['default'].forwardRef(function (props, ref) {
+var Select = React__default["default"].forwardRef(function (props, ref) {
   var _selectStyles$icon, _selectStyles$icon$di;
   props.className;
       var children = props.children,
@@ -63,9 +64,9 @@ var Select = React__default['default'].forwardRef(function (props, ref) {
   var selectStyles = useThemePath.useThemePath(themePath, styles);
   var selectClasses = useThemeTypeAsClass_native.useThemeTypeAsClass();
   var classRef = useClassName_native.useClassName('keg-select', selectClasses, ref);
-  return React__default['default'].createElement(view_native.View, {
+  return React__default["default"].createElement(view_native.View, {
     style: [selectStyles.main, style]
-  }, React__default['default'].createElement(KegSelect, _rollupPluginBabelHelpers._extends({
+  }, React__default["default"].createElement(KegSelect, _rollupPluginBabelHelpers._extends({
     ref: classRef
   }, elProps, {
     enabled: !disabled,
@@ -73,9 +74,9 @@ var Select = React__default['default'].forwardRef(function (props, ref) {
   }, getValue(props), useSelectHandlers.useSelectHandlers({
     onChange: onChange,
     onValueChange: onValueChange
-  })), children), React__default['default'].createElement(icon.Icon, {
+  })), children), React__default["default"].createElement(icon.Icon, {
     styles: selectStyles.icon,
-    Component: select.ChevronDown,
+    Component: chevronDown.ChevronDown,
     color: disabled && ((_selectStyles$icon = selectStyles.icon) === null || _selectStyles$icon === void 0 ? void 0 : (_selectStyles$icon$di = _selectStyles$icon.disabled) === null || _selectStyles$icon$di === void 0 ? void 0 : _selectStyles$icon$di.color)
   }));
 });

@@ -2,29 +2,29 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var _rollupPluginBabelHelpers = require('./_rollupPluginBabelHelpers-95f0bff4.js');
+var _rollupPluginBabelHelpers = require('./_rollupPluginBabelHelpers-d23df5c1.js');
 var React = require('react');
-var view = require('./view-3fcb25db.js');
+var view = require('./view-cd2faea4.js');
 var text = require('./text.js');
-var checkbox = require('./checkbox-8b89ae3f.js');
+var checkbox = require('./checkbox-6c3b3fe3.js');
 var reTheme = require('@keg-hub/re-theme');
 var useClassList = require('./useClassList-89a8dbd4.js');
 var useChildrenWithRefs = require('./useChildrenWithRefs.js');
 var jsutils = require('@keg-hub/jsutils');
-require('./view.native-895f9104.js');
+require('./view.native-a1d03d45.js');
 require('react-native-web');
-require('./useClassName-eec4a5f1.js');
+require('./useClassName-75c55cf8.js');
 require('./updateClassNames.js');
 require('./ensureClassArray.js');
 require('./handleRefUpdate.js');
 require('@keg-hub/re-theme/styleInjector');
-require('./kegText-b0f1b442.js');
-require('./kegText.native-100193df.js');
+require('./kegText-e14b3c1f.js');
+require('./kegText.native-d2f2e1a3.js');
 require('./useTextAccessibility.js');
 require('./useTextStyles.js');
-require('./checkbox.wrapper-f7b31de8.js');
-require('./svgIcon-bb2d3711.js');
-require('./svgIcon.native-d0de8203.js');
+require('./checkbox.wrapper-c96373fe.js');
+require('./svgIcon-f66eed54.js');
+require('./svgIcon.native-48f0d173.js');
 require('react-native-svg-web');
 require('./caption.js');
 require('./h1.js');
@@ -43,16 +43,16 @@ require('./getChecked.js');
 require('@keg-hub/re-theme/colors');
 require('./useThemePath.js');
 require('./useThemeWithHeight.js');
-require('./useThemeTypeAsClass-9fb8a8ab.js');
+require('./useThemeTypeAsClass-43ee56b4.js');
 require('./colors-da502c66.js');
-require('./input.web-369be1b2.js');
+require('./input.web-3e205b72.js');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
 var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 
 var _excluded = ["title", "className", "style"];
-var SimpleHeader = React__default['default'].forwardRef(function (props, ref) {
+var SimpleHeader = React__default["default"].forwardRef(function (props, ref) {
   var title = props.title,
       className = props.className,
       style = props.style,
@@ -64,12 +64,12 @@ var SimpleHeader = React__default['default'].forwardRef(function (props, ref) {
     };
   });
   var textStyle = reTheme.useStyle('form.checkGroup.simpleHeader.main', style);
-  return React__default['default'].createElement(text.Text, _rollupPluginBabelHelpers._extends({
+  return React__default["default"].createElement(text.Text, _rollupPluginBabelHelpers._extends({
     className: className,
     style: textStyle
   }, rest), title);
 });
-var CheckboxHeader = React__default['default'].forwardRef(function (props, ref) {
+var CheckboxHeader = React__default["default"].forwardRef(function (props, ref) {
   var title = props.title,
       className = props.className,
       style = props.style,
@@ -86,7 +86,7 @@ var CheckboxHeader = React__default['default'].forwardRef(function (props, ref) 
   var onChangeHandler = React.useCallback(function (_, val) {
     return onPress === null || onPress === void 0 ? void 0 : onPress(val);
   }, [onPress]);
-  return React__default['default'].createElement(checkbox.Checkbox, {
+  return React__default["default"].createElement(checkbox.Checkbox, {
     RightComponent: title,
     rightClassName: className,
     styles: headerStyles,
@@ -96,7 +96,7 @@ var CheckboxHeader = React__default['default'].forwardRef(function (props, ref) 
     close: true
   });
 });
-var CheckGroup = React__default['default'].forwardRef(function (props, ref) {
+var CheckGroup = React__default["default"].forwardRef(function (props, ref) {
   var className = props.className,
       headerClassName = props.headerClassName,
       title = props.title,
@@ -122,24 +122,24 @@ var CheckGroup = React__default['default'].forwardRef(function (props, ref) {
     });
   }, [childRefs]);
   var Header = function Header() {
-    return showHeaderCheckbox ? React__default['default'].createElement(CheckboxHeader, {
+    return showHeaderCheckbox ? React__default["default"].createElement(CheckboxHeader, {
       className: headerClassName,
       style: groupStyles === null || groupStyles === void 0 ? void 0 : groupStyles.header,
       title: title,
       onPress: showHeaderCheckbox && headerCheckHandler,
       checked: showHeaderCheckbox ? initChecked : undefined,
       ref: ref
-    }) : React__default['default'].createElement(SimpleHeader, {
+    }) : React__default["default"].createElement(SimpleHeader, {
       className: headerClassName,
       style: groupStyles === null || groupStyles === void 0 ? void 0 : groupStyles.header,
       title: title,
       ref: ref
     });
   };
-  return React__default['default'].createElement(view.View, {
+  return React__default["default"].createElement(view.View, {
     className: useClassList.useClassList('keg-check-group', className),
     style: groupStyles === null || groupStyles === void 0 ? void 0 : groupStyles.main
-  }, showHeader && React__default['default'].createElement(Header, null), childrenWithProps);
+  }, showHeader && React__default["default"].createElement(Header, null), childrenWithProps);
 });
 CheckGroup.Item = checkbox.Checkbox;
 

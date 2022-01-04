@@ -2,11 +2,11 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var _rollupPluginBabelHelpers = require('./_rollupPluginBabelHelpers-95f0bff4.js');
+var _rollupPluginBabelHelpers = require('./_rollupPluginBabelHelpers-d23df5c1.js');
 var React = require('react');
 var reTheme = require('@keg-hub/re-theme');
 var jsutils = require('@keg-hub/jsutils');
-var view = require('./view-3fcb25db.js');
+var view = require('./view-cd2faea4.js');
 var renderFromType = require('./renderFromType.js');
 require('@keg-hub/re-theme/colors');
 var isValidComponent = require('./isValidComponent.js');
@@ -14,8 +14,8 @@ var useThemePath = require('./useThemePath.js');
 require('./useThemeWithHeight.js');
 require('react-native-web');
 var useClassList = require('./useClassList-89a8dbd4.js');
-require('./view.native-895f9104.js');
-require('./useClassName-eec4a5f1.js');
+require('./view.native-a1d03d45.js');
+require('./useClassName-75c55cf8.js');
 require('./updateClassNames.js');
 require('./ensureClassArray.js');
 require('./handleRefUpdate.js');
@@ -26,7 +26,7 @@ function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'defau
 var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 
 var _excluded = ["className", "color", "Component", "Element", "name", "size", "styles", "themePath", "type"];
-var Icon = React__default['default'].forwardRef(function (props, ref) {
+var Icon = React__default["default"].forwardRef(function (props, ref) {
   var theme = reTheme.useTheme();
   var className = props.className,
       color = props.color,
@@ -49,7 +49,7 @@ var Icon = React__default['default'].forwardRef(function (props, ref) {
     color: color || iconStyles.color || jsutils.get(iconStyles, 'icon.color') || jsutils.get(theme, 'typography.default.color'),
     size: parseInt(size || jsutils.get(iconStyles, 'icon.fontSize') || jsutils.get(theme, 'typography.default.fontSize', 15) * 2, 10)
   };
-  return React__default['default'].createElement(view.View, {
+  return React__default["default"].createElement(view.View, {
     className: useClassList.useClassList("keg-icon", className),
     style: iconStyles.container
   }, renderFromType.renderFromType(Element, _rollupPluginBabelHelpers._objectSpread2(_rollupPluginBabelHelpers._objectSpread2({}, attrs), iconProps)));

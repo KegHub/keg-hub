@@ -2,10 +2,10 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var _rollupPluginBabelHelpers = require('./_rollupPluginBabelHelpers-95f0bff4.js');
+var _rollupPluginBabelHelpers = require('./_rollupPluginBabelHelpers-d23df5c1.js');
 var React = require('react');
-var link_wrapper = require('./link.wrapper-958b0c3b.js');
-var kegText = require('./kegText-b0f1b442.js');
+var link_wrapper = require('./link.wrapper-47b6721c.js');
+var kegText = require('./kegText-e14b3c1f.js');
 var touchable = require('./touchable.js');
 var getPlatform = require('./getPlatform-ec53cd5e.js');
 var useClassList = require('./useClassList-89a8dbd4.js');
@@ -14,8 +14,8 @@ require('@keg-hub/jsutils');
 require('./getPressHandler.js');
 require('./getTarget.js');
 require('@keg-hub/re-theme/colors');
-require('./kegText.native-100193df.js');
-require('./useClassName-eec4a5f1.js');
+require('./kegText.native-d2f2e1a3.js');
+require('./useClassName-75c55cf8.js');
 require('./updateClassNames.js');
 require('./ensureClassArray.js');
 require('./handleRefUpdate.js');
@@ -31,7 +31,7 @@ var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 var _excluded = ["children", "className", "elProps", "href", "onPress", "style", "target"];
 var isWeb = getPlatform.getPlatform() === 'web';
 var Text = kegText.KegText('link');
-var Element = React__default['default'].forwardRef(function (props, ref) {
+var Element = React__default["default"].forwardRef(function (props, ref) {
   var children = props.children,
       className = props.className,
       elProps = props.elProps,
@@ -40,11 +40,11 @@ var Element = React__default['default'].forwardRef(function (props, ref) {
       var style = props.style,
       target = props.target,
       attrs = _rollupPluginBabelHelpers._objectWithoutProperties(props, _excluded);
-  return React__default['default'].createElement(touchable.Touchable, _rollupPluginBabelHelpers._extends({
+  return React__default["default"].createElement(touchable.Touchable, _rollupPluginBabelHelpers._extends({
     className: useClassList.useClassList('keg-link', className)
   }, elProps, attrs, {
     touchRef: ref
-  }), React__default['default'].createElement(Text, {
+  }), React__default["default"].createElement(Text, {
     accessibilityRole: "link",
     className: "keg-link-text",
     style: style,
@@ -53,7 +53,7 @@ var Element = React__default['default'].forwardRef(function (props, ref) {
   }, children));
 });
 var Link = function Link(props) {
-  return React__default['default'].createElement(link_wrapper.LinkWrapper, _rollupPluginBabelHelpers._extends({}, props, {
+  return React__default["default"].createElement(link_wrapper.LinkWrapper, _rollupPluginBabelHelpers._extends({}, props, {
     Element: Element,
     isWeb: isWeb
   }));

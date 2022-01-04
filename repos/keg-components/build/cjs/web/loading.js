@@ -3,10 +3,10 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 var React = require('react');
-var view = require('./view-3fcb25db.js');
-var _rollupPluginBabelHelpers = require('./_rollupPluginBabelHelpers-95f0bff4.js');
+var view = require('./view-cd2faea4.js');
+var _rollupPluginBabelHelpers = require('./_rollupPluginBabelHelpers-d23df5c1.js');
 var reactNativeWeb = require('react-native-web');
-var indicator_wrapper = require('./indicator.wrapper-b537ce8c.js');
+var indicator_wrapper = require('./indicator.wrapper-1eeb3eb7.js');
 var getPlatform = require('./getPlatform-ec53cd5e.js');
 var useClassList = require('./useClassList-89a8dbd4.js');
 var text = require('./text.js');
@@ -15,14 +15,14 @@ var isValidComponent = require('./isValidComponent.js');
 require('@keg-hub/re-theme/colors');
 var useThemePath = require('./useThemePath.js');
 require('./useThemeWithHeight.js');
-require('./view.native-895f9104.js');
-require('./useClassName-eec4a5f1.js');
+require('./view.native-a1d03d45.js');
+require('./useClassName-75c55cf8.js');
 require('./updateClassNames.js');
 require('./ensureClassArray.js');
 require('./handleRefUpdate.js');
 require('@keg-hub/re-theme/styleInjector');
-require('./kegText-b0f1b442.js');
-require('./kegText.native-100193df.js');
+require('./kegText-e14b3c1f.js');
+require('./kegText.native-d2f2e1a3.js');
 require('./useTextAccessibility.js');
 require('./useTextStyles.js');
 require('@keg-hub/re-theme');
@@ -41,11 +41,11 @@ var Element = function Element(_ref) {
       size = _ref.size,
       color = _ref.color;
       _rollupPluginBabelHelpers._objectWithoutProperties(_ref, _excluded);
-  return React__default['default'].createElement(view.View, {
+  return React__default["default"].createElement(view.View, {
     className: useClassList.useClassList('keg-indicator', className)
-  }, React__default['default'].createElement(reactNativeWeb.ActivityIndicator, {
+  }, React__default["default"].createElement(reactNativeWeb.ActivityIndicator, {
     size: size,
-    color: style.color || color
+    color: color || style.color
   }));
 };
 var Indicator = function Indicator(_ref2) {
@@ -54,13 +54,13 @@ var Indicator = function Indicator(_ref2) {
       color = _ref2.color,
       styles = _ref2.styles,
       props = _rollupPluginBabelHelpers._objectWithoutProperties(_ref2, _excluded2);
-  return React__default['default'].createElement(indicator_wrapper.IndicatorWrapper, _rollupPluginBabelHelpers._extends({}, props, {
-    alt: alt || 'Loading',
-    size: ['large', 'small'].includes(size) ? size : 'large',
+  return React__default["default"].createElement(indicator_wrapper.IndicatorWrapper, _rollupPluginBabelHelpers._extends({}, props, {
     color: color,
-    Element: Element,
+    isWeb: isWeb,
     styles: styles,
-    isWeb: isWeb
+    Element: Element,
+    alt: alt || 'Loading',
+    size: ['large', 'small'].includes(size) ? size : 'large'
   }));
 };
 
@@ -69,42 +69,46 @@ var Progress = function Progress(props) {
       text$1 = props.text,
       loadIndicator = props.loadIndicator,
       type = props.type,
-      size = props.size;
+      size = props.size,
+      color = props.color;
   var LoadingIndicator = loadIndicator || Indicator;
-  return React__default['default'].createElement(view.View, {
+  return React__default["default"].createElement(view.View, {
     style: styles.progress,
     className: "keg-progress"
-  }, isValidComponent.isValidComponent(LoadingIndicator) ? React__default['default'].createElement(LoadingIndicator, {
-    className: 'keg-loading-indicator',
+  }, isValidComponent.isValidComponent(LoadingIndicator) ? React__default["default"].createElement(LoadingIndicator, {
+    type: type,
     size: size,
+    color: color,
     styles: styles.indicator,
-    type: type
-  }) : text$1 && React__default['default'].createElement(text.Text, {
+    className: 'keg-loading-indicator'
+  }) : text$1 && React__default["default"].createElement(text.Text, {
     className: "keg-progress-text",
     style: styles.text
   }, text$1));
 };
 var Loading = function Loading(props) {
-  var className = props.className,
+  var size = props.size,
+      color = props.color,
+      styles = props.styles,
       children = props.children,
+      themePath = props.themePath,
+      className = props.className,
+      indicator = props.indicator,
       _props$text = props.text,
       text = _props$text === void 0 ? 'Loading' : _props$text,
-      indicator = props.indicator,
-      size = props.size,
-      styles = props.styles,
-      themePath = props.themePath,
       _props$type = props.type,
       type = _props$type === void 0 ? 'default' : _props$type;
   var builtStyles = useThemePath.useThemePath(themePath || "loading.".concat(type), styles);
-  return React__default['default'].createElement(view.View, {
+  return React__default["default"].createElement(view.View, {
     style: builtStyles.main,
     className: useClassList.useClassList('keg-loading', className)
-  }, children || React__default['default'].createElement(Progress, {
-    styles: builtStyles,
+  }, children || React__default["default"].createElement(Progress, {
     text: text,
-    loadIndicator: indicator,
     type: type,
-    size: size
+    size: size,
+    color: color,
+    styles: builtStyles,
+    loadIndicator: indicator
   }));
 };
 

@@ -1,10 +1,10 @@
-import { d as _objectWithoutProperties, e as _extends } from './_rollupPluginBabelHelpers-b49fe34a.js';
+import { d as _objectWithoutProperties, e as _extends } from './_rollupPluginBabelHelpers-eca9940e.js';
 import React__default from 'react';
 import { useTheme } from '@keg-hub/re-theme';
 import { get, noPropObj } from '@keg-hub/jsutils';
-import { V as View } from './view-9c41ec1e.js';
+import { V as View } from './view-86879139.js';
 import { Button } from './button.js';
-import { I as Icon } from './icon-ad5d7324.js';
+import { I as Icon } from './icon-ba691808.js';
 import './caption.js';
 import './h1.js';
 import './h2.js';
@@ -25,8 +25,8 @@ import { useAccessibilityRole } from './useAccessibilityRole.js';
 import { useThemePath } from './useThemePath.js';
 import './useThemeWithHeight.js';
 import 'react-native-web';
-import './view.native-2491eb60.js';
-import './useClassName-ed83df40.js';
+import './view.native-f56118b2.js';
+import './useClassName-52067a95.js';
 import './updateClassNames.js';
 import './ensureClassArray.js';
 import './handleRefUpdate.js';
@@ -34,10 +34,10 @@ import '@keg-hub/re-theme/styleInjector';
 import './touchable.js';
 import './getPressHandler.js';
 import './getActiveOpacity.js';
-import './useThemeTypeAsClass-fb17085e.js';
+import './useThemeTypeAsClass-1d2ed78d.js';
 import './colors-6402d3b3.js';
-import './kegText-9f80996b.js';
-import './kegText.native-6bbad9e4.js';
+import './kegText-d18b7a12.js';
+import './kegText.native-ba7d1c9c.js';
 import './useTextAccessibility.js';
 import './useTextStyles.js';
 
@@ -99,7 +99,8 @@ var Center = function Center(props) {
   return React__default.createElement(View, {
     className: "keg-header-center",
     style: styles.main
-  }, children && renderFromType(children, {}, null) || title && React__default.createElement(H5, {
+  }, children && renderFromType(children, {}, null) ||
+  title && React__default.createElement(H5, {
     className: "keg-header-center-title",
     ellipsis: ellipsis,
     style: styles.content.title

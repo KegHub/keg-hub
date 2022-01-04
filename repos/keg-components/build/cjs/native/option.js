@@ -22,7 +22,7 @@ var Option = function Option(props) {
       children = props.children,
       text = props.text,
       value = props.value;
-  return React__default['default'].createElement(SelectOption, {
+  return React__default["default"].createElement(SelectOption, {
     label: getVal(label, value, text),
     value: getVal(value, text, children, label)
   });

@@ -2,13 +2,13 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var _rollupPluginBabelHelpers = require('./_rollupPluginBabelHelpers-95f0bff4.js');
+var _rollupPluginBabelHelpers = require('./_rollupPluginBabelHelpers-d23df5c1.js');
 var React = require('react');
 var reTheme = require('@keg-hub/re-theme');
 var jsutils = require('@keg-hub/jsutils');
-var view_native = require('./view.native-5d72f4dd.js');
+var view_native = require('./view.native-6338852a.js');
 var button = require('./button.js');
-var icon = require('./icon-9317be7c.js');
+var icon = require('./icon-a5269604.js');
 require('./caption.js');
 require('./h1.js');
 require('./h2.js');
@@ -29,13 +29,13 @@ var useThemePath = require('./useThemePath.js');
 require('./useThemeWithHeight.js');
 require('react-native');
 require('./useClassName.native-3d1a229b.js');
-require('./touchable-548d2782.js');
+require('./touchable-62a31fcc.js');
 require('./touchable.js');
 require('@keg-hub/re-theme/styleInjector');
 require('./getPressHandler.js');
 require('./getActiveOpacity.js');
 require('./useThemeTypeAsClass.native-90f04031.js');
-require('./kegText-e1842e1b.js');
+require('./kegText-d4479e6a.js');
 require('./kegText.js');
 require('./useTextAccessibility.js');
 require('./useTextStyles.js');
@@ -71,23 +71,23 @@ var ItemHeader = function ItemHeader(props) {
       elProps = _rollupPluginBabelHelpers._objectWithoutProperties(props, _excluded);
   var headerStyles = useThemePath.useThemePath(themePath || "header.itemHeader", styles);
   var accessibilityRoleObj = useAccessibilityRole.useAccessibilityRole(accessibilityRole, 'header');
-  return React__default['default'].createElement(view_native.View, _rollupPluginBabelHelpers._extends({
+  return React__default["default"].createElement(view_native.View, _rollupPluginBabelHelpers._extends({
     className: useClassList_native.useClassList()
   }, elProps, accessibilityRoleObj, {
     style: [headerStyles.main, appHeader && jsutils.get(headerStyles, ['appHeader', 'main']), shadow && jsutils.get(headerStyles, ['shadow', 'main'])]
-  }), shadow && React__default['default'].createElement(view_native.View, {
+  }), shadow && React__default["default"].createElement(view_native.View, {
     style: headerStyles === null || headerStyles === void 0 ? void 0 : (_headerStyles$shadow = headerStyles.shadow) === null || _headerStyles$shadow === void 0 ? void 0 : _headerStyles$shadow.cover
-  }), children || React__default['default'].createElement(React__default['default'].Fragment, null, React__default['default'].createElement(Side, {
+  }), children || React__default["default"].createElement(React__default["default"].Fragment, null, React__default["default"].createElement(Side, {
     styles: headerStyles.content,
     iconName: leftIcon,
     IconElement: LeftIconComponent || IconComponent,
     action: onLeftClick
-  }, LeftComponent), React__default['default'].createElement(Center, {
+  }, LeftComponent), React__default["default"].createElement(Center, {
     ellipsis: ellipsis,
     theme: theme,
     styles: (_headerStyles$content = headerStyles.content) === null || _headerStyles$content === void 0 ? void 0 : _headerStyles$content.center,
     title: title
-  }, CenterComponent), React__default['default'].createElement(Side, {
+  }, CenterComponent), React__default["default"].createElement(Side, {
     right: true,
     styles: headerStyles.content,
     iconName: rightIcon,
@@ -101,10 +101,11 @@ var Center = function Center(props) {
       _props$ellipsis = props.ellipsis,
       ellipsis = _props$ellipsis === void 0 ? true : _props$ellipsis,
       children = props.children;
-  return React__default['default'].createElement(view_native.View, {
+  return React__default["default"].createElement(view_native.View, {
     className: "keg-header-center",
     style: styles.main
-  }, children && renderFromType.renderFromType(children, {}, null) || title && React__default['default'].createElement(h5.H5, {
+  }, children && renderFromType.renderFromType(children, {}, null) ||
+  title && React__default["default"].createElement(h5.H5, {
     className: "keg-header-center-title",
     ellipsis: ellipsis,
     style: styles.content.title
@@ -126,17 +127,17 @@ var Side = function Side(props) {
     position: position
   };
   var showIcon = isValidComponent.isValidComponent(IconElement);
-  return React__default['default'].createElement(view_native.View, {
+  return React__default["default"].createElement(view_native.View, {
     className: "keg-header-".concat(position),
     style: jsutils.get(styles, [position, 'main'])
-  }, children && renderFromType.renderFromType(children, {}, null) || (action ? React__default['default'].createElement(button.Button, {
+  }, children && renderFromType.renderFromType(children, {}, null) || (action ? React__default["default"].createElement(button.Button, {
     className: "keg-header-".concat(position, "-button"),
     styles: contentStyles.button,
     onClick: action
-  }, showIcon && React__default['default'].createElement(CustomIcon, iconProps)) : showIcon && React__default['default'].createElement(view_native.View, {
+  }, showIcon && React__default["default"].createElement(CustomIcon, iconProps)) : showIcon && React__default["default"].createElement(view_native.View, {
     className: "keg-header-".concat(position, "-icon"),
     style: contentStyles.main
-  }, React__default['default'].createElement(CustomIcon, iconProps))));
+  }, React__default["default"].createElement(CustomIcon, iconProps))));
 };
 var CustomIcon = function CustomIcon(props) {
   var className = props.className,
@@ -144,7 +145,7 @@ var CustomIcon = function CustomIcon(props) {
       IconElement = props.IconElement,
       position = props.position,
       styles = props.styles;
-  return React__default['default'].createElement(icon.Icon, {
+  return React__default["default"].createElement(icon.Icon, {
     className: className,
     name: iconName,
     Element: IconElement,

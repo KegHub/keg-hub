@@ -2,8 +2,8 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var _rollupPluginBabelHelpers = require('./_rollupPluginBabelHelpers-95f0bff4.js');
-var view = require('./view-3fcb25db.js');
+var _rollupPluginBabelHelpers = require('./_rollupPluginBabelHelpers-d23df5c1.js');
+var view = require('./view-cd2faea4.js');
 var jsutils = require('@keg-hub/jsutils');
 var React = require('react');
 var getPlatform = require('./getPlatform-ec53cd5e.js');
@@ -12,8 +12,8 @@ require('@keg-hub/re-theme/colors');
 var useThemePath = require('./useThemePath.js');
 require('./useThemeWithHeight.js');
 var reactNativeWeb = require('react-native-web');
-var useClassName = require('./useClassName-eec4a5f1.js');
-require('./view.native-895f9104.js');
+var useClassName = require('./useClassName-75c55cf8.js');
+require('./view.native-a1d03d45.js');
 require('@keg-hub/re-theme/styleInjector');
 require('@keg-hub/re-theme');
 require('./updateClassNames.js');
@@ -29,7 +29,7 @@ var isWeb = getPlatform.getPlatform() === 'web';
 var noAnimate = function noAnimate(toggled, current, collapsedHeight, contentMaxHeight) {
   return !toggled && current === collapsedHeight || toggled && current === contentMaxHeight;
 };
-var Drawer = React__default['default'].forwardRef(function (props, ref) {
+var Drawer = React__default["default"].forwardRef(function (props, ref) {
   var Element = props.Element,
       styles = props.styles,
       toggled = props.toggled,
@@ -72,16 +72,16 @@ var Drawer = React__default['default'].forwardRef(function (props, ref) {
   }, [toggled, type, config, collapsedHeight]);
   var drawerStyles = useThemePath.useThemePath("drawer", styles);
   var classRef = useClassName.useClassName('keg-drawer', className, ref);
-  return React__default['default'].createElement(reactNativeWeb.Animated.View, {
+  return React__default["default"].createElement(reactNativeWeb.Animated.View, {
     ref: classRef,
     style: [drawerStyles.main, jsutils.get(styles, 'main'), {
       maxHeight: animation
     }]
-  }, React__default['default'].createElement(view.View, {
+  }, React__default["default"].createElement(view.View, {
     className: "keg-drawer-content",
     onLayout: setMaxHeight,
     style: jsutils.get(styles, 'content')
-  }, isValidComponent.isValidComponent(Element) ? React__default['default'].createElement(Element, _rollupPluginBabelHelpers._extends({}, childProps, {
+  }, isValidComponent.isValidComponent(Element) ? React__default["default"].createElement(Element, _rollupPluginBabelHelpers._extends({}, childProps, {
     styles: styles
   })) : props.children));
 });

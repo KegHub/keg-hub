@@ -1,10 +1,10 @@
-import { _ as _objectSpread2 } from './_rollupPluginBabelHelpers-b49fe34a.js';
+import { _ as _objectSpread2 } from './_rollupPluginBabelHelpers-eca9940e.js';
 import { reStyle } from '@keg-hub/re-theme/reStyle';
-import { V as View } from './view-9c41ec1e.js';
-import './view.native-2491eb60.js';
+import { V as View } from './view-86879139.js';
+import './view.native-f56118b2.js';
 import 'react';
 import 'react-native-web';
-import './useClassName-ed83df40.js';
+import './useClassName-52067a95.js';
 import './updateClassNames.js';
 import './ensureClassArray.js';
 import '@keg-hub/jsutils';
@@ -15,7 +15,6 @@ var SelectView = reStyle(View)(function (_, props) {
   return _objectSpread2({
     height: props.height
   }, {
-    display: props.visible ? 'block' : 'none',
     width: '100%',
     overflowY: 'auto',
     overflowX: 'hidden'

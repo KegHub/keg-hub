@@ -1,6 +1,6 @@
-import { d as _objectWithoutProperties, b as _slicedToArray, e as _extends, _ as _objectSpread2 } from './_rollupPluginBabelHelpers-b49fe34a.js';
+import { d as _objectWithoutProperties, b as _slicedToArray, e as _extends, _ as _objectSpread2 } from './_rollupPluginBabelHelpers-eca9940e.js';
 import React__default, { useCallback } from 'react';
-import { get, isNum, noOp } from '@keg-hub/jsutils';
+import { get, isNum, isFunc, noOp } from '@keg-hub/jsutils';
 import { Touchable } from './touchable.js';
 import { Text } from './text.js';
 import { renderFromType } from './renderFromType.js';
@@ -10,23 +10,23 @@ import '@keg-hub/re-theme/colors';
 import { useThemePath } from './useThemePath.js';
 import './useThemeWithHeight.js';
 import 'react-native-web';
-import { u as useThemeTypeAsClass } from './useThemeTypeAsClass-fb17085e.js';
+import { u as useThemeTypeAsClass } from './useThemeTypeAsClass-1d2ed78d.js';
 import { useThemeHover, useThemeActive } from '@keg-hub/re-theme';
 import { reStyle } from '@keg-hub/re-theme/reStyle';
-import './useClassName-ed83df40.js';
+import './useClassName-52067a95.js';
 import './updateClassNames.js';
 import './ensureClassArray.js';
 import './handleRefUpdate.js';
 import '@keg-hub/re-theme/styleInjector';
-import './kegText-9f80996b.js';
-import './kegText.native-6bbad9e4.js';
+import './kegText-d18b7a12.js';
+import './kegText.native-ba7d1c9c.js';
 import './useTextAccessibility.js';
 import './useTextStyles.js';
 import './isValidComponent.js';
 import './colors-6402d3b3.js';
 import './useClassList-1d418045.js';
 
-var _excluded = ["className", "children", "content", "onClick", "onPress", "styles", "showFeedback", "type", "themePath", "activeOpacity", "disabled", "selectable"];
+var _excluded$1 = ["className", "children", "content", "onClick", "onPress", "styles", "showFeedback", "type", "themePath", "activeOpacity", "disabled", "selectable"];
 var getChildren = function getChildren(Children, _ref) {
   var styles = _ref.styles,
       selectable = _ref.selectable;
@@ -55,7 +55,7 @@ var Button = React__default.forwardRef(function (props, ref) {
       disabled = _props$disabled === void 0 ? false : _props$disabled,
       _props$selectable = props.selectable,
       selectable = _props$selectable === void 0 ? false : _props$selectable,
-      elProps = _objectWithoutProperties(props, _excluded);
+      elProps = _objectWithoutProperties(props, _excluded$1);
   var btnStyles = useThemePath(themePath || "button.contained.".concat(type), styles);
   var _useThemeHover = useThemeHover(get(btnStyles, 'default', {}), get(btnStyles, 'hover'), {
     ref: ref
@@ -84,6 +84,7 @@ var Button = React__default.forwardRef(function (props, ref) {
   }, getPressHandler(false, onClick, onPress), getActiveOpacity(false, props, btnStyles)));
 });
 
+var _excluded = ["item", "className", "renderItem", "onSelect", "highlighted", "styles"];
 var SelectButton = reStyle(Button, 'styles')(function (theme, props) {
   var palette = theme.colors.palette;
   var content = {
@@ -115,21 +116,32 @@ var SelectButton = reStyle(Button, 'styles')(function (theme, props) {
 });
 var SelectItem = React__default.forwardRef(function (props, ref) {
   var item = props.item,
+      className = props.className,
+      renderItem = props.renderItem,
       _props$onSelect = props.onSelect,
       onSelect = _props$onSelect === void 0 ? noOp : _props$onSelect,
       _props$highlighted = props.highlighted,
       highlighted = _props$highlighted === void 0 ? false : _props$highlighted,
-      styles = props.styles;
+      styles = props.styles,
+      btnProps = _objectWithoutProperties(props, _excluded);
   var handlePress = useCallback(function () {
     return onSelect(item);
   }, [item, onSelect]);
-  return React__default.createElement(SelectButton, {
+  return isFunc(renderItem) ? renderItem(_objectSpread2(_objectSpread2({}, btnProps), {}, {
     ref: ref,
+    item: item,
+    styles: styles,
+    className: className,
+    highlighted: highlighted,
+    onSelect: handlePress
+  })) : React__default.createElement(SelectButton, _extends({}, btnProps, {
+    ref: ref,
+    styles: styles,
     content: item.text,
     onPress: handlePress,
-    styles: styles,
-    highlighted: highlighted
-  });
+    highlighted: highlighted,
+    className: ["keg-select-button", className]
+  }));
 });
 
 export { SelectItem };

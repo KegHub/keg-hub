@@ -1,15 +1,15 @@
-import { d as _objectWithoutProperties, e as _extends } from './_rollupPluginBabelHelpers-b49fe34a.js';
+import { d as _objectWithoutProperties, e as _extends } from './_rollupPluginBabelHelpers-eca9940e.js';
 import React__default from 'react';
-import { useTheme } from '@keg-hub/re-theme';
-import { get } from '@keg-hub/jsutils';
 import { Container } from './container.js';
+import { useStyle } from '@keg-hub/re-theme';
 import { u as useClassList } from './useClassList-1d418045.js';
-import './view-9c41ec1e.js';
-import './view.native-2491eb60.js';
+import './view-86879139.js';
+import './view.native-f56118b2.js';
 import 'react-native-web';
-import './useClassName-ed83df40.js';
+import './useClassName-52067a95.js';
 import './updateClassNames.js';
 import './ensureClassArray.js';
+import '@keg-hub/jsutils';
 import './handleRefUpdate.js';
 import '@keg-hub/re-theme/styleInjector';
 import './getPlatform-95568099.js';
@@ -22,11 +22,12 @@ var Row = function Row(_ref) {
       children = _ref.children,
       style = _ref.style,
       props = _objectWithoutProperties(_ref, _excluded);
-  var theme = useTheme();
+  var classNames = useClassList('keg-row', className);
+  var containerStyles = useStyle("layout.grid.row", style);
   return React__default.createElement(Container, _extends({}, props, {
-    className: useClassList('keg-row', className),
-    style: [get(theme, 'layout.grid.row'), style],
-    flexDir: "row"
+    flexDir: "row",
+    className: classNames,
+    style: containerStyles
   }), children);
 };
 

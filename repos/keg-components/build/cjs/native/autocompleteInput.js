@@ -2,10 +2,10 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var _rollupPluginBabelHelpers = require('./_rollupPluginBabelHelpers-95f0bff4.js');
+var _rollupPluginBabelHelpers = require('./_rollupPluginBabelHelpers-d23df5c1.js');
 var React = require('react');
 var jsutils = require('@keg-hub/jsutils');
-var input = require('./input-a5dc65b1.js');
+var input = require('./input-c05b0a13.js');
 require('./getInputValue.js');
 require('./getReadOnly.js');
 require('@keg-hub/re-theme/colors');
@@ -16,7 +16,7 @@ require('./useThemePath.js');
 require('@keg-hub/re-theme');
 require('./useThemeWithHeight.js');
 require('react-native');
-require('./input-064b67c5.js');
+require('./input-bb740648.js');
 require('./useClassName.native-3d1a229b.js');
 require('@keg-hub/re-theme/styleInjector');
 
@@ -46,7 +46,7 @@ var AutocompleteInput = function AutocompleteInput(_ref2) {
   var onEnterPress = React.useCallback(function () {
     return selectItem === null || selectItem === void 0 ? void 0 : selectItem(items[highlightedIndex]);
   }, [items, selectItem]);
-  return React__default['default'].createElement(input.Input, _rollupPluginBabelHelpers._extends({
+  return React__default["default"].createElement(input.Input, _rollupPluginBabelHelpers._extends({
     onKeyPress: onKeyPress,
     onSubmitEditing: onEnterPress,
     useTouch: false

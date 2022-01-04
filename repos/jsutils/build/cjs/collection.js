@@ -2,11 +2,11 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var shallowEqual = require('./shallowEqual-420e75a0.js');
-var get = require('./get-a3872853.js');
+var shallowEqual = require('./shallowEqual-f2541ca9.js');
+var get = require('./get-cc9c5918.js');
 var isColl = require('./isColl-5757310a.js');
-var set = require('./set-e19acd5e.js');
-var deepClone = require('./deepClone-4dc3bb5a.js');
+var set = require('./set-3b55c837.js');
+var deepClone = require('./deepClone-71e5fc2d.js');
 require('./isObj-6b3aa807.js');
 require('./isArr-39234014.js');
 require('./isFunc-f93803cb.js');

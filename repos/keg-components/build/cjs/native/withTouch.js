@@ -2,9 +2,9 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var _rollupPluginBabelHelpers = require('./_rollupPluginBabelHelpers-95f0bff4.js');
+var _rollupPluginBabelHelpers = require('./_rollupPluginBabelHelpers-d23df5c1.js');
 var React = require('react');
-var touchable = require('./touchable-548d2782.js');
+var touchable = require('./touchable-62a31fcc.js');
 var reTheme = require('@keg-hub/re-theme');
 var jsutils = require('@keg-hub/jsutils');
 require('./touchable.js');
@@ -21,7 +21,7 @@ var withTouch = function withTouch(Component) {
   var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
   var _options$showFeedback = options.showFeedback,
       showFeedback = _options$showFeedback === void 0 ? true : _options$showFeedback;
-  var wrapped = React__default['default'].forwardRef(function (props, ref) {
+  var wrapped = React__default["default"].forwardRef(function (props, ref) {
     var _props$touchThemePath = props.touchThemePath,
         touchThemePath = _props$touchThemePath === void 0 ? '' : _props$touchThemePath,
         _props$touchStyle = props.touchStyle,
@@ -29,11 +29,11 @@ var withTouch = function withTouch(Component) {
         onPress = props.onPress,
         otherProps = _rollupPluginBabelHelpers._objectWithoutProperties(props, _excluded);
     var theme = reTheme.useTheme();
-    return React__default['default'].createElement(touchable.Touchable, {
+    return React__default["default"].createElement(touchable.Touchable, {
       showFeedback: showFeedback,
       style: [jsutils.get(theme, touchThemePath), touchStyle],
       onPress: onPress
-    }, React__default['default'].createElement(Component, _rollupPluginBabelHelpers._extends({
+    }, React__default["default"].createElement(Component, _rollupPluginBabelHelpers._extends({
       ref: ref
     }, otherProps)));
   });

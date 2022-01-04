@@ -1,8 +1,8 @@
-import { d as _objectWithoutProperties, e as _extends } from './_rollupPluginBabelHelpers-b49fe34a.js';
+import { d as _objectWithoutProperties, e as _extends } from './_rollupPluginBabelHelpers-eca9940e.js';
 import React__default from 'react';
 import { ActivityIndicator } from 'react-native';
-import { I as IndicatorWrapper } from './indicator.wrapper-a8ba0314.js';
-import { V as View } from './view.native-f7a27d15.js';
+import { I as IndicatorWrapper } from './indicator.wrapper-e2c86f6b.js';
+import { V as View } from './view.native-16eca0a6.js';
 import { g as getPlatform } from './getPlatform-e625f46a.js';
 import { u as useClassList } from './useClassList.native-70068878.js';
 import '@keg-hub/jsutils';
@@ -26,7 +26,7 @@ var Element = function Element(_ref) {
     className: useClassList()
   }, React__default.createElement(ActivityIndicator, {
     size: size,
-    color: style.color || color
+    color: color || style.color
   }));
 };
 var Indicator = function Indicator(_ref2) {
@@ -36,12 +36,12 @@ var Indicator = function Indicator(_ref2) {
       styles = _ref2.styles,
       props = _objectWithoutProperties(_ref2, _excluded2);
   return React__default.createElement(IndicatorWrapper, _extends({}, props, {
-    alt: alt || 'Loading',
-    size: ['large', 'small'].includes(size) ? size : 'large',
     color: color,
-    Element: Element,
+    isWeb: isWeb,
     styles: styles,
-    isWeb: isWeb
+    Element: Element,
+    alt: alt || 'Loading',
+    size: ['large', 'small'].includes(size) ? size : 'large'
   }));
 };
 
