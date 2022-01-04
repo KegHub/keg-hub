@@ -2,20 +2,19 @@ import { addThemeEvent } from '../theme/themeEvent'
 import { Constants } from '../constants'
 import { ruleOverrides } from '../constants/ruleOverrides'
 import {
-  hashString,
-  hasDomAccess,
   isArr,
   isStr,
+  isObj,
   exists,
-  omitKeys,
-  pickKeys,
+  noPropArr,
+  hashString,
+  hasDomAccess,
+  splitByKeys,
 } from '@keg-hub/jsutils'
 
 /**
  * Cache the current environment
  */
-const { NODE_ENV } = process.env
-const isProduction = NODE_ENV === 'production'
 const domAccess = hasDomAccess()
 
 /**
@@ -45,7 +44,9 @@ const selectorExists = selector => selectorCache.has(selector)
  */
 const getKegSheet = () => {
   KegStyleSheet =
-    KegStyleSheet || document.head.querySelector(Constants.KEG_STYLES_TAG_ID)
+    KegStyleSheet ||
+    document.head.querySelector(`#${Constants.KEG_STYLES_TAG_ID}`)
+
   return KegStyleSheet
 }
 
@@ -62,9 +63,56 @@ export const filterRules = (style, filter) => {
   const toFilter = isArr(filter)
     ? ruleOverrides.filter.concat(filter)
     : ruleOverrides.filter
+
+  // Ensure the object is a style object, an not multi-layered object
+  const hasSubStyles = Boolean(
+    Object.entries(style).filter(
+      ([ key, val ]) =>
+        /**
+         * Some style rules are allowed to be object
+         * Those rules are defined in the allowedStyleObject Array
+         * So if the value is an object, but not in the allowedStyleObject Array
+         * Then it is assumed to be a multi-layered style object
+         * In this case, we don't want to process these styles
+         * They are skipped and passed on to the component
+         * @example
+         * const styles = {content: {item: {color: '#ffffff'}}}
+         */
+        isObj(val) && !ruleOverrides.allowedStyleObject.includes(key)
+    ).length
+  )
+
+  if (hasSubStyles) return { filtered: style }
+
+  const [ filtered, keep ] = splitByKeys(style, toFilter)
+
   return {
-    style: omitKeys(style, toFilter),
-    filtered: pickKeys(style, toFilter),
+    style: keep,
+    filtered: filtered,
+  }
+}
+
+const formatSelectors = (hashClass, classNames, prefix, maxSelectors) => {
+  /**
+   * Allow setting how many selectors are added to the element via maxSelectors
+   * @example
+   * //                   Index 0      Index 1      Index 2
+   * const selectors = [`selector0`, `selector1`, `selector2`]
+   * const maxSelectors === 2
+   * selectors.slice(0, maxSelectors) === [`selector0`, `selector1`]
+   *
+   */
+  const selectorAmount = exists(maxSelectors) ? maxSelectors : 1
+  const selectors = classNames
+    .filter(cls => (cls && prefix ? cls.startsWith(prefix) : cls))
+    .reverse()
+    .slice(0, selectorAmount)
+    .sort()
+
+  return {
+    selector: `.${selectors.concat([hashClass]).join('.')}`.trim(),
+    classNames: classNames.concat([hashClass]).join(' ')
+      .trim(),
   }
 }
 
@@ -73,29 +121,23 @@ export const filterRules = (style, filter) => {
  * @function
  * @param {string|Array<string>} className - Original className(s) used as a css selector
  * @param {string} cssString - Css rules for the className in string format
- * @param {string=} filterPrefix - optional prefix to filter by
+ * @param {string=} prefix - optional prefix to filter by
  *
  * @returns {{hashClass:string, selector:string}} - returns selector string and hashClass string
  */
-export const getSelector = (className, cssString, filterPrefix) => {
-  // filter by prefix if passed in
-  const filterWithPrefix = cls => {
-    return cls && filterPrefix ? cls.startsWith(filterPrefix) : cls
-  }
+export const getSelector = (className, cssString, prefix, maxSelectors) => {
+  const hashClass = `${prefix}-${hashString(cssString)}`
 
-  const selector = !exists(className)
-    ? false
-    : isArr(className)
-      ? className.filter(filterWithPrefix).pop()
-      : isStr(className) && className.split(' ').filter(filterWithPrefix)
-        .pop()
+  const { selector, classNames } = isArr(className)
+    ? formatSelectors(hashClass, className, prefix, maxSelectors)
+    : isStr(className)
+      ? formatSelectors(hashClass, className.split(' '), prefix, maxSelectors)
+      : formatSelectors(hashClass, noPropArr, prefix, maxSelectors)
 
-  const hashClass = `keg-${hashString(cssString)}`
   return {
     hashClass,
-    selector: selector
-      ? `.${selector.trim()}.${hashClass}`.trim()
-      : `.${hashClass}`.trim(),
+    classNames,
+    selector: selectorExists(selector) ? false : selector,
   }
 }
 
@@ -115,14 +157,7 @@ export const addStylesToDom = (selector, css) => {
   // So next time we can look up if the size changed
   selectorCache.add(selector)
   const KegSheet = getKegSheet()
-  // The insertRule method is a lot faster then append method
-  // But it does not allow you to see the styles in the inspector
-  // So we only want to use it when in production
-  // We have to wrap it in @media all selector
-  // This is due to the limitations of insertRule requiring the css to be wrapped
-  isProduction
-    ? KegSheet.sheet.insertRule(`@media all {${css.all}}`)
-    : KegSheet.append(css.all)
+  KegSheet.sheet.insertRule(`@media all {${css.all}}`)
 }
 
 /**
@@ -152,7 +187,7 @@ addThemeEvent(Constants.BUILD_EVENT, clearStyleSheet)
 ;(() => {
   if (!domAccess) return
 
-  KegStyleSheet = document.head.querySelector(Constants.KEG_STYLES_TAG_ID)
+  KegStyleSheet = document.head.querySelector(`#${Constants.KEG_STYLES_TAG_ID}`)
 
   if (KegStyleSheet) return KegStyleSheet
 

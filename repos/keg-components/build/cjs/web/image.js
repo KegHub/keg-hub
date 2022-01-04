@@ -2,11 +2,11 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var _rollupPluginBabelHelpers = require('./_rollupPluginBabelHelpers-95f0bff4.js');
-var view = require('./view-3fcb25db.js');
+var _rollupPluginBabelHelpers = require('./_rollupPluginBabelHelpers-d23df5c1.js');
+var view = require('./view-cd2faea4.js');
 var loading = require('./loading.js');
 var jsutils = require('@keg-hub/jsutils');
-var image = require('./image-5ba5f8b8.js');
+var image = require('./image-1297b42f.js');
 var reTheme = require('@keg-hub/re-theme');
 var React = require('react');
 var getPressHandler = require('./getPressHandler.js');
@@ -17,16 +17,16 @@ require('./useThemeWithHeight.js');
 require('react-native-web');
 var useClassList = require('./useClassList-89a8dbd4.js');
 var styleInjector = require('@keg-hub/re-theme/styleInjector');
-require('./view.native-895f9104.js');
-require('./useClassName-eec4a5f1.js');
+require('./view.native-a1d03d45.js');
+require('./useClassName-75c55cf8.js');
 require('./updateClassNames.js');
 require('./ensureClassArray.js');
 require('./handleRefUpdate.js');
-require('./indicator.wrapper-b537ce8c.js');
+require('./indicator.wrapper-1eeb3eb7.js');
 require('./getPlatform-ec53cd5e.js');
 require('./text.js');
-require('./kegText-b0f1b442.js');
-require('./kegText.native-100193df.js');
+require('./kegText-e14b3c1f.js');
+require('./kegText.native-d2f2e1a3.js');
 require('./useTextAccessibility.js');
 require('./useTextStyles.js');
 require('./isValidComponent.js');
@@ -77,13 +77,13 @@ var Image = React.forwardRef(function (props, ref) {
     jsutils.checkCall(props.onLoad, props);
     jsutils.isFunc(imgRef) ? imgRef(internalRef.current) : imgRef && (imgRef.current = internalRef.current);
   }, [src, source, internalRef.current]);
-  return React__default['default'].createElement(view.View, {
+  return React__default["default"].createElement(view.View, {
     className: useClassList.useClassList("keg-image-container", className),
     style: builtStyles.container
-  }, loading$1 && useLoading && React__default['default'].createElement(loading.Loading, {
+  }, loading$1 && useLoading && React__default["default"].createElement(loading.Loading, {
     className: "keg-image-loading",
     styles: builtStyles.loadingComp
-  }), React__default['default'].createElement(KegImage, _rollupPluginBabelHelpers._extends({}, attrs, {
+  }), React__default["default"].createElement(KegImage, _rollupPluginBabelHelpers._extends({}, attrs, {
     style: loading$1 ? loadingStyles : builtStyles.image
   }, getPressHandler.getPressHandler(false, onClick, onPress), getImgSrc.getImgSrc(false, src, source), {
     onLoadEnd: onLoad,

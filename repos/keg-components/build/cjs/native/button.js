@@ -2,10 +2,10 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var _rollupPluginBabelHelpers = require('./_rollupPluginBabelHelpers-95f0bff4.js');
+var _rollupPluginBabelHelpers = require('./_rollupPluginBabelHelpers-d23df5c1.js');
 var React = require('react');
 var jsutils = require('@keg-hub/jsutils');
-var touchable = require('./touchable-548d2782.js');
+var touchable = require('./touchable-62a31fcc.js');
 var text = require('./text.js');
 var renderFromType = require('./renderFromType.js');
 var getPressHandler = require('./getPressHandler.js');
@@ -19,7 +19,7 @@ var reTheme = require('@keg-hub/re-theme');
 require('./touchable.js');
 require('./useClassName.native-3d1a229b.js');
 require('@keg-hub/re-theme/styleInjector');
-require('./kegText-e1842e1b.js');
+require('./kegText-d4479e6a.js');
 require('./kegText.js');
 require('./useTextAccessibility.js');
 require('./useTextStyles.js');
@@ -41,7 +41,7 @@ var getChildren = function getChildren(Children, _ref) {
 var checkDisabled = function checkDisabled(mainStyles, btnStyles, disabled) {
   return disabled ? _rollupPluginBabelHelpers._objectSpread2(_rollupPluginBabelHelpers._objectSpread2({}, mainStyles), jsutils.get(btnStyles, 'disabled.main')) : mainStyles;
 };
-var Button = React__default['default'].forwardRef(function (props, ref) {
+var Button = React__default["default"].forwardRef(function (props, ref) {
   props.className;
       var children = props.children,
       content = props.content,
@@ -72,7 +72,7 @@ var Button = React__default['default'].forwardRef(function (props, ref) {
       _useThemeActive2 = _rollupPluginBabelHelpers._slicedToArray(_useThemeActive, 2),
       themeRef = _useThemeActive2[0],
       themeStyles = _useThemeActive2[1];
-  return React__default['default'].createElement(touchable.Touchable, _rollupPluginBabelHelpers._extends({
+  return React__default["default"].createElement(touchable.Touchable, _rollupPluginBabelHelpers._extends({
     accessibilityRole: "button",
     className: useThemeTypeAsClass_native.useThemeTypeAsClass()
   }, elProps, {

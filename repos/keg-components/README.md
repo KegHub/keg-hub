@@ -8,7 +8,7 @@
 ```
 
 ## Developer setup
-* `git clone https://github.com/KegHub/keg-hub.git ~/keg-hub`
+* `git clone https://github.com/keg-hub/keg-hub.git ~/keg-hub`
 * `cd ~/keg-hub/repos/keg-components`
 * `yarn install`
 * `yarn sb` - local storybook
@@ -19,7 +19,7 @@
 
 ## Theming
 
-Keg Components leverages [re-theme](https://github.com/KegHub/re-theme) for dynamic theming across platforms and viewport sizes
+Keg Components leverages [re-theme](https://github.com/keg-hub/re-theme) for dynamic theming across platforms and viewport sizes
 
 ### Theme objects
 * For new components, create and export your theme objects in `src/theme/components`

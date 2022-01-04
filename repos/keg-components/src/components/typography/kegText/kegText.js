@@ -1,22 +1,8 @@
-import React, { useMemo } from 'react'
+import React from 'react'
 import { capitalize } from '@keg-hub/jsutils'
 import { KegText as NativeText } from './kegText.native'
 import { StyleInjector } from '@keg-hub/re-theme/styleInjector'
 import { useTextStyles } from '../../../hooks/useTextStyles'
-
-/**
- * @summary Custom hook to memoize the Text component
- *
- * @param {string} element - Name of the text element
- */
-const useTextComponent = element => {
-  return useMemo(() => {
-    return StyleInjector(NativeText(element), {
-      displayName: capitalize(element),
-      className: `keg-${element}`,
-    })
-  }, [element])
-}
 
 /**
  * KegText
@@ -25,9 +11,14 @@ const useTextComponent = element => {
  * @param {string} element - Name of the text element
  */
 export const KegText = element => {
+  // Build the Text Component with the StyleInjector
+  const Text = StyleInjector(NativeText(element), {
+    className: `keg-${element}`,
+    displayName: capitalize(element),
+  })
+
   return React.forwardRef((props, ref) => {
     const textStyles = useTextStyles(element)
-    const Text = useTextComponent(element)
 
     return <Text
       {...props}

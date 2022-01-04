@@ -3,26 +3,26 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 var React = require('react');
-var view = require('./view-3fcb25db.js');
+var view = require('./view-cd2faea4.js');
 var text = require('./text.js');
 var jsutils = require('@keg-hub/jsutils');
-require('./icon-c7ba25ca.js');
+require('./icon-24e9ba81.js');
 var touchableIcon = require('./touchableIcon.js');
-var svgIcon = require('./svgIcon-bb2d3711.js');
-var _rollupPluginBabelHelpers = require('./_rollupPluginBabelHelpers-95f0bff4.js');
+var svgIcon = require('./svgIcon-f66eed54.js');
+var _rollupPluginBabelHelpers = require('./_rollupPluginBabelHelpers-d23df5c1.js');
 require('@keg-hub/re-theme/colors');
 var useThemePath = require('./useThemePath.js');
 require('./useThemeWithHeight.js');
 var reactNativeWeb = require('react-native-web');
-var useThemeTypeAsClass = require('./useThemeTypeAsClass-9fb8a8ab.js');
-require('./view.native-895f9104.js');
-require('./useClassName-eec4a5f1.js');
+var useThemeTypeAsClass = require('./useThemeTypeAsClass-43ee56b4.js');
+require('./view.native-a1d03d45.js');
+require('./useClassName-75c55cf8.js');
 require('./updateClassNames.js');
 require('./ensureClassArray.js');
 require('./handleRefUpdate.js');
 require('@keg-hub/re-theme/styleInjector');
-require('./kegText-b0f1b442.js');
-require('./kegText.native-100193df.js');
+require('./kegText-e14b3c1f.js');
+require('./kegText.native-d2f2e1a3.js');
 require('./useTextAccessibility.js');
 require('./useTextStyles.js');
 require('@keg-hub/re-theme');
@@ -31,7 +31,7 @@ require('./isValidComponent.js');
 require('./useClassList-89a8dbd4.js');
 require('./withTouch.js');
 require('./touchable.js');
-require('./svgIcon.native-d0de8203.js');
+require('./svgIcon.native-48f0d173.js');
 require('react-native-svg-web');
 require('./colors-da502c66.js');
 
@@ -46,14 +46,12 @@ function _interopNamespace(e) {
         var d = Object.getOwnPropertyDescriptor(e, k);
         Object.defineProperty(n, k, d.get ? d : {
           enumerable: true,
-          get: function () {
-            return e[k];
-          }
+          get: function () { return e[k]; }
         });
       }
     });
   }
-  n['default'] = e;
+  n["default"] = e;
   return Object.freeze(n);
 }
 
@@ -80,17 +78,17 @@ var TextBox = function TextBox(props) {
       _props$useClipboard = props.useClipboard,
       useClipboard = _props$useClipboard === void 0 ? false : _props$useClipboard;
   var style = useThemePath.useThemePath(themePath, styles);
-  return React__default['default'].createElement(view.View, {
+  return React__default["default"].createElement(view.View, {
     className: useThemeTypeAsClass.useThemeTypeAsClass(themePath || type, 'keg-textbox', className),
     style: style.main
-  }, React__default['default'].createElement(view.View, {
+  }, React__default["default"].createElement(view.View, {
     className: "keg-textbox-container",
     style: jsutils.get(style, 'content.wrapper')
-  }, React__default['default'].createElement(text.Text, {
+  }, React__default["default"].createElement(text.Text, {
     className: "keg-textbox-text",
     numberOfLines: maxLines,
     style: jsutils.get(style, 'content.text')
-  }, text$1 || '')), React__default['default'].createElement(text.Text, null, useClipboard && text$1 && React__default['default'].createElement(touchableIcon.TouchableIcon, {
+  }, text$1 || '')), React__default["default"].createElement(text.Text, null, useClipboard && text$1 && React__default["default"].createElement(touchableIcon.TouchableIcon, {
     Component: Copy,
     size: 15,
     className: "keg-textbox-clipboard",

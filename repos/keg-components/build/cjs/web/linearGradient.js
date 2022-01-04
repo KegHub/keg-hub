@@ -2,14 +2,14 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var _rollupPluginBabelHelpers = require('./_rollupPluginBabelHelpers-95f0bff4.js');
+var _rollupPluginBabelHelpers = require('./_rollupPluginBabelHelpers-d23df5c1.js');
 var React = require('react');
-var view = require('./view-3fcb25db.js');
+var view = require('./view-cd2faea4.js');
 var useClassList = require('./useClassList-89a8dbd4.js');
 var jsutils = require('@keg-hub/jsutils');
-require('./view.native-895f9104.js');
+require('./view.native-a1d03d45.js');
 require('react-native-web');
-require('./useClassName-eec4a5f1.js');
+require('./useClassName-75c55cf8.js');
 require('./updateClassNames.js');
 require('./ensureClassArray.js');
 require('./handleRefUpdate.js');
@@ -58,7 +58,7 @@ var LinearGradient = function LinearGradient(props) {
     setHeight(nativeEvent.layout.height);
   }, [setWidth, setHeight]);
   var newAngle = useAngle && angle ? "".concat(angle, "deg") : calculateAngle(width, height, start, end);
-  return React__default['default'].createElement(view.View, _rollupPluginBabelHelpers._extends({
+  return React__default["default"].createElement(view.View, _rollupPluginBabelHelpers._extends({
     className: useClassList.useClassList("keg-linear-gradient", className)
   }, otherProps, {
     style: [style, {

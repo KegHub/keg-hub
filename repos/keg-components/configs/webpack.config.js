@@ -1,16 +1,12 @@
 const path = require('path')
-const webpack = require('webpack')
+const { get } = require('@keg-hub/jsutils')
 const { getAliases } = require('./aliases.config')
 const babelConfig = require('./babel.config.js')
-const { get, eitherArr } = require('@keg-hub/jsutils')
+
 const platform = process.env.RE_PLATFORM || 'web'
 const ENV = process.env.NODE_ENV || process.env.ENV || 'development'
 
-// Hard coded plugins
-const addPlugins = [
-  // Find the DefinePlugin, and add the ENV
-  new webpack.DefinePlugin({ RE_PLATFORM: platform, PLATFORM: platform })
-]
+
 
 // Hard coded aliases
 const addAliases = {
@@ -71,20 +67,17 @@ const customAliases = wpAliases => {
 
 // Add the RE_PLATFORM ENV converted to the current platform
 const customPlugins = plugins => {
-
-  const updated = plugins.map(plugin => {
-    // Find the DefinePlugin, and add the ENV
-    get(plugin, 'constructor.name') === 'DefinePlugin' &&
-      (plugin.definitions['process.env'] = {
-          ...plugin.definitions['process.env'],
-          RE_PLATFORM: JSON.stringify(platform),
-          PLATFORM: JSON.stringify(platform),
-      })
+  return plugins.map(plugin => {
+    // Filter for the DefinePlugin, and add the extra ENV
+    if(get(plugin, 'constructor.name') === 'DefinePlugin')
+      plugin.definitions = {
+        ...plugin.definitions,
+        'process.env.RE_PLATFORM': JSON.stringify(platform),
+        'process.env.PLATFORM': JSON.stringify(platform),
+      }
 
     return plugin
   })
-
-  return updated.concat(addPlugins)
 }
 
 // Set custom rules for webpack
@@ -105,10 +98,7 @@ const customRules = rules => {
 const customWatchOptions = options => {
   return {
     ...options,
-    ignored: [
-      ...(options.ignored ? eitherArr(options.ignored, [options.ignored]) : []),
-      /node_modules([\\]+|\/)+(?!\@keg-hub\/re-theme\/build\/esm\/web)/,
-    ]
+    ignored: /node_modules([\\]+|\/)+(?!\@keg-hub\/re-theme\/build\/esm\/web)/
   }
 }
 

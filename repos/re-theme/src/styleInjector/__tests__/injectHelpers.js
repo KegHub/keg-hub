@@ -71,11 +71,11 @@ describe('injectHelpers', () => {
     })
 
     it('should not fail when no className is passed in', () => {
-      const { selector } = getSelector(undefined, `my-test-styles`)
+      const { selector } = getSelector(undefined, `my-test-styles`, `keg`)
       expect(selector).toBe(`.keg-275181350`)
     })
 
-    it('should filter out classnames without prefix `keg`', () => {
+    it('should filter out classnames without the passed in prefix', () => {
       // check if string includes all of the values in the array
       const includes = (str, values) => {
         return values.reduce(
@@ -106,56 +106,73 @@ describe('injectHelpers', () => {
       expect(includeTestClass2).toBe(false)
       expect(selector.includes('keg-text')).toBe(true)
     })
-  })
 
-  describe('clearStyleSheet', () => {
-    afterEach(() => {
-      jest.clearAllMocks()
-    })
+    it(`should not include more selectors than the passed in maxSelectors amount`, () => {
+      const { selector } = getSelector(
+        [ `keg-no-includes`, `keg-include`, `keg-test-styles` ],
+        `my-test-styles`,
+        `keg`,
+        2
+      )
 
-    it('should clear all styles from the Keg StyleSheet when a build event is fired', () => {
-      addStylesToDom(`.test-styles`, { all: `.to-be-cleared{ color: blue; }` })
-      const KegStyleSheet = Array.from(document.head.children)[0]
-
-      expect(KegStyleSheet.textContent).toBe(`.to-be-cleared{ color: blue; }`)
-      expect(typeof clearStyleSheet).toBe('function')
-
-      clearStyleSheet()
-
-      expect(KegStyleSheet.textContent).toBe('')
+      expect(selector.includes(`include`)).toBe(true)
+      expect(selector.includes(`no-include`)).toBe(false)
     })
   })
 
   describe('addStylesToDom', () => {
+    const KegStyleSheet = Array.from(document.head.children)[0]
+    const orgInsert = KegStyleSheet.sheet.insertRule
+    const insertMock = jest.fn()
+    KegStyleSheet.sheet.insertRule = insertMock
+
     afterEach(() => {
+      insertMock.mockClear()
+    })
+
+    afterAll(() => {
+      KegStyleSheet.sheet.insertRule = orgInsert
       jest.clearAllMocks()
     })
 
     it('should append the styles to the Dom', () => {
-      const KegStyleSheet = Array.from(document.head.children)[0]
-      const orgAppend = KegStyleSheet.append
-      KegStyleSheet.append = jest.fn()
-
       addStylesToDom(`.test-styles`, `.test-styles{ color: blue; }`)
-      expect(KegStyleSheet.append).toHaveBeenCalled()
-
-      KegStyleSheet.append = orgAppend
+      expect(KegStyleSheet.sheet.insertRule).toHaveBeenCalled()
     })
 
     it('should append styles that have already been added', () => {
-      const KegStyleSheet = Array.from(document.head.children)[0]
-      const orgAppend = KegStyleSheet.append
-      KegStyleSheet.append = jest.fn()
-
       addStylesToDom(`.dup-test`, { all: `.dup-test{ color: blue; }` })
       addStylesToDom(`.dup-test`, { all: `.dup-test{ color: blue; }` })
 
-      expect(KegStyleSheet.append).toHaveBeenCalledTimes(1)
-      KegStyleSheet.append = orgAppend
+      expect(KegStyleSheet.sheet.insertRule).toHaveBeenCalledTimes(2)
     })
 
     it('should return undefined if no css is passed in', () => {
       expect(addStylesToDom(`.my-test`)).toBe(undefined)
+    })
+  })
+
+  describe('clearStyleSheet', () => {
+    const KegStyleSheet = Array.from(document.head.children)[0]
+    const orgInsert = KegStyleSheet.sheet.insertRule
+    const insertMock = jest.fn()
+    KegStyleSheet.sheet.insertRule = insertMock
+
+    afterEach(() => {
+      insertMock.mockClear()
+    })
+
+    afterAll(() => {
+      KegStyleSheet.sheet.insertRule = orgInsert
+      jest.clearAllMocks()
+    })
+
+    it('should clear all styles from the Keg StyleSheet when a build event is fired', () => {
+      KegStyleSheet.textContent = `some test text content`
+      expect(KegStyleSheet.textContent).toBe(`some test text content`)
+      expect(typeof clearStyleSheet).toBe('function')
+      clearStyleSheet()
+      expect(KegStyleSheet.textContent).toBe('')
     })
   })
 })

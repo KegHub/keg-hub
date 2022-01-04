@@ -34,7 +34,7 @@ const useKeyPressHandler = (currentIndex, setSelectedItem, items) => {
  * @param {Function} props.highlightItem - highlights the item object passed to it
  * @param {Function} props.selectItem - selects the item, filling the input text
  * @param {Array<Object>} props.items - the possible autocomplete items
- * @param {...*} props.* - remaining props are passed to <Input />
+ * @param {*} props.* - remaining props are passed to <Input />
  */
 export const AutocompleteInput = ({
   highlightedIndex,

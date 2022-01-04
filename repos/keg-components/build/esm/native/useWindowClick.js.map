@@ -1,0 +1,1 @@
+{"version":3,"file":"useWindowClick.js","sources":["../../../src/hooks/useWindowClick/useWindowClick.native.js"],"sourcesContent":["import { noOp } from '@keg-hub/jsutils'\n\nexport const useWindowClick = noOp\n"],"names":["useWindowClick","noOp"],"mappings":";;IAEaA,cAAc,GAAGC;;;;"}

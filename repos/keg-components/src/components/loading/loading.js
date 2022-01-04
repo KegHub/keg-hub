@@ -19,7 +19,7 @@ import { useThemePath } from 'KegHooks'
  * @property {number|String=} props.size - Size of the loading indicator
  */
 const Progress = props => {
-  const { styles, text, loadIndicator, type, size } = props
+  const { styles, text, loadIndicator, type, size, color } = props
   const LoadingIndicator = loadIndicator || Indicator
 
   return (
@@ -29,10 +29,11 @@ const Progress = props => {
     >
       { isValidComponent(LoadingIndicator) ? (
         <LoadingIndicator
-          className={'keg-loading-indicator'}
-          size={size}
-          styles={styles.indicator}
           type={type}
+          size={size}
+          color={color}
+          styles={styles.indicator}
+          className={'keg-loading-indicator'}
         />
       ) : (
         text && (
@@ -64,13 +65,14 @@ const Progress = props => {
  */
 export const Loading = props => {
   const {
-    className,
-    children,
-    text = 'Loading',
-    indicator,
     size,
+    color,
     styles,
+    children,
     themePath,
+    className,
+    indicator,
+    text = 'Loading',
     type = 'default',
   } = props
 
@@ -83,11 +85,12 @@ export const Loading = props => {
     >
       { children || (
         <Progress
-          styles={builtStyles}
           text={text}
-          loadIndicator={indicator}
           type={type}
           size={size}
+          color={color}
+          styles={builtStyles}
+          loadIndicator={indicator}
         />
       ) }
     </View>
@@ -95,7 +98,17 @@ export const Loading = props => {
 }
 
 Loading.propTypes = {
+  size: PropTypes.oneOfType([ PropTypes.string, PropTypes.number ]),
   text: PropTypes.string,
-  style: PropTypes.object,
+  type: PropTypes.string,
+  color: PropTypes.string,
+  styles: PropTypes.object,
+  indicator: PropTypes.oneOfType([
+    PropTypes.node,
+    PropTypes.func,
+    PropTypes.elementType,
+  ]),
   children: PropTypes.object,
+  themePath: PropTypes.string,
+  className: PropTypes.string,
 }

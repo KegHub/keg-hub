@@ -2,12 +2,11 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-require('./_rollupPluginBabelHelpers-95f0bff4.js');
+require('./_rollupPluginBabelHelpers-d23df5c1.js');
 require('react');
 var Svg = require('react-native-svg');
-require('@keg-hub/re-theme');
 require('@keg-hub/jsutils');
-var svgIcon = require('./svgIcon.native-fa69c271.js');
+var svgIcon = require('./svgIcon.native-4e6a0c69.js');
 
 
 
@@ -15,9 +14,7 @@ exports.SvgIcon = svgIcon.SvgIcon;
 Object.keys(Svg).forEach(function (k) {
 	if (k !== 'default' && !exports.hasOwnProperty(k)) Object.defineProperty(exports, k, {
 		enumerable: true,
-		get: function () {
-			return Svg[k];
-		}
+		get: function () { return Svg[k]; }
 	});
 });
 //# sourceMappingURL=svgIcon.js.map

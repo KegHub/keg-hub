@@ -1,10 +1,10 @@
-import { d as _objectWithoutProperties, e as _extends } from './_rollupPluginBabelHelpers-b49fe34a.js';
+import { d as _objectWithoutProperties, e as _extends } from './_rollupPluginBabelHelpers-eca9940e.js';
 import React__default from 'react';
 import { useTheme } from '@keg-hub/re-theme';
 import { get, noPropObj } from '@keg-hub/jsutils';
-import { V as View } from './view.native-f7a27d15.js';
+import { V as View } from './view.native-16eca0a6.js';
 import { Button } from './button.js';
-import { I as Icon } from './icon-d03aaeac.js';
+import { I as Icon } from './icon-4e464915.js';
 import './caption.js';
 import './h1.js';
 import './h2.js';
@@ -25,13 +25,13 @@ import { useThemePath } from './useThemePath.js';
 import './useThemeWithHeight.js';
 import 'react-native';
 import './useClassName.native-32e8827d.js';
-import './touchable-ec804bf8.js';
+import './touchable-7c6e36c1.js';
 import './touchable.js';
 import '@keg-hub/re-theme/styleInjector';
 import './getPressHandler.js';
 import './getActiveOpacity.js';
 import './useThemeTypeAsClass.native-a05b9a50.js';
-import './kegText-97d3d571.js';
+import './kegText-fe67e05a.js';
 import './kegText.js';
 import './useTextAccessibility.js';
 import './useTextStyles.js';
@@ -96,7 +96,8 @@ var Center = function Center(props) {
   return React__default.createElement(View, {
     className: "keg-header-center",
     style: styles.main
-  }, children && renderFromType(children, {}, null) || title && React__default.createElement(H5, {
+  }, children && renderFromType(children, {}, null) ||
+  title && React__default.createElement(H5, {
     className: "keg-header-center-title",
     ellipsis: ellipsis,
     style: styles.content.title

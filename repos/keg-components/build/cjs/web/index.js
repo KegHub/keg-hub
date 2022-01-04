@@ -6,14 +6,15 @@ var textBox = require('./textBox.js');
 var button = require('./button.js');
 var card = require('./card.js');
 var divider = require('./divider.js');
-var _rollupPluginBabelHelpers = require('./_rollupPluginBabelHelpers-95f0bff4.js');
+var drawer = require('./drawer.js');
+var _rollupPluginBabelHelpers = require('./_rollupPluginBabelHelpers-d23df5c1.js');
 var React = require('react');
 var jsutils = require('@keg-hub/jsutils');
 require('@keg-hub/re-theme/colors');
 var useThemePath = require('./useThemePath.js');
 var useThemeWithHeight = require('./useThemeWithHeight.js');
-require('react-native-web');
-var useThemeTypeAsClass = require('./useThemeTypeAsClass-9fb8a8ab.js');
+var reactNativeWeb = require('react-native-web');
+var useThemeTypeAsClass = require('./useThemeTypeAsClass-43ee56b4.js');
 var caption = require('./caption.js');
 var h1 = require('./h1.js');
 var h2 = require('./h2.js');
@@ -25,46 +26,49 @@ var label = require('./label.js');
 var p = require('./p.js');
 var subtitle = require('./subtitle.js');
 var text = require('./text.js');
-var view = require('./view-3fcb25db.js');
+var view = require('./view-cd2faea4.js');
 var styleInjector = require('@keg-hub/re-theme/styleInjector');
-var input_web = require('./input.web-369be1b2.js');
-var checkbox = require('./checkbox-8b89ae3f.js');
+var input_web = require('./input.web-3e205b72.js');
+var checkbox = require('./checkbox-6c3b3fe3.js');
 var reTheme = require('@keg-hub/re-theme');
 var useClassList = require('./useClassList-89a8dbd4.js');
 var useChildrenWithRefs = require('./useChildrenWithRefs.js');
-var input = require('./input-e65999e6.js');
-var select = require('./select-e19ffaa7.js');
+var input = require('./input-1a5ad3ac.js');
+var select = require('./select-d72ff0ce.js');
 var getInputValue = require('./getInputValue.js');
 var useSelectHandlers = require('./useSelectHandlers.js');
-var useClassName = require('./useClassName-eec4a5f1.js');
-require('./svgIcon-bb2d3711.js');
-var icon = require('./icon-c7ba25ca.js');
+var useClassName = require('./useClassName-75c55cf8.js');
+require('./svgIcon-f66eed54.js');
+var chevronDown = require('./chevronDown-a11a32c6.js');
+var icon = require('./icon-24e9ba81.js');
 var renderFromType = require('./renderFromType.js');
 var getOnChangeHandler = require('./getOnChangeHandler.js');
 var getChecked = require('./getChecked.js');
-var _switch = require('./switch-54bf3fc5.js');
+var _switch = require('./switch-443c3c2b.js');
+var itemHeader = require('./itemHeader.js');
+var appHeader = require('./appHeader.js');
 var touchableIcon = require('./touchableIcon.js');
-var cardMedia = require('./cardMedia-c980073d.js');
+var cardMedia = require('./cardMedia-7bd48135.js');
 var grid = require('./grid.js');
 var row = require('./row.js');
 var column = require('./column.js');
-var link_wrapper = require('./link.wrapper-958b0c3b.js');
-var kegText = require('./kegText-b0f1b442.js');
+var link_wrapper = require('./link.wrapper-47b6721c.js');
+var kegText = require('./kegText-e14b3c1f.js');
 var touchable = require('./touchable.js');
 var getPlatform = require('./getPlatform-ec53cd5e.js');
 var loading = require('./loading.js');
-var section = require('./section.js');
 var modal = require('./modal.js');
-var itemHeader = require('./itemHeader.js');
-var appHeader = require('./appHeader.js');
 var scrollView = require('./scrollView.js');
-var sectionList = require('./sectionList-d87b9d86.js');
-var drawer = require('./drawer.js');
-var textToggle = require('./textToggle.js');
+var sectionList = require('./sectionList-1175adee.js');
+var section = require('./section.js');
+var isValidComponent = require('./isValidComponent.js');
+var sidebarToggle = require('./sidebarToggle.js');
+var sidebar = require('./sidebar.js');
 var svgIcon = require('./svgIcon.js');
+var textToggle = require('./textToggle.js');
 var withTouch = require('./withTouch.js');
-var withScrollIntoView = require('./withScrollIntoView-0faf5e7e.js');
-var withOutsideDetect = require('./withOutsideDetect-a1fdd1de.js');
+var withScrollIntoView = require('./withScrollIntoView-a8e4d7d3.js');
+var withOutsideDetect = require('./withOutsideDetect-f347aa87.js');
 var theme = require('./theme.js');
 var useAccessibilityRole = require('./useAccessibilityRole.js');
 var useSpin = require('./useSpin-a05a1b73.js');
@@ -75,7 +79,7 @@ var useMediaProps = require('./useMediaProps.js');
 var usePressHandlers = require('./usePressHandlers.js');
 var useTextAccessibility = require('./useTextAccessibility.js');
 var useFromToAnimation = require('./useFromToAnimation.js');
-var useScrollClassName = require('./useScrollClassName-5d361028.js');
+var useScrollClassName = require('./useScrollClassName-15b6697b.js');
 var getOnLoad = require('./getOnLoad.js');
 var getPressHandler = require('./getPressHandler.js');
 var getTextFromChangeEvent = require('./getTextFromChangeEvent.js');
@@ -92,23 +96,25 @@ var inheritFrom = require('./inheritFrom.js');
 var platformFlatten = require('./platformFlatten.js');
 var buildTheme = require('./buildTheme.js');
 var validateFunctions = require('./validateFunctions.js');
-var isValidComponent = require('./isValidComponent.js');
 require('./cardContent.js');
 require('./cardCallout.js');
 require('./cardContainer.js');
 require('./cardSection.js');
 require('./colors-da502c66.js');
-require('./view.native-895f9104.js');
-require('./checkbox.wrapper-f7b31de8.js');
-require('./input-9de20726.js');
-require('./svgIcon.native-d0de8203.js');
+require('./view.native-a1d03d45.js');
+require('./checkbox.wrapper-c96373fe.js');
+require('./input-fa8fdff1.js');
+require('./svgIcon.native-48f0d173.js');
 require('react-native-svg-web');
-require('./image-5ba5f8b8.js');
+require('./image-1297b42f.js');
 require('./container.js');
-require('./kegText.native-100193df.js');
+require('./kegText.native-d2f2e1a3.js');
 require('./useTextStyles.js');
-require('./indicator.wrapper-b537ce8c.js');
+require('./indicator.wrapper-1eeb3eb7.js');
 require('./getScrollValues-f3b1bfa7.js');
+require('./useToggledStyles.js');
+require('@keg-hub/re-theme/reStyle');
+require('./isCssUnits.js');
 require('./themeDefaults-f48ffcaf.js');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
@@ -145,7 +151,7 @@ var Input = styleInjector.StyleInjector(input_web.Input, {
   displayName: 'FilePickerInput',
   className: 'keg-file-picker-input'
 });
-var FilePicker = React__default['default'].forwardRef(function (props, _ref) {
+var FilePicker = React__default["default"].forwardRef(function (props, _ref) {
   var className = props.className,
       onChange = props.onChange,
       title = props.title,
@@ -181,18 +187,18 @@ var FilePicker = React__default['default'].forwardRef(function (props, _ref) {
   React.useEffect(function () {
     openOnMount && clickInput();
   }, []);
-  return React__default['default'].createElement(view.View, {
+  return React__default["default"].createElement(view.View, {
     className: useThemeTypeAsClass.useThemeTypeAsClass(themePath || type, 'keg-filepicker', className),
     style: [jsutils.get(componentTheme, 'main'), style]
-  }, React__default['default'].createElement(button.Button, {
+  }, React__default["default"].createElement(button.Button, {
     content: title,
     onClick: clickInput,
     style: jsutils.get(componentTheme, 'content.button'),
     themePath: buttonThemePath
   }, children),
-  showFile && React__default['default'].createElement(p.P, {
+  showFile && React__default["default"].createElement(p.P, {
     style: jsutils.get(componentTheme, 'content.file')
-  }, file.name), React__default['default'].createElement(Input, _rollupPluginBabelHelpers._extends({}, args, {
+  }, file.name), React__default["default"].createElement(Input, _rollupPluginBabelHelpers._extends({}, args, {
     ref: function ref(input) {
       _ref && (_ref.current = input);
       refToInput.current = input;
@@ -205,7 +211,7 @@ var FilePicker = React__default['default'].forwardRef(function (props, _ref) {
 });
 
 var _excluded$5 = ["title", "className", "style"];
-var SimpleHeader = React__default['default'].forwardRef(function (props, ref) {
+var SimpleHeader = React__default["default"].forwardRef(function (props, ref) {
   var title = props.title,
       className = props.className,
       style = props.style,
@@ -217,12 +223,12 @@ var SimpleHeader = React__default['default'].forwardRef(function (props, ref) {
     };
   });
   var textStyle = reTheme.useStyle('form.checkGroup.simpleHeader.main', style);
-  return React__default['default'].createElement(text.Text, _rollupPluginBabelHelpers._extends({
+  return React__default["default"].createElement(text.Text, _rollupPluginBabelHelpers._extends({
     className: className,
     style: textStyle
   }, rest), title);
 });
-var CheckboxHeader = React__default['default'].forwardRef(function (props, ref) {
+var CheckboxHeader = React__default["default"].forwardRef(function (props, ref) {
   var title = props.title,
       className = props.className,
       style = props.style,
@@ -239,7 +245,7 @@ var CheckboxHeader = React__default['default'].forwardRef(function (props, ref) 
   var onChangeHandler = React.useCallback(function (_, val) {
     return onPress === null || onPress === void 0 ? void 0 : onPress(val);
   }, [onPress]);
-  return React__default['default'].createElement(checkbox.Checkbox, {
+  return React__default["default"].createElement(checkbox.Checkbox, {
     RightComponent: title,
     rightClassName: className,
     styles: headerStyles,
@@ -249,7 +255,7 @@ var CheckboxHeader = React__default['default'].forwardRef(function (props, ref) 
     close: true
   });
 });
-var CheckGroup = React__default['default'].forwardRef(function (props, ref) {
+var CheckGroup = React__default["default"].forwardRef(function (props, ref) {
   var className = props.className,
       headerClassName = props.headerClassName,
       title = props.title,
@@ -275,29 +281,29 @@ var CheckGroup = React__default['default'].forwardRef(function (props, ref) {
     });
   }, [childRefs]);
   var Header = function Header() {
-    return showHeaderCheckbox ? React__default['default'].createElement(CheckboxHeader, {
+    return showHeaderCheckbox ? React__default["default"].createElement(CheckboxHeader, {
       className: headerClassName,
       style: groupStyles === null || groupStyles === void 0 ? void 0 : groupStyles.header,
       title: title,
       onPress: showHeaderCheckbox && headerCheckHandler,
       checked: showHeaderCheckbox ? initChecked : undefined,
       ref: ref
-    }) : React__default['default'].createElement(SimpleHeader, {
+    }) : React__default["default"].createElement(SimpleHeader, {
       className: headerClassName,
       style: groupStyles === null || groupStyles === void 0 ? void 0 : groupStyles.header,
       title: title,
       ref: ref
     });
   };
-  return React__default['default'].createElement(view.View, {
+  return React__default["default"].createElement(view.View, {
     className: useClassList.useClassList('keg-check-group', className),
     style: groupStyles === null || groupStyles === void 0 ? void 0 : groupStyles.main
-  }, showHeader && React__default['default'].createElement(Header, null), childrenWithProps);
+  }, showHeader && React__default["default"].createElement(Header, null), childrenWithProps);
 });
 CheckGroup.Item = checkbox.Checkbox;
 
 var _excluded$4 = ["children", "className", "elType", "style", "type", "themePath"];
-var Form = React__default['default'].forwardRef(function (props, ref) {
+var Form = React__default["default"].forwardRef(function (props, ref) {
   var theme = reTheme.useTheme();
   var children = props.children,
       className = props.className;
@@ -308,7 +314,7 @@ var Form = React__default['default'].forwardRef(function (props, ref) {
       themePath = _props$themePath === void 0 ? "form.form.".concat(type || 'default') : _props$themePath,
       elProps = _rollupPluginBabelHelpers._objectWithoutProperties(props, _excluded$4);
   var formTheme = useThemePath.useThemePath(themePath);
-  return React__default['default'].createElement(view.View, _rollupPluginBabelHelpers._extends({
+  return React__default["default"].createElement(view.View, _rollupPluginBabelHelpers._extends({
     accessibilityRole: "form",
     className: useClassList.useClassList('keg-form', className)
   }, elProps, {
@@ -325,13 +331,13 @@ var Option = function Option(props) {
       var text = props.text,
       value = props.value,
       args = _rollupPluginBabelHelpers._objectWithoutProperties(props, _excluded$3);
-  return React__default['default'].createElement("option", _rollupPluginBabelHelpers._extends({}, args, {
+  return React__default["default"].createElement("option", _rollupPluginBabelHelpers._extends({}, args, {
     value: value || label || text
   }), label || value || text || children);
 };
 
 var Radio = function Radio(props) {
-  return React__default['default'].createElement(input.Input, _rollupPluginBabelHelpers._extends({}, props, {
+  return React__default["default"].createElement(input.Input, _rollupPluginBabelHelpers._extends({}, props, {
     type: "radio"
   }));
 };
@@ -351,7 +357,7 @@ var getValue = function getValue(props) {
   var valKey = getInputValue.getInputValueKey(false, onChange, onValueChange, readOnly);
   return _rollupPluginBabelHelpers._defineProperty({}, valKey, setValue);
 };
-var Select = React__default['default'].forwardRef(function (props, ref) {
+var Select = React__default["default"].forwardRef(function (props, ref) {
   var _selectStyles$icon, _selectStyles$icon$di;
   var className = props.className,
       children = props.children,
@@ -370,9 +376,9 @@ var Select = React__default['default'].forwardRef(function (props, ref) {
   var selectStyles = useThemePath.useThemePath(themePath, styles);
   var selectClasses = useThemeTypeAsClass.useThemeTypeAsClass(themePath || type, 'keg-select', className);
   var classRef = useClassName.useClassName('keg-select', selectClasses, ref);
-  return React__default['default'].createElement(view.View, {
+  return React__default["default"].createElement(view.View, {
     style: [selectStyles.main, style]
-  }, React__default['default'].createElement(KegSelect, _rollupPluginBabelHelpers._extends({
+  }, React__default["default"].createElement(KegSelect, _rollupPluginBabelHelpers._extends({
     ref: classRef
   }, elProps, {
     enabled: !disabled,
@@ -380,9 +386,9 @@ var Select = React__default['default'].forwardRef(function (props, ref) {
   }, getValue(props), useSelectHandlers.useSelectHandlers({
     onChange: onChange,
     onValueChange: onValueChange
-  })), children), React__default['default'].createElement(icon.Icon, {
+  })), children), React__default["default"].createElement(icon.Icon, {
     styles: selectStyles.icon,
-    Component: select.ChevronDown,
+    Component: chevronDown.ChevronDown,
     color: disabled && ((_selectStyles$icon = selectStyles.icon) === null || _selectStyles$icon === void 0 ? void 0 : (_selectStyles$icon$di = _selectStyles$icon.disabled) === null || _selectStyles$icon$di === void 0 ? void 0 : _selectStyles$icon$di.color)
   }));
 });
@@ -431,7 +437,7 @@ var setCheckedValue = function setCheckedValue(isChecked, setChecked, onChange) 
 var SideComponent = function SideComponent(_ref2) {
   var Component = _ref2.Component,
       style = _ref2.style;
-  return jsutils.isStr(Component) ? React__default['default'].createElement(text.Text, {
+  return jsutils.isStr(Component) ? React__default["default"].createElement(text.Text, {
     style: style
   }, Component) : renderFromType.renderFromType(Component, {
     style: styles.content
@@ -439,7 +445,7 @@ var SideComponent = function SideComponent(_ref2) {
 };
 var ChildrenComponent = function ChildrenComponent(_ref3) {
   var children = _ref3.children;
-  return React__default['default'].createElement(React__default['default'].Fragment, null, renderFromType.renderFromType(children, {}, null));
+  return React__default["default"].createElement(React__default["default"].Fragment, null, renderFromType.renderFromType(children, {}, null));
 };
 var useSwitchHandle = function useSwitchHandle(ref, isChecked, setChecked) {
   return React.useImperativeHandle(ref, function () {
@@ -478,26 +484,26 @@ var Switch = React.forwardRef(function (props, ref) {
   var themeStyles = useThemePath.useThemePath(elThemePath, styles);
   var activeStyles = useCheckedState(isChecked, themeStyles);
   var typeClassName = useThemeTypeAsClass.useThemeTypeAsClass(elThemePath || type, 'keg-switch', className);
-  return children && React__default['default'].createElement(view.View, {
+  return children && React__default["default"].createElement(view.View, {
     className: typeClassName,
     style: activeStyles.main
-  }, React__default['default'].createElement(ChildrenComponent, {
+  }, React__default["default"].createElement(ChildrenComponent, {
     className: "keg-switch-container",
     children: children
-  })) || React__default['default'].createElement(view.View, {
+  })) || React__default["default"].createElement(view.View, {
     className: typeClassName,
     style: activeStyles.main
-  }, LeftComponent && React__default['default'].createElement(SideComponent, {
+  }, LeftComponent && React__default["default"].createElement(SideComponent, {
     className: "keg-switch-left",
     Component: LeftComponent,
     style: activeStyles.content.left
   }), SwitchComponent ? renderFromType.renderFromType(SwitchComponent, _rollupPluginBabelHelpers._objectSpread2(_rollupPluginBabelHelpers._objectSpread2({}, props), {}, {
     styles: activeStyles.content
-  })) : React__default['default'].createElement(KegSwitch, _rollupPluginBabelHelpers._extends({
+  })) : React__default["default"].createElement(KegSwitch, _rollupPluginBabelHelpers._extends({
     elProps: elProps,
     disabled: disabled,
     styles: activeStyles.content
-  }, getSwitchColors(thumbColor, trackColor, activeStyles.content), getChecked.getChecked(false, isChecked), getOnChangeHandler.getOnChangeHandler(false, setCheckedValue(isChecked, setChecked, onChange || onValueChange)))), RightComponent && React__default['default'].createElement(SideComponent, {
+  }, getSwitchColors(thumbColor, trackColor, activeStyles.content), getChecked.getChecked(false, isChecked), getOnChangeHandler.getOnChangeHandler(false, setCheckedValue(isChecked, setChecked, onChange || onValueChange)))), RightComponent && React__default["default"].createElement(SideComponent, {
     className: "keg-switch-right",
     Component: RightComponent,
     style: activeStyles.content.right
@@ -507,7 +513,7 @@ var Switch = React.forwardRef(function (props, ref) {
 var _excluded = ["children", "className", "elProps", "href", "onPress", "style", "target"];
 var isWeb = getPlatform.getPlatform() === 'web';
 var Text = kegText.KegText('link');
-var Element = React__default['default'].forwardRef(function (props, ref) {
+var Element = React__default["default"].forwardRef(function (props, ref) {
   var children = props.children,
       className = props.className,
       elProps = props.elProps,
@@ -516,11 +522,11 @@ var Element = React__default['default'].forwardRef(function (props, ref) {
       var style = props.style,
       target = props.target,
       attrs = _rollupPluginBabelHelpers._objectWithoutProperties(props, _excluded);
-  return React__default['default'].createElement(touchable.Touchable, _rollupPluginBabelHelpers._extends({
+  return React__default["default"].createElement(touchable.Touchable, _rollupPluginBabelHelpers._extends({
     className: useClassList.useClassList('keg-link', className)
   }, elProps, attrs, {
     touchRef: ref
-  }), React__default['default'].createElement(Text, {
+  }), React__default["default"].createElement(Text, {
     accessibilityRole: "link",
     className: "keg-link-text",
     style: style,
@@ -529,16 +535,168 @@ var Element = React__default['default'].forwardRef(function (props, ref) {
   }, children));
 });
 var Link = function Link(props) {
-  return React__default['default'].createElement(link_wrapper.LinkWrapper, _rollupPluginBabelHelpers._extends({}, props, {
+  return React__default["default"].createElement(link_wrapper.LinkWrapper, _rollupPluginBabelHelpers._extends({}, props, {
     Element: Element,
     isWeb: isWeb
   }));
+};
+
+var noAnimate = function noAnimate(toggled, current, _ref) {
+  var initial = _ref.initial,
+      to = _ref.to;
+  return !toggled && current === initial || toggled && current === to;
+};
+var useSidebarStyles = function useSidebarStyles(_ref2) {
+  var initial = _ref2.initial,
+      styles = _ref2.styles,
+      sidebarWidth = _ref2.sidebarWidth,
+      location = _ref2.location;
+  var dims = reTheme.useDimensions();
+  var sidebarStyles = reTheme.useStyle('sidebar', styles);
+  var width = sidebar.getSidebarWidth(sidebarWidth, initial, sidebarStyles);
+  var mainStyles = React.useMemo(function () {
+    return _rollupPluginBabelHelpers._objectSpread2(_rollupPluginBabelHelpers._objectSpread2({
+      flex: 1,
+      zIndex: 5,
+      position: 'fixed',
+      top: 0,
+      bottom: 0,
+      height: dims.height
+    }, sidebarStyles === null || sidebarStyles === void 0 ? void 0 : sidebarStyles.main), {}, _rollupPluginBabelHelpers._defineProperty({
+      width: width
+    }, location === 'right' ? location : 'left', initial));
+  }, [location, width, initial, sidebarStyles === null || sidebarStyles === void 0 ? void 0 : sidebarStyles.main, dims === null || dims === void 0 ? void 0 : dims.height]);
+  return {
+    mainStyles: mainStyles,
+    sidebarStyles: sidebarStyles
+  };
+};
+var useSidebarToggle = function useSidebarToggle(props) {
+  var toggled = props.toggled,
+      _props$onToggled = props.onToggled,
+      onToggled = _props$onToggled === void 0 ? jsutils.noOp : _props$onToggled,
+      initial = props.initial,
+      to = props.to;
+  var _useState = React.useState(toggled),
+      _useState2 = _rollupPluginBabelHelpers._slicedToArray(_useState, 2),
+      isToggled = _useState2[0],
+      setIsToggled = _useState2[1];
+  var _useState3 = React.useState(toggled),
+      _useState4 = _rollupPluginBabelHelpers._slicedToArray(_useState3, 2),
+      originalToggled = _useState4[0],
+      setOriginalToggled = _useState4[1];
+  React.useEffect(function () {
+    if (originalToggled === toggled) return;
+    setOriginalToggled(toggled);
+    setIsToggled(toggled);
+  }, [toggled, originalToggled]);
+  var onTogglePress = React.useCallback(function (event) {
+    var toggleUpdate = !isToggled;
+    setIsToggled(toggleUpdate);
+    jsutils.checkCall(onToggled, toggleUpdate);
+  }, [isToggled, setIsToggled, initial, to]);
+  return {
+    toggled: toggled,
+    isToggled: isToggled,
+    setIsToggled: setIsToggled,
+    onTogglePress: onTogglePress
+  };
+};
+var useSidebarAnimate = function useSidebarAnimate(props, isToggled) {
+  var _props$config = props.config,
+      config = _props$config === void 0 ? jsutils.noOpObj : _props$config,
+      initial = props.initial,
+      to = props.to,
+      _props$type = props.type,
+      type = _props$type === void 0 ? 'timing' : _props$type;
+  var _useState5 = React.useState(new reactNativeWeb.Animated.Value(initial)),
+      _useState6 = _rollupPluginBabelHelpers._slicedToArray(_useState5, 2),
+      animation = _useState6[0],
+      setAnimation = _useState6[1];
+  var xPosRef = React.useRef({
+    initial: initial,
+    to: to
+  });
+  React.useLayoutEffect(function () {
+    if (!xPosRef.current) return;
+    if (noAnimate(isToggled, animation._value, xPosRef.current)) return;
+    var _xPosRef$current = xPosRef.current,
+        initial = _xPosRef$current.initial,
+        to = _xPosRef$current.to;
+    var xPosChanges = isToggled ? {
+      from: initial,
+      to: to
+    } : {
+      from: to,
+      to: initial
+    };
+    animation.setValue(xPosChanges.from);
+    var animationConfig = config ? _rollupPluginBabelHelpers._objectSpread2(_rollupPluginBabelHelpers._objectSpread2({}, config), {}, {
+      toValue: xPosChanges.to
+    }) : {
+      toValue: xPosChanges.to
+    };
+    animationConfig.useNativeDriver = false;
+    reactNativeWeb.Animated[type](animation, animationConfig).start();
+  }, [isToggled, type, config]);
+  return {
+    animation: animation,
+    setAnimation: setAnimation
+  };
+};
+var Sidebar = function Sidebar(props) {
+  var to = props.to,
+      initial = props.initial,
+      children = props.children,
+      location = props.location,
+      onOffClick = props.onOffClick,
+      sidebarWidth = props.sidebarWidth,
+      ToggleComponent = props.ToggleComponent;
+  var _useSidebarToggle = useSidebarToggle(props),
+      isToggled = _useSidebarToggle.isToggled,
+      setIsToggled = _useSidebarToggle.setIsToggled,
+      onTogglePress = _useSidebarToggle.onTogglePress;
+  var _useSidebarAnimate = useSidebarAnimate(props, isToggled),
+      animation = _useSidebarAnimate.animation;
+  var _useSidebarStyles = useSidebarStyles(props),
+      mainStyles = _useSidebarStyles.mainStyles,
+      sidebarStyles = _useSidebarStyles.sidebarStyles;
+  var Toggler = isValidComponent.isValidComponent(ToggleComponent) && React__default["default"].createElement(ToggleComponent, {
+    to: to,
+    initial: initial,
+    location: location,
+    toggled: isToggled,
+    onOffClick: onOffClick,
+    onPress: onTogglePress,
+    sidebarWidth: sidebarWidth,
+    setIsToggled: setIsToggled,
+    styles: sidebarStyles === null || sidebarStyles === void 0 ? void 0 : sidebarStyles.toggle
+  });
+  return React__default["default"].createElement(React__default["default"].Fragment, null, React__default["default"].createElement(reactNativeWeb.Animated.View, {
+    style: [mainStyles, _rollupPluginBabelHelpers._defineProperty({}, location, animation)]
+  }, React__default["default"].createElement(sidebar.SidebarMain, {
+    className: "sidebar-main",
+    style: sidebarStyles === null || sidebarStyles === void 0 ? void 0 : sidebarStyles.main
+  }, location === 'right' && Toggler, React__default["default"].createElement(sidebar.SidebarContainer, {
+    location: location,
+    sidebarWidth: sidebarWidth,
+    className: "sidebar-container",
+    style: sidebarStyles === null || sidebarStyles === void 0 ? void 0 : sidebarStyles.container
+  }, children), location !== 'right' && Toggler)));
+};
+Sidebar.Toggle = sidebarToggle.SidebarToggle;
+Sidebar.defaultProps = {
+  config: jsutils.noOpObj,
+  location: 'left',
+  type: 'timing',
+  ToggleComponent: sidebarToggle.SidebarToggle
 };
 
 exports.TextBox = textBox.TextBox;
 exports.Button = button.Button;
 exports.Card = card.Card;
 exports.Divider = divider.Divider;
+exports.Drawer = drawer.Drawer;
 exports.useThemePath = useThemePath.useThemePath;
 exports.useThemeWithHeight = useThemeWithHeight.useThemeWithHeight;
 exports.useThemeTypeAsClass = useThemeTypeAsClass.useThemeTypeAsClass;
@@ -566,6 +724,8 @@ exports.Icon = icon.Icon;
 exports.renderFromType = renderFromType.renderFromType;
 exports.getOnChangeHandler = getOnChangeHandler.getOnChangeHandler;
 exports.getChecked = getChecked.getChecked;
+exports.ItemHeader = itemHeader.ItemHeader;
+exports.AppHeader = appHeader.AppHeader;
 exports.TouchableIcon = touchableIcon.TouchableIcon;
 exports.Image = cardMedia.Image;
 exports.Grid = grid.Grid;
@@ -574,18 +734,18 @@ exports.Column = column.Column;
 exports.Touchable = touchable.Touchable;
 exports.getPlatform = getPlatform.getPlatform;
 exports.Loading = loading.Loading;
-exports.Section = section.Section;
 exports.Modal = modal.Modal;
-exports.ItemHeader = itemHeader.ItemHeader;
-exports.AppHeader = appHeader.AppHeader;
 exports.ScrollView = scrollView.ScrollView;
 exports.SectionList = sectionList.SectionList;
 exports.getElementLayout = sectionList.getElementLayout;
 exports.scrollList = sectionList.scrollList;
 exports.useScroll = sectionList.useScroll;
-exports.Drawer = drawer.Drawer;
-exports.TextToggle = textToggle.TextToggle;
+exports.Section = section.Section;
+exports.isValidComponent = isValidComponent.isValidComponent;
+exports.SidebarToggle = sidebarToggle.SidebarToggle;
 exports.SvgIcon = svgIcon.SvgIcon;
+exports.SvgIconInject = svgIcon.SvgIconInject;
+exports.TextToggle = textToggle.TextToggle;
 exports.withTouch = withTouch.withTouch;
 exports.useScrollIntoView = withScrollIntoView.useScrollIntoView;
 exports.withScrollIntoView = withScrollIntoView.withScrollIntoView;
@@ -621,7 +781,6 @@ exports.inheritFrom = inheritFrom.inheritFrom;
 exports.platformFlatten = platformFlatten.platformFlatten;
 exports.buildTheme = buildTheme.buildTheme;
 exports.validateFunctions = validateFunctions.validateFunctions;
-exports.isValidComponent = isValidComponent.isValidComponent;
 exports.A = Link;
 exports.CheckGroup = CheckGroup;
 exports.FilePicker = FilePicker;
@@ -630,6 +789,7 @@ exports.Link = Link;
 exports.Option = Option;
 exports.Radio = Radio;
 exports.Select = Select;
+exports.Sidebar = Sidebar;
 exports.Slider = Slider;
 exports.Switch = Switch;
 exports.useKeyPress = useKeyPress;

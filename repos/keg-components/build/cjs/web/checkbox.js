@@ -2,26 +2,26 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var _rollupPluginBabelHelpers = require('./_rollupPluginBabelHelpers-95f0bff4.js');
-var view = require('./view-3fcb25db.js');
-var checkbox_wrapper = require('./checkbox.wrapper-f7b31de8.js');
+var _rollupPluginBabelHelpers = require('./_rollupPluginBabelHelpers-d23df5c1.js');
+var view = require('./view-cd2faea4.js');
+var checkbox_wrapper = require('./checkbox.wrapper-c96373fe.js');
 var React = require('react');
 var jsutils = require('@keg-hub/jsutils');
+var reTheme = require('@keg-hub/re-theme');
 var styleInjector = require('@keg-hub/re-theme/styleInjector');
-var input_web = require('./input.web-369be1b2.js');
-require('./view.native-895f9104.js');
+var input_web = require('./input.web-3e205b72.js');
+require('./view.native-a1d03d45.js');
 require('react-native-web');
-require('./useClassName-eec4a5f1.js');
+require('./useClassName-75c55cf8.js');
 require('./updateClassNames.js');
 require('./ensureClassArray.js');
 require('./handleRefUpdate.js');
-require('./svgIcon-bb2d3711.js');
-require('./svgIcon.native-d0de8203.js');
+require('./svgIcon-f66eed54.js');
+require('./svgIcon.native-48f0d173.js');
 require('react-native-svg-web');
-require('@keg-hub/re-theme');
 require('./caption.js');
-require('./kegText-b0f1b442.js');
-require('./kegText.native-100193df.js');
+require('./kegText-e14b3c1f.js');
+require('./kegText.native-d2f2e1a3.js');
 require('./useTextAccessibility.js');
 require('./useTextStyles.js');
 require('./h1.js');
@@ -42,7 +42,7 @@ require('@keg-hub/re-theme/colors');
 require('./useThemePath.js');
 require('./useThemeWithHeight.js');
 require('./useClassList-89a8dbd4.js');
-require('./useThemeTypeAsClass-9fb8a8ab.js');
+require('./useThemeTypeAsClass-43ee56b4.js');
 require('./colors-da502c66.js');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
@@ -79,7 +79,7 @@ var Input = styleInjector.StyleInjector(input_web.Input, {
   displayName: 'Checkbox',
   className: 'keg-checkbox'
 });
-var Element = React__default['default'].forwardRef(function (props, ref) {
+var Element = React__default["default"].forwardRef(function (props, ref) {
   var className = props.className,
       elProps = props.elProps,
       _props$styles = props.styles,
@@ -88,22 +88,18 @@ var Element = React__default['default'].forwardRef(function (props, ref) {
       CheckIcon = _props$CheckIcon === void 0 ? checkbox_wrapper.Check : _props$CheckIcon,
       checked = props.checked,
       attributes = _rollupPluginBabelHelpers._objectWithoutProperties(props, _excluded);
-  var checkStyle = React.useMemo(function () {
-    return _rollupPluginBabelHelpers._objectSpread2(_rollupPluginBabelHelpers._objectSpread2({}, checkBoxStyles.icon), styles.indicator);
-  }, [checkBoxStyles, styles]);
-  var inputStyle = React.useMemo(function () {
-    return _rollupPluginBabelHelpers._objectSpread2(_rollupPluginBabelHelpers._objectSpread2({}, styles.input), checkBoxStyles.input);
-  }, [checkBoxStyles, styles]);
-  return React__default['default'].createElement(view.View, {
+  var checkStyle = reTheme.useStyle(checkBoxStyles.icon, styles.indicator);
+  var inputStyle = reTheme.useStyle(styles.input, checkBoxStyles.input);
+  return React__default["default"].createElement(view.View, {
     style: styles.main,
     className: className
-  }, React__default['default'].createElement(view.View, {
+  }, React__default["default"].createElement(view.View, {
     className: "keg-checkbox-area",
     style: styles.area
-  }), checked && React__default['default'].createElement(CheckIcon, {
+  }), checked && React__default["default"].createElement(CheckIcon, {
     className: "keg-checkbox-icon",
     style: checkStyle
-  }), React__default['default'].createElement(Input, _rollupPluginBabelHelpers._extends({
+  }), React__default["default"].createElement(Input, _rollupPluginBabelHelpers._extends({
     className: "keg-checkbox"
   }, elProps, attributes, {
     role: "checkbox",
@@ -114,7 +110,7 @@ var Element = React__default['default'].forwardRef(function (props, ref) {
   })));
 });
 var Checkbox = React.forwardRef(function (props, ref) {
-  return React__default['default'].createElement(checkbox_wrapper.CheckboxWrapper, _rollupPluginBabelHelpers._extends({}, props, {
+  return React__default["default"].createElement(checkbox_wrapper.CheckboxWrapper, _rollupPluginBabelHelpers._extends({}, props, {
     elType: 'checkbox',
     Element: Element,
     isWeb: true,

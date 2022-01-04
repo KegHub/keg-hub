@@ -5,13 +5,12 @@ import { useThemePath } from 'KegHooks'
 export const IndicatorWrapper = props => {
   const {
     alt,
-    Element,
     isWeb,
-    resizeMode,
-    size,
     styles,
-    type = 'default',
+    Element,
     themePath,
+    resizeMode,
+    type = 'default',
     ...elProps
   } = props
 
@@ -23,7 +22,6 @@ export const IndicatorWrapper = props => {
         {...elProps}
         alt={alt || 'Loading'}
         style={builtStyles.icon}
-        size={size}
         resizeMode={resizeMode || 'contain'}
       />
     </View>

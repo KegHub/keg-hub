@@ -2,13 +2,13 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var _rollupPluginBabelHelpers = require('./_rollupPluginBabelHelpers-95f0bff4.js');
+var _rollupPluginBabelHelpers = require('./_rollupPluginBabelHelpers-d23df5c1.js');
 var React = require('react');
 var reTheme = require('@keg-hub/re-theme');
 var jsutils = require('@keg-hub/jsutils');
-var view = require('./view-3fcb25db.js');
+var view = require('./view-cd2faea4.js');
 var button = require('./button.js');
-var icon = require('./icon-c7ba25ca.js');
+var icon = require('./icon-24e9ba81.js');
 require('./caption.js');
 require('./h1.js');
 require('./h2.js');
@@ -29,8 +29,8 @@ var useAccessibilityRole = require('./useAccessibilityRole.js');
 var useThemePath = require('./useThemePath.js');
 require('./useThemeWithHeight.js');
 require('react-native-web');
-require('./view.native-895f9104.js');
-require('./useClassName-eec4a5f1.js');
+require('./view.native-a1d03d45.js');
+require('./useClassName-75c55cf8.js');
 require('./updateClassNames.js');
 require('./ensureClassArray.js');
 require('./handleRefUpdate.js');
@@ -38,10 +38,10 @@ require('@keg-hub/re-theme/styleInjector');
 require('./touchable.js');
 require('./getPressHandler.js');
 require('./getActiveOpacity.js');
-require('./useThemeTypeAsClass-9fb8a8ab.js');
+require('./useThemeTypeAsClass-43ee56b4.js');
 require('./colors-da502c66.js');
-require('./kegText-b0f1b442.js');
-require('./kegText.native-100193df.js');
+require('./kegText-e14b3c1f.js');
+require('./kegText.native-d2f2e1a3.js');
 require('./useTextAccessibility.js');
 require('./useTextStyles.js');
 
@@ -76,21 +76,21 @@ var ItemHeader = function ItemHeader(props) {
       elProps = _rollupPluginBabelHelpers._objectWithoutProperties(props, _excluded);
   var headerStyles = useThemePath.useThemePath(themePath || "header.itemHeader", styles);
   var accessibilityRoleObj = useAccessibilityRole.useAccessibilityRole(accessibilityRole, 'header');
-  return React__default['default'].createElement(view.View, _rollupPluginBabelHelpers._extends({
+  return React__default["default"].createElement(view.View, _rollupPluginBabelHelpers._extends({
     className: useClassList.useClassList('keg-header', className)
   }, elProps, accessibilityRoleObj, {
     style: [headerStyles.main, appHeader && jsutils.get(headerStyles, ['appHeader', 'main']), shadow && jsutils.get(headerStyles, ['shadow', 'main'])]
-  }), !isWeb  , children || React__default['default'].createElement(React__default['default'].Fragment, null, React__default['default'].createElement(Side, {
+  }), !isWeb  , children || React__default["default"].createElement(React__default["default"].Fragment, null, React__default["default"].createElement(Side, {
     styles: headerStyles.content,
     iconName: leftIcon,
     IconElement: LeftIconComponent || IconComponent,
     action: onLeftClick
-  }, LeftComponent), React__default['default'].createElement(Center, {
+  }, LeftComponent), React__default["default"].createElement(Center, {
     ellipsis: ellipsis,
     theme: theme,
     styles: (_headerStyles$content = headerStyles.content) === null || _headerStyles$content === void 0 ? void 0 : _headerStyles$content.center,
     title: title
-  }, CenterComponent), React__default['default'].createElement(Side, {
+  }, CenterComponent), React__default["default"].createElement(Side, {
     right: true,
     styles: headerStyles.content,
     iconName: rightIcon,
@@ -104,10 +104,11 @@ var Center = function Center(props) {
       _props$ellipsis = props.ellipsis,
       ellipsis = _props$ellipsis === void 0 ? true : _props$ellipsis,
       children = props.children;
-  return React__default['default'].createElement(view.View, {
+  return React__default["default"].createElement(view.View, {
     className: "keg-header-center",
     style: styles.main
-  }, children && renderFromType.renderFromType(children, {}, null) || title && React__default['default'].createElement(h5.H5, {
+  }, children && renderFromType.renderFromType(children, {}, null) ||
+  title && React__default["default"].createElement(h5.H5, {
     className: "keg-header-center-title",
     ellipsis: ellipsis,
     style: styles.content.title
@@ -129,17 +130,17 @@ var Side = function Side(props) {
     position: position
   };
   var showIcon = isValidComponent.isValidComponent(IconElement);
-  return React__default['default'].createElement(view.View, {
+  return React__default["default"].createElement(view.View, {
     className: "keg-header-".concat(position),
     style: jsutils.get(styles, [position, 'main'])
-  }, children && renderFromType.renderFromType(children, {}, null) || (action ? React__default['default'].createElement(button.Button, {
+  }, children && renderFromType.renderFromType(children, {}, null) || (action ? React__default["default"].createElement(button.Button, {
     className: "keg-header-".concat(position, "-button"),
     styles: contentStyles.button,
     onClick: action
-  }, showIcon && React__default['default'].createElement(CustomIcon, iconProps)) : showIcon && React__default['default'].createElement(view.View, {
+  }, showIcon && React__default["default"].createElement(CustomIcon, iconProps)) : showIcon && React__default["default"].createElement(view.View, {
     className: "keg-header-".concat(position, "-icon"),
     style: contentStyles.main
-  }, React__default['default'].createElement(CustomIcon, iconProps))));
+  }, React__default["default"].createElement(CustomIcon, iconProps))));
 };
 var CustomIcon = function CustomIcon(props) {
   var className = props.className,
@@ -147,7 +148,7 @@ var CustomIcon = function CustomIcon(props) {
       IconElement = props.IconElement,
       position = props.position,
       styles = props.styles;
-  return React__default['default'].createElement(icon.Icon, {
+  return React__default["default"].createElement(icon.Icon, {
     className: className,
     name: iconName,
     Element: IconElement,

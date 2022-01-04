@@ -1,28 +1,33 @@
 import React from 'react'
-import { exists } from '@keg-hub/jsutils'
 import { StyleInjector } from 'StyleInjector'
+import { exists, noOpObj, isObj } from '@keg-hub/jsutils'
 
 import {
-  getComponentName,
-  useShallowMemoMerge,
-  usePropClassName,
   useReStyles,
   useMergedProps,
+  getComponentName,
+  usePropClassName,
+  useShallowMemoMerge,
 } from './reStyleHooks'
+
+let __RE_STYLE_CONFIG__ = noOpObj
 
 /**
  * Builds a HOC, with custom styles injected into it
  * @function
  * @param {React.Component} Component - Component to wrap with custom styles
  * @param {string} [styleProp='style'] - Alternate props key to use other then 'style'
+ * @param {Object} [config] - Custom config, overrides the global reStyle config
  *
  * @returns {React.Component} HOC that will inject the custom styles
  */
-export const reStyle = (Component, styleProp = 'style') => {
+export const reStyle = (Component, styleProp = 'style', config = noOpObj) => {
   const compName = getComponentName(Component)
   const InjectedComp = StyleInjector(Component, {
-    displayName: compName,
     className: compName,
+    ...__RE_STYLE_CONFIG__,
+    displayName: compName,
+    ...config,
   })
 
   /**
@@ -36,16 +41,15 @@ export const reStyle = (Component, styleProp = 'style') => {
       const styleFromProps = exists(props[styleProp]) ? props[styleProp] : null
 
       const styles = useShallowMemoMerge(reStyles, styleFromProps)
-
       const mergedProps = useMergedProps(props, defaultProps)
 
       return (
         <InjectedComp
           {...mergedProps}
           {...{ [styleProp]: styles }}
-          style={styles}
-          className={classArr}
           ref={ref}
+          className={classArr}
+          __reStyleStylePropKey__={styleProp}
         />
       )
     })
@@ -54,4 +58,19 @@ export const reStyle = (Component, styleProp = 'style') => {
 
     return StyledFun
   }
+}
+
+/**
+ * Helper to set the global config object for reStyle
+ * @param {Object} config - Config settings for global reStyle
+ * @param {string} config.className - Default className applied to components
+ * @param {string} [config.prefix=keg] - Class prefix to prefix to hashed classNames
+ * @param {Array} [config.filter] - Group of style rules that should be **ignored** by reStyle
+ * @param {string} [config.maxSelectors=1] - Number of selectors used when applying styles
+ * @param {Array} [config.important] - Group of style rules that should have `!important` appended to them
+ */
+reStyle.setConfig = config => {
+  if (!isObj(config))
+    console.warn(`Restyle config must be an "Object". Instead got`, config)
+  __RE_STYLE_CONFIG__ = config
 }

@@ -2,20 +2,20 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var _rollupPluginBabelHelpers = require('./_rollupPluginBabelHelpers-95f0bff4.js');
+var _rollupPluginBabelHelpers = require('./_rollupPluginBabelHelpers-d23df5c1.js');
 var React = require('react');
 var text = require('./text.js');
 var touchable = require('./touchable.js');
 var drawer = require('./drawer.js');
-var view = require('./view-3fcb25db.js');
+var view = require('./view-cd2faea4.js');
 var useClassList = require('./useClassList-89a8dbd4.js');
 var jsutils = require('@keg-hub/jsutils');
 var isValidComponent = require('./isValidComponent.js');
 require('@keg-hub/re-theme/colors');
 var reTheme = require('@keg-hub/re-theme');
-require('./kegText-b0f1b442.js');
-require('./kegText.native-100193df.js');
-require('./useClassName-eec4a5f1.js');
+require('./kegText-e14b3c1f.js');
+require('./kegText.native-d2f2e1a3.js');
+require('./useClassName-75c55cf8.js');
 require('./updateClassNames.js');
 require('./ensureClassArray.js');
 require('./handleRefUpdate.js');
@@ -26,7 +26,7 @@ require('./useTextStyles.js');
 require('./getPlatform-ec53cd5e.js');
 require('./useThemePath.js');
 require('./useThemeWithHeight.js');
-require('./view.native-895f9104.js');
+require('./view.native-a1d03d45.js');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
@@ -71,7 +71,7 @@ var LinearGradient = function LinearGradient(props) {
     setHeight(nativeEvent.layout.height);
   }, [setWidth, setHeight]);
   var newAngle = useAngle && angle ? "".concat(angle, "deg") : calculateAngle(width, height, start, end);
-  return React__default['default'].createElement(view.View, _rollupPluginBabelHelpers._extends({
+  return React__default["default"].createElement(view.View, _rollupPluginBabelHelpers._extends({
     className: useClassList.useClassList("keg-linear-gradient", className)
   }, otherProps, {
     style: [style, {
@@ -158,19 +158,19 @@ var TextToggle = function TextToggle(props) {
     if (textMaxHeight === height) return;
     setTextMaxHeight(height);
   }, [textMaxHeight, setTextMaxHeight]);
-  return React__default['default'].createElement(view.View, {
+  return React__default["default"].createElement(view.View, {
     style: [mainStyle.main],
     className: useClassList.useClassList('keg-text-toggle', className)
-  }, React__default['default'].createElement(drawer.Drawer, {
+  }, React__default["default"].createElement(drawer.Drawer, {
     collapsedHeight: collapsedHeight,
     toggled: expanded
-  }, React__default['default'].createElement(text.Text, {
+  }, React__default["default"].createElement(text.Text, {
     style: mainStyle.text,
     onLayout: onTextLayout
-  }, text$1)), showToggle && !expanded && React__default['default'].createElement(LinearGradient, {
+  }, text$1)), showToggle && !expanded && React__default["default"].createElement(LinearGradient, {
     colors: ['rgba(255,255,255,0)', fadeColor],
     style: mainStyle.linearGradient
-  }), showToggle && React__default['default'].createElement(ToggleComponent, {
+  }), showToggle && React__default["default"].createElement(ToggleComponent, {
     onPress: onToggleCb,
     isExpanded: expanded,
     styles: mainStyle.toggleComponent,
@@ -190,12 +190,12 @@ var ToggleComponent = function ToggleComponent(_ref) {
       expandedToggleText = _ref.expandedToggleText,
       collapsedToggleText = _ref.collapsedToggleText;
   var defaultText = isExpanded ? expandedToggleText : collapsedToggleText;
-  return React__default['default'].createElement(touchable.Touchable, {
+  return React__default["default"].createElement(touchable.Touchable, {
     style: styles === null || styles === void 0 ? void 0 : styles.main,
     onPress: onPress
-  }, isValidComponent.isValidComponent(CustomComponent) ? React__default['default'].createElement(CustomComponent, {
+  }, isValidComponent.isValidComponent(CustomComponent) ? React__default["default"].createElement(CustomComponent, {
     isExpanded: isExpanded
-  }) : React__default['default'].createElement(text.Text, {
+  }) : React__default["default"].createElement(text.Text, {
     style: styles === null || styles === void 0 ? void 0 : styles.text
   }, defaultText));
 };

@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'
 import { Button } from 'KegButton'
 import { reStyle } from '@keg-hub/re-theme/reStyle'
-import { noOp } from '@keg-hub/jsutils'
+import { noOp, isFunc } from '@keg-hub/jsutils'
 import PropTypes from 'prop-types'
 
 /**
@@ -51,23 +51,44 @@ const SelectButton = reStyle(
  * @param {Object?} props.styles - { main}
  */
 export const SelectItem = React.forwardRef((props, ref) => {
-  const { item, onSelect = noOp, highlighted = false, styles } = props
+  const {
+    item,
+    className,
+    renderItem,
+    onSelect = noOp,
+    highlighted = false,
+    styles,
+    ...btnProps
+  } = props
 
   const handlePress = useCallback(() => onSelect(item), [ item, onSelect ])
 
-  return (
+  return isFunc(renderItem) ? (
+    renderItem({
+      ...btnProps,
+      ref,
+      item,
+      styles,
+      className,
+      highlighted,
+      onSelect: handlePress,
+    })
+  ) : (
     <SelectButton
+      {...btnProps}
       ref={ref}
+      styles={styles}
       content={item.text}
       onPress={handlePress}
-      styles={styles}
       highlighted={highlighted}
+      className={[ `keg-select-button`, className ]}
     />
   )
 })
 
 SelectItem.propTypes = {
   item: PropTypes.object.isRequired,
+  renderItem: PropTypes.func,
   onSelect: PropTypes.func,
   highlighted: PropTypes.bool,
   styles: PropTypes.object,

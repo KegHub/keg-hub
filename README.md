@@ -1,5 +1,5 @@
-![keg-build](https://github.com/KegHub/keg-hub/workflows/keg-build/badge.svg)
-![keg-tests](https://github.com/KegHub/keg-hub/workflows/keg-tests/badge.svg)
+![keg-build](https://github.com/keg-hub/keg-hub/workflows/keg-build/badge.svg)
+![keg-tests](https://github.com/keg-hub/keg-hub/workflows/keg-tests/badge.svg)
 
 <br/>
 
@@ -20,7 +20,7 @@ collection of utilities for simplifying development, including:
 ## Repositories
 
 ### Keg Core
-* [See the code](/repos/keg-core)
+* [See the code](https://github.com/keg-hub/keg-hub/tree/develop/repos/keg-core)
 * Code needed to build / deploy a Tap for different platforms
   * IOS / Android / Desktop / Web
 * Consumes the Tap-Resolver
@@ -55,7 +55,7 @@ collection of utilities for simplifying development, including:
 * See the [Keg-Core docs]() for more information
 
 ### Tap Resolver
-* [See the code](/repos/tap-resolver)
+* [See the code](https://github.com/keg-hub/keg-hub/tree/develop/repos/tap-resolver)
 * Loads the correct code from the Tap into Core
 * Allows dynamic loading based on platform and context
   * Knows when to load a mobile version of a plugin vs web version
@@ -64,7 +64,7 @@ collection of utilities for simplifying development, including:
 * See the [Tap-Resolver docs]() for more information
 
 ### Keg Components
-* [See the code](/repos/keg-components)
+* [See the code](https://github.com/keg-hub/keg-hub/tree/develop/repos/keg-components)
 * Defines a universal definition of how content is displayed or consumed
 * Cross platform components
   * Mostly Javascript
@@ -77,7 +77,7 @@ collection of utilities for simplifying development, including:
 * See the [Keg-Components docs]() for more information
 
 ### Re-Theme
-* [See the code](/repos/re-theme)
+* [See the code](https://github.com/keg-hub/keg-hub/tree/develop/repos/re-theme)
 * Custom theme / style renderer based on the platform
 * Theme passed in from the Tap
   * Defines the supported platforms
@@ -99,7 +99,7 @@ collection of utilities for simplifying development, including:
 * See the [Tap docs]() for more information
 
 ### Keg-CLI
-* [See the code](/repos/keg-cli)
+* [See the code](https://github.com/keg-hub/keg-cli)
 * Task manager for running keg platform tasks
 * Manages docker, docker-compose, within the context of the Keg and a Tap
-* See the [Keg-CLI docs]() for more information
+* See the [Keg-CLI docs](https://github.com/keg-hub/keg-cli/tree/develop/docs) for more information

@@ -1,23 +1,23 @@
-import { d as _objectWithoutProperties, _ as _objectSpread2, e as _extends } from './_rollupPluginBabelHelpers-b49fe34a.js';
-import { V as View } from './view-9c41ec1e.js';
-import { C as CheckboxWrapper, a as Check } from './checkbox.wrapper-ec38eaf1.js';
-import React__default, { useMemo, forwardRef } from 'react';
+import { d as _objectWithoutProperties, e as _extends, _ as _objectSpread2 } from './_rollupPluginBabelHelpers-eca9940e.js';
+import { V as View } from './view-86879139.js';
+import { C as CheckboxWrapper, a as Check } from './checkbox.wrapper-925e23f8.js';
+import React__default, { forwardRef } from 'react';
 import { noPropObj } from '@keg-hub/jsutils';
+import { useStyle } from '@keg-hub/re-theme';
 import { StyleInjector } from '@keg-hub/re-theme/styleInjector';
-import { I as Input$1 } from './input.web-4d25e326.js';
-import './view.native-2491eb60.js';
+import { I as Input$1 } from './input.web-2c668800.js';
+import './view.native-f56118b2.js';
 import 'react-native-web';
-import './useClassName-ed83df40.js';
+import './useClassName-52067a95.js';
 import './updateClassNames.js';
 import './ensureClassArray.js';
 import './handleRefUpdate.js';
-import './svgIcon-ff7cc73a.js';
-import './svgIcon.native-19802c84.js';
+import './svgIcon-8b45e2a3.js';
+import './svgIcon.native-e0c41d6c.js';
 import 'react-native-svg-web';
-import '@keg-hub/re-theme';
 import './caption.js';
-import './kegText-9f80996b.js';
-import './kegText.native-6bbad9e4.js';
+import './kegText-d18b7a12.js';
+import './kegText.native-ba7d1c9c.js';
 import './useTextAccessibility.js';
 import './useTextStyles.js';
 import './h1.js';
@@ -38,7 +38,7 @@ import '@keg-hub/re-theme/colors';
 import './useThemePath.js';
 import './useThemeWithHeight.js';
 import './useClassList-1d418045.js';
-import './useThemeTypeAsClass-fb17085e.js';
+import './useThemeTypeAsClass-1d2ed78d.js';
 import './colors-6402d3b3.js';
 
 var _excluded = ["className", "elProps", "styles", "CheckIcon", "checked"];
@@ -80,12 +80,8 @@ var Element = React__default.forwardRef(function (props, ref) {
       CheckIcon = _props$CheckIcon === void 0 ? Check : _props$CheckIcon,
       checked = props.checked,
       attributes = _objectWithoutProperties(props, _excluded);
-  var checkStyle = useMemo(function () {
-    return _objectSpread2(_objectSpread2({}, checkBoxStyles.icon), styles.indicator);
-  }, [checkBoxStyles, styles]);
-  var inputStyle = useMemo(function () {
-    return _objectSpread2(_objectSpread2({}, styles.input), checkBoxStyles.input);
-  }, [checkBoxStyles, styles]);
+  var checkStyle = useStyle(checkBoxStyles.icon, styles.indicator);
+  var inputStyle = useStyle(styles.input, checkBoxStyles.input);
   return React__default.createElement(View, {
     style: styles.main,
     className: className

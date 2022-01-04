@@ -3,20 +3,20 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 var React = require('react');
-var view_native = require('./view.native-5d72f4dd.js');
+var view_native = require('./view.native-6338852a.js');
 var text = require('./text.js');
 var jsutils = require('@keg-hub/jsutils');
-require('./icon-9317be7c.js');
+require('./icon-a5269604.js');
 var touchableIcon = require('./touchableIcon.js');
-var svgIcon_native = require('./svgIcon.native-1a38a3f7.js');
-var _rollupPluginBabelHelpers = require('./_rollupPluginBabelHelpers-95f0bff4.js');
+var svgIcon_native = require('./svgIcon.native-2127578c.js');
+var _rollupPluginBabelHelpers = require('./_rollupPluginBabelHelpers-d23df5c1.js');
 require('@keg-hub/re-theme/colors');
 var useThemePath = require('./useThemePath.js');
 require('./useThemeWithHeight.js');
 var reactNative = require('react-native');
 var useThemeTypeAsClass_native = require('./useThemeTypeAsClass.native-90f04031.js');
 require('./useClassName.native-3d1a229b.js');
-require('./kegText-e1842e1b.js');
+require('./kegText-d4479e6a.js');
 require('./kegText.js');
 require('./useTextAccessibility.js');
 require('@keg-hub/re-theme/styleInjector');
@@ -26,7 +26,7 @@ require('./renderFromType.js');
 require('./isValidComponent.js');
 require('./useClassList.native-9e7810c9.js');
 require('./withTouch.js');
-require('./touchable-548d2782.js');
+require('./touchable-62a31fcc.js');
 require('./touchable.js');
 require('react-native-svg');
 
@@ -41,14 +41,12 @@ function _interopNamespace(e) {
         var d = Object.getOwnPropertyDescriptor(e, k);
         Object.defineProperty(n, k, d.get ? d : {
           enumerable: true,
-          get: function () {
-            return e[k];
-          }
+          get: function () { return e[k]; }
         });
       }
     });
   }
-  n['default'] = e;
+  n["default"] = e;
   return Object.freeze(n);
 }
 
@@ -75,17 +73,17 @@ var TextBox = function TextBox(props) {
       _props$useClipboard = props.useClipboard,
       useClipboard = _props$useClipboard === void 0 ? false : _props$useClipboard;
   var style = useThemePath.useThemePath(themePath, styles);
-  return React__default['default'].createElement(view_native.View, {
+  return React__default["default"].createElement(view_native.View, {
     className: useThemeTypeAsClass_native.useThemeTypeAsClass(),
     style: style.main
-  }, React__default['default'].createElement(view_native.View, {
+  }, React__default["default"].createElement(view_native.View, {
     className: "keg-textbox-container",
     style: jsutils.get(style, 'content.wrapper')
-  }, React__default['default'].createElement(text.Text, {
+  }, React__default["default"].createElement(text.Text, {
     className: "keg-textbox-text",
     numberOfLines: maxLines,
     style: jsutils.get(style, 'content.text')
-  }, text$1 || '')), React__default['default'].createElement(text.Text, null, useClipboard && text$1 && React__default['default'].createElement(touchableIcon.TouchableIcon, {
+  }, text$1 || '')), React__default["default"].createElement(text.Text, null, useClipboard && text$1 && React__default["default"].createElement(touchableIcon.TouchableIcon, {
     Component: Copy,
     size: 15,
     className: "keg-textbox-clipboard",

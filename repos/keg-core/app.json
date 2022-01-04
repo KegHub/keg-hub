@@ -4,13 +4,13 @@
   "expo": {
     "name": "kegcore",
     "slug": "kegcore",
-    "privacy": "public",
+    "version": "0.0.0",
+    "privacy": "hidden",
     "platforms": [
       "ios",
       "android",
       "web"
     ],
-    "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -30,6 +30,7 @@
   },
   "keg": {
     "name": "Keg-Core",
+    "alias": "core",
     "routes": {},
     "overrides": {
       "kegName": [

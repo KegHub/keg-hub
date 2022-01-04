@@ -2,8 +2,8 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var _rollupPluginBabelHelpers = require('./_rollupPluginBabelHelpers-95f0bff4.js');
-var view = require('./view-3fcb25db.js');
+var _rollupPluginBabelHelpers = require('./_rollupPluginBabelHelpers-d23df5c1.js');
+var view = require('./view-cd2faea4.js');
 require('./caption.js');
 require('./h1.js');
 require('./h2.js');
@@ -17,7 +17,7 @@ require('./subtitle.js');
 var text = require('./text.js');
 var reTheme = require('@keg-hub/re-theme');
 var React = require('react');
-var useThemeTypeAsClass = require('./useThemeTypeAsClass-9fb8a8ab.js');
+var useThemeTypeAsClass = require('./useThemeTypeAsClass-43ee56b4.js');
 var jsutils = require('@keg-hub/jsutils');
 var renderFromType = require('./renderFromType.js');
 var getOnChangeHandler = require('./getOnChangeHandler.js');
@@ -26,15 +26,15 @@ require('@keg-hub/re-theme/colors');
 var useThemePath = require('./useThemePath.js');
 require('./useThemeWithHeight.js');
 require('react-native-web');
-var _switch = require('./switch-54bf3fc5.js');
+var _switch = require('./switch-443c3c2b.js');
 var styleInjector = require('@keg-hub/re-theme/styleInjector');
-require('./view.native-895f9104.js');
-require('./useClassName-eec4a5f1.js');
+require('./view.native-a1d03d45.js');
+require('./useClassName-75c55cf8.js');
 require('./updateClassNames.js');
 require('./ensureClassArray.js');
 require('./handleRefUpdate.js');
-require('./kegText-b0f1b442.js');
-require('./kegText.native-100193df.js');
+require('./kegText-e14b3c1f.js');
+require('./kegText.native-d2f2e1a3.js');
 require('./useTextAccessibility.js');
 require('./useTextStyles.js');
 require('./colors-da502c66.js');
@@ -85,7 +85,7 @@ var setCheckedValue = function setCheckedValue(isChecked, setChecked, onChange) 
 var SideComponent = function SideComponent(_ref2) {
   var Component = _ref2.Component,
       style = _ref2.style;
-  return jsutils.isStr(Component) ? React__default['default'].createElement(text.Text, {
+  return jsutils.isStr(Component) ? React__default["default"].createElement(text.Text, {
     style: style
   }, Component) : renderFromType.renderFromType(Component, {
     style: styles.content
@@ -93,7 +93,7 @@ var SideComponent = function SideComponent(_ref2) {
 };
 var ChildrenComponent = function ChildrenComponent(_ref3) {
   var children = _ref3.children;
-  return React__default['default'].createElement(React__default['default'].Fragment, null, renderFromType.renderFromType(children, {}, null));
+  return React__default["default"].createElement(React__default["default"].Fragment, null, renderFromType.renderFromType(children, {}, null));
 };
 var useSwitchHandle = function useSwitchHandle(ref, isChecked, setChecked) {
   return React.useImperativeHandle(ref, function () {
@@ -132,26 +132,26 @@ var Switch = React.forwardRef(function (props, ref) {
   var themeStyles = useThemePath.useThemePath(elThemePath, styles);
   var activeStyles = useCheckedState(isChecked, themeStyles);
   var typeClassName = useThemeTypeAsClass.useThemeTypeAsClass(elThemePath || type, 'keg-switch', className);
-  return children && React__default['default'].createElement(view.View, {
+  return children && React__default["default"].createElement(view.View, {
     className: typeClassName,
     style: activeStyles.main
-  }, React__default['default'].createElement(ChildrenComponent, {
+  }, React__default["default"].createElement(ChildrenComponent, {
     className: "keg-switch-container",
     children: children
-  })) || React__default['default'].createElement(view.View, {
+  })) || React__default["default"].createElement(view.View, {
     className: typeClassName,
     style: activeStyles.main
-  }, LeftComponent && React__default['default'].createElement(SideComponent, {
+  }, LeftComponent && React__default["default"].createElement(SideComponent, {
     className: "keg-switch-left",
     Component: LeftComponent,
     style: activeStyles.content.left
   }), SwitchComponent ? renderFromType.renderFromType(SwitchComponent, _rollupPluginBabelHelpers._objectSpread2(_rollupPluginBabelHelpers._objectSpread2({}, props), {}, {
     styles: activeStyles.content
-  })) : React__default['default'].createElement(KegSwitch, _rollupPluginBabelHelpers._extends({
+  })) : React__default["default"].createElement(KegSwitch, _rollupPluginBabelHelpers._extends({
     elProps: elProps,
     disabled: disabled,
     styles: activeStyles.content
-  }, getSwitchColors(thumbColor, trackColor, activeStyles.content), getChecked.getChecked(false, isChecked), getOnChangeHandler.getOnChangeHandler(false, setCheckedValue(isChecked, setChecked, onChange || onValueChange)))), RightComponent && React__default['default'].createElement(SideComponent, {
+  }, getSwitchColors(thumbColor, trackColor, activeStyles.content), getChecked.getChecked(false, isChecked), getOnChangeHandler.getOnChangeHandler(false, setCheckedValue(isChecked, setChecked, onChange || onValueChange)))), RightComponent && React__default["default"].createElement(SideComponent, {
     className: "keg-switch-right",
     Component: RightComponent,
     style: activeStyles.content.right

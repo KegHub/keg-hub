@@ -2,7 +2,7 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var _rollupPluginBabelHelpers = require('./_rollupPluginBabelHelpers-95f0bff4.js');
+var _rollupPluginBabelHelpers = require('./_rollupPluginBabelHelpers-d23df5c1.js');
 var React = require('react');
 var reactNativeWeb = require('react-native-web');
 var touchable = require('./touchable.js');
@@ -11,16 +11,16 @@ require('@keg-hub/re-theme/colors');
 var useThemePath = require('./useThemePath.js');
 require('./useThemeWithHeight.js');
 var useFromToAnimation = require('./useFromToAnimation.js');
-var useClassName = require('./useClassName-eec4a5f1.js');
+var useClassName = require('./useClassName-75c55cf8.js');
 var useClassList = require('./useClassList-89a8dbd4.js');
-var view = require('./view-3fcb25db.js');
+var view = require('./view-cd2faea4.js');
 require('@keg-hub/re-theme/styleInjector');
+require('@keg-hub/re-theme');
+require('./getPlatform-ec53cd5e.js');
 require('./updateClassNames.js');
 require('./ensureClassArray.js');
 require('./handleRefUpdate.js');
-require('@keg-hub/re-theme');
-require('./getPlatform-ec53cd5e.js');
-require('./view.native-895f9104.js');
+require('./view.native-a1d03d45.js');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
@@ -43,7 +43,7 @@ var SlideAnimatedView = function SlideAnimatedView(_ref) {
       _useFromToAnimation2 = _rollupPluginBabelHelpers._slicedToArray(_useFromToAnimation, 1),
       slide = _useFromToAnimation2[0];
   var classRef = useClassName.useClassName('keg-modal-content', className);
-  return React__default['default'].createElement(reactNativeWeb.Animated.View, {
+  return React__default["default"].createElement(reactNativeWeb.Animated.View, {
     ref: classRef,
     style: _rollupPluginBabelHelpers._objectSpread2(_rollupPluginBabelHelpers._objectSpread2({}, defaultStyle), {}, {
       transform: [{
@@ -94,15 +94,15 @@ var Modal = function Modal(props) {
     } else if (jsutils.isFunc(onAnimateIn)) onAnimateIn();
   }, [onAnimateOut, onAnimateIn, visible]);
   return (
-    React__default['default'].createElement(view.View, {
+    React__default["default"].createElement(view.View, {
       className: useClassList.useClassList('keg-modal', className),
       style: renderModal ? modalStyles.main : hideModalStyle
-    }, React__default['default'].createElement(touchable.Touchable, {
+    }, React__default["default"].createElement(touchable.Touchable, {
       className: 'keg-modal-backdrop',
       style: modalStyles.backdrop,
       onPress: onBackdropTouch,
       activeOpacity: activeOpacity
-    }), React__default['default'].createElement(AnimatedComponent, {
+    }), React__default["default"].createElement(AnimatedComponent, {
       onAnimationFinish: cb,
       visible: visible,
       defaultStyle: modalStyles.content

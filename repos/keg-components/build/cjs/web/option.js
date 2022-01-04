@@ -2,7 +2,7 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var _rollupPluginBabelHelpers = require('./_rollupPluginBabelHelpers-95f0bff4.js');
+var _rollupPluginBabelHelpers = require('./_rollupPluginBabelHelpers-d23df5c1.js');
 var React = require('react');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
@@ -17,7 +17,7 @@ var Option = function Option(props) {
       var text = props.text,
       value = props.value,
       args = _rollupPluginBabelHelpers._objectWithoutProperties(props, _excluded);
-  return React__default['default'].createElement("option", _rollupPluginBabelHelpers._extends({}, args, {
+  return React__default["default"].createElement("option", _rollupPluginBabelHelpers._extends({}, args, {
     value: value || label || text
   }), label || value || text || children);
 };

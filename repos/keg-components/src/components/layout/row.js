@@ -1,19 +1,19 @@
 import React from 'react'
-import { useTheme } from '@keg-hub/re-theme'
-import { get } from '@keg-hub/jsutils'
-import { Container } from './container'
 import PropTypes from 'prop-types'
+import { Container } from './container'
+import { useStyle } from '@keg-hub/re-theme'
 import { useClassList } from 'KegClassList'
 
 export const Row = ({ className, children, style, ...props }) => {
-  const theme = useTheme()
+  const classNames = useClassList('keg-row', className)
+  const containerStyles = useStyle(`layout.grid.row`, style)
 
   return (
     <Container
       {...props}
-      className={useClassList('keg-row', className)}
-      style={[ get(theme, 'layout.grid.row'), style ]}
       flexDir='row'
+      className={classNames}
+      style={containerStyles}
     >
       { children }
     </Container>
@@ -22,6 +22,6 @@ export const Row = ({ className, children, style, ...props }) => {
 
 Row.propTypes = {
   center: PropTypes.string,
-  theme: PropTypes.object,
   style: PropTypes.object,
+  className: PropTypes.string,
 }

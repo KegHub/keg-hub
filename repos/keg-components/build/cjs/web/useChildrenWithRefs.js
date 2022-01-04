@@ -25,7 +25,7 @@ var useCloneChildCallback = function useCloneChildCallback(childRefs) {
   return React.useCallback(function (child) {
     var index = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
     var props = buildPropsForChild(childRefs, child, index);
-    return React__default['default'].isValidElement(child) ? React__default['default'].cloneElement(child, props) : child;
+    return React__default["default"].isValidElement(child) ? React__default["default"].cloneElement(child, props) : child;
   }, [childRefs]);
 };
 var useChildrenWithRefs = function useChildrenWithRefs(children) {
@@ -33,7 +33,7 @@ var useChildrenWithRefs = function useChildrenWithRefs(children) {
   var childRefs = React.useRef({});
   var cloneChild = useCloneChildCallback(childRefs);
   var updatedChildren = React.useMemo(function () {
-    return enable ? React__default['default'].Children.count(children) > 1 ? children.map(cloneChild) : cloneChild(children) : children;
+    return enable ? React__default["default"].Children.count(children) > 1 ? children.map(cloneChild) : cloneChild(children) : children;
   }, [enable, children]);
   return [updatedChildren, childRefs];
 };

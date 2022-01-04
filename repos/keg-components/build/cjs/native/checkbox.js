@@ -2,12 +2,12 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var _rollupPluginBabelHelpers = require('./_rollupPluginBabelHelpers-95f0bff4.js');
+var _rollupPluginBabelHelpers = require('./_rollupPluginBabelHelpers-d23df5c1.js');
 var React = require('react');
 var reTheme = require('@keg-hub/re-theme');
 var text = require('./text.js');
-var checkbox_wrapper = require('./checkbox.wrapper-5a3b3816.js');
-require('./kegText-e1842e1b.js');
+var checkbox_wrapper = require('./checkbox.wrapper-e409fab6.js');
+require('./kegText-d4479e6a.js');
 require('@keg-hub/jsutils');
 require('./kegText.js');
 require('./useClassName.native-3d1a229b.js');
@@ -15,7 +15,7 @@ require('react-native');
 require('./useTextAccessibility.js');
 require('@keg-hub/re-theme/styleInjector');
 require('./useTextStyles.js');
-require('./view.native-5d72f4dd.js');
+require('./view.native-6338852a.js');
 require('./caption.js');
 require('./h1.js');
 require('./h2.js');
@@ -50,12 +50,12 @@ var Element = reTheme.withTheme(function (props) {
       props.onPress;
       var text$1 = props.text,
       args = _rollupPluginBabelHelpers._objectWithoutProperties(props, _excluded);
-  return React__default['default'].createElement(text.Text, _rollupPluginBabelHelpers._extends({}, args, {
+  return React__default["default"].createElement(text.Text, _rollupPluginBabelHelpers._extends({}, args, {
     style: {}
   }), text$1);
 });
 var Checkbox = function Checkbox(props) {
-  return React__default['default'].createElement(checkbox_wrapper.CheckboxWrapper, _rollupPluginBabelHelpers._extends({}, props, {
+  return React__default["default"].createElement(checkbox_wrapper.CheckboxWrapper, _rollupPluginBabelHelpers._extends({}, props, {
     elType: 'checkbox',
     Element: Element,
     isWeb: true

@@ -76,7 +76,7 @@ describe('Helpers', () => {
       expect(typeof theme.get).toBe('function')
     })
 
-    it('should just return the passed in theme when its not an object', () => {
+    it('should just return the passed in theme when its not an object or array of objects', () => {
       expect(compileStylesForState(null)).toBe(null)
       expect(compileStylesForState(1)).toEqual(1)
       expect(compileStylesForState('')).toEqual('')
@@ -84,6 +84,12 @@ describe('Helpers', () => {
       const arrTheme = []
       expect(compileStylesForState(arrTheme)).toEqual(arrTheme)
 
+      expect(Dims.getSize).not.toHaveBeenCalled()
+    })
+
+    it('should just return an empty object when passed an array of non object items', () => {
+      const arrTheme = [ `test`, 1, true ]
+      expect(compileStylesForState(arrTheme)).toEqual({})
       expect(Dims.getSize).not.toHaveBeenCalled()
     })
 

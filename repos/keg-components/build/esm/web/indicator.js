@@ -1,8 +1,8 @@
-import { d as _objectWithoutProperties, e as _extends } from './_rollupPluginBabelHelpers-b49fe34a.js';
+import { d as _objectWithoutProperties, e as _extends } from './_rollupPluginBabelHelpers-eca9940e.js';
 import React__default from 'react';
 import { ActivityIndicator } from 'react-native-web';
-import { I as IndicatorWrapper } from './indicator.wrapper-2c72453d.js';
-import { V as View } from './view-9c41ec1e.js';
+import { I as IndicatorWrapper } from './indicator.wrapper-a62b8696.js';
+import { V as View } from './view-86879139.js';
 import { g as getPlatform } from './getPlatform-95568099.js';
 import { u as useClassList } from './useClassList-1d418045.js';
 import '@keg-hub/jsutils';
@@ -10,8 +10,8 @@ import '@keg-hub/re-theme/colors';
 import './useThemePath.js';
 import '@keg-hub/re-theme';
 import './useThemeWithHeight.js';
-import './view.native-2491eb60.js';
-import './useClassName-ed83df40.js';
+import './view.native-f56118b2.js';
+import './useClassName-52067a95.js';
 import './updateClassNames.js';
 import './ensureClassArray.js';
 import './handleRefUpdate.js';
@@ -31,7 +31,7 @@ var Element = function Element(_ref) {
     className: useClassList('keg-indicator', className)
   }, React__default.createElement(ActivityIndicator, {
     size: size,
-    color: style.color || color
+    color: color || style.color
   }));
 };
 var Indicator = function Indicator(_ref2) {
@@ -41,12 +41,12 @@ var Indicator = function Indicator(_ref2) {
       styles = _ref2.styles,
       props = _objectWithoutProperties(_ref2, _excluded2);
   return React__default.createElement(IndicatorWrapper, _extends({}, props, {
-    alt: alt || 'Loading',
-    size: ['large', 'small'].includes(size) ? size : 'large',
     color: color,
-    Element: Element,
+    isWeb: isWeb,
     styles: styles,
-    isWeb: isWeb
+    Element: Element,
+    alt: alt || 'Loading',
+    size: ['large', 'small'].includes(size) ? size : 'large'
   }));
 };
 

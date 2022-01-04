@@ -3,21 +3,20 @@ const { isArr } = require('../../array/isArr')
 const { isStr } = require('../../string/isStr')
 const { isNum } = require('../../number/isNum')
 
-const { mockConsole } = require('jestlib')
+const orgErr = console.error
+console.error = jest.fn()
 
 describe('validate', () => {
-  let resetMocks = null
-
-  beforeEach(() => {
-    resetMocks = mockConsole(['error'])
-  })
 
   afterEach(() => {
-    resetMocks()
     jest.resetAllMocks()
     validate.resetOptions()
   })
 
+  afterAll(() => {
+    console.error = orgErr
+  })
+  
   it ('should validate all conditions, returning true if all are valid', () => {
     const x = 3
     const y = 'hello' 

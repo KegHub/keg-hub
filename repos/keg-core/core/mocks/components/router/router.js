@@ -5,7 +5,7 @@ export const Route = jest.fn(config => {
   return <View></View>
 })
 
-export const RouterSwitch = jest.fn(config => {
+export const Routes = jest.fn(config => {
   return <View></View>
 })
 

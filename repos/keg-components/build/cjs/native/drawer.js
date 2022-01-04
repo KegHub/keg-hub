@@ -2,8 +2,8 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var _rollupPluginBabelHelpers = require('./_rollupPluginBabelHelpers-95f0bff4.js');
-var view_native = require('./view.native-5d72f4dd.js');
+var _rollupPluginBabelHelpers = require('./_rollupPluginBabelHelpers-d23df5c1.js');
+var view_native = require('./view.native-6338852a.js');
 var jsutils = require('@keg-hub/jsutils');
 var React = require('react');
 var getPlatform = require('./getPlatform-24228c6c.js');
@@ -24,7 +24,7 @@ var isWeb = getPlatform.getPlatform() === 'web';
 var noAnimate = function noAnimate(toggled, current, collapsedHeight, contentMaxHeight) {
   return !toggled && current === collapsedHeight || toggled && current === contentMaxHeight;
 };
-var Drawer = React__default['default'].forwardRef(function (props, ref) {
+var Drawer = React__default["default"].forwardRef(function (props, ref) {
   var Element = props.Element,
       styles = props.styles,
       toggled = props.toggled,
@@ -67,16 +67,16 @@ var Drawer = React__default['default'].forwardRef(function (props, ref) {
   }, [toggled, type, config, collapsedHeight]);
   var drawerStyles = useThemePath.useThemePath("drawer", styles);
   var classRef = useClassName_native.useClassName('keg-drawer', className, ref);
-  return React__default['default'].createElement(reactNative.Animated.View, {
+  return React__default["default"].createElement(reactNative.Animated.View, {
     ref: classRef,
     style: [drawerStyles.main, jsutils.get(styles, 'main'), {
       maxHeight: animation
     }]
-  }, React__default['default'].createElement(view_native.View, {
+  }, React__default["default"].createElement(view_native.View, {
     className: "keg-drawer-content",
     onLayout: setMaxHeight,
     style: jsutils.get(styles, 'content')
-  }, isValidComponent.isValidComponent(Element) ? React__default['default'].createElement(Element, _rollupPluginBabelHelpers._extends({}, childProps, {
+  }, isValidComponent.isValidComponent(Element) ? React__default["default"].createElement(Element, _rollupPluginBabelHelpers._extends({}, childProps, {
     styles: styles
   })) : props.children));
 });

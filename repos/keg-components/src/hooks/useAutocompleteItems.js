@@ -1,4 +1,4 @@
-import { isEmpty, pipeline, isStr, isObj } from '@keg-hub/jsutils'
+import { isEmpty, pipeline, isStr, isObj, noPropArr } from '@keg-hub/jsutils'
 import { useState, useMemo } from 'react'
 
 /**
@@ -21,8 +21,9 @@ const ignoreAccents = str =>
  * @return {Object?} returns null if invalid, otherwise an object in form { key, text }
  */
 const formatItem = (item, index) => {
-  if (isObj(item) && isStr(item.text))
-    return { text: item.text, key: item.key || item.text, index }
+  const value = item.text || item.value
+  if (isObj(item) && isStr(value))
+    return { text: value, key: item.key || value, index }
   else if (isStr(item)) return { text: item, key: item, index }
   else return null
 }
@@ -54,7 +55,12 @@ const textMatches = (text, item) => {
  * @param {Array<string | Object>} possibleValues - string or object { text, key? } array
  * @returns {Array<Object>} the new array of items, without duplicates
  */
-export const getItemsMatchingText = (text, possibleValues) => {
+export const getItemsMatchingText = (
+  text,
+  possibleValues,
+  emptyShowList,
+  selectedItem
+) => {
   if (!isStr(text)) return []
 
   // in one pass: format values, keep the matching ones, and ignore duplicates (by key) and invalid items
@@ -66,11 +72,12 @@ export const getItemsMatchingText = (text, possibleValues) => {
       // invalid item, so just ignore
       if (!formattedItem) return state
 
+      const addItem =
+        (!text && emptyShowList) ||
+        textMatches(text, formattedItem) ||
+        selectedItem?.activeShowList
       // add the item if it matches the text and we haven't seen its key before
-      if (
-        textMatches(text, formattedItem) &&
-        !state.keys.has(formattedItem.key)
-      ) {
+      if (addItem && !state.keys.has(formattedItem.key)) {
         state.keys.add(formattedItem.key)
         state.arr.push(formattedItem)
 
@@ -99,14 +106,25 @@ export const getItemsMatchingText = (text, possibleValues) => {
  *  selectedItem: the currently selected item
  * ]
  */
-export const useAutocompleteItems = (text, menuItems) => {
-  const [ selectedItem, setSelectedItem ] = useState(null)
+export const useAutocompleteItems = (
+  text,
+  menuItems = noPropArr,
+  emptyShowList
+) => {
+  const curItem = useMemo(() => {
+    return menuItems
+      .filter(node => text === node.text || text === node.value)
+      .find(val => val)
+  }, [ text, menuItems ])
 
+  const [ selectedItem, setSelectedItem ] = useState(curItem || null)
   const items = useMemo(
     () =>
-      isEmpty(text) || selectedItem?.text === text
+      !selectedItem?.activeShowList &&
+      !emptyShowList &&
+      (isEmpty(text) || selectedItem?.text === text)
         ? []
-        : getItemsMatchingText(text, menuItems),
+        : getItemsMatchingText(text, menuItems, emptyShowList, selectedItem),
     [ text, menuItems, selectedItem ]
   )
 

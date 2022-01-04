@@ -1,15 +1,15 @@
-import { d as _objectWithoutProperties, e as _extends } from './_rollupPluginBabelHelpers-b49fe34a.js';
-import React__default from 'react';
-import { useTheme } from '@keg-hub/re-theme';
-import { get } from '@keg-hub/jsutils';
+import { d as _objectWithoutProperties, e as _extends } from './_rollupPluginBabelHelpers-eca9940e.js';
+import React__default, { useMemo } from 'react';
 import { Container } from './container.js';
 import { u as useClassList } from './useClassList-1d418045.js';
-import './view-9c41ec1e.js';
-import './view.native-2491eb60.js';
+import { useTheme, useStyle } from '@keg-hub/re-theme';
+import './view-86879139.js';
+import './view.native-f56118b2.js';
 import 'react-native-web';
-import './useClassName-ed83df40.js';
+import './useClassName-52067a95.js';
 import './updateClassNames.js';
 import './ensureClassArray.js';
+import '@keg-hub/jsutils';
 import './handleRefUpdate.js';
 import '@keg-hub/re-theme/styleInjector';
 import './getPlatform-95568099.js';
@@ -18,7 +18,8 @@ import '@keg-hub/re-theme/colors';
 
 var _excluded = ["className", "children", "size", "center"];
 var widthFromSize = function widthFromSize(size, theme) {
-  var total = get(theme, ['layout', 'columns'], 12);
+  var _theme$layout;
+  var total = (theme === null || theme === void 0 ? void 0 : (_theme$layout = theme.layout) === null || _theme$layout === void 0 ? void 0 : _theme$layout.columns) || 12;
   size = size > total ? total : size;
   var colWidth = parseFloat(size * (100 / total)).toFixed(4);
   return {
@@ -26,10 +27,12 @@ var widthFromSize = function widthFromSize(size, theme) {
     maxWidth: "".concat(colWidth, "%")
   };
 };
-var getColumnWidth = function getColumnWidth(size, theme) {
-  return size ? widthFromSize(size, theme) : {
-    flexGrow: 1
-  };
+var useColumnWidth = function useColumnWidth(size, theme) {
+  return useMemo(function () {
+    return size ? widthFromSize(size, theme) : {
+      flexGrow: 1
+    };
+  }, [size, theme]);
 };
 var Column = function Column(_ref) {
   var className = _ref.className,
@@ -38,11 +41,13 @@ var Column = function Column(_ref) {
       _ref.center;
       var props = _objectWithoutProperties(_ref, _excluded);
   var theme = useTheme();
+  var widthStyle = useColumnWidth(size, theme);
+  var style = useStyle("layout.grid.column", props.style, widthStyle);
   return React__default.createElement(Container, _extends({}, props, {
-    className: useClassList('keg-column', className),
     size: size,
+    style: style,
     flexDir: "column",
-    style: [get(theme, ['layout', 'grid', 'column']), props.style, getColumnWidth(size, theme)]
+    className: useClassList('keg-column', className)
   }), children);
 };
 

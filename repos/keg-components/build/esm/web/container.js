@@ -1,25 +1,31 @@
-import { d as _objectWithoutProperties, e as _extends, c as _toConsumableArray } from './_rollupPluginBabelHelpers-b49fe34a.js';
+import { d as _objectWithoutProperties, c as _toConsumableArray, e as _extends } from './_rollupPluginBabelHelpers-eca9940e.js';
 import React__default, { useMemo } from 'react';
-import { V as View } from './view-9c41ec1e.js';
-import { isArr, pickKeys, noPropObj } from '@keg-hub/jsutils';
+import { V as View } from './view-86879139.js';
+import { useStyle } from '@keg-hub/re-theme';
+import { ensureArr, pickKeys, noOpObj } from '@keg-hub/jsutils';
 import { g as getPlatform } from './getPlatform-95568099.js';
 import { getPressHandler } from './getPressHandler.js';
 import '@keg-hub/re-theme/colors';
-import './view.native-2491eb60.js';
+import './view.native-f56118b2.js';
 import 'react-native-web';
-import './useClassName-ed83df40.js';
+import './useClassName-52067a95.js';
 import './updateClassNames.js';
 import './ensureClassArray.js';
 import './handleRefUpdate.js';
 import '@keg-hub/re-theme/styleInjector';
 
 var _excluded = ["onPress", "onClick", "children", "flexDir", "size", "style"];
-var useHasWidth = function useHasWidth(styles) {
-  return useMemo(function () {
-    return styles.map(function (style) {
+var useContainerStyle = function useContainerStyle(styles, flexDir, size) {
+  var flexStyle = useMemo(function () {
+    var hasWidth = styles.map(function (style) {
       return Boolean(Object.keys(pickKeys(style, ['width', 'minWidth', 'maxWidth'])).length);
     }).indexOf(true) !== -1;
-  }, styles);
+    return flexDir === 'row' && {
+      flexDirection: flexDir,
+      flex: size ? size : hasWidth ? 0 : 1
+    };
+  }, [].concat(_toConsumableArray(styles), [flexDir, size]));
+  return useStyle.apply(void 0, [flexStyle].concat(_toConsumableArray(styles)));
 };
 var Container = function Container(_ref) {
   var onPress = _ref.onPress,
@@ -28,16 +34,11 @@ var Container = function Container(_ref) {
       flexDir = _ref.flexDir,
       size = _ref.size,
       _ref$style = _ref.style,
-      style = _ref$style === void 0 ? noPropObj : _ref$style,
+      style = _ref$style === void 0 ? noOpObj : _ref$style,
       props = _objectWithoutProperties(_ref, _excluded);
-  var containerStyles = isArr(style) ? style : [style];
-  var hasWidth = useHasWidth(containerStyles);
-  var flexStyle = flexDir === 'row' ? {
-    flexDirection: flexDir,
-    flex: size ? size : hasWidth ? 0 : 1
-  } : {};
+  var containerStyle = useContainerStyle(ensureArr(style), flexDir, size);
   return React__default.createElement(View, _extends({}, props, {
-    style: [flexStyle].concat(_toConsumableArray(containerStyles))
+    style: containerStyle
   }, getPressHandler(getPlatform(), onClick || onPress)), children);
 };
 

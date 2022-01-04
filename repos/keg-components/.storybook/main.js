@@ -1,39 +1,22 @@
-const path = require('path')
-
 module.exports = {
   stories: [
-    '../src/kegComponents.stories.mdx',
-    '../src/components/**/*.stories.@(js|mdx)',
-    '../src/theme/**/*.stories.@(js|mdx)',
-    '../src/utils/**/*.stories.@(js|mdx)',
+    "../src/**/*.stories.mdx",
+    "../src/**/*.stories.@(js|jsx|ts|tsx)"
   ],
   addons: [
     {
       name: '@storybook/preset-create-react-app',
-      options: { tsDocgenLoaderOptions: {} }
-    },
-    {
-      name: '@storybook/addon-docs/preset',
-      options: { configureJSX: true },
-    },
-    {
-      name: '@storybook/addon-storysource',
       options: {
-        rule: {
-          // test: [/\.stories\.jsx?$/], This is default
-          include: [
-            path.resolve(__dirname, '../src/components'),
-            path.resolve(__dirname, '../src/theme')
-          ],
-        },
-        loaderOptions: {
-          prettierConfig: { printWidth: 80, singleQuote: false },
-        },
-      },
+        tsDocgenLoaderOptions: {},
+      }
     },
-    '@storybook/addon-links/register',
-    '@storybook/addon-storysource/register',
-    '@storybook/addon-controls',
-    '@storybook/addon-actions',
+    "@storybook/addon-links",
+    "@storybook/addon-essentials",
   ],
+  framework: "@storybook/react",
+  core: {
+    builder: "webpack5"
+  }
 }
+
+

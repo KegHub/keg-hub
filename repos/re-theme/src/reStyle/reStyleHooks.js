@@ -1,5 +1,5 @@
+import { useMemo, useRef } from 'react'
 import { useTheme } from '../hooks/useTheme'
-import { useMemo, useState, useEffect, useRef } from 'react'
 import {
   ensureArr,
   uuid,
@@ -47,15 +47,19 @@ export const usePropClassName = (className, compName) => {
 /**
  * Hook that memoizes the merged objects using a shallow-equal comparison
  * @function
- * @param {...Object} mergeObjs - objects to be merged, provided there is a shallow difference from the last call
+ * @param {Object} reStyles - Styles generated form useReStyles hook
+ * @param {Object} styleFromProps - Styles passed in from props
  *
  * @returns {Object} - merged object
  */
-export const useShallowMemoMerge = (...mergeObjs) => {
+export const useShallowMemoMerge = (reStyles, styleFromProps) => {
   const identity = useRef(null)
 
   return useMemo(() => {
-    const merged = deepMerge(...mergeObjs)
+    if (!styleFromProps || styleFromProps === noOpObj) return reStyles
+    if (!reStyles || reStyles === noOpObj) return styleFromProps
+
+    const merged = deepMerge(reStyles, ...ensureArr(styleFromProps))
 
     const foundIdentity = shallowEqual(identity.current, merged)
       ? identity.current
@@ -68,7 +72,7 @@ export const useShallowMemoMerge = (...mergeObjs) => {
     }
 
     return foundIdentity
-  }, [...mergeObjs])
+  }, [ reStyles, styleFromProps ])
 }
 
 /**
@@ -82,20 +86,19 @@ export const useShallowMemoMerge = (...mergeObjs) => {
  */
 export const useReStyles = (styleData, props) => {
   const theme = useTheme()
-  const [ stateProps, setStateProps ] = useState(props)
-  const propsEqual = shallowEqual(props, stateProps)
+  const lastProps = useRef(props)
 
-  useEffect(() => {
-    !propsEqual && setStateProps(props)
-  }, [propsEqual])
+  useMemo(() => {
+    !shallowEqual(props, lastProps.current) && (lastProps.current = props)
+  }, [ props, lastProps ])
 
   return useMemo(() => {
     return isFunc(styleData)
-      ? styleData(theme, props)
+      ? styleData(theme, lastProps.current)
       : isObj(styleData)
         ? styleData
         : noOpObj
-  }, [ theme, styleData, propsEqual ])
+  }, [ theme, styleData, lastProps.current ])
 }
 
 /**

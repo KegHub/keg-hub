@@ -9,13 +9,13 @@
     "access": "public"
   },
   "repository": {
-    "url": "git+https://github.com/KegHub/keg-hub.git",
+    "url": "git+https://github.com/keg-hub/keg-hub.git",
     "type": "git"
   },
   "bugs": {
-    "url": "https://github.com/KegHub/keg-hub/issues"
+    "url": "https://github.com/keg-hub/keg-hub/issues"
   },
-  "homepage": "https://github.com/KegHub/keg-hub#readme",
+  "homepage": "https://github.com/keg-hub/keg-hub#readme",
   "scripts": {
     "build": "exit 0",
     "clean": "yarn clean:nm",
@@ -33,21 +33,21 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@babel/core": "7.14.8",
-    "@babel/eslint-parser": "7.14.7",
-    "@babel/preset-env": "7.14.8",
-    "@babel/preset-react": "7.14.5",
-    "@keg-hub/jsutils": "8.6.0",
+    "@babel/core": "7.16.7",
+    "@babel/eslint-parser": "7.16.5",
+    "@babel/preset-env": "7.16.7",
+    "@babel/preset-react": "7.16.7",
+    "@keg-hub/jsutils": "8.7.0",
     "app-root-path": "3.0.0",
-    "babel-jest": "27.0.6",
-    "eslint": "7.31.0",
-    "eslint-plugin-jest": "24.4.0",
-    "eslint-plugin-react": "7.24.0",
-    "husky": "7.0.1",
-    "jest": "26.6.3",
-    "lint-staged": "11.1.2",
+    "babel-jest": "27.4.5",
+    "eslint": "8.6.0",
+    "eslint-plugin-jest": "25.3.4",
+    "eslint-plugin-react": "7.28.0",
+    "husky": "7.0.4",
+    "jest": "27.4.5",
+    "lint-staged": "12.1.5",
     "onchange": "7.1.0",
-    "prettier": "2.3.2",
+    "prettier": "2.5.1",
     "react-test-renderer": "17.0.2",
     "rimraf": "3.0.2"
   },

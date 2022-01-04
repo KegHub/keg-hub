@@ -1,10 +1,10 @@
-import React from 'react'
-import { Container } from './container'
+import React, { useMemo } from 'react'
 import { Row } from './row'
 import PropTypes from 'prop-types'
-import { useTheme } from '@keg-hub/re-theme'
-import { isArr, get } from '@keg-hub/jsutils'
+import { Container } from './container'
 import { useClassList } from 'KegClassList'
+import { ensureArr } from '@keg-hub/jsutils'
+import { useStyle } from '@keg-hub/re-theme'
 
 /**
  * Builds the styles based on the passed in isCenter param
@@ -12,12 +12,16 @@ import { useClassList } from 'KegClassList'
  * @param {*} isCenter - how to center the children. Should be x / y || true
  * @returns { object } - built center styles
  */
-const buildCenterStyles = isCenter => {
-  return isCenter === 'x' || isCenter === 'xaxis' || isCenter === 'x-axis'
-    ? { justifyContent: 'center' }
-    : isCenter === 'y' || isCenter === 'yaxis' || isCenter === 'y-axis'
-      ? { alignItems: 'center' }
-      : (isCenter && { alignItems: 'center', justifyContent: 'center' }) || {}
+const useBuildCenterStyles = isCenter => {
+  return useMemo(() => {
+    if (!isCenter) return
+
+    return isCenter === 'x' || isCenter === 'xaxis' || isCenter === 'x-axis'
+      ? { justifyContent: 'center' }
+      : isCenter === 'y' || isCenter === 'yaxis' || isCenter === 'y-axis'
+        ? { alignItems: 'center' }
+        : (isCenter && { alignItems: 'center', justifyContent: 'center' }) || {}
+  }, [isCenter])
 }
 
 /**
@@ -26,37 +30,36 @@ const buildCenterStyles = isCenter => {
  * @param  { array || object } children - React Components
  * @return { bool }
  */
-const getChildAttrs = children => {
-  children = (isArr(children) && children) || [children]
+const useChildAttrs = children => {
+  return useMemo(() => {
+    return children.reduce(
+      (attrs, child) => {
+        if (attrs?.isRow && attrs?.isCenter) return attrs
+        if (!attrs?.isRow && child && child?.type === Row) attrs.isRow = true
+        if (!attrs?.isCenter && child && child?.props && child?.props?.center)
+          attrs.isCenter = child.props.center.toString().toLowerCase()
 
-  return children.reduce(
-    (attrs, child) => {
-      if (attrs.isRow && attrs.isCenter) return attrs
-      if (!attrs.isRow && child && child.type === Row) attrs.isRow = true
-      if (!attrs.isCenter && child && child.props && child.props.center)
-        attrs.isCenter = child.props.center.toString().toLowerCase()
-
-      return attrs
-    },
-    { isRow: false, isCenter: false }
-  )
+        return attrs
+      },
+      { isRow: false, isCenter: false }
+    )
+  }, [children])
 }
 
 export const Grid = ({ className, children, style, ...props }) => {
-  const theme = useTheme()
-  const { isRow, isCenter } = getChildAttrs(children)
+  const { isRow, isCenter } = useChildAttrs(ensureArr(children))
+  const classNames = useClassList('keg-grid', className)
+  const centerStyles = useBuildCenterStyles(isCenter)
+
+  const containerStyle = useStyle('layout.grid.wrapper', style, centerStyles)
 
   return (
     <Container
       {...props}
-      className={useClassList('keg-grid', className)}
-      flexDir={isRow ? 'column' : 'row'}
       size={1}
-      style={[
-        get(theme, [ 'layout', 'grid', 'wrapper' ]),
-        style,
-        isCenter && buildCenterStyles(isCenter),
-      ]}
+      style={containerStyle}
+      className={classNames}
+      flexDir={isRow ? 'column' : 'row'}
     >
       { children }
     </Container>
@@ -66,4 +69,5 @@ export const Grid = ({ className, children, style, ...props }) => {
 Grid.propTypes = {
   theme: PropTypes.object,
   style: PropTypes.object,
+  className: PropTypes.string,
 }

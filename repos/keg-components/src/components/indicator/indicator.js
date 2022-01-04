@@ -12,7 +12,7 @@ const Element = ({ className, style = {}, size, color, ...attrs }) => {
     <View className={useClassList('keg-indicator', className)}>
       <ActivityIndicator
         size={size}
-        color={style.color || color}
+        color={color || style.color}
       />
     </View>
   )
@@ -22,12 +22,12 @@ export const Indicator = ({ alt, size, color, styles, ...props }) => {
   return (
     <IndicatorWrapper
       {...props}
+      color={color}
+      isWeb={isWeb}
+      styles={styles}
+      Element={Element}
       alt={alt || 'Loading'}
       size={[ 'large', 'small' ].includes(size) ? size : 'large'}
-      color={color}
-      Element={Element}
-      styles={styles}
-      isWeb={isWeb}
     />
   )
 }

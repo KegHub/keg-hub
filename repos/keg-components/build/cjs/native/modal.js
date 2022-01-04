@@ -2,10 +2,10 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var _rollupPluginBabelHelpers = require('./_rollupPluginBabelHelpers-95f0bff4.js');
+var _rollupPluginBabelHelpers = require('./_rollupPluginBabelHelpers-d23df5c1.js');
 var React = require('react');
 var reactNative = require('react-native');
-var touchable = require('./touchable-548d2782.js');
+var touchable = require('./touchable-62a31fcc.js');
 var jsutils = require('@keg-hub/jsutils');
 require('@keg-hub/re-theme/colors');
 var useThemePath = require('./useThemePath.js');
@@ -13,7 +13,7 @@ require('./useThemeWithHeight.js');
 var useFromToAnimation = require('./useFromToAnimation.js');
 var useClassName_native = require('./useClassName.native-3d1a229b.js');
 var useClassList_native = require('./useClassList.native-9e7810c9.js');
-var view_native = require('./view.native-5d72f4dd.js');
+var view_native = require('./view.native-6338852a.js');
 require('./touchable.js');
 require('@keg-hub/re-theme/styleInjector');
 require('@keg-hub/re-theme');
@@ -40,7 +40,7 @@ var SlideAnimatedView = function SlideAnimatedView(_ref) {
       _useFromToAnimation2 = _rollupPluginBabelHelpers._slicedToArray(_useFromToAnimation, 1),
       slide = _useFromToAnimation2[0];
   var classRef = useClassName_native.useClassName();
-  return React__default['default'].createElement(reactNative.Animated.View, {
+  return React__default["default"].createElement(reactNative.Animated.View, {
     ref: classRef,
     style: _rollupPluginBabelHelpers._objectSpread2(_rollupPluginBabelHelpers._objectSpread2({}, defaultStyle), {}, {
       transform: [{
@@ -91,15 +91,15 @@ var Modal = function Modal(props) {
     } else if (jsutils.isFunc(onAnimateIn)) onAnimateIn();
   }, [onAnimateOut, onAnimateIn, visible]);
   return (
-    React__default['default'].createElement(view_native.View, {
+    React__default["default"].createElement(view_native.View, {
       className: useClassList_native.useClassList(),
       style: renderModal ? modalStyles.main : hideModalStyle
-    }, React__default['default'].createElement(touchable.Touchable, {
+    }, React__default["default"].createElement(touchable.Touchable, {
       className: 'keg-modal-backdrop',
       style: modalStyles.backdrop,
       onPress: onBackdropTouch,
       activeOpacity: activeOpacity
-    }), React__default['default'].createElement(AnimatedComponent, {
+    }), React__default["default"].createElement(AnimatedComponent, {
       onAnimationFinish: cb,
       visible: visible,
       defaultStyle: modalStyles.content

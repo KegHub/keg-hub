@@ -2,10 +2,10 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var _rollupPluginBabelHelpers = require('./_rollupPluginBabelHelpers-95f0bff4.js');
+var _rollupPluginBabelHelpers = require('./_rollupPluginBabelHelpers-d23df5c1.js');
 var React = require('react');
 var jsutils = require('@keg-hub/jsutils');
-var touchable = require('./touchable-548d2782.js');
+var touchable = require('./touchable-62a31fcc.js');
 var text = require('./text.js');
 var renderFromType = require('./renderFromType.js');
 var getPressHandler = require('./getPressHandler.js');
@@ -20,7 +20,7 @@ var reStyle = require('@keg-hub/re-theme/reStyle');
 require('./touchable.js');
 require('./useClassName.native-3d1a229b.js');
 require('@keg-hub/re-theme/styleInjector');
-require('./kegText-e1842e1b.js');
+require('./kegText-d4479e6a.js');
 require('./kegText.js');
 require('./useTextAccessibility.js');
 require('./useTextStyles.js');
@@ -30,7 +30,7 @@ function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'defau
 
 var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 
-var _excluded = ["className", "children", "content", "onClick", "onPress", "styles", "showFeedback", "type", "themePath", "activeOpacity", "disabled", "selectable"];
+var _excluded$1 = ["className", "children", "content", "onClick", "onPress", "styles", "showFeedback", "type", "themePath", "activeOpacity", "disabled", "selectable"];
 var getChildren = function getChildren(Children, _ref) {
   var styles = _ref.styles,
       selectable = _ref.selectable;
@@ -42,7 +42,7 @@ var getChildren = function getChildren(Children, _ref) {
 var checkDisabled = function checkDisabled(mainStyles, btnStyles, disabled) {
   return disabled ? _rollupPluginBabelHelpers._objectSpread2(_rollupPluginBabelHelpers._objectSpread2({}, mainStyles), jsutils.get(btnStyles, 'disabled.main')) : mainStyles;
 };
-var Button = React__default['default'].forwardRef(function (props, ref) {
+var Button = React__default["default"].forwardRef(function (props, ref) {
   props.className;
       var children = props.children,
       content = props.content,
@@ -59,7 +59,7 @@ var Button = React__default['default'].forwardRef(function (props, ref) {
       disabled = _props$disabled === void 0 ? false : _props$disabled,
       _props$selectable = props.selectable,
       selectable = _props$selectable === void 0 ? false : _props$selectable,
-      elProps = _rollupPluginBabelHelpers._objectWithoutProperties(props, _excluded);
+      elProps = _rollupPluginBabelHelpers._objectWithoutProperties(props, _excluded$1);
   var btnStyles = useThemePath.useThemePath(themePath || "button.contained.".concat(type), styles);
   var _useThemeHover = reTheme.useThemeHover(jsutils.get(btnStyles, 'default', {}), jsutils.get(btnStyles, 'hover'), {
     ref: ref
@@ -73,7 +73,7 @@ var Button = React__default['default'].forwardRef(function (props, ref) {
       _useThemeActive2 = _rollupPluginBabelHelpers._slicedToArray(_useThemeActive, 2),
       themeRef = _useThemeActive2[0],
       themeStyles = _useThemeActive2[1];
-  return React__default['default'].createElement(touchable.Touchable, _rollupPluginBabelHelpers._extends({
+  return React__default["default"].createElement(touchable.Touchable, _rollupPluginBabelHelpers._extends({
     accessibilityRole: "button",
     className: useThemeTypeAsClass_native.useThemeTypeAsClass()
   }, elProps, {
@@ -88,6 +88,7 @@ var Button = React__default['default'].forwardRef(function (props, ref) {
   }, getPressHandler.getPressHandler(false, onClick, onPress), getActiveOpacity.getActiveOpacity(false, props, btnStyles)));
 });
 
+var _excluded = ["item", "className", "renderItem", "onSelect", "highlighted", "styles"];
 var SelectButton = reStyle.reStyle(Button, 'styles')(function (theme, props) {
   var palette = theme.colors.palette;
   var content = {
@@ -117,23 +118,34 @@ var SelectButton = reStyle.reStyle(Button, 'styles')(function (theme, props) {
     }
   };
 });
-var SelectItem = React__default['default'].forwardRef(function (props, ref) {
+var SelectItem = React__default["default"].forwardRef(function (props, ref) {
   var item = props.item,
+      className = props.className,
+      renderItem = props.renderItem,
       _props$onSelect = props.onSelect,
       onSelect = _props$onSelect === void 0 ? jsutils.noOp : _props$onSelect,
       _props$highlighted = props.highlighted,
       highlighted = _props$highlighted === void 0 ? false : _props$highlighted,
-      styles = props.styles;
+      styles = props.styles,
+      btnProps = _rollupPluginBabelHelpers._objectWithoutProperties(props, _excluded);
   var handlePress = React.useCallback(function () {
     return onSelect(item);
   }, [item, onSelect]);
-  return React__default['default'].createElement(SelectButton, {
+  return jsutils.isFunc(renderItem) ? renderItem(_rollupPluginBabelHelpers._objectSpread2(_rollupPluginBabelHelpers._objectSpread2({}, btnProps), {}, {
     ref: ref,
+    item: item,
+    styles: styles,
+    className: className,
+    highlighted: highlighted,
+    onSelect: handlePress
+  })) : React__default["default"].createElement(SelectButton, _rollupPluginBabelHelpers._extends({}, btnProps, {
+    ref: ref,
+    styles: styles,
     content: item.text,
     onPress: handlePress,
-    styles: styles,
-    highlighted: highlighted
-  });
+    highlighted: highlighted,
+    className: ["keg-select-button", className]
+  }));
 });
 
 exports.SelectItem = SelectItem;

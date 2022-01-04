@@ -2,7 +2,7 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var _rollupPluginBabelHelpers = require('./_rollupPluginBabelHelpers-95f0bff4.js');
+var _rollupPluginBabelHelpers = require('./_rollupPluginBabelHelpers-d23df5c1.js');
 var jsutils = require('@keg-hub/jsutils');
 var React = require('react');
 
@@ -13,9 +13,10 @@ var ignoreAccents = function ignoreAccents(str) {
   return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 };
 var formatItem = function formatItem(item, index) {
-  if (jsutils.isObj(item) && jsutils.isStr(item.text)) return {
-    text: item.text,
-    key: item.key || item.text,
+  var value = item.text || item.value;
+  if (jsutils.isObj(item) && jsutils.isStr(value)) return {
+    text: value,
+    key: item.key || value,
     index: index
   };else if (jsutils.isStr(item)) return {
     text: item,
@@ -31,12 +32,13 @@ var textMatches = function textMatches(text, item) {
   var textComparisonStr = jsutils.pipeline(text, trimStr, ignoreCase, ignoreAccents);
   return itemComparisonStr.includes(textComparisonStr);
 };
-var getItemsMatchingText = function getItemsMatchingText(text, possibleValues) {
+var getItemsMatchingText = function getItemsMatchingText(text, possibleValues, emptyShowList, selectedItem) {
   if (!jsutils.isStr(text)) return [];
   var result = possibleValues.reduce(function (state, nextItem) {
     var formattedItem = formatItem(nextItem, state.counter);
     if (!formattedItem) return state;
-    if (textMatches(text, formattedItem) && !state.keys.has(formattedItem.key)) {
+    var addItem = !text && emptyShowList || textMatches(text, formattedItem) || (selectedItem === null || selectedItem === void 0 ? void 0 : selectedItem.activeShowList);
+    if (addItem && !state.keys.has(formattedItem.key)) {
       state.keys.add(formattedItem.key);
       state.arr.push(formattedItem);
       state.counter++;
@@ -49,13 +51,22 @@ var getItemsMatchingText = function getItemsMatchingText(text, possibleValues) {
   });
   return result.arr;
 };
-var useAutocompleteItems = function useAutocompleteItems(text, menuItems) {
-  var _useState = React.useState(null),
+var useAutocompleteItems = function useAutocompleteItems(text) {
+  var menuItems = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : jsutils.noPropArr;
+  var emptyShowList = arguments.length > 2 ? arguments[2] : undefined;
+  var curItem = React.useMemo(function () {
+    return menuItems.filter(function (node) {
+      return text === node.text || text === node.value;
+    }).find(function (val) {
+      return val;
+    });
+  }, [text, menuItems]);
+  var _useState = React.useState(curItem || null),
       _useState2 = _rollupPluginBabelHelpers._slicedToArray(_useState, 2),
       selectedItem = _useState2[0],
       setSelectedItem = _useState2[1];
   var items = React.useMemo(function () {
-    return jsutils.isEmpty(text) || (selectedItem === null || selectedItem === void 0 ? void 0 : selectedItem.text) === text ? [] : getItemsMatchingText(text, menuItems);
+    return !(selectedItem !== null && selectedItem !== void 0 && selectedItem.activeShowList) && !emptyShowList && (jsutils.isEmpty(text) || (selectedItem === null || selectedItem === void 0 ? void 0 : selectedItem.text) === text) ? [] : getItemsMatchingText(text, menuItems, emptyShowList, selectedItem);
   }, [text, menuItems, selectedItem]);
   return [items, setSelectedItem, selectedItem];
 };
