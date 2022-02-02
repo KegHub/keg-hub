@@ -44,7 +44,7 @@
     "git:update": "git add .; git commit -m \"Version update.\"; git push origin master",
     "package": "yarn build; yarn git:update; yarn deploy",
     "test": "NODE_ENV=test jest --no-cache --verbose --config=./configs/jest.config.js  --maxWorkers=50%",
-    "web": "http-server ./docs -p 8888 --cors"
+    "web": "npx http-server ./docs -p 8888 --cors"
   },
   "dependencies": {},
   "devDependencies": {
