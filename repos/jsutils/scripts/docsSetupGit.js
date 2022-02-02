@@ -4,6 +4,7 @@ const { exec } = require('child_process')
 const package = require('../package.json')
 
 const cmdExec = promisify(exec)
+const rootPath = path.join(__dirname, `../`)
 const docsPath = path.join(__dirname, `../docs`)
 const configsPath = path.join(__dirname, `../configs`)
 
@@ -29,6 +30,22 @@ const copyReadMe = async () => {
   const configReadMe = path.join(configsPath, 'docs.readme.md')
   const docsReadMe = path.join(docsPath, 'README.md')
   await runCmd(`cp ${configReadMe} ${docsReadMe}`)
+}
+
+
+/**
+ * Cleans up the jsutils repo after pushing the doc updates to github
+ * @function
+ *
+ * @returns {void}
+ */
+const cleanup = async () => {
+  // Remove the git folder after pushing
+  await runCmd(`rm -rf ./.git`)
+  // Remove the docs folder
+  await cmdExec(`rm -rf ./docs`, {cwd: rootPath})
+  // Then call git-reset on the docs folder
+  await cmdExec(`git checkout HEAD -- ./docs`, {cwd: rootPath})
 }
 
 /**
@@ -57,8 +74,7 @@ const setupGit = async () => {
     exitCode = 1
   }
 
-  // Remove the git folder after pushing
-  await runCmd(`rm -rf ./.git`)
+  await cleanup()
 
   process.exit(exitCode)
 }
