@@ -5,6 +5,7 @@ import { capitalize } from './capitalize'
 /**
  * Turns a path string into a camel-cased string, if there is more than one
  * step in the path. If there isn't, just returns path.
+ * @function
  * @param {string} path 
  * @return {string} camel-cased string
  * @example

@@ -6,12 +6,15 @@ import { isLowerCase } from './isLowerCase'
 import { isUpperCase } from './isUpperCase'
 
 /**
+ * Converts a string into a delimted script based on the passed in arguments
  * @function
- * @returns a new string with the specified delimiter delimiting each word
  * @param {String} str - string of any casing
  * @param {String} delimiter - e.g. '_'
  * @param {Array} delimiters - optional. An array of delimiter characters on which this function searches and breaks. Defaults to checking -, _, and space
- * @example delimitString('fooBar', '_') // 'foo_Bar'
+ * @returns a new string with the specified delimiter delimiting each word
+ *
+ * @example 
+ * delimitString('fooBar', '_') // 'foo_Bar'
  */
 export const delimitString = (str, delimiter, delimiters=['-', '_', ' ']) => {
   if (!isStr(str)) return str

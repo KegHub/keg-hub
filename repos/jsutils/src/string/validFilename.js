@@ -1,8 +1,9 @@
 /** @module String */
 
 /**
- * checks whether a given string is a valid filename
- * @param {string} fileName 
+ * Checks whether a given string is a valid filename
+ * @function
+ * @param {string} fileName - The file name to check if valid
  * 
  * @returns {Boolean}
  */
