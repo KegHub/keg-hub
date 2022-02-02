@@ -1,4 +1,4 @@
-/** @module regex */
+/** @module Regex */
 
 /**
  * Checks if value is an instance of regex

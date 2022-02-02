@@ -1,4 +1,4 @@
-/** @module functions */
+/** @module Functions */
 
 /**
  * Check if the passed in item is a function.

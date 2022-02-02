@@ -1,4 +1,4 @@
-/** @module string */
+/** @module String */
 
 /**
  * Convert JSON string into object, wrapped in a try / catch.

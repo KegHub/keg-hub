@@ -1,4 +1,4 @@
-/** @module boolean */
+/** @module Boolean */
 
 /**
  * Checks is value is a boolean as a string.

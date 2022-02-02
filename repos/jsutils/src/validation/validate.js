@@ -1,4 +1,4 @@
-/** @module validation */
+/** @module Validation */
 
 const OPTIONS = {
   SHOULD_LOG: true,

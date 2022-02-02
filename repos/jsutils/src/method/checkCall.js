@@ -1,4 +1,4 @@
-/** @module functions */
+/** @module Functions */
 
 import { isFunc } from './isFunc'
 

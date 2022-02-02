@@ -1,4 +1,4 @@
-/** @module functions */
+/** @module Functions */
 
 /**
  * Helper to call waitForIt in-between check calls

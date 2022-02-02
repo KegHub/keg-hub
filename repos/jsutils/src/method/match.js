@@ -1,4 +1,4 @@
-/** @module functions */
+/** @module Functions */
 
 import { isArr } from '../array/isArr'
 import { typeOf } from '../ext/typeOf'

@@ -1,4 +1,4 @@
-/** @module collection */
+/** @module Collection */
 
 import { get } from './get'
 import { isArr } from '../array/isArr'

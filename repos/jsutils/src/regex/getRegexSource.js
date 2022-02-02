@@ -1,4 +1,4 @@
-/** @module regex */
+/** @module Regex */
 
 import { isRegex } from './isRegex'
 import { isStr } from '../string'

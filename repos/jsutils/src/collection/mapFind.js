@@ -1,4 +1,4 @@
-/** @module collection */
+/** @module Collection */
 
 import { isColl } from './isColl'
 import { isObj } from '../object/isObj'

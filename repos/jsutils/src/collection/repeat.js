@@ -1,4 +1,4 @@
-/** @module collection */
+/** @module Collection */
 
 import { deepClone } from './deepClone'
 import { isFunc } from '../method/isFunc'

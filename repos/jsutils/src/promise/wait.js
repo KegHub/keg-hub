@@ -1,4 +1,4 @@
-/** @module promise */
+/** @module Promise */
 
 'use strict'
 

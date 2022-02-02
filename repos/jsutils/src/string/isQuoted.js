@@ -1,4 +1,4 @@
-/** @module string */
+/** @module String */
 import { isStr } from './isStr'
 
 const quoteSymbols = [

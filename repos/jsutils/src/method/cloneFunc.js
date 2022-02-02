@@ -1,4 +1,4 @@
-/** @module functions */
+/** @module Functions */
 
 import { get } from '../collection/get'
 

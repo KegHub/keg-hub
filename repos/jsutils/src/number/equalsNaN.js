@@ -1,4 +1,4 @@
-/** @module number */
+/** @module Number */
 
 /**
  * Checks if a value is NaN.

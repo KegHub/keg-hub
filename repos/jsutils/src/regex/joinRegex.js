@@ -1,4 +1,4 @@
-/** @module regex */
+/** @module Regex */
 
 import { isStr } from '../string'
 import { isArr } from '../array'

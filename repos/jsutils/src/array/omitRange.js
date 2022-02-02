@@ -1,4 +1,4 @@
-/** @module array */
+/** @module Array */
 
 import { isNonNegative } from '../number/isNonNegative'
 import { validate } from '../validation'

@@ -1,4 +1,4 @@
-/** @module functions */
+/** @module Functions */
 
 /**
  * Creates a uuid, unique up to around 20 million iterations.

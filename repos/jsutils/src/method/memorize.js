@@ -1,4 +1,4 @@
-/** @module functions */
+/** @module Functions */
 
 import { isNum } from '../number/isNum'
 import { hasOwn } from '../object/hasOwn'

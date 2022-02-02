@@ -1,4 +1,4 @@
-/** @module functions */
+/** @module Functions */
 
 import { isStr } from '../string'
 import { isBool } from '../boolean'

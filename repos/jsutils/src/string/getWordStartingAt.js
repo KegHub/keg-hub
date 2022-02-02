@@ -1,4 +1,4 @@
-/** @module string */
+/** @module String */
 
 /**
  * Helper for `getWordStartingAt` that finds the 

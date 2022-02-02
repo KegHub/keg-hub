@@ -1,4 +1,4 @@
-/** @module number */
+/** @module Number */
 
 /**
  * Returns the result of evaluation `num` modulo `divisor`.

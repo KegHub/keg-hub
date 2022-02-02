@@ -1,4 +1,4 @@
-/** @module array */
+/** @module Array */
 
 import { isArr } from './isArr'
 import { uniqArr } from './uniqArr'

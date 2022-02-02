@@ -1,4 +1,4 @@
-/** @module boolean */
+/** @module Boolean */
 
 import { isStrBool } from './isStrBool'
 import { convertToStrBool } from './convertToStrBool'

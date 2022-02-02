@@ -1,4 +1,4 @@
-/** @module object */
+/** @module Object */
 
 import { isFunc } from '../method/isFunc'
 import { cloneFunc } from '../method/cloneFunc'

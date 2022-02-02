@@ -1,4 +1,4 @@
-/** @module array */
+/** @module Array */
 import { isArr } from './isArr'
 import { isObj } from '../object/isObj'
 import { noOpObj } from '../ext/noOps'

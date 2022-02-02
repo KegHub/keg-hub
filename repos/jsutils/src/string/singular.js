@@ -1,4 +1,4 @@
-/** @module string */
+/** @module String */
 
 /**
  * Remove an `s` at the end of a string, if the last char is an `s`,

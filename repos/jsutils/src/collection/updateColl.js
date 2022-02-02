@@ -1,4 +1,4 @@
-/** @module collection */
+/** @module Collection */
 
 import { isFunc } from '../method/isFunc'
 import { isArr } from '../array/isArr'
