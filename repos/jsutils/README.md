@@ -11,13 +11,13 @@ See docs [here](https://keghub.github.io/jsutils)
 ## Usage
 ```js
   // * Import into code
-  import jsutils from 'jsutils'
+  import jsutils from '@keg-hub/jsutils'
   // Or only the methods you need
-  import { capitalize } from 'jsutils/string'
-  import { reduceObj, mapObj } from 'jsutils/object'
+  import { capitalize } from '@keg-hub/jsutils/string'
+  import { reduceObj, mapObj } from '@keg-hub/jsutils/object'
 
   // * Or require code
-  const jsutils = require('jsutils')
+  const jsutils = require('@keg-hub/jsutils')
 
   // * Or add as html script
   <script src='/path/to/jsutils/build/jsutils.min.js'></script>
