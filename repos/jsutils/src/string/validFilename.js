@@ -1,4 +1,4 @@
-
+/** @module string */
 
 /**
  * checks whether a given string is a valid filename

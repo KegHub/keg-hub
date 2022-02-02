@@ -1,3 +1,5 @@
+/** @module node */
+
 const { exists, noOpObj } = require('../../build/cjs')
 
 /**

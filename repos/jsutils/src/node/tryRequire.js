@@ -1,4 +1,4 @@
-/** @module command */
+/** @module node */
 
 const fs = require('fs')
 

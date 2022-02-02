@@ -1,3 +1,5 @@
+/** @module object */
+
 import { isObj } from './isObj'
 import { isArr } from '../array/isArr'
 import { toBool } from '../boolean/toBool'

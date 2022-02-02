@@ -1,4 +1,5 @@
 export * from './either'
+export * from './noOps'
 export * from './isEmpty'
 export * from './isSame'
 export * from './isValidDate'

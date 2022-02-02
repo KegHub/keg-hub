@@ -1,3 +1,5 @@
+/** @module node */
+
 const fs = require('fs')
 let inContainer
 

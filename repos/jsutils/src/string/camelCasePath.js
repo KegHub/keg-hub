@@ -1,3 +1,5 @@
+/** @module string */
+
 import { capitalize } from './capitalize'
 
 /**

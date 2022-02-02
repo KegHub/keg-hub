@@ -1,3 +1,5 @@
+/** @module node */
+
 const os = require('os')
 
 /**
