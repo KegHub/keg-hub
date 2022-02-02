@@ -24,6 +24,6 @@ module.exports = {
   },
   testEnvironment: "node",
   setupFilesAfterEnv: [
-    `${ROOT_DIR}configs/setupTests.js`
+    `${ROOT_DIR}scripts/setupTests.js`
   ]
 }

@@ -27,7 +27,7 @@
       "title": "JS Utils",
       "type": "website",
       "site_name": "jsutils",
-      "url": "https://keg-hub.github.io/jsutils/"
+      "url": "https://github.com/keg-hub/keg-hub/tree/develop/repos/jsutils"
     },
     "meta": {
       "title": "JS Utils",
@@ -41,7 +41,7 @@
     "scripts": [],
     "menu": {
       "Github repo": {
-        "href":"https://github.com/keg-hub/keg-hub",
+        "href":"https://github.com/keg-hub/keg-hub/tree/develop/repos/jsutils",
         "target":"_blank",
         "class":"menu-item",
         "id":"repository"
