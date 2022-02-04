@@ -40,7 +40,7 @@
     "docs": "rimraf ./docs && ./node_modules/.bin/jsdoc -c ./configs/jsdoc.json",
     "docs:move": "node ./scripts/moveDocs.js",
     "docs:git": "node ./scripts/docsSetupGit.js",
-    "docs:publish": "yarn build && yarn docs && yarn docs:git",
+    "docs:publish": "yarn docs && yarn docs:git",
     "format": "exit 0",
     "test": "NODE_ENV=test jest --no-cache --verbose --config=./configs/jest.config.js  --maxWorkers=50%",
     "web": "npx http-server ./docs -p 8888 --cors"
