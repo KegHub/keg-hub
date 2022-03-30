@@ -1,4 +1,4 @@
-/** @module functions */
+/** @module Functions */
 
 /**
  * Ensures the last call to the throttled function get called.

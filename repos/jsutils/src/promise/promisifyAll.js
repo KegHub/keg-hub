@@ -1,4 +1,4 @@
-/** @module promise */
+/** @module Promise */
 
 import { isObj } from '../object/isObj'
 import { isFunc } from '../method/isFunc'

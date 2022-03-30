@@ -1,4 +1,4 @@
-/** @module object */
+/** @module Object */
 
 import { sanitize } from '../string/sanitize'
 

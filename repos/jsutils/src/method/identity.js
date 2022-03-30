@@ -1,4 +1,4 @@
-/** @module functions */
+/** @module Functions */
 
 /**
  * A function that simply returns its input

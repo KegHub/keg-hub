@@ -1,4 +1,4 @@
-/** @module object */
+/** @module Object */
 
 import { isFunc } from '../method/isFunc'
 import { set } from '../collection/set'

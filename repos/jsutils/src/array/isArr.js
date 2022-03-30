@@ -1,4 +1,4 @@
-/** @module array */
+/** @module Array */
 
 /**
  * Checks if passed in value is an array.

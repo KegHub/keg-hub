@@ -1,4 +1,4 @@
-/** @module number */
+/** @module Number */
 
 import { equalsNaN } from './equalsNaN'
 

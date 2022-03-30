@@ -1,10 +1,11 @@
-/** @module string */
+/** @module String */
 
 import { isStr } from './isStr'
 import { isArr } from '../array/isArr'
 
 /**
  * Joins strings and array of string together with spaces
+ * @function
  * @param {string} original - The default string that other strings get added to
  * @param {string|Array} toAdd - String of Array of Strings to add to the original
  *

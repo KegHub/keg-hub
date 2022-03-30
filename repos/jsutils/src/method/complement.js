@@ -1,4 +1,4 @@
-/** @module functions */
+/** @module Functions */
 
 import { validate } from '../validation'
 import { isFunc } from '../method/isFunc'

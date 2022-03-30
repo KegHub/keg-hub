@@ -1,10 +1,11 @@
-/** @module array */
+/** @module Array */
 
 import { validate } from '../validation'
 import { isArr } from './isArr'
 
 /**
  * Builds a map of elements mapped to their frequency counts
+ * @function
  * @param {Array<*>} arr 
  * @return {Map<*, number>}
  */
@@ -19,9 +20,11 @@ export const buildElementCountMap = arr => {
 }
 
 /**
- * Returns true if the maps 
- * @param {Map<*, number>} mapA 
- * @param {Map<*, number>} mapB 
+ * Returns true if the maps
+ * @function
+ * @param {Map<*, number>} mapA
+ * @param {Map<*, number>} mapB
+ * @returns {boolean} - True if the item count it equal between mapA and mapB
  */
 export const areCountMapsEqual = (mapA, mapB) => {
   if (mapA.size !== mapB.size) return false
@@ -36,13 +39,11 @@ export const areCountMapsEqual = (mapA, mapB) => {
 
 /**
  * Checks if arrays are frequency equal. Does this 
- * by making only one pass over each array and using an
- * auxilliary map.
+ * by making only one pass over each array and using an auxillary map.
  * @function
- * @param {Array<*>} arr 
- * @param {Array<*>} otherArr 
- * @returns {boolean} true if otherArr contains exactly the same elements as arr, 
- * where order does not matter, but frequency does
+ * @param {Array<*>} arr
+ * @param {Array<*>} otherArr
+ * @returns {boolean} - True if otherArr contains exactly the same elements as arr, where order does not matter, but frequency does
  */
 export const areFrequencyEqual = (arr, otherArr) => {
   const [ valid ] = validate({ arr, otherArr }, { $default: isArr })

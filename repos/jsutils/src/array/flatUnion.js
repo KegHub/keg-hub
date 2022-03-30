@@ -1,3 +1,5 @@
+/** @module Array */
+
 import { isArr } from './isArr'
 import { uniqArr } from './uniqArr'
 import { flatArr } from './flatArr'

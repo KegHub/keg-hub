@@ -1,4 +1,4 @@
-/** @module string */
+/** @module String */
 
 import { reverseStr } from './reverseStr'
 import { getWordStartingAt } from './getWordStartingAt'

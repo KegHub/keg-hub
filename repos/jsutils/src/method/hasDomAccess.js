@@ -1,4 +1,4 @@
-/** @module functions */
+/** @module Functions */
 
 /**
  * Checks if there is access to the dom

@@ -7,6 +7,7 @@ const fixDocs = async () => {
   try {
     await cmdExec(`mv ./docs/${package.name}/${package.version}/* ./docs/`)
     await cmdExec(`rm -rf ./docs/jsutils`)
+    await cmdExec(`cp ./configs/.gitignore ./docs/.gitignore`)
     console.log(`---------- Success ----------`)
     process.exit(0)
   }

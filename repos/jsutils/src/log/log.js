@@ -1,4 +1,4 @@
-/** @module log */
+/** @module Log */
 
 'use strict'
 

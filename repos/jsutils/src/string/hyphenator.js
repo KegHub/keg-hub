@@ -1,4 +1,4 @@
-/** @module string */
+/** @module String */
 
 const uppercasePattern = /[A-Z]/g
 const msPattern = /^ms-/

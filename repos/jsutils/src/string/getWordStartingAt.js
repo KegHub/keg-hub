@@ -1,9 +1,10 @@
-/** @module string */
+/** @module String */
 
 /**
  * Helper for `getWordStartingAt` that finds the 
  * index of the exclusive end of the word, given the available
  * ending delimiters
+ * @function
  * @param {string} text 
  * @param {number} index 
  * @param {Array<string>} delimiters

@@ -1,4 +1,4 @@
-/** @module string */
+/** @module String */
 
 import { isFunc } from '../method/isFunc'
 import { isStr } from './isStr'

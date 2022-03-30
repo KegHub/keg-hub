@@ -1,4 +1,4 @@
-/** @module url */
+/** @module Url */
 
 /**
  * Checks if the given string is a valid URL

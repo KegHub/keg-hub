@@ -1,4 +1,4 @@
-/** @module functions */
+/** @module Functions */
 
 import { isStr } from '../string/isStr'
 import { isObj } from '../object/isObj'

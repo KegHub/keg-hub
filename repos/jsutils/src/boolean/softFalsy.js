@@ -1,4 +1,4 @@
-/** @module boolean */
+/** @module Boolean */
 
 /**
  * Checks if a value is falsy, excluding empty string and 0.

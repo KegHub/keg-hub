@@ -1,4 +1,4 @@
-/** @module url */
+/** @module Url */
 
 import { queryToObj } from './queryToObj'
 import { validate } from '../validation/validate'

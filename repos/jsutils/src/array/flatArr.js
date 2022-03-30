@@ -1,6 +1,7 @@
+/** @module Array */
 import { isArr } from './isArr'
 import { isObj } from '../object/isObj'
-import { noOpObj } from '../method/noOp'
+import { noOpObj } from '../ext/noOps'
 import { exists } from '../ext/exists'
 
 /**

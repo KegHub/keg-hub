@@ -36,15 +36,14 @@
     "clean:cache": "yarn cache clean",
     "clean:install": "yarn clean:full; yarn install --force",
     "clean:nm": "rimraf yarn.lock; rimraf package.lock; rimraf node_modules",
-    "deploy": "yarn build && yarn docs && gh-pages -d docs",
     "dev": "rollup -c ./configs/rollup.config.js -w",
     "docs": "rimraf ./docs && ./node_modules/.bin/jsdoc -c ./configs/jsdoc.json",
-    "docs:move": "node ./configs/moveDocs.js",
+    "docs:move": "node ./scripts/moveDocs.js",
+    "docs:git": "node ./scripts/docsSetupGit.js",
+    "docs:publish": "yarn docs && yarn docs:git",
     "format": "exit 0",
-    "git:update": "git add .; git commit -m \"Version update.\"; git push origin master",
-    "package": "yarn build; yarn git:update; yarn deploy",
     "test": "NODE_ENV=test jest --no-cache --verbose --config=./configs/jest.config.js  --maxWorkers=50%",
-    "web": "http-server ./docs -p 8888 --cors"
+    "web": "npx http-server ./docs -p 8888 --cors"
   },
   "dependencies": {},
   "devDependencies": {
@@ -75,5 +74,8 @@
   },
   "directories": {
     "doc": "docs"
+  },
+  "publish": {
+    "repository": "https://github.com/keg-hub/jsutils.git"
   }
 }

@@ -1,4 +1,4 @@
-/** @module method */
+/** @module Functions */
 
 import { isStr } from '../string'
 import { isOrderable } from './isOrderable'
