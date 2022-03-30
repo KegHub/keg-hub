@@ -1,16 +1,8 @@
 'use strict';
 
-var deepFreeze = require('./deepFreeze-d73ccc57.js');
 var isArr = require('./isArr-39234014.js');
 var typeOf = require('./typeOf-51fe5771.js');
 var isFunc = require('./isFunc-f93803cb.js');
-
-const noOp = () => {};
-const noOpObj = Object.freeze({});
-const noPropObj = deepFreeze.deepFreeze({
-  content: {}
-});
-const noPropArr = deepFreeze.deepFreeze([]);
 
 const match = (matchArg, ...args) => {
   if (!args.length) return null;
@@ -28,8 +20,4 @@ const match = (matchArg, ...args) => {
 match.default = () => true;
 
 exports.match = match;
-exports.noOp = noOp;
-exports.noOpObj = noOpObj;
-exports.noPropArr = noPropArr;
-exports.noPropObj = noPropObj;
-//# sourceMappingURL=match-e3c15ed8.js.map
+//# sourceMappingURL=match-36a26d13.js.map

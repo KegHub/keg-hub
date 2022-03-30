@@ -1,32 +1,34 @@
-import { i as isFunc } from './isFunc-40ceeef8.js';
-import { v as validate } from './validate-0a7295ee.js';
-import { i as isNum } from './isNum-cc6ad9ca.js';
-import { h as hasOwn } from './hasOwn-deb5bbb8.js';
-import { i as isArr } from './isArr-a4420764.js';
-import { d as deepClone } from './deepClone-58d0477c.js';
-import { i as isStr } from './isStr-481ce69b.js';
-import { i as isObj } from './isObj-2a71d1af.js';
-import { i as isEmpty } from './isEmpty-36c950c4.js';
+'use strict';
+
+var isFunc = require('./isFunc-f93803cb.js');
+var validate = require('./validate-23297ec2.js');
+var isNum = require('./isNum-c7164b50.js');
+var hasOwn = require('./hasOwn-7999ca65.js');
+var isArr = require('./isArr-39234014.js');
+var deepClone = require('./deepClone-71e5fc2d.js');
+var isStr = require('./isStr-8a57710e.js');
+var isObj = require('./isObj-6b3aa807.js');
+var isEmpty = require('./isEmpty-a16d6092.js');
 
 const checkCall = (method, ...params) => {
-  return isFunc(method) ? method(...params) : undefined;
+  return isFunc.isFunc(method) ? method(...params) : undefined;
 };
 
 const complement = predicate => {
-  const [valid] = validate({
+  const [valid] = validate.validate({
     predicate
   }, {
-    predicate: isFunc
+    predicate: isFunc.isFunc
   });
   return valid ? (...args) => !predicate(...args) : null;
 };
 
-const eitherFunc = (func1, func2) => isFunc(func1) && func1 || func2;
+const eitherFunc = (func1, func2) => isFunc.isFunc(func1) && func1 || func2;
 
 const debounce = (func, wait = 250, immediate = false) => {
   let timeout;
   function wrapFunc(...args) {
-    if (!isFunc(func)) return null;
+    if (!isFunc.isFunc(func)) return null;
     const context = this;
     const later = () => {
       timeout = null;
@@ -35,7 +37,7 @@ const debounce = (func, wait = 250, immediate = false) => {
     const callNow = immediate && !timeout;
     clearTimeout(timeout);
     timeout = setTimeout(later, wait);
-    if (callNow) return isFunc(func) && func.apply(context, args);
+    if (callNow) return isFunc.isFunc(func) && func.apply(context, args);
   }
   return wrapFunc;
 };
@@ -45,7 +47,7 @@ const doIt = (...args) => {
   const num = params.shift();
   const bindTo = params.shift();
   const cb = params.pop();
-  if (!isNum(num) || !isFunc(cb)) return [];
+  if (!isNum.isNum(num) || !isFunc.isFunc(cb)) return [];
   const doItAmount = new Array(num);
   const responses = [];
   for (let i = 0; i < doItAmount.length; i++) {
@@ -65,13 +67,13 @@ const hasDomAccess = () => {
 };
 
 const memorize = (func, getCacheKey, limit = 1) => {
-  if (!isFunc(func) || getCacheKey && !isFunc(getCacheKey)) return console.error('Error: Expected a function', func, getCacheKey);
+  if (!isFunc.isFunc(func) || getCacheKey && !isFunc.isFunc(getCacheKey)) return console.error('Error: Expected a function', func, getCacheKey);
   let memorized = function () {
     const cache = memorized.cache;
     const key = getCacheKey ? getCacheKey.apply(this, arguments) : arguments[0];
-    if (hasOwn(cache, key)) return cache[key];
+    if (hasOwn.hasOwn(cache, key)) return cache[key];
     const result = func.apply(this, arguments);
-    isNum(limit) && Object.keys(cache).length < limit ? cache[key] = result : memorized.cache = {
+    isNum.isNum(limit) && Object.keys(cache).length < limit ? cache[key] = result : memorized.cache = {
       [key]: result
     };
     return result;
@@ -87,10 +89,10 @@ const memorize = (func, getCacheKey, limit = 1) => {
 };
 
 const runSeq = async (asyncFns = [], options = {}) => {
-  const [valid] = validate({
+  const [valid] = validate.validate({
     asyncFns
   }, {
-    asyncFns: isArr
+    asyncFns: isArr.isArr
   });
   if (!valid) return [];
   const {
@@ -99,17 +101,17 @@ const runSeq = async (asyncFns = [], options = {}) => {
   } = options;
   const results = [];
   for (const fn of asyncFns) {
-    const result = isFunc(fn) ? await fn(results.length, cloneResults ? deepClone(results) : results) : returnOriginal ? fn : undefined;
+    const result = isFunc.isFunc(fn) ? await fn(results.length, cloneResults ? deepClone.deepClone(results) : results) : returnOriginal ? fn : undefined;
     results.push(result);
   }
   return results;
 };
 
 const timedRun = async (fn, ...args) => {
-  const [valid] = validate({
+  const [valid] = validate.validate({
     fn
   }, {
-    fn: isFunc
+    fn: isFunc.isFunc
   });
   if (!valid) return [undefined, -1];
   const startTime = new Date();
@@ -142,14 +144,30 @@ const throttleLast = (func, cb, wait = 100) => {
 };
 
 const limbo = promise => {
-  return !promise || !isFunc(promise.then) ? [new Error(`A promise or thenable is required as the first argument!`), null] : promise.then(data => [null, data]).catch(err => [err, undefined]);
+  return !promise || !isFunc.isFunc(promise.then) ? [new Error(`A promise or thenable is required as the first argument!`), null] : promise.then(data => [null, data]).catch(err => [err, undefined]);
 };
 
 const uuid = a => a ? (a ^ Math.random() * 16 >> a / 4).toString(16) : ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, uuid);
 
+const noOp = () => {};
+
 const parseErrorMessage = exception => {
-  return isStr(exception) && !isEmpty(exception) ? exception : isObj(exception) ? exception.message : null;
+  return isStr.isStr(exception) && !isEmpty.isEmpty(exception) ? exception : isObj.isObj(exception) ? exception.message : null;
 };
 
-export { complement as a, doIt as b, checkCall as c, debounce as d, eitherFunc as e, throttle as f, throttleLast as g, hasDomAccess as h, limbo as l, memorize as m, parseErrorMessage as p, runSeq as r, timedRun as t, uuid as u };
-//# sourceMappingURL=parseErrorMessage-094e7f06.js.map
+exports.checkCall = checkCall;
+exports.complement = complement;
+exports.debounce = debounce;
+exports.doIt = doIt;
+exports.eitherFunc = eitherFunc;
+exports.hasDomAccess = hasDomAccess;
+exports.limbo = limbo;
+exports.memorize = memorize;
+exports.noOp = noOp;
+exports.parseErrorMessage = parseErrorMessage;
+exports.runSeq = runSeq;
+exports.throttle = throttle;
+exports.throttleLast = throttleLast;
+exports.timedRun = timedRun;
+exports.uuid = uuid;
+//# sourceMappingURL=parseErrorMessage-2b790a5a.js.map

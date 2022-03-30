@@ -2,7 +2,7 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var flatUnion = require('./flatUnion-6519844d.js');
+var flatUnion = require('./flatUnion-944e8de6.js');
 var ensureArr = require('./ensureArr-ae68c041.js');
 var isArr = require('./isArr-39234014.js');
 require('./validate-23297ec2.js');
@@ -12,10 +12,11 @@ require('./identity-599bde17.js');
 require('./isStr-8a57710e.js');
 require('./isNum-c7164b50.js');
 require('./isBool-aa6af74e.js');
-require('./match-e3c15ed8.js');
-require('./deepFreeze-d73ccc57.js');
+require('./match-36a26d13.js');
 require('./typeOf-51fe5771.js');
 require('./isNonNegative-9959647c.js');
+require('./noOps-9b0be865.js');
+require('./deepFreeze-d73ccc57.js');
 require('./exists-c79204b1.js');
 
 

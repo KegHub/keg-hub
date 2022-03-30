@@ -1,14 +1,6 @@
-import { d as deepFreeze } from './deepFreeze-0437aacd.js';
 import { i as isArr } from './isArr-a4420764.js';
 import { t as typeOf } from './typeOf-8c86a991.js';
 import { i as isFunc } from './isFunc-40ceeef8.js';
-
-const noOp = () => {};
-const noOpObj = Object.freeze({});
-const noPropObj = deepFreeze({
-  content: {}
-});
-const noPropArr = deepFreeze([]);
 
 const match = (matchArg, ...args) => {
   if (!args.length) return null;
@@ -25,5 +17,5 @@ const match = (matchArg, ...args) => {
 };
 match.default = () => true;
 
-export { noOpObj as a, noPropObj as b, noPropArr as c, match as m, noOp as n };
-//# sourceMappingURL=match-39e2fa8f.js.map
+export { match as m };
+//# sourceMappingURL=match-ae8efef8.js.map

@@ -1,7 +1,8 @@
 import { i as isStr } from './isStr-481ce69b.js';
 import { i as isArr } from './isArr-a4420764.js';
 import './validate-0a7295ee.js';
-import './match-39e2fa8f.js';
+import './noOps-e78de2aa.js';
+import './match-ae8efef8.js';
 
 const isRegex = val => Boolean(val && val instanceof RegExp);
 
@@ -24,4 +25,4 @@ const joinRegex = (...args) => {
 };
 
 export { getRegexSource as g, isRegex as i, joinRegex as j };
-//# sourceMappingURL=joinRegex-0cc5f504.js.map
+//# sourceMappingURL=joinRegex-63d7a16e.js.map

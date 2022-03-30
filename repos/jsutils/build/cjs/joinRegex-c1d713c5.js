@@ -3,7 +3,8 @@
 var isStr = require('./isStr-8a57710e.js');
 var isArr = require('./isArr-39234014.js');
 require('./validate-23297ec2.js');
-require('./match-e3c15ed8.js');
+require('./noOps-9b0be865.js');
+require('./match-36a26d13.js');
 
 const isRegex = val => Boolean(val && val instanceof RegExp);
 
@@ -28,4 +29,4 @@ const joinRegex = (...args) => {
 exports.getRegexSource = getRegexSource;
 exports.isRegex = isRegex;
 exports.joinRegex = joinRegex;
-//# sourceMappingURL=joinRegex-8c92aad3.js.map
+//# sourceMappingURL=joinRegex-c1d713c5.js.map
