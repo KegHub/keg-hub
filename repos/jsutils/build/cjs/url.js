@@ -2,7 +2,7 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var getURLParam = require('./getURLParam-393f356b.js');
+var getURLParam = require('./getURLParam-28a171cb.js');
 require('./reduceObj-f41cbf8d.js');
 require('./isFunc-f93803cb.js');
 require('./isObj-6b3aa807.js');
