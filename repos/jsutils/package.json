@@ -1,12 +1,13 @@
 {
   "name": "@keg-hub/jsutils",
-  "version": "9.0.0",
+  "version": "9.0.1",
   "description": "Keg common javascript utils",
   "main": "build/cjs/index.js",
   "module": "build/esm/index.js",
   "exports": {
     "import": "./build/esm/index.js",
     "require": "./build/cjs/index.js",
+    "src/node": "./src/node/index.js",
     "node": "./src/node/index.js"
   },
   "types": "index.d.ts",
