@@ -1,16 +1,15 @@
 const Obj = require('../')
 
 describe('applyToCloneOf', () => {
-
   beforeEach(() => jest.resetAllMocks())
 
   it('should return a clone with the changes, leaving the original object unchanged', () => {
     const orig = {
       a: 1,
-      b: 2
+      b: 2,
     }
 
-    const result = Obj.applyToCloneOf(orig, (clone) => {
+    const result = Obj.applyToCloneOf(orig, clone => {
       clone.a = 42
     })
 
@@ -26,16 +25,16 @@ describe('applyToCloneOf', () => {
     Obj.applyToCloneOf(null, () => {})
     expect(console.warn).toHaveBeenCalled()
     console.warn.mockClear()
-    
+
     Obj.applyToCloneOf(1, () => {})
     expect(console.warn).toHaveBeenCalled()
     console.warn.mockClear()
-    
+
     Obj.applyToCloneOf({}, null)
     expect(console.warn).toHaveBeenCalled()
     console.warn.mockClear()
-    
-    Obj.applyToCloneOf({}, "I am not a function")
+
+    Obj.applyToCloneOf({}, 'I am not a function')
     expect(console.warn).toHaveBeenCalled()
     console.warn.mockClear()
 
@@ -45,10 +44,10 @@ describe('applyToCloneOf', () => {
   it('should return the original object when on bad input', () => {
     const orgWarn = console.warn
     console.warn = jest.fn()
-    
+
     const original = {}
     const notClone = Obj.applyToCloneOf(original, null)
-    
+
     expect(console.warn).toHaveBeenCalled()
     expect(notClone === original).toEqual(true)
 
@@ -58,7 +57,7 @@ describe('applyToCloneOf', () => {
   it('should work with delete', () => {
     const orig = {
       a: 1,
-      b: 2
+      b: 2,
     }
 
     const updated = Obj.applyToCloneOf(orig, clone => {
@@ -68,5 +67,4 @@ describe('applyToCloneOf', () => {
     expect(updated.a).toEqual(undefined)
     expect(orig.a).toEqual(1)
   })
-
 })

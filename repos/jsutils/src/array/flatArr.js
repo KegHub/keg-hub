@@ -1,4 +1,3 @@
-/** @module Array */
 import { isArr } from './isArr'
 import { isObj } from '../object/isObj'
 import { noOpObj } from '../ext/noOps'
@@ -9,7 +8,7 @@ import { exists } from '../ext/exists'
  * @function
  * @private
  * @param {Array|*} arr - Array to be flattened
- * @param {Array} result - Flattened array values 
+ * @param {Array} result - Flattened array values
  * @param {Array} opts - Options to modify how the array is flattened
  *
  * @return {Array} - Mutated arr or result, but flattened based on options
@@ -20,12 +19,12 @@ const flatten = (arr, result, opts) => {
 
     isArr(value)
       ? flatten(value, result, opts)
-      : ((opts.exists && !exists(value)) || (opts.truthy && !value))
-        ? result
-        : result.push(value)
+      : (opts.exists && !exists(value)) || (opts.truthy && !value)
+          ? result
+          : result.push(value)
   }
 
-  if(!opts.mutate) return result
+  if (!opts.mutate) return result
 
   Object.assign(arr, result).splice(result.length)
 
@@ -36,10 +35,10 @@ const flatten = (arr, result, opts) => {
  * Flattens an array to a single level
  * @function
  * @param {Array|*} arr - Array to be flattened
- * @param {Array} opts - Options to modify how the array is flattened
- * @param {Array} opts.truthy - Only include truthy values when flattening
- * @param {Array} opts.exists - Only include values that exist when flattening
- * @param {Array} opts.mutate - Mutates the original array
+ * @param {Object} [opts={}] - Options to modify how the array is flattened
+ * @param {Boolean} [opts.truthy] - Only include truthy values when flattening
+ * @param {Boolean} [opts.exists] - Only include values that exist when flattening
+ * @param {Boolean} [opts.mutate] - Mutates the original array
  *
  * @example
  * const arr = flatArr([[ 'flat', '' ], [ 'array' ]]) // returns ['flat', '', 'array']
@@ -51,4 +50,5 @@ const flatten = (arr, result, opts) => {
  *
  * @return {Array} - Mutated original array now flattened, or a new flattened array based on options
  */
-export const flatArr = (arr, opts) => flatten(arr, [], isObj(opts) ? opts : noOpObj)
+export const flatArr = (arr, opts) =>
+  flatten(arr, [], isObj(opts) ? opts : noOpObj)

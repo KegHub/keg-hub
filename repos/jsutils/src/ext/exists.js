@@ -1,5 +1,3 @@
-/** @module Helpers */
-
 /**
  * Checks if a value exists. NOT undefined || null
  * @function
@@ -15,6 +13,7 @@
  * // Returns false
  * @param {*} value - Item to check if exists
  *
- * @returns {boolean} - If the item exists or not
+ * @returns {Boolean} - If the item exists or not
  */
-export const exists = value => value === value && value !== undefined && value !== null
+export const exists = value =>
+  value === value && value !== undefined && value !== null

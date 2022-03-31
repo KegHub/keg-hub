@@ -22,24 +22,23 @@ describe('runSeq', () => {
 
     const expectedResults = [
       { index: 0, results: [] },
-      { 
-        index: 1, 
-        results: [ { index: 0, results: [] }]
+      {
+        index: 1,
+        results: [{ index: 0, results: [] }],
       },
-      { 
-        index: 2, 
-        results: [ 
-          { index: 0, results: [] }, 
-          { index: 1, results: [ { index: 0, results: [] } ] }
-        ]
-      }
+      {
+        index: 2,
+        results: [
+          { index: 0, results: [] },
+          { index: 1, results: [{ index: 0, results: [] }] },
+        ],
+      },
     ]
 
     const results = await runSeq(fns, { cloneResults: true })
 
     ;[ 0, 1, 2 ].map(index =>
-      expect(results[index])
-        .toMatchObject(expectedResults[index])
+      expect(results[index]).toMatchObject(expectedResults[index])
     )
   })
 

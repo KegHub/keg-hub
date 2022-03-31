@@ -1,5 +1,3 @@
-/** @module Boolean */
-
 /**
  * Checks is value is a boolean as a string.
  * @function
@@ -10,9 +8,6 @@
  * isStrBool(true)
  * // Returns false
  * @param {*} val - value to check if boolean as a string
- * @return {boolean} T/F - if value is a boolean
+ * @return {Boolean} True if val is a string boolean
  */
-export const isStrBool = val => (
-  val === 'false' || val === 'true'
-)
-
+export const isStrBool = val => val === 'false' || val === 'true'

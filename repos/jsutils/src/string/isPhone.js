@@ -1,12 +1,10 @@
-/** @module String */
-
 import { isStr } from './isStr'
 
 /**
  * Check if string is a phone number.
  * @function
- * @param {string} string to check
- * @return {boolean} - if it's a phone number
+ * @param {String} str - string to check
+ * @return {Boolean} - True if str is a phone number
  */
 export const isPhone = str => {
   if (!str || !isStr(str)) return false

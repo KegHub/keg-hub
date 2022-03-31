@@ -1,15 +1,11 @@
-/** @module String */
-
 import { removeDot } from './removeDot'
-
 
 /**
  * Converts `-` and `_` to white space and calls remove removeDot, to remove a period.
  * @function
- * @param {string} string to be converted
- * @return {string} - cleaned string
+ * @param {String} string to be converted
+ * @return {String} - cleaned string
  */
 export const cleanStr = str => {
-  return str && removeDot(str)
-    .replace(/[-_]/gm, ' ') || str
+  return (str && removeDot(str).replace(/[-_]/gm, ' ')) || str
 }

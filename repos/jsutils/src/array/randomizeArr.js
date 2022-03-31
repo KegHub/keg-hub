@@ -1,5 +1,3 @@
-/** @module Array */
-
 import { isArr } from './isArr'
 
 /**
@@ -8,9 +6,8 @@ import { isArr } from './isArr'
  * @example
  * randomizeArr([1,2,3])
  * // Returns an array randomly sorted
- * @param {array} arr - array to randomly sorted
- * @return {array} - randomly sorted array
+ * @param {Array} arr - array to randomly sorted
+ * @return {Array} - randomly sorted array
  */
-export const randomizeArr = arr => (
-  !isArr(arr) && arr || arr.sort(() => (0.5 - Math.random()))
-)
+export const randomizeArr = arr =>
+  (!isArr(arr) && arr) || arr.sort(() => 0.5 - Math.random())

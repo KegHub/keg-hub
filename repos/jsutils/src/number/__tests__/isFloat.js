@@ -1,7 +1,6 @@
 const Num = require('../')
 
 describe('isFloat', () => {
-
   beforeEach(() => jest.resetAllMocks())
 
   it('should check if a value is a float', () => {
@@ -12,5 +11,4 @@ describe('isFloat', () => {
     expect(Num.isFloat(NaN)).toBe(false)
     expect(Num.isFloat('foo')).toBe(false)
   })
-
 })

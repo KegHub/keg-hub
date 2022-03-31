@@ -1,5 +1,3 @@
-/** @module Helpers */
-
 import { isObj } from '../object/isObj'
 import { isArr } from '../array/isArr'
 import { isStr } from '../string/isStr'
@@ -18,9 +16,9 @@ import { isNum } from '../number/isNum'
  * // Returns false
  * @function
  * @param { object | array | number | string } val - value to check
- * @return {boolean} if the value is empty
+ * @return {Boolean} if the value is empty
  */
-export const isEmpty = val => (
+export const isEmpty = val =>
   isObj(val)
     ? Object.keys(val).length === 0
     : isArr(val)
@@ -30,4 +28,3 @@ export const isEmpty = val => (
         : isNum(val)
           ? val < 1
           : false
-)

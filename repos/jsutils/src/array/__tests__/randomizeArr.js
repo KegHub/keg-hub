@@ -1,7 +1,6 @@
 const Arr = require('../')
 
 describe('randomizeArr', () => {
-
   beforeEach(() => jest.resetAllMocks())
 
   it('should randomly sort the passed in array', () => {
@@ -11,11 +10,9 @@ describe('randomizeArr', () => {
   })
 
   it('should return the first argument if its not an array', () => {
-    const arr = { "test": "object" }
+    const arr = { test: 'object' }
     const random = Arr.randomizeArr(arr)
 
     expect(arr === random).toBe(true)
-
   })
-
 })

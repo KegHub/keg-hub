@@ -1,4 +1,3 @@
-/** @module Array */
 import { identity, compareTo } from '../method'
 import { findExtrema } from './findExtrema'
 
@@ -11,7 +10,5 @@ import { findExtrema } from './findExtrema'
  * const items = [ { num: 1 }, { num: 3 } ]
  * findMax(items, item => item.num) // returns { num: 3 }
  */
-export const findMax = (arr = [], propSelector=identity) => findExtrema(
-  arr, 
-  (x, y) => compareTo(propSelector(x), propSelector(y))
-)
+export const findMax = (arr = [], propSelector = identity) =>
+  findExtrema(arr, (x, y) => compareTo(propSelector(x), propSelector(y)))

@@ -1,7 +1,6 @@
 const Ext = require('../')
 
 describe('strToType', () => {
-
   beforeEach(() => jest.resetAllMocks())
 
   it('should convert a string to its type', () => {
@@ -21,9 +20,8 @@ describe('strToType', () => {
     expect(number === 12345).toBe(true)
     expect(typeof zero).toBe('number')
     expect(zero === 0).toBe(true)
-    
+
     expect(typeof object).toBe('object')
     expect(Array.isArray(array)).toBe(true)
   })
-
 })

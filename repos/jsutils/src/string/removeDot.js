@@ -1,10 +1,8 @@
-/** @module String */
-
 /**
  * Removes a `.` from the start and end of a string.
  * @function
- * @param {string} str - string to convert
- * @return {string} - string without the `.`
+ * @param {String} str - string to convert
+ * @return {String} - string without the `.`
  */
 export const removeDot = string => {
   const noDot = string.indexOf('.') === 0 ? string.slice(1) : string

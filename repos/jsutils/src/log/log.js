@@ -1,29 +1,21 @@
-/** @module Log */
-
 'use strict'
 
 let SHOW_LOGS
 let METH_DEF = 'dir'
 let PREFIX = 'type'
-const LOG_TYPES = [
-  'error',
-  'info',
-  'log',
-  'dir',
-  'warn',
-]
+const LOG_TYPES = [ 'error', 'info', 'log', 'dir', 'warn' ]
 const isTest = process.env.NODE_ENV === 'test'
 
 /**
  * Turns logs on || off.
- * <br> Set the default log method.
- * <br> Add a prefix to all log message
+ * <br/>Set the default log method.
+ * <br/>Add a prefix to all log message
  * @example
  * setLogs(true, 'dir', '[ DEV MODE ]')
  * @function
- * @param {boolean} log - log values
- * @param {string} methDef - default log method
- * @param {string} prefix - string to add to all logs
+ * @param {Boolean} log - log values
+ * @param {String} [methDef] - default log method
+ * @param {String} [prefix] - string to add to all logs
  * @return { void }
  */
 export const setLogs = (log, methDef, prefix) => {
@@ -56,16 +48,13 @@ export const resetLogs = () => {
  * @return { void }
  */
 export const logData = (...args) => {
-  if(!args.length) return
-  
-  let type = args.length === 1 ? METH_DEF : args.pop()
-  if(!SHOW_LOGS && type !== 'error') return
+  if (!args.length) return
 
-  else if(typeof args[0] === 'string'){
-    if(PREFIX === 'type')
-      args[0] = `[ ${type.toUpperCase()} ] ${args[0]}`
-    else if(PREFIX)
-      args[0] = `${PREFIX} ${args[0]}`
+  let type = args.length === 1 ? METH_DEF : args.pop()
+  if (!SHOW_LOGS && type !== 'error') return
+  else if (typeof args[0] === 'string') {
+    if (PREFIX === 'type') args[0] = `[ ${type.toUpperCase()} ] ${args[0]}`
+    else if (PREFIX) args[0] = `${PREFIX} ${args[0]}`
   }
 
   LOG_TYPES.indexOf(type) !== -1

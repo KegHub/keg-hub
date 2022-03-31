@@ -1,5 +1,3 @@
-/** @module Node */
-
 const { exists, noOpObj } = require('../../build/cjs')
 
 /**
@@ -8,20 +6,19 @@ const { exists, noOpObj } = require('../../build/cjs')
  * @param {Object} addEnvs - Envs to add to the current process
  * @param {Object} options - Configure out the envs are added
  * @param {Object} options.force - Force add the env, even if it already exists
- * 
+ *
  * @returns {Void}
  */
-const addToProcess = (addEnvs, opts=noOpObj) => {
+const addToProcess = (addEnvs, opts = noOpObj) => {
   const { force } = opts
 
-  Object.entries(addEnvs)
-    .map(([ key, value ]) => {
-      exists(value) &&
-        (!exists(process.env[key]) || force) &&
-        (process.env[key] = value)
-    })
+  Object.entries(addEnvs).map(([ key, value ]) => {
+    exists(value) &&
+      (!exists(process.env[key]) || force) &&
+      (process.env[key] = value)
+  })
 }
 
 module.exports = {
-  addToProcess
+  addToProcess,
 }

@@ -1,5 +1,3 @@
-/** @module Array */
-
 import { isArr } from './isArr'
 
 /**
@@ -8,9 +6,9 @@ import { isArr } from './isArr'
  * @param {*} a
  * @param {*} b
  * @returns {*} either a, if it's an array, or b
- * 
+ *
  * @example
  * const foo = eitherArr('hi', 1) // returns 1
  * const bar = eitherArr([ 2 ], 1) // returns [ 2 ]
  */
-export const eitherArr = (a, b) => isArr(a) ? a : b
+export const eitherArr = (a, b) => (isArr(a) ? a : b)

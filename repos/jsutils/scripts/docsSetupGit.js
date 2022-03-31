@@ -17,7 +17,7 @@ const configsPath = path.join(__dirname, `../configs`)
  * @returns {Promise} - resolves to response from cmdExec method
  */
 const runCmd = async cmd => {
-  return await cmdExec(cmd, {cwd: docsPath})
+  return await cmdExec(cmd, { cwd: docsPath })
 }
 
 /**
@@ -32,7 +32,6 @@ const copyReadMe = async () => {
   await runCmd(`cp ${configReadMe} ${docsReadMe}`)
 }
 
-
 /**
  * Cleans up the jsutils repo after pushing the doc updates to github
  * @function
@@ -43,9 +42,9 @@ const cleanup = async () => {
   // Remove the git folder after pushing
   await runCmd(`rm -rf ./.git`)
   // Remove the docs folder
-  await cmdExec(`rm -rf ./docs`, {cwd: rootPath})
+  await cmdExec(`rm -rf ./docs`, { cwd: rootPath })
   // Then call git-reset on the docs folder
-  await cmdExec(`git checkout HEAD -- ./docs`, {cwd: rootPath})
+  await cmdExec(`git checkout HEAD -- ./docs`, { cwd: rootPath })
 }
 
 /**
@@ -62,14 +61,14 @@ const setupGit = async () => {
     await copyReadMe()
     await runCmd(`git init`)
     await runCmd(`git add .`)
-    await runCmd(`git commit -m "feat(docs): JS-Utils publish docs version ${package.version}"`)
+    await runCmd(
+      `git commit -m "feat(docs): JS-Utils publish docs version ${package.version}"`
+    )
     await runCmd(`git remote add origin ${package.publish.repository}`)
     await runCmd(`git push origin main --force`)
 
     console.log(`Successfully published jsutils docs\n`)
-
-  }
-  catch(e){
+  } catch (e) {
     console.error(e)
     exitCode = 1
   }

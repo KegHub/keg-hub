@@ -1,7 +1,6 @@
 const { hashString } = require('../')
 
 describe('hashString', () => {
-
   afterEach(() => {
     jest.clearAllMocks()
   })
@@ -16,9 +15,15 @@ describe('hashString', () => {
   })
 
   it('should create the different hashes when the passed in string is the differnt', () => {
-    expect(hashString(`{ test: "data" }`)).not.toBe(hashString(`{ test: "data1" }`))
-    expect(hashString(`{ test: "data" }`)).not.toBe(hashString(`{ test: "1data" }`))
-    expect(hashString(`{ test: "data" }`)).not.toBe(hashString(`{ test1: "data" }`))
+    expect(hashString(`{ test: "data" }`)).not.toBe(
+      hashString(`{ test: "data1" }`)
+    )
+    expect(hashString(`{ test: "data" }`)).not.toBe(
+      hashString(`{ test: "1data" }`)
+    )
+    expect(hashString(`{ test: "data" }`)).not.toBe(
+      hashString(`{ test1: "data" }`)
+    )
   })
 
   it('should return hash matching the length or the passed in max length value', () => {
@@ -28,5 +33,4 @@ describe('hashString', () => {
     const hash2 = hashString(`{ test: "data" }`, 0)
     expect(hash2.length).toBe(0)
   })
-
 })

@@ -1,10 +1,8 @@
-/** @module Functions */
-
 /**
  * Checks if there is access to the dom
  * @function
  * @example
- * // In Browser 
+ * // In Browser
  * hasDomAccess() === true
  * // In Node
  * hasDomAccess() === false

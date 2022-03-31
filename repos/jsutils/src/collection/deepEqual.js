@@ -1,5 +1,3 @@
-/** @module Collection */
-
 // Cache the prototype methods for faster access
 const isArray = Array.isArray
 const keyList = Object.keys
@@ -18,13 +16,13 @@ const hasProp = Object.prototype.hasOwnProperty
  * // Works with arrays too
  * deepClone([ [ [ 0 ] ] ], [ [ [ 0 ] ] ]) // returns true
  * @function
- * @param {Object|Array} a - object to check
- * @param {Object|Array} b - object to check against
+ * @param {Object|Array} a - Object to check
+ * @param {Object|Array} b - Object to check against
  */
 export const deepEqual = (a, b) => {
   if (a === b) return true
 
-  if(!a || !b || typeof a != 'object' || typeof b != 'object')
+  if (!a || !b || typeof a != 'object' || typeof b != 'object')
     return a !== a && b !== b
 
   const arrA = isArray(a)
@@ -39,8 +37,7 @@ export const deepEqual = (a, b) => {
     // If unequal length, then not equal
     if (length != b.length) return false
     // Loop the arrays and check the contents of both
-    for (i = length; i-- !== 0;)
-      if (!deepEqual(a[i], b[i])) return false
+    for (i = length; i-- !== 0;) if (!deepEqual(a[i], b[i])) return false
 
     return true
   }
@@ -68,8 +65,7 @@ export const deepEqual = (a, b) => {
   if (length !== keyList(b).length) return false
 
   // Ensure both objects have the same keys
-  for (i = length; i-- !== 0;)
-    if (!hasProp.call(b, keys[i])) return false
+  for (i = length; i-- !== 0;) if (!hasProp.call(b, keys[i])) return false
 
   // Check the value of the object keys
   for (i = length; i-- !== 0;) {
@@ -78,5 +74,4 @@ export const deepEqual = (a, b) => {
   }
 
   return true
-
 }

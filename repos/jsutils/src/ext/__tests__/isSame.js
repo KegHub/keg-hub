@@ -1,7 +1,6 @@
 const Ext = require('../')
 
 describe('isSame', () => {
-
   beforeEach(() => jest.resetAllMocks())
 
   it('should check if two passed in arguments are exactly same', () => {
@@ -12,5 +11,4 @@ describe('isSame', () => {
     expect(Ext.isSame('', ' ')).toBe(false)
     expect(Ext.isSame(Infinity, NaN)).toBe(false)
   })
-
 })

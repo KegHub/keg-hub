@@ -1,7 +1,6 @@
 const Obj = require('../')
 
 describe('cloneJson', () => {
-
   beforeEach(() => jest.resetAllMocks())
 
   it('should clone the passed in object, and its children', () => {
@@ -20,33 +19,9 @@ describe('cloneJson', () => {
     const obj2 = { obj: obj, data: 'some data' }
     obj.obj2 = obj2
     const clone = Obj.cloneJson(obj)
-    
+
     expect(console.error).toHaveBeenCalled()
     expect(clone).toEqual(null)
     console.error = consoleErr
   })
-  
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,11 +1,13 @@
 const os = require('os')
 const orgPlatform = process.platform
 const platform = os.platform().toLowerCase()
-jest.setMock('os', { platform: () => (process.platform ? platform : `test-os`)})
+jest.setMock('os', {
+  platform: () => (process.platform ? platform : `test-os`),
+})
 const osMap = {
   lin: [`linux`],
   mac: [`darwin`],
-  win: [`win32`, `win64`],
+  win: [ `win32`, `win64` ],
 }
 
 const { getOS } = require('../getOS')
@@ -17,16 +19,16 @@ describe('getOS', () => {
     global.process = {
       ...oldProc,
       platform: oldProc.platform,
-      listeners: oldProc.listeners.bind(oldProc)
+      listeners: oldProc.listeners.bind(oldProc),
     }
   })
-  
+
   beforeEach(() => jest.resetAllMocks())
 
   afterAll(() => {
     global.process = oldProc
   })
-  
+
   it('should return the correct OS', () => {
     const foudnOs = getOS()
     const possiable = osMap[foudnOs]
@@ -62,5 +64,4 @@ describe('getOS', () => {
 
     process.platform = orgPlatform
   })
-
 })

@@ -1,5 +1,3 @@
-/** @module Object */
-
 import { isFunc } from '../method/isFunc'
 import { set } from '../collection/set'
 import { isArr } from '../array/isArr'
@@ -7,8 +5,8 @@ import { isObj } from './isObj'
 import { isEntry } from './isEntry'
 
 /**
- * Returns a new object, each entry of which is the result of applying the cb function to input's corresponding entry 
- * @param {Object | Array} obj - regular object or array
+ * Returns a new object, each entry of which is the result of applying the cb function to input's corresponding entry
+ * @param {Object|Array} obj - regular object or array
  * @param {Function} cb  - function of form: (key, value) => [nextKey, nextValue]
  *  - the return type here is an array of two elements, key and value, where `key` must be either a string or a number
  *  - if a cb does not return an entry, then the original [key, value] pair that was passed into cb will be used instead
@@ -16,7 +14,7 @@ import { isEntry } from './isEntry'
  * @example mapObj({a: 1}, (k, v) => ['b', v]) returns: {b: 1}
  * @function
  *
- * @returns new object with mapping applied, or the original obj if input was invalid
+ * @returns {Object} - new object with mapping applied, or the original obj if input was invalid
  */
 export const mapEntries = (obj, cb) => {
   if (!isArr(obj) && !isObj(obj)) {
@@ -33,15 +31,14 @@ export const mapEntries = (obj, cb) => {
 
   const initialValue = isArr(obj) ? [] : {}
 
-  return entries.reduce(
-    (obj, [key, value]) => {
-      const result = cb(key, value)
-      if (!isEntry(result)) {
-        console.error(`Callback function must return entry. Found: ${result}. Using current entry instead.`)
-        return set(obj, key, value)
-      } 
-      return set(obj, result[0], result[1])
-    },
-    initialValue
-  )
+  return entries.reduce((obj, [ key, value ]) => {
+    const result = cb(key, value)
+    if (!isEntry(result)) {
+      console.error(
+        `Callback function must return entry. Found: ${result}. Using current entry instead.`
+      )
+      return set(obj, key, value)
+    }
+    return set(obj, result[0], result[1])
+  }, initialValue)
 }

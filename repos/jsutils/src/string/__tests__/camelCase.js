@@ -1,7 +1,6 @@
 const Str = require('../')
 
 describe('camelCase', () => {
-
   beforeEach(() => jest.resetAllMocks())
 
   it('should convert a string to camel case', () => {
@@ -19,5 +18,4 @@ describe('camelCase', () => {
   it('should handle a mix of spaces dashes and low dashes', () => {
     expect(Str.camelCase('CAm_EL cas-e')).toEqual('camElCasE')
   })
-
 })

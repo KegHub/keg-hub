@@ -1,5 +1,3 @@
-/** @module Object */
-
 import { logData } from '../log'
 
 /**
@@ -12,7 +10,7 @@ export const cloneJson = obj => {
   try {
     return JSON.parse(JSON.stringify(obj))
   }
-  catch(e){
+  catch (e) {
     logData(e.message, 'error')
     return null
   }

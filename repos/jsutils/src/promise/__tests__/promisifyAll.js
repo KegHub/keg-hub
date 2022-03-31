@@ -12,28 +12,27 @@ const _testPromisification = async object => {
 
   const resultA = await object.someFuncAsync(inputA)
   const resultB = await object.someOtherFuncAsync(inputB)
-  
+
   expect(resultA).toEqual(inputA)
   expect(resultB).toEqual(inputB)
 }
 
 const getClsObj = type => {
-
   class MyClass {
-    someFunc(input, callback){
-      return callback && callback(null, input) || input
+    someFunc(input, callback) {
+      return (callback && callback(null, input)) || input
     }
-    someOtherFunc(input, callback){
-      return callback && callback(null, input) || input
+    someOtherFunc(input, callback) {
+      return (callback && callback(null, input)) || input
     }
   }
   const object = {
-    someFunc(input, callback){
-      return callback && callback(null, input) || input
+    someFunc(input, callback) {
+      return (callback && callback(null, input)) || input
     },
-    someOtherFunc(input, callback){
-      return callback && callback(null, input) || input
-    }
+    someOtherFunc(input, callback) {
+      return (callback && callback(null, input)) || input
+    },
   }
 
   return type === 'obj'
@@ -44,7 +43,6 @@ const getClsObj = type => {
 }
 
 describe('promisifyAll', () => {
-
   beforeEach(() => jest.resetAllMocks())
 
   it('should promisify all functions defined on an object', async () => {
@@ -76,19 +74,19 @@ describe('promisifyAll', () => {
     expect(result).toEqual(input)
   })
 
-  it('should promisify objects getter function properties ', async () => {
+  it('should promisify objects getter function properties', async () => {
     const propertyName = 'someProperty'
     const testObject = {
       someOtherProperty: false,
       someFunc(input, callback) {
-        return callback && callback(null, input) || input
-      }
+        return (callback && callback(null, input)) || input
+      },
     }
 
     Object.defineProperty(testObject, propertyName, {
       get: (input, callback) => {
-        return callback && callback(null, input) || input
-      }
+        return (callback && callback(null, input)) || input
+      },
     })
 
     promisifyAll(testObject)
@@ -97,6 +95,4 @@ describe('promisifyAll', () => {
 
     expect(result).toEqual(input)
   })
-
 })
-

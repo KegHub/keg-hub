@@ -5,4 +5,3 @@ describe('noOp', () => {
     expect(result).toBeUndefined()
   })
 })
-

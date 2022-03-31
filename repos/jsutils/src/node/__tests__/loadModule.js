@@ -1,23 +1,23 @@
 const { loadModule } = require('../loadModule')
+// eslint-disable-next-line jest/no-mocks-import
 const testFunc = require('../__mocks__/test_load_func')
 const path = require('path')
 
 const packagePath = '../../../package.json'
 
 describe('loadModule', () => {
-
   beforeEach(() => jest.resetAllMocks())
 
   it('should accept a string as the first argument', () => {
     const packageConfig = loadModule(packagePath)
-    
+
     expect(typeof packageConfig).toBe('object')
     expect(packageConfig.name).toBe('@keg-hub/jsutils')
   })
 
   it('should accept an array as the first argument', () => {
     const packageConfig = loadModule([packagePath])
-    
+
     expect(typeof packageConfig).toBe('object')
     expect(packageConfig.name).toBe('@keg-hub/jsutils')
   })
@@ -29,7 +29,7 @@ describe('loadModule', () => {
       // Bad Path
       packagePath,
     ])
-    
+
     expect(typeof packageConfig).toBe('object')
     expect(packageConfig.name).toBe('@keg-hub/jsutils')
 
@@ -41,38 +41,28 @@ describe('loadModule', () => {
       // Good Path - Should not be loaded
       packagePath,
     ])
-    
+
     // Should not load the package.json
     expect(typeof loadedModule).toBe('object')
     expect(loadedModule.name).toBe(undefined)
-    
+
     // Should load the test helper json
     expect(loadedModule.TEST_HELPER).not.toBe(undefined)
     expect(typeof loadedModule.TEST_HELPER).toBe('string')
-
   })
 
   it('should load a function, and call it with passed in params', () => {
-    const arrObj = [ "array" ]
-    const loadedModule = loadModule(
-      '../__mocks__/test_load_func',
-      {},
-      arrObj,
-      1,
-      'string'
-    )
+    const arrObj = ['array']
+    loadModule('../__mocks__/test_load_func', {}, arrObj, 1, 'string')
 
     expect(testFunc).toHaveBeenCalledWith(arrObj, 1, 'string')
-
   })
 
   it('should load the module from the passed in rootDir when it exists', () => {
     const rootDir = path.join(__dirname, '../../../')
     const packageConfig = loadModule('./package.json', { rootDir })
-    
+
     expect(typeof packageConfig).toBe('object')
     expect(packageConfig.name).toBe('@keg-hub/jsutils')
-
   })
-
 })

@@ -1,9 +1,6 @@
 const Coll = require('../')
-const { isArr } = require('../../array/isArr')
-const { isObj } = require('../../object/isObj')
 
 describe('repeat', () => {
-
   beforeEach(() => jest.resetAllMocks())
 
   it('should repeat the element the specified number of times', () => {
@@ -13,7 +10,7 @@ describe('repeat', () => {
     expect(repeated.length).toEqual(length)
     repeated.forEach(el => expect(el).toEqual(element))
   })
-  
+
   it('should work with functions as the element', () => {
     const element = 2
     const func = () => 2
@@ -21,7 +18,7 @@ describe('repeat', () => {
     const repeated = Coll.repeat(func, length)
     expect(repeated.length).toEqual(length)
     repeated.forEach(el => expect(el).toEqual(element))
-  }) 
+  })
 
   it('should return an empty array if the times arg is <= 0', () => {
     expect(Coll.repeat(1, null)).toEqual([])
@@ -32,17 +29,16 @@ describe('repeat', () => {
   it('should log errors and return an empty array if something other than a number is passed as times', () => {
     const orgError = console.error
     console.error = jest.fn()
-    expect(Coll.repeat(1, "hi")).toEqual([])
+    expect(Coll.repeat(1, 'hi')).toEqual([])
     expect(console.error).toHaveBeenCalled()
     console.error = orgError
   })
 
   it('should deeply clone elements if the flag is specified', () => {
-    const element = {a: {b: 1}}
+    const element = { a: { b: 1 } }
     const repeatedEl = Coll.repeat(element, 1, true)[0]
     expect(repeatedEl.a.b).toEqual(element.a.b)
     expect(Object.is(repeatedEl, element)).toBe(false)
     expect(Object.is(repeatedEl.a, element.a)).toBe(false)
   })
 })
-

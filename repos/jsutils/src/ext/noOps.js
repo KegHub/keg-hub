@@ -1,5 +1,3 @@
-/** @module Helpers */
-
 import { deepFreeze } from '../object/deepFreeze'
 
 /**

@@ -1,13 +1,10 @@
 const Coll = require('../')
-const { isArr } = require('../../array/isArr')
-const { isObj } = require('../../object/isObj')
 
 describe('isEmptyColl', () => {
-
   beforeEach(() => jest.resetAllMocks())
 
   it('should check if an object is empty', () => {
-    const notEmpty = { data: [ { foo: 'duper' } ] }
+    const notEmpty = { data: [{ foo: 'duper' }] }
     const empty = {}
 
     expect(Coll.isEmptyColl(notEmpty)).toBe(false)
@@ -21,5 +18,4 @@ describe('isEmptyColl', () => {
     expect(Coll.isEmptyColl(notEmpty)).toBe(false)
     expect(Coll.isEmptyColl(empty)).toBe(true)
   })
-
 })

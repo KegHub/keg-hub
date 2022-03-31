@@ -1,14 +1,13 @@
 /**
- * 
+ *
  * @export
- * @param {string} 
+ * @param {string}
  *
  * @returns {void}
  */
-export default function buildHook(devMode){
+export default function buildHook(devMode) {
   return {
     name: 'buildHook',
-    buildEnd: async () => {
-    }
+    buildEnd: async () => {},
   }
 }

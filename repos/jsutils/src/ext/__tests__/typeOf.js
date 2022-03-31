@@ -1,7 +1,6 @@
 const Ext = require('../')
 
 describe('typeOf', () => {
-
   beforeEach(() => jest.resetAllMocks())
 
   it('should return the correct type from the passed in param', () => {
@@ -14,5 +13,4 @@ describe('typeOf', () => {
     expect(Ext.typeOf(NaN) === 'Number').toBe(true)
     expect(Ext.typeOf(null) === 'Null').toBe(true)
   })
-
 })

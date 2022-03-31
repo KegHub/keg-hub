@@ -3,7 +3,6 @@ import { wait } from '../../promise/wait'
 
 const oldConsole = console.error
 describe('timedRun', () => {
-
   beforeAll(() => (console.error = jest.fn()))
   afterAll(() => (console.error = oldConsole))
 

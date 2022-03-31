@@ -1,7 +1,6 @@
 const Bool = require('../')
 
 describe('softFalsy', () => {
-
   beforeEach(() => jest.resetAllMocks())
 
   it('should check for falsy', () => {
@@ -18,5 +17,4 @@ describe('softFalsy', () => {
   it('should return true for empty string', () => {
     expect(Bool.softFalsy('')).toBe(true)
   })
-
 })

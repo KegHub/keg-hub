@@ -1,7 +1,6 @@
 const Obj = require('../')
 
 describe('keyMap', () => {
-
   beforeEach(() => jest.resetAllMocks())
 
   it('should return object with keys and values equal to values in array', () => {
@@ -24,5 +23,4 @@ describe('keyMap', () => {
       expect(mapped[key.toUpperCase()]).toEqual(key.toUpperCase())
     })
   })
-
 })

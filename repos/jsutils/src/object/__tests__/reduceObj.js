@@ -1,11 +1,14 @@
 const Obj = require('../')
 
 describe('reduceObj', () => {
-
   beforeEach(() => jest.resetAllMocks())
 
   it('should call the callback on all object properties', () => {
-    const obj = { test: 'I should freeze', sub: [ 1, 2, 3 ], data: { test: 'I should freeze' } }
+    const obj = {
+      test: 'I should freeze',
+      sub: [ 1, 2, 3 ],
+      data: { test: 'I should freeze' },
+    }
     const keys = []
     const callBack = jest.fn((key, value, obj) => {
       keys.push(key)
@@ -22,7 +25,11 @@ describe('reduceObj', () => {
   })
 
   it('should return object from the last callback', () => {
-    const obj = { test: 'I should freeze', sub: [ 1, 2, 3 ], data: { test: 'I should freeze' } }
+    const obj = {
+      test: 'I should freeze',
+      sub: [ 1, 2, 3 ],
+      data: { test: 'I should freeze' },
+    }
     const callBack = jest.fn((key, value, obj) => {
       obj.called = obj.called || 0
       obj.called += 1
@@ -34,6 +41,4 @@ describe('reduceObj', () => {
     expect(typeof reduceObj).toEqual('object')
     expect(reduceObj.called).toEqual(3)
   })
-
 })
-

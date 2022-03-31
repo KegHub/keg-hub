@@ -1,7 +1,6 @@
 const Str = require('../')
 
 describe('snakeCase', () => {
-
   beforeEach(() => jest.resetAllMocks())
 
   const cases = [
@@ -17,17 +16,16 @@ describe('snakeCase', () => {
     'Foo Bar',
     'foo bar',
   ]
-  
+
   cases.map(str => {
     it(`should convert ${str} to snake case`, () => {
       const result = Str.snakeCase(str)
       expect(result).toEqual('foo_bar')
-    }) 
+    })
   })
 
   it('should leave a single word unchanged', () => {
     const word = 'foo'
     expect(Str.snakeCase(word)).toEqual('foo')
   })
-
 })

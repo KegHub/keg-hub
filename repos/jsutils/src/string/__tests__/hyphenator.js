@@ -1,7 +1,6 @@
 const { hyphenator } = require('../')
 
 describe('hyphenator', () => {
-
   afterEach(() => {
     jest.clearAllMocks()
   })
@@ -20,5 +19,4 @@ describe('hyphenator', () => {
   it('should add a - to the front then string starts with ms-', () => {
     expect(hyphenator(`msTestString`)).toBe(`-ms-test-string`)
   })
-
 })

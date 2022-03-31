@@ -1,5 +1,3 @@
-/** @module Helpers */
-
 import { isStr } from '../string/isStr'
 import { isNum } from '../number/isNum'
 import { toNum } from '../number/toNum'
@@ -29,7 +27,11 @@ export const strToType = val => {
       : isNum(val)
         ? toNum(val)
         : (() => {
-            try { return JSON.parse(val) }
-            catch(e){ return val }
+            try {
+              return JSON.parse(val)
+            }
+            catch (e) {
+              return val
+            }
           })()
 }

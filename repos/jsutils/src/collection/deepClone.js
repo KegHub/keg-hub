@@ -1,12 +1,10 @@
-/** @module Collection */
-
 import { isFunc } from '../method/isFunc'
 import { cloneFunc } from '../method/cloneFunc'
 import { isArr } from '../array/isArr'
 
 /**
  * Recursively clones an object or array.
-  * @example
+ * @example
  * const test = { foo: [ { bar: 'baz' } ] }
  * const clone = deepClone(test)
  * console.log(test === clone)) // prints false
@@ -16,8 +14,8 @@ import { isArr } from '../array/isArr'
  * deepClone([ [ [ 0 ] ] ])
  * // Returns copy of the passed in collection item
  * @function
- * @param {Object} obj - object to clone
- * @return {Object} - cloned Object
+ * @param {Object} obj - Object to clone
+ * @return {Object} - Cloned Object
  */
 export const deepClone = (obj, hash = new WeakMap()) => {
   if (Object(obj) !== obj) return obj
@@ -26,28 +24,29 @@ export const deepClone = (obj, hash = new WeakMap()) => {
   if (isArr(obj)) return obj.map(x => deepClone(x))
   if (isFunc(obj)) return cloneFunc(obj)
 
-  const result = obj instanceof Date 
-    ? new Date(obj)
-    : obj instanceof RegExp 
-      ? new RegExp(obj.source, obj.flags)
-      : (!obj.constructor)
-        ? Object.create(null)
-        : null
-  
+  const result =
+    obj instanceof Date
+      ? new Date(obj)
+      : obj instanceof RegExp
+        ? new RegExp(obj.source, obj.flags)
+        : !obj.constructor
+            ? Object.create(null)
+            : null
+
   // if result is null, object has a constructor and wasn't an instance of Date nor RegExp
   if (result === null) return cloneObjWithPrototypeAndProperties(obj)
 
   hash.set(obj, result)
 
   if (obj instanceof Map)
-    return Array.from(obj, ([key, val]) => result.set(key, deepClone(val, hash)) )
-
-  return Object
-    .assign(
-      result,
-      ...Object.keys(obj)
-        .map(key => ({ [key]: deepClone(obj[key], hash) }))
+    return Array.from(obj, ([ key, val ]) =>
+      result.set(key, deepClone(val, hash))
     )
+
+  return Object.assign(
+    result,
+    ...Object.keys(obj).map(key => ({ [key]: deepClone(obj[key], hash) }))
+  )
 }
 
 /**
@@ -55,18 +54,18 @@ export const deepClone = (obj, hash = new WeakMap()) => {
  * @function
  * @ignore
  * @param {Object} objectWithPrototype - any object that has a prototype
- * @returns {Object} the cloned object 
+ * @returns {Object} the cloned object
  */
-export const cloneObjWithPrototypeAndProperties = (objectWithPrototype) => {
-
+export const cloneObjWithPrototypeAndProperties = objectWithPrototype => {
   if (!objectWithPrototype) return objectWithPrototype
 
   const prototype = Object.getPrototypeOf(objectWithPrototype)
-  const sourceDescriptors = Object.getOwnPropertyDescriptors(objectWithPrototype)
+  const sourceDescriptors =
+    Object.getOwnPropertyDescriptors(objectWithPrototype)
 
-  for (const [key, descriptor] of Object.entries(sourceDescriptors)) {
+  for (const [ key, descriptor ] of Object.entries(sourceDescriptors)) {
     descriptor.value &&
-      ( sourceDescriptors[key].value = deepClone(descriptor.value) )
+      (sourceDescriptors[key].value = deepClone(descriptor.value))
   }
 
   const clone = Object.create(prototype, sourceDescriptors)
@@ -74,5 +73,5 @@ export const cloneObjWithPrototypeAndProperties = (objectWithPrototype) => {
   if (Object.isFrozen(objectWithPrototype)) Object.freeze(clone)
   if (Object.isSealed(objectWithPrototype)) Object.seal(clone)
 
-  return clone 
+  return clone
 }

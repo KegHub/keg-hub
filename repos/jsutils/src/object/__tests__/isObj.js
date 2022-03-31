@@ -1,7 +1,6 @@
 const Obj = require('../')
 
 describe('isObj', () => {
-
   beforeEach(() => jest.resetAllMocks())
 
   it('should test if data is an object', () => {
@@ -13,5 +12,4 @@ describe('isObj', () => {
     const obj = [ 1, 2, 3 ]
     expect(Obj.isObj(obj)).toEqual(false)
   })
-
 })

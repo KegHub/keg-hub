@@ -1,7 +1,6 @@
 const Bool = require('../')
 
 describe('isStrBool', () => {
-
   beforeEach(() => jest.resetAllMocks())
 
   it('should check if value is a boolean but as a string', () => {
@@ -12,5 +11,4 @@ describe('isStrBool', () => {
     expect(Bool.isStrBool(true)).toBe(false)
     expect(Bool.isStrBool(false)).toBe(false)
   })
-
 })

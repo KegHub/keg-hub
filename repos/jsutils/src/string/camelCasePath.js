@@ -1,26 +1,20 @@
-/** @module String */
-
 import { capitalize } from './capitalize'
 
 /**
  * Turns a path string into a camel-cased string, if there is more than one
  * step in the path. If there isn't, just returns path.
  * @function
- * @param {string} path 
- * @return {string} camel-cased string
+ * @param {String} path
+ * @return {String} camel-cased string
  * @example
  * camelCasePath('settings.agendaMap.Count') -> 'settingsAgendaMapCount'
  * camelCasePath('settings') -> 'settings'
  */
-export const camelCasePath = (path) => {
+export const camelCasePath = path => {
   const split = path.split('.')
-  const camelCasedSplit = split.map(
-    (str, idx) => idx > 0
-      ? capitalize(str, false)
-      : str
+  const camelCasedSplit = split.map((str, idx) =>
+    idx > 0 ? capitalize(str, false) : str
   )
 
-  return camelCasedSplit.length > 1 
-    ? camelCasedSplit.join('')
-    : path
+  return camelCasedSplit.length > 1 ? camelCasedSplit.join('') : path
 }

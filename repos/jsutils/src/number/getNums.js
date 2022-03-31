@@ -1,5 +1,3 @@
-/** @module Number */
-
 import { toStr } from '../string/toStr'
 
 /**
@@ -9,8 +7,6 @@ import { toStr } from '../string/toStr'
  * // Returns '1.23'
  * @function
  * @param {*} val - value to pull numbers from
- * @return {string} Numbers found in value
+ * @return {String} Numbers found in value
  */
-export const getNums = val => (
-  toStr(val).replace(/([^.\d])/gm,'')
-)
+export const getNums = val => toStr(val).replace(/([^.\d])/gm, '')

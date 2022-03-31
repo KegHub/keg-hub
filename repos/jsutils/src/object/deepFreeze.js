@@ -1,5 +1,3 @@
-/** @module Object */
-
 import { isFunc } from '../method/isFunc'
 
 /**
@@ -10,15 +8,13 @@ import { isFunc } from '../method/isFunc'
  */
 export const deepFreeze = obj => {
   Object.freeze(obj)
-  Object
-    .getOwnPropertyNames(obj)
-    .map(prop => {
-      obj.hasOwnProperty(prop)
-        && obj[prop] !== null
-        && (typeof obj[prop] === 'object' || isFunc(obj[prop]))
-        && !Object.isFrozen(obj[prop])
-        && deepFreeze(obj[prop])
-    })
+  Object.getOwnPropertyNames(obj).map(prop => {
+    obj.hasOwnProperty(prop) &&
+      obj[prop] !== null &&
+      (typeof obj[prop] === 'object' || isFunc(obj[prop])) &&
+      !Object.isFrozen(obj[prop]) &&
+      deepFreeze(obj[prop])
+  })
 
   return obj
 }

@@ -1,5 +1,3 @@
-/** @module Object */
-
 import { isFunc } from '../method/isFunc'
 import { pipeline } from '../method/pipeline'
 import { isObj } from './isObj'
@@ -7,29 +5,23 @@ import { isObj } from './isObj'
 /**
  * Like "some" for arrays, but operates across each entry in obj
  * @function
- * @param {Object} obj 
+ * @param {Object} obj - Object to have it's properties checked
  * @param {Function} predicate of form (key, value) => boolean. Returns true or false for the entry
- * @returns boolean indicating that at least one entry satisfied the predicate or not
+ * @param {Boolean} [logError=true] - Boolean indicating if errors should be logged
+ * @returns {Boolean} - True if at least one entry satisfied the predicate, false if not
  */
-export const someEntry = (obj, predicate) => {
-  if (!obj) {
-    console.error(`someEntry expects argument obj [${obj}] to be defined.`)
-    return false
-  }
-
+export const someEntry = (obj, predicate, logError = true) => {
   if (!isObj(obj)) {
-    console.error(`Argument obj ${obj} must be an object.`)
+    logError && console.error(`First argument ${obj} must be an object.`)
     return false
   }
 
   if (!isFunc(predicate)) {
-    console.error(`Argument 'predicate' passed into someEntry must a function. Found: ${predicate}`)
+    logError && console.error(`Second argument ${predicate}, must a function`)
     return false
   }
 
-  return pipeline(
-    obj,
-    Object.entries,
-    entries => entries.some(([key, value]) => predicate(key, value))
+  return pipeline(obj, Object.entries, entries =>
+    entries.some(([ key, value ]) => predicate(key, value))
   )
 }

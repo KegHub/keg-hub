@@ -1,5 +1,3 @@
-/** @module Array */
-
 import { isArr } from './isArr'
 import { uniqArr } from './uniqArr'
 import { flatArr } from './flatArr'
@@ -16,10 +14,10 @@ import { isFunc } from '../method/isFunc'
  * @example
  *  flatUnion([{a: 1}, { a: 3 }], [{a: 4}, { a: 1 }], item => item.a)
  * // Returns array with only unique values [ { a: 1 }, { a: 3 }, { a: 4 } ]
- * @param {array} arr - array to remove duplicates from
+ * @param {Array} arr - array to remove duplicates from
  * @param {Function?} selector - optional function to specify the property to check if another element exists
  *
- * @return {array} - Flattened copy of passed in array arguments, with duplicates removed
+ * @return {Array} - Flattened copy of passed in array arguments, with duplicates removed
  */
 export const flatUnion = (...args) => {
   const last = args.pop()
@@ -27,8 +25,8 @@ export const flatUnion = (...args) => {
   const compare = isFunc(last) ? last : args.push(last) && undefined
 
   return args.reduce((merged, arr) => {
-    if(!isArr(arr)) return merged
+    if (!isArr(arr)) return merged
 
-    return uniqArr(flatArr([...merged, ...arr], opts), compare)
+    return uniqArr(flatArr([ ...merged, ...arr ], opts), compare)
   }, [])
 }

@@ -1,5 +1,3 @@
-/** @module Object */
-
 import { isFunc } from '../method/isFunc'
 import { deepClone } from '../collection/deepClone'
 import { isObj } from './isObj'
@@ -14,19 +12,26 @@ import { isObj } from './isObj'
  * @function
  * @param {Object} obj - object
  * @param {Function} mutatorCb - a callback that accepts one argument, the cloned obj, and mutates it in some way
- * @returns the mutated clone
+ * @returns {Object|Array} the mutated clone
  */
 export const applyToCloneOf = (obj, mutatorCb) => {
   let error
   if (!obj) error = 'object (Argument 1) in applyToCloneOf, must be defined!'
 
-  if (!isObj(obj)) error = 'object (Argument 1) in applyToCloneOf, must be an object!'
+  if (!isObj(obj))
+    error = 'object (Argument 1) in applyToCloneOf, must be an object!'
 
-  if (!mutatorCb) error = 'mutator (Argument 2) in applyToCloneOf, must be defined!'
+  if (!mutatorCb)
+    error = 'mutator (Argument 2) in applyToCloneOf, must be defined!'
 
-  if (!isFunc(mutatorCb)) error = 'mutator (Argument 2) arg in applyToCloneOf, must be a function!'
-  
-  if(error) return console.warn(error) || obj
+  if (!isFunc(mutatorCb))
+    error = 'mutator (Argument 2) arg in applyToCloneOf, must be a function!'
+
+  if (error) {
+    console.warn(error)
+
+    return obj
+  }
 
   const clone = deepClone(obj)
   mutatorCb(clone)

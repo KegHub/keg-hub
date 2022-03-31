@@ -4,11 +4,10 @@ const setCustomWindow = windowObj => {
   const orgWindow = global.window
   global.window = windowObj
 
-  return () => global.window = orgWindow
+  return () => (global.window = orgWindow)
 }
 
 describe('hasDomAccess', () => {
-
   beforeEach(() => jest.resetAllMocks())
 
   it('should return false if window does not exist', () => {
@@ -34,6 +33,4 @@ describe('hasDomAccess', () => {
     expect(hasDomAccess()).toBe(true)
     reset()
   })
-
 })
-

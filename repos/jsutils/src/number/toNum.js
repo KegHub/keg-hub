@@ -1,5 +1,3 @@
-/** @module Number */
-
 import { equalsNaN } from './equalsNaN'
 import { getNums } from './getNums'
 import { isNum } from './isNum'
@@ -14,13 +12,7 @@ import { isNum } from './isNum'
  * // Returns 0
  * @function
  * @param {*} val - value to convert
- * @return {number} value converted to a float
+ * @return {Number} value converted to a float
  */
-export const toNum = val => (
-  isNum(val)
-    ? val
-    : val &&
-      !equalsNaN(val) && 
-      Number(getNums(val)) ||
-      0
-)
+export const toNum = val =>
+  isNum(val) ? val : (val && !equalsNaN(val) && Number(getNums(val))) || 0

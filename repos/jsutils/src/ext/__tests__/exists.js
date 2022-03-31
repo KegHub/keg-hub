@@ -1,7 +1,6 @@
 const Ext = require('../')
 
 describe('exists', () => {
-
   beforeEach(() => jest.resetAllMocks())
 
   it('should return true for 0', () => {
@@ -28,5 +27,4 @@ describe('exists', () => {
     expect(Ext.exists({})).toBe(true)
     expect(Ext.exists([])).toBe(true)
   })
-
 })

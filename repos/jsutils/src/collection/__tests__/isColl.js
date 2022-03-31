@@ -1,9 +1,6 @@
 const Coll = require('../')
-const { isArr } = require('../../array/isArr')
-const { isObj } = require('../../object/isObj')
 
 describe('isColl', () => {
-
   beforeEach(() => jest.resetAllMocks())
 
   it('should check if the value is a collection', () => {
@@ -16,5 +13,4 @@ describe('isColl', () => {
     expect(Coll.isColl(null)).toBe(false)
     expect(Coll.isColl(NaN)).toBe(false)
   })
-
 })

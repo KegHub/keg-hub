@@ -1,7 +1,6 @@
 const Str = require('../')
 
 describe('validFilename', () => {
-
   beforeEach(() => jest.resetAllMocks())
 
   it('should return false on invalid filenames', () => {
@@ -19,9 +18,9 @@ describe('validFilename', () => {
       '??hi.test',
       'test|2.0.js',
       '**myfile.png**',
-      '\u0000'
+      '\u0000',
     ]
-    filenames.map(filename => 
+    filenames.map(filename =>
       expect(Str.validFilename(filename)).toEqual(false)
     )
   })
@@ -33,11 +32,8 @@ describe('validFilename', () => {
       'nul1',
       'aux1 (2).png',
       'hello.',
-      '.hiddenfile.tif'
+      '.hiddenfile.tif',
     ]
-    filenames.map(filename => 
-      expect(Str.validFilename(filename)).toEqual(true)
-    )
+    filenames.map(filename => expect(Str.validFilename(filename)).toEqual(true))
   })
-
 })

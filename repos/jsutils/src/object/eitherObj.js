@@ -1,5 +1,3 @@
-/** @module Object */
-
 import { isObj } from './isObj'
 
 /**
@@ -9,6 +7,4 @@ import { isObj } from './isObj'
  * @param {Object} obj2 - use if first is not an object
  * @returns {Object}
  */
-export const eitherObj = (obj1, obj2) => (
-  isObj(obj1) && obj1 || obj2
-)
+export const eitherObj = (obj1, obj2) => (isObj(obj1) && obj1) || obj2

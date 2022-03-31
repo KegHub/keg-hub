@@ -1,7 +1,6 @@
 import { getWordEndingAt } from '../'
 
 describe('getWordEndingAt', () => {
-
   const text = 'this is a sentence'
 
   it('Should return the word that ends at index (exclusive)', () => {
