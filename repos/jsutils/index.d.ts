@@ -374,7 +374,7 @@ function isColl(val: any): boolean;
  * <li>True if the passed in collection is empty</li>
  * </ul>
  */
-function isEmptyColl(obj: Record<any, any>|any[]): boolean;
+function isEmptyColl(obj: any): boolean;
 
 /**
  * <p>Loops over a collection and calls a passed in function for each one.</p>
@@ -553,7 +553,7 @@ function exists(value: any): boolean;
  * @param val - <p>value to check</p>
  * @returns <p>if the value is empty</p>
  */
-function isEmpty(val: any | any[]): boolean;
+function isEmpty(val: any): boolean;
 
 /**
  * <p>Checks if the passed in values are exactly the same.</p>
@@ -580,7 +580,7 @@ function isSame(val1: any, val2: any): boolean;
  * @param date - <p>value to check</p>
  * @returns <p>T/F - if passed in date is a valid date</p>
  */
-function isValidDate(date: Date | string): boolean;
+function isValidDate(date: any): boolean;
 
 /**
  * <p>Reuseable empty, frozen object</p>
@@ -1173,7 +1173,7 @@ function getNums(val: any): string;
  * @param num - <p>value to check</p>
  * @returns <p>true or false - value is an Float</p>
  */
-function isFloat(num: number): boolean;
+function isFloat(num: any): boolean;
 
 /**
  * <p>Checks if a number is an integer.</p>
@@ -1186,7 +1186,7 @@ function isFloat(num: number): boolean;
  * @param num - <p>value to check</p>
  * @returns <p>true or false - value is an Int</p>
  */
-function isInt(num: number): boolean;
+function isInt(num: any): boolean;
 
 /**
  * @example
@@ -1224,7 +1224,7 @@ function isNonNegative(val: any): boolean;
  * @param val - <p>value to check if is a number</p>
  * @returns <p>T/F - if value is a number</p>
  */
-function isNum(val: number): boolean;
+function isNum(val: any): boolean;
 
 /**
  * @example

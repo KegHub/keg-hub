@@ -13,7 +13,7 @@ import { isArr } from '../array/isArr'
  * isEmptyColl([])
  * // Returns true
  * @function
- * @param {Object|Array} obj - Object to check if empty
+ * @param {*} obj - Object to check if empty
  * @return {Boolean} - True if the passed in collection is empty
  */
 export const isEmptyColl = obj =>
