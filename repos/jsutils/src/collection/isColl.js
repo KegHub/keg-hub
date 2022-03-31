@@ -1,5 +1,3 @@
-/** @module Collection */
-
 /**
  * Checks if the value is a collection ( object || array ).
  * @example
@@ -12,9 +10,7 @@
  * isColl(null)
  * // Returns false
  * @function
- * @param {*} val - value to check
- * @return {boolean} T/F if the value is a collection
+ * @param {*} val - Value to check
+ * @return {Boolean} True if the value is a collection (Object || Array)
  */
-export const isColl = val => (
-  typeof val === 'object' && val !== null
-)
+export const isColl = val => typeof val === 'object' && val !== null

@@ -9,9 +9,7 @@ describe('tryRequireSync', () => {
 
   it('should require modules that do exist', () => {
     const module = tryRequireSync(path.resolve(__dirname, '../tryRequire.js'))
-    expect(module).toEqual(
-      expect.objectContaining({ tryRequireSync })
-    )
+    expect(module).toEqual(expect.objectContaining({ tryRequireSync }))
   })
 })
 
@@ -23,8 +21,6 @@ describe('tryRequire', () => {
 
   it('should require modules that do exist', async () => {
     const module = await tryRequire(path.resolve(__dirname, '../tryRequire.js'))
-    expect(module).toEqual(
-      expect.objectContaining({ tryRequireSync })
-    )
+    expect(module).toEqual(expect.objectContaining({ tryRequireSync }))
   })
 })

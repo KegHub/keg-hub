@@ -1,5 +1,3 @@
-/** @module Number */
-
 import { isNum } from './isNum'
 
 /**
@@ -11,9 +9,7 @@ import { isNum } from './isNum'
  * isInt('1')
  * // Returns false ( because it's a string )
  * @function
- * @param {number} num - value to check
- * @return {boolean} true or false - value is an Int
+ * @param {Number} num - value to check
+ * @return {Boolean} true or false - value is an Int
  */
-export const isInt = val => (
-  isNum(val) && (val % 1 === 0)
-)
+export const isInt = val => isNum(val) && val % 1 === 0

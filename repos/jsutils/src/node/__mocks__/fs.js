@@ -4,9 +4,9 @@ const fs = {
   }),
   readFileSync: jest.fn(() => {
     return 'docker'
-  })
+  }),
 }
 
 module.exports = {
-  fs
+  fs,
 }

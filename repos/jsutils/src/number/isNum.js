@@ -1,5 +1,3 @@
-/** @module Number */
-
 import { equalsNaN } from './equalsNaN'
 
 /**
@@ -14,9 +12,7 @@ import { equalsNaN } from './equalsNaN'
  * isInt('1')
  * // Returns false ( because it's a string )
  * @function
- * @param {number} val - value to check if is a number
- * @return {boolean} T/F - if value is a number
+ * @param {Number} val - value to check if is a number
+ * @return {Boolean} T/F - if value is a number
  */
-export const isNum = val => (
-  typeof val === 'number' && !equalsNaN(val)
-)
+export const isNum = val => typeof val === 'number' && !equalsNaN(val)

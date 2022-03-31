@@ -1,5 +1,3 @@
-/** @module Number */
-
 import { equalsNaN } from './equalsNaN'
 import { isNum } from './isNum'
 import { getNums } from './getNums'
@@ -17,30 +15,28 @@ import { toNum } from './toNum'
  * nth(5)
  * // Returns 'th'
  * @function
- * @param {number} num - value to check
- * @return {string} ext of the number
+ * @param {Number} num - value to check
+ * @return {String} ext of the number
  */
 export const nth = num => {
-
-  if(!isNum(num)){
+  if (!isNum(num)) {
     num = getNums(num)
-    if(!num) return ''
+    if (!num) return ''
     num = toNum(num)
-    if(equalsNaN(num)) return ''
+    if (equalsNaN(num)) return ''
   }
 
-  const mod = (num % 100)
-  if (mod >= 10 && mod <= 20)
-    return 'th'
+  const mod = num % 100
+  if (mod >= 10 && mod <= 20) return 'th'
 
-  switch(num % 10) {
-    case 1:
-      return 'st'
-    case 2:
-      return 'nd'
-    case 3:
-      return 'rd'
-    default:
-      return 'th'
+  switch (num % 10) {
+  case 1:
+    return 'st'
+  case 2:
+    return 'nd'
+  case 3:
+    return 'rd'
+  default:
+    return 'th'
   }
 }

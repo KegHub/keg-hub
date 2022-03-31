@@ -10,19 +10,16 @@ const overRideConsole = type => {
 }
 
 const resetConsole = holder => {
-  holder.OVR_TYPE &&
-    (console[holder.OVR_TYPE] = holder)
+  holder.OVR_TYPE && (console[holder.OVR_TYPE] = holder)
 }
 
 describe('/log', () => {
-
   describe('setLogs', () => {
-    
     beforeEach(() => {
       jest.resetAllMocks()
       Log.resetLogs()
     })
-    
+
     it('should set SHOW_LOGS to passed boolean', () => {
       expect(Log.getShowLogs()).toEqual(undefined)
       Log.setLogs(true)
@@ -34,9 +31,9 @@ describe('/log', () => {
       const orgWarn = overRideConsole('warn')
       Log.setLogs(true, 'warn')
       Log.logData('I should log to warn')
-      
+
       expect(console.warn).toHaveBeenCalled()
-      
+
       Log.setLogs(true, 'log')
       resetConsole(orgWarn)
     })
@@ -46,15 +43,15 @@ describe('/log', () => {
       Log.setLogs(true, 'log', '[ TEST ]')
       Log.logData('I should log to log')
 
-      expect(console.log.mock.calls[0][0]).toEqual('[ TEST ] I should log to log')
+      expect(console.log.mock.calls[0][0]).toEqual(
+        '[ TEST ] I should log to log'
+      )
       Log.setLogs(true, 'log', 'type')
       resetConsole(orgLog)
     })
-
   })
 
   describe('resetLogs', () => {
-
     it('should resetLogs log options', () => {
       Log.resetLogs()
       expect(Log.getShowLogs()).toEqual(undefined)
@@ -63,16 +60,14 @@ describe('/log', () => {
       Log.resetLogs()
       expect(Log.getShowLogs()).toEqual(undefined)
     })
-
   })
 
   describe('logData', () => {
-    
     beforeEach(() => {
       jest.resetAllMocks()
       Log.resetLogs()
     })
-    
+
     it('should default log to console.log', () => {
       Log.setLogs(true)
       const orgDir = overRideConsole('log')
@@ -110,7 +105,9 @@ describe('/log', () => {
       Log.setLogs(true)
       const orgErr = overRideConsole('error')
       Log.logData('I should log to error', 'error')
-      expect(console.error).toHaveBeenCalledWith(`[ ERROR ] I should log to error`)
+      expect(console.error).toHaveBeenCalledWith(
+        `[ ERROR ] I should log to error`
+      )
       resetConsole(orgErr)
     })
 
@@ -130,7 +127,5 @@ describe('/log', () => {
       expect(console.error).toHaveBeenCalled()
       resetConsole(orgErr)
     })
-
   })
-
 })

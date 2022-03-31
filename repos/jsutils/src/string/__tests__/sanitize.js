@@ -1,7 +1,6 @@
 const Str = require('../')
 
 describe('sanitize', () => {
-
   beforeEach(() => jest.resetAllMocks())
   it('should strip html from string', () => {
     const dirty = '<p>This is the dirty string</p>'
@@ -9,7 +8,5 @@ describe('sanitize', () => {
     const cleaned = Str.sanitize(dirty)
 
     expect(cleaned).toEqual(clean)
-
   })
-
 })

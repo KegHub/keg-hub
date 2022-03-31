@@ -3,7 +3,6 @@ import { uuid } from '../../method/uuid'
 const Str = require('../')
 
 describe('isUuid', () => {
-
   beforeEach(() => jest.resetAllMocks())
 
   it('should check if some data is a uuid string', () => {
@@ -18,7 +17,5 @@ describe('isUuid', () => {
     expect(Str.isUuid(notValid1)).toEqual(false)
     expect(Str.isUuid(notValid2)).toEqual(false)
     expect(Str.isUuid(notValid3)).toEqual(false)
-
   })
-
 })

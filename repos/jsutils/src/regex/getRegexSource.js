@@ -1,5 +1,3 @@
-/** @module Regex */
-
 import { isRegex } from './isRegex'
 import { isStr } from '../string'
 
@@ -10,15 +8,11 @@ import { isStr } from '../string'
  * @return {string?} If maybeRx is a RegExp instance, returns its .source
  * property. If it is a string, returns it unchanged.
  * Otherwise, returns null.
- * 
+ *
  * @example
  * getRegexSource(/[A-z]+/) // '[A-z]+'
  * getRegexSource('test') // 'test'
  * getRegexSource(34) // null
  */
 export const getRegexSource = maybeRx =>
-  isRegex(maybeRx)
-    ? maybeRx.source 
-    : isStr(maybeRx)
-      ? maybeRx
-      : null
+  isRegex(maybeRx) ? maybeRx.source : isStr(maybeRx) ? maybeRx : null

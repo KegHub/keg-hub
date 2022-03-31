@@ -1,7 +1,6 @@
 const Num = require('../')
 
 describe('isInt', () => {
-
   beforeEach(() => jest.resetAllMocks())
 
   it('should check if a value is an int', () => {
@@ -12,5 +11,4 @@ describe('isInt', () => {
     expect(Num.isInt(NaN)).toBe(false)
     expect(Num.isInt('foo')).toBe(false)
   })
-
 })

@@ -1,7 +1,6 @@
 const Str = require('../')
 
 describe('parseJSON,', () => {
-
   beforeEach(() => jest.resetAllMocks())
 
   it('should parse json string into an object', () => {
@@ -21,7 +20,5 @@ describe('parseJSON,', () => {
     expect(notObj).toEqual(null)
 
     console.error = consoleErr
-
   })
-
 })

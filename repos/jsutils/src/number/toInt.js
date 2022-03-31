@@ -1,5 +1,3 @@
-/** @module Number */
-
 import { equalsNaN } from './equalsNaN'
 import { isNum } from './isNum'
 import { getNums } from './getNums'
@@ -14,11 +12,7 @@ import { getNums } from './getNums'
  * // Returns 0
  * @function
  * @param {*} val - value to convert
- * @return {number} value converted to a integer
+ * @return {Number} value converted to a integer
  */
-export const toInt = val => (
-  val &&
-    !equalsNaN(val) && 
-    parseInt( isNum(val) && val || getNums(val) ) ||
-    0
-)
+export const toInt = val =>
+  (val && !equalsNaN(val) && parseInt((isNum(val) && val) || getNums(val))) || 0

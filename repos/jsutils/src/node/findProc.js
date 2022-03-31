@@ -1,5 +1,3 @@
-/** @module Node */
-
 const { exec } = require('child_process')
 
 /**
@@ -7,17 +5,18 @@ const { exec } = require('child_process')
  * Loops over each line and checks if the line contains the passed in process name
  * @function
  * @private
- * @param {string} procName - The executable name to check
- * @param {string} output - Output of the process search command
+ * @param {String} procName - The executable name to check
+ * @param {String} output - Output of the process search command
  *
  * @returns {Object} - Status of the found process
  */
 const parseOutput = (procName, output) => {
-  return output.trim()
+  return output
+    .trim()
     .split(/\n|\r|\r\n/)
     .reduce((acc, line) => {
-
-      const [pid, tty, time, ...rest] = line.trim()
+      const [ pid, tty, time, ...rest ] = line
+        .trim()
         .split(' ')
         .filter(part => part)
 
@@ -41,19 +40,22 @@ const parseOutput = (procName, output) => {
  * Gets the command used to search for the process based on the platform
  * @function
  * @private
- * @param {string} procName The executable name to check
- * @param {string} platform - Name of the platform running the command
+ * @param {String} procName The executable name to check
+ * @param {String} platform - Name of the platform running the command
  *
- * @returns {string} - Search command to use
+ * @returns {String} - Search command to use
  */
 const getPlatformCmd = (procName, platform) => {
   const proc = `"[${procName[0]}]${procName.substring(1)}"`
 
   switch (platform) {
-    case 'linux':
-    case 'darwin': return `ps -A | grep ${proc}`
-    case 'win32': return `tasklist`
-    default: return false
+  case 'linux':
+  case 'darwin':
+    return `ps -A | grep ${proc}`
+  case 'win32':
+    return `tasklist`
+  default:
+    return false
   }
 }
 
@@ -61,17 +63,17 @@ const getPlatformCmd = (procName, platform) => {
  * Searches for a currently process by name, and returns it if found
  * @function
  * @public
- * @param {string} procName The executable name to check
+ * @param {String} procName The executable name to check
  * @param {Object} opts - Options to configure how the method runs
  *
  * @returns {Object} - Status of the found process
  */
-const findProc = (procName, opts={}) => {
+const findProc = (procName, opts = {}) => {
   return new Promise((res, rej) => {
     const platform = process.platform
     // Use the platform to know the correct search command
     const cmd = getPlatformCmd(procName, platform)
-    if(!cmd) return rej(`Error: ${platform} platform not supported.`)
+    if (!cmd) return rej(`Error: ${platform} platform not supported.`)
 
     // Run the search command, and compare the output
     exec(cmd, (err, stdout, stderr) => {
@@ -79,13 +81,12 @@ const findProc = (procName, opts={}) => {
         ? rej(stderr || err.message)
         : res(parseOutput(procName, stdout))
     })
-  })
-  .catch(err => {
+  }).catch(err => {
     opts.log && console.error(err.message)
     return []
   })
 }
 
 module.exports = {
-  findProc
+  findProc,
 }

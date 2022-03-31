@@ -1,7 +1,6 @@
 const Ext = require('../')
 
 describe('isValidDate', () => {
-
   beforeEach(() => jest.resetAllMocks())
 
   it('should check if the input is a valid date', () => {
@@ -17,5 +16,4 @@ describe('isValidDate', () => {
     expect(Ext.isValidDate(dateStr)).toBe(true)
     expect(Ext.isValidDate('May 4th 1984')).toBe(false)
   })
-
 })

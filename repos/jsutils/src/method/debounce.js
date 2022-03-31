@@ -1,5 +1,3 @@
-/** @module Functions */
-
 import { isFunc } from './isFunc'
 
 /**
@@ -14,14 +12,14 @@ import { isFunc } from './isFunc'
  * debounce(myFunction, 500, true)
  * // Calls myFunction immediately
  * @function
- * @param {function} func - function to call
- * @param {number} wait - how long to wait between function calls
- * @param {boolean} immediate - should call immediately
+ * @param {Function} func - function to call
+ * @param {Number} wait - how long to wait between function calls
+ * @param {Boolean} immediate - should call immediately
  * @return { void }
  */
 export const debounce = (func, wait = 250, immediate = false) => {
   let timeout
-  function wrapFunc(...args){
+  function wrapFunc(...args) {
     if (!isFunc(func)) return null
 
     const context = this
@@ -32,8 +30,7 @@ export const debounce = (func, wait = 250, immediate = false) => {
     const callNow = immediate && !timeout
     clearTimeout(timeout)
     timeout = setTimeout(later, wait)
-    if (callNow)
-      return isFunc(func) && func.apply(context, args)
+    if (callNow) return isFunc(func) && func.apply(context, args)
   }
   return wrapFunc
 }

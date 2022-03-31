@@ -1,5 +1,3 @@
-/** @module String */
-
 const uppercasePattern = /[A-Z]/g
 const msPattern = /^ms-/
 
@@ -15,19 +13,19 @@ const hyphenCache = {}
  * External hyphenator helpers, created outside the method to improve performance
  * @function
  * @private
- * @param {string} str - camelCase style rule rule
- * 
- * @returns {string} - Lowercase style rule with hyphen at the start
+ * @param {String} str - camelCase style rule rule
+ *
+ * @returns {String} - Lowercase style rule with hyphen at the start
  */
-const toHyphenLower = match => ('-' + match.toLowerCase())
+const toHyphenLower = match => '-' + match.toLowerCase()
 
 /**
  * Converts a camelCase style rule into a hyphenated style rule
  * <br/>Caches the response to make future conversions faster
  * @function
- * @param {string} str - camelCase style rule rule
+ * @param {String} str - camelCase style rule rule
  *
- * @returns {string} - Hyphenated style rule
+ * @returns {String} - Hyphenated style rule
  */
 export const hyphenator = rule => {
   if (hyphenCache.hasOwnProperty(rule)) return hyphenCache[rule]

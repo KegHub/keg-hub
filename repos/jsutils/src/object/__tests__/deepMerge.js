@@ -1,14 +1,12 @@
 const Obj = require('../')
 
 describe('deepMerge', () => {
-
   beforeEach(() => jest.resetAllMocks())
 
   it('should merge objects together into new object', () => {
     const obj1 = { test: 'I am a obj 1', sub: [ 1, 2, 3 ] }
     const obj2 = { test: 'I am a obj 2', sub: [ 4, 5, 6 ] }
     const obj3 = Obj.deepMerge(obj1, obj2)
-    
 
     expect(obj3).not.toEqual(obj1)
     expect(obj3).not.toEqual(obj2)
@@ -18,8 +16,7 @@ describe('deepMerge', () => {
   })
 
   it('should merge child objects together into new object', () => {
-
-    const childObj = { arr: [ 'data' ], obj: { foo: 'bar' } }
+    const childObj = { arr: ['data'], obj: { foo: 'bar' } }
     const childObj2 = { bas: 'baz' }
     const obj1 = { test: 'I am a obj 1', sub: [ childObj, 1, 2, 3 ] }
     const obj2 = { test: 'I am a obj 2', sub: [ childObj2, 4, 5, 6 ] }
@@ -45,9 +42,9 @@ describe('deepMerge', () => {
     expect(obj3.sub[4].bas).toBe('baz')
 
     const subObj = { data: 'foo' }
-    const arr1 = [ subObj ]
-    const arr2 = [ arr1 ]
-    const arr3 = [ arr2 ]
+    const arr1 = [subObj]
+    const arr2 = [arr1]
+    const arr3 = [arr2]
     const arr4 = []
 
     expect(arr3[0]).toBe(arr2)
@@ -64,13 +61,12 @@ describe('deepMerge', () => {
     expect(arr2Copy).not.toBe(arr2)
     expect(arr1Copy).not.toBe(arr1)
     expect(subObjCopy.data).toBe('foo')
-
   })
 
   it('should handel non-objects passed in as a param', () => {
     const obj1 = { test: 'I am a obj 1', sub: [ 1, 2, 3 ] }
     const obj2 = { test: 'I am a obj 2', sub: [ 4, 5, 6 ] }
-    const obj3 = Obj.deepMerge(obj1, "I am not an object", obj2)
+    const obj3 = Obj.deepMerge(obj1, 'I am not an object', obj2)
 
     expect(obj3).not.toEqual(obj1)
     expect(obj3).not.toEqual(obj2)
@@ -87,5 +83,4 @@ describe('deepMerge', () => {
     expect('method' in obj3).toEqual(true)
     expect('sub' in obj3).toEqual(true)
   })
-
 })

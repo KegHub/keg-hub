@@ -1,7 +1,6 @@
 const Num = require('../')
 
 describe('nth', () => {
-
   beforeEach(() => jest.resetAllMocks())
 
   it('should return the proper ext based on the number', () => {
@@ -41,5 +40,4 @@ describe('nth', () => {
     expect(Num.nth('475')).toBe('th')
     expect(Num.nth('18')).toBe('th')
   })
-
 })

@@ -1,11 +1,10 @@
-/** @module String */
 import { isStr } from './isStr'
 
 /**
  * Reverses string
  * @function
- * @param {string} str - string to reverse
- * @return {string} reversed str
+ * @param {String} str - string to reverse
+ * @return {String} reversed str
  * @example
  * reverseStr('foo') // 'oof'
  */
@@ -17,4 +16,3 @@ export const reverseStr = str => {
   }
   return reversed
 }
-

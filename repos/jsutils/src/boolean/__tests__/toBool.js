@@ -1,7 +1,6 @@
 const Bool = require('../')
 
 describe('toBool', () => {
-
   beforeEach(() => jest.resetAllMocks())
 
   it('should convert a value to a boolean', () => {
@@ -22,5 +21,4 @@ describe('toBool', () => {
     expect(Bool.toBool(undefined) === false).toBe(true)
     expect(Bool.toBool(NaN) === false).toBe(true)
   })
-
 })

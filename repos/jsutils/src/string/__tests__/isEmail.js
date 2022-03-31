@@ -1,7 +1,6 @@
 const Str = require('../')
 
 describe('isEmail', () => {
-
   beforeEach(() => jest.resetAllMocks())
 
   it('should check if some data is a email string', () => {
@@ -16,7 +15,5 @@ describe('isEmail', () => {
     expect(Str.isEmail(notValid1)).toEqual(false)
     expect(Str.isEmail(notValid2)).toEqual(false)
     expect(Str.isEmail(notValid3)).toEqual(false)
-
   })
-
 })

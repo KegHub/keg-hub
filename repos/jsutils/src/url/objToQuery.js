@@ -1,5 +1,3 @@
-/** @module Url */
-
 import { reduceObj } from '../object/reduceObj'
 import { isStr } from '../string/isStr'
 import { isNum } from '../number/isNum'
@@ -15,24 +13,29 @@ import { isArr } from '../array/isArr'
  */
 export const objToQuery = obj => {
   let firstSet
-  return reduceObj(obj, (key, value, urlStr) => {
-    if(!value) return urlStr
+  return reduceObj(
+    obj,
+    (key, value, urlStr) => {
+      if (!value) return urlStr
 
-    const useVal = isStr(value) || isNum(value) || isBool(value)
-      ? value 
-      : isColl(value)
-        ? isArr(value) 
-          ? value.join(',') 
-          : JSON.stringify(value)
-        : null
-    
-    if(!useVal) return urlStr
+      const useVal =
+        isStr(value) || isNum(value) || isBool(value)
+          ? value
+          : isColl(value)
+            ? isArr(value)
+              ? value.join(',')
+              : JSON.stringify(value)
+            : null
 
-    urlStr = !firstSet
-      ? `?${encodeURIComponent(key)}=${encodeURIComponent(useVal)}`
-      : `${urlStr}&${encodeURIComponent(key)}=${encodeURIComponent(useVal)}`
-    firstSet = true
+      if (!useVal) return urlStr
 
-    return urlStr
-  }, '')
+      urlStr = !firstSet
+        ? `?${encodeURIComponent(key)}=${encodeURIComponent(useVal)}`
+        : `${urlStr}&${encodeURIComponent(key)}=${encodeURIComponent(useVal)}`
+      firstSet = true
+
+      return urlStr
+    },
+    ''
+  )
 }

@@ -32,8 +32,8 @@ const buildPlugins = (type, extra) => {
     replace({
       preventAssignment: true,
       values: {
-        "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV)
-      }
+        'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+      },
     }),
     resolve(),
     commonjs({
@@ -42,7 +42,7 @@ const buildPlugins = (type, extra) => {
     babel({
       exclude: 'node_modules/**',
       babelHelpers: 'bundled',
-      ...babelConfig
+      ...babelConfig,
     }),
     sourcemaps(),
     cleanup(),
@@ -50,40 +50,35 @@ const buildPlugins = (type, extra) => {
   ]
 }
 
-const buildConfig = (type, extra={}) => {
+const buildConfig = (type, extra = {}) => {
   return {
     input: extra.input || {
       index: `./src/index.js`,
-      ...inputs
+      ...inputs,
     },
     output: extra.output || {
       dir: `${buildPath}/${type}`,
       format: type,
       sourcemap: true,
-      ...extra.output
+      ...extra.output,
     },
     plugins: buildPlugins(type, extra),
     watch: { clearScreen: false },
   }
 }
 
-export default Array.from([ 'umd', 'cjs', 'esm' ])
-  .map(type => {
-    return type !== 'umd'
-      ? buildConfig(type)
-      : buildConfig(type, {
-          input: `./src/index.js`,
-          output: {
-            name: 'jsutils',
-            file: `${buildPath}/${type}/index.js`,
-            format: type,
-            sourcemap: true,
-            esModule: false,
-          },
-          plugins: [
-            terser()
-          ]
-        })
-
-  })
-
+export default Array.from(['umd', 'cjs', 'esm']).map(type => {
+  return type !== 'umd'
+    ? buildConfig(type)
+    : buildConfig(type, {
+        input: `./src/index.js`,
+        output: {
+          name: 'jsutils',
+          file: `${buildPath}/${type}/index.js`,
+          format: type,
+          sourcemap: true,
+          esModule: false,
+        },
+        plugins: [terser()],
+      })
+})

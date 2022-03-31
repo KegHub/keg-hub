@@ -1,5 +1,3 @@
-/** @module Array */
-
 import { isArr } from './isArr'
 
 /**
@@ -11,17 +9,14 @@ import { isArr } from './isArr'
  * @param {array} arr - array to remove duplicates from
  * @return {array} copy of passed in array, with duplicates removed
  */
-export const uniqArrByReference = (arr) => {
-  return !isArr(arr)
-    ? arr
-    : arr.filter((e, i, arr) => arr.indexOf(e) == i
-  )
+export const uniqArrByReference = arr => {
+  return !isArr(arr) ? arr : arr.filter((e, i, arr) => arr.indexOf(e) == i)
 }
 
 /**
- * 
- * @param {*} arr 
- * @param {*} selector 
+ *
+ * @param {*} arr
+ * @param {*} selector
  */
 /**
  * Removes duplicates from an array.
@@ -39,9 +34,9 @@ export const uniqArrByReference = (arr) => {
 export const uniqArr = (arr, selector) => {
   if (!selector) return uniqArrByReference(arr)
 
-  // loop over each element in one pass, 
+  // loop over each element in one pass,
   // only including in the unique array elements
-  // we haven't encountered before 
+  // we haven't encountered before
   // by checking with `selector` and the set
   const { unique } = arr.reduce(
     (data, element) => {
@@ -50,9 +45,9 @@ export const uniqArr = (arr, selector) => {
       data.set.add(id)
       return data
     },
-    { 
-      unique: [], 
-      set: new Set()
+    {
+      unique: [],
+      set: new Set(),
     }
   )
 

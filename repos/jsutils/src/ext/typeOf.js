@@ -1,5 +1,3 @@
-/** @module Helpers */
-
 /**
  * Gets the type of the passed in val.
  * @example
@@ -10,8 +8,6 @@
  * // Returns String
  * @function
  * @param {*} val - value to get type for
- * @return {string} type of the value
+ * @return {String} type of the value
  */
-export const typeOf = val => (
-  Object.prototype.toString.call(val).slice(8, -1)
-)
+export const typeOf = val => Object.prototype.toString.call(val).slice(8, -1)

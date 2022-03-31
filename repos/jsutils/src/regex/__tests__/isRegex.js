@@ -13,5 +13,4 @@ describe('isRegex', () => {
     expect(isRegex('[0-9]+')).toEqual(false)
     expect(isRegex(null)).toEqual(false)
   })
-
 })

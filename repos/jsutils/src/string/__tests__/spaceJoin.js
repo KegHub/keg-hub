@@ -6,17 +6,20 @@ const strArr = [ 'keg-default-class', 'keg-passed-down' ]
 const customStr = 'custom-keg-class'
 
 describe('spaceJoin', () => {
-
   beforeEach(() => jest.resetAllMocks())
 
   it('should join two strings with spaces', () => {
     expect(spaceJoin('', defStr)).toBe(defStr)
     expect(spaceJoin(customStr, defStr)).toBe(`custom-keg-class ${defStr}`)
-    expect(spaceJoin(customStr, spacedStr)).toBe(`custom-keg-class ${spacedStr}`)
+    expect(spaceJoin(customStr, spacedStr)).toBe(
+      `custom-keg-class ${spacedStr}`
+    )
   })
 
   it('should join a string and array of strings with spaces', () => {
-    expect(spaceJoin(customStr, strArr)).toBe(`custom-keg-class ${strArr.join(' ')}`)
+    expect(spaceJoin(customStr, strArr)).toBe(
+      `custom-keg-class ${strArr.join(' ')}`
+    )
   })
 
   it('should handle non-strings in the first param gracefully', () => {
@@ -48,5 +51,4 @@ describe('spaceJoin', () => {
     expect(spaceJoin(undefined, undefined)).toBe('')
     expect(spaceJoin(null, null)).toBe('')
   })
-
 })

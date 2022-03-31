@@ -1,5 +1,3 @@
-/** @module Number */
-
 /**
  * Checks if a value is NaN.
  * @example
@@ -12,9 +10,7 @@
  * equalsNaN('')
  * // Returns false
  * @function
- * @param {number} val - value to check if is NaN
- * @return {boolean} T/F - if value is a number
+ * @param {Number} val - value to check if is NaN
+ * @return {Boolean} T/F - if value is a number
  */
-export const equalsNaN = val => (
-  typeof val === 'number' && val != val
-)
+export const equalsNaN = val => typeof val === 'number' && val != val

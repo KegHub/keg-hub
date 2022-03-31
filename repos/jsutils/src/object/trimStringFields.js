@@ -1,5 +1,3 @@
-/** @module Object */
-
 import { isStr } from '../string/isStr'
 
 /**
@@ -8,11 +6,8 @@ import { isStr } from '../string/isStr'
  * @param {Object} object
  * @return {Object} - object with string fields trimmed
  */
-export const trimStringFields = object => (
-  Object
-    .entries(object)
-    .reduce((cleaned, [ key, value ]) => {
-      cleaned[key] = isStr(value) ? value.trim() : value
-      return cleaned
-    }, object)
-)
+export const trimStringFields = object =>
+  Object.entries(object).reduce((cleaned, [ key, value ]) => {
+    cleaned[key] = isStr(value) ? value.trim() : value
+    return cleaned
+  }, object)

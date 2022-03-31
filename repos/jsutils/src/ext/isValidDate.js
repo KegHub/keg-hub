@@ -1,5 +1,3 @@
-/** @module Helpers */
-
 /**
  * Checks is passed in date is a valid date.
  * @example
@@ -12,9 +10,8 @@
  * isValidDate('12345678')
  * // Returns false
  * @function
- * @param { date | string } date - value to check
- * @return {boolean} T/F - if passed in date is a valid date
+ * @param { Date|String } date - value to check
+ * @return {Boolean} T/F - if passed in date is a valid date
  */
-export const isValidDate = date => (
-  !isNaN( (date instanceof Date && date || new Date(date)).getTime() )
-)
+export const isValidDate = date =>
+  !isNaN(((date instanceof Date && date) || new Date(date)).getTime())

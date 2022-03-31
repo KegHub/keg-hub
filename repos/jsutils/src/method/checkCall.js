@@ -1,5 +1,3 @@
-/** @module Functions */
-
 import { isFunc } from './isFunc'
 
 /**
@@ -8,12 +6,10 @@ import { isFunc } from './isFunc'
  * checkCall((param1) => { return param1 }, 'foo')
  * // Returns 'foo'
  * @function
- * @param {function} method - function to call
+ * @param {Function} method - function to call
  * @param {Object} params - params to pass to the method on call
  * @return {*} - whatever the passed in method returns
  */
 export const checkCall = (method, ...params) => {
-  return isFunc(method)
-    ? method(...params)
-    : undefined
+  return isFunc(method) ? method(...params) : undefined
 }

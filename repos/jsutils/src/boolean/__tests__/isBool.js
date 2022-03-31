@@ -1,7 +1,6 @@
 const Bool = require('../')
 
 describe('isBool', () => {
-
   beforeEach(() => jest.resetAllMocks())
 
   it('should check if a value is a boolean', () => {
@@ -14,5 +13,4 @@ describe('isBool', () => {
     expect(Bool.isBool('')).toBe(false)
     expect(Bool.isBool(0)).toBe(false)
   })
-
 })

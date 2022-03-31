@@ -1,7 +1,6 @@
 import { getWordStartingAt } from '../'
 
 describe('getWordStartingAt', () => {
-
   const text = 'this is a sentence'
 
   it('should get the word that begins at the index', () => {

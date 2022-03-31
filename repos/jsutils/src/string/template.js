@@ -1,5 +1,3 @@
-/** @module String */
-
 import { isFunc } from '../method/isFunc'
 import { isColl } from '../collection/isColl'
 import { get } from '../collection/get'
@@ -10,14 +8,14 @@ import { isStr } from './isStr'
  * @example
  * template('${ who } in ${ where }!', { who: 'goats', where: 'boats' })
  * // Returns "goats in boats"
- * @param {string} template - String with ES6 syntax items to be replaced
+ * @param {String} template - String with ES6 syntax items to be replaced
  * @param {Object|Array} data - Data used to replace the ES6 placeholders
  * @param {any} fallback - Used it data does not contain key to be replaced
  *
- * @returns {string} - template with placeholder values filled
+ * @returns {String} - template with placeholder values filled
  */
-export const template = (tempStr, data, fallback='') => {
-  data = isColl(data) && data || {}
+export const template = (tempStr, data, fallback = '') => {
+  data = (isColl(data) && data) || {}
   const regex = template.regex || /\${(.*?)\}/g
 
   return isStr(tempStr)
@@ -27,7 +25,7 @@ export const template = (tempStr, data, fallback='') => {
       return isFunc(replaceWith)
         ? replaceWith(data, path, fallback)
         : replaceWith
-
     })
-    : console.error(`template requires a string as the first argument`) || tempStr
+    : console.error(`template requires a string as the first argument`) ||
+        tempStr
 }

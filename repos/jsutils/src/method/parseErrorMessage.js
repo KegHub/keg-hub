@@ -1,16 +1,13 @@
-/** @module Functions */
-
 import { isStr } from '../string/isStr'
 import { isObj } from '../object/isObj'
 import { isEmpty } from '../ext/isEmpty'
 
 /**
+ * Extracts the message from the exception, whether string or object
  * @function
- * Extracts the message from the exception, whether string
- * or object
- * @param {*} exception 
- * @return {string?} - the message or null if no message is present
- * @example 
+ * @param {*} exception - Error to be extracted
+ * @return {string?} - The message or null if no message is present
+ * @example
  * try {
  *   throwSomeException()
  * }

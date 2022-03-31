@@ -1,5 +1,3 @@
-/** @module Array */
-
 /**
  * Checks if passed in value is an array.
  * @function
@@ -7,8 +5,6 @@
  * isArr([1,2,3])
  * // Returns true
  * @param {any} value - value to be check if is an array
- * @return {boolean} - T/F value is an array
+ * @return {Boolean} - T/F value is an array
  */
-export const isArr = value => (
-  Array.isArray(value)
-)
+export const isArr = value => Array.isArray(value)

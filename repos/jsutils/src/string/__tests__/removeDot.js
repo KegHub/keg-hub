@@ -1,7 +1,6 @@
 const Str = require('../')
 
 describe('removeDot', () => {
-
   beforeEach(() => jest.resetAllMocks())
 
   it('should remove . from start and end of a string', () => {
@@ -13,5 +12,4 @@ describe('removeDot', () => {
   it('does change a string with not dots', () => {
     expect(Str.removeDot('string')).toEqual('string')
   })
-
 })

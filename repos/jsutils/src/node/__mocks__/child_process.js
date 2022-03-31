@@ -1,4 +1,3 @@
-
 const execCmdNotFound = `ps -A | grep "[n]ot found"`
 const execBashCmd = `ps -A | grep "[/]bin/bash"`
 const execOutputs = {
@@ -13,7 +12,7 @@ const execOutputs = {
         cmd: '/bin/bash (figterm)',
         procName: '/bin/bash',
         running: true,
-        pid: 41757
+        pid: 41757,
       },
       {
         tty: 'ttys008',
@@ -21,7 +20,7 @@ const execOutputs = {
         cmd: '/bin/bash (figterm)',
         procName: '/bin/bash',
         running: true,
-        pid: 33272
+        pid: 33272,
       },
       {
         tty: 'ttys009',
@@ -29,7 +28,7 @@ const execOutputs = {
         cmd: '/bin/bash --login',
         procName: '/bin/bash',
         running: true,
-        pid: 33281
+        pid: 33281,
       },
     ],
   },
@@ -37,11 +36,11 @@ const execOutputs = {
 
 const child_process = {
   exec: jest.fn((cmd, cb) => {
-    if(cmd === execCmdNotFound) throw new Error(`Command not found`)
-  
+    if (cmd === execCmdNotFound) throw new Error(`Command not found`)
+
     const output = execOutputs[cmd]
     return output ? cb(null, output.string) : cb(new Error(`Command not found`))
-  })
+  }),
 }
 
 module.exports = {

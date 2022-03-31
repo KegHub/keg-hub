@@ -1,5 +1,3 @@
-/** @module Number */
-
 import { isNum } from './isNum'
 
 /**
@@ -11,9 +9,7 @@ import { isNum } from './isNum'
  * isFloat('1.2')
  * // Returns false ( because it's a string )
  * @function
- * @param {number} num - value to check
- * @return {boolean} true or false - value is an Float
+ * @param {Number} num - value to check
+ * @return {Boolean} true or false - value is an Float
  */
-export const isFloat = val => (
-  isNum(val) && val % 1 !== 0
-)
+export const isFloat = val => isNum(val) && val % 1 !== 0

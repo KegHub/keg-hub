@@ -1,5 +1,3 @@
-/** @module Boolean */
-
 import { isStrBool } from './isStrBool'
 import { convertToStrBool } from './convertToStrBool'
 
@@ -16,10 +14,7 @@ import { convertToStrBool } from './convertToStrBool'
  * toBool('true')
  * // Returns true
  * @param {*} val - value to convert
- * @return {boolean} true or false based on passed in value.
+ * @return {Boolean} true or false based on passed in value.
  */
-export const toBool = val => (
-  isStrBool(val)
-    ? val === 'true'
-    : convertToStrBool(val) === 'true'
-)
+export const toBool = val =>
+  isStrBool(val) ? val === 'true' : convertToStrBool(val) === 'true'

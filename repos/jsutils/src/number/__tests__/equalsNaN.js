@@ -1,7 +1,6 @@
 const Num = require('../')
 
 describe('equalsNaN', () => {
-
   beforeEach(() => jest.resetAllMocks())
 
   it('should check if the value is NaN', () => {
@@ -10,5 +9,4 @@ describe('equalsNaN', () => {
     expect(Num.equalsNaN(-1)).toBe(false)
     expect(Num.equalsNaN('NaN')).toBe(false)
   })
-
 })

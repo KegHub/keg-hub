@@ -1,7 +1,6 @@
 const Str = require('../')
 
 describe('capitalize', () => {
-
   beforeEach(() => jest.resetAllMocks())
 
   it('should capitalize the first letter of a string', () => {
@@ -10,7 +9,6 @@ describe('capitalize', () => {
     const cleaned = Str.capitalize(dirty)
 
     expect(cleaned).toEqual(clean)
-
   })
 
   it('should lowerCase other characters', () => {
@@ -25,7 +23,5 @@ describe('capitalize', () => {
     const cleaned = Str.capitalize(dirty)
 
     expect(cleaned).toEqual(dirty)
-
   })
-
 })

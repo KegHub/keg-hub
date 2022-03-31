@@ -1,12 +1,10 @@
-/** @module String */
-
 import { isStr } from './isStr'
 
 /**
  * Check if string is a email.
  * @function
- * @param {string} string to check
- * @return {boolean} - if it's a email
+ * @param {String} string to check
+ * @return {Boolean} - if it's a email
  */
 export const isEmail = str => {
   if (!str || !isStr(str)) return false

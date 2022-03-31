@@ -1,7 +1,6 @@
 const Str = require('../')
 
 describe('trainCase', () => {
-
   beforeEach(() => jest.resetAllMocks())
 
   it('should convert a string into train case', () => {
@@ -17,5 +16,4 @@ describe('trainCase', () => {
 
     expect(cleaned).toEqual(dirty)
   })
-
 })

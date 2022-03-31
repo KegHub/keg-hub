@@ -1,5 +1,3 @@
-/** @module Collection */
-
 import { isColl } from './isColl'
 import { isArr } from '../array/isArr'
 
@@ -15,11 +13,10 @@ import { isArr } from '../array/isArr'
  * isEmptyColl([])
  * // Returns true
  * @function
- * @param {Object} obj - object to check if empty
- * @return {boolean}  true || false
+ * @param {Object|Array} obj - Object to check if empty
+ * @return {Boolean} - True if the passed in collection is empty
  */
-export const isEmptyColl = obj => (
+export const isEmptyColl = obj =>
   isArr(obj)
     ? obj.length === 0
     : isColl(obj) && Object.getOwnPropertyNames(obj).length === 0
-)

@@ -1,7 +1,6 @@
 const Str = require('../')
 
 describe('isUrl', () => {
-
   beforeEach(() => jest.resetAllMocks())
 
   it('should check if some data is a url string', () => {
@@ -17,11 +16,9 @@ describe('isUrl', () => {
     expect(Str.isUrl(amValid2)).toEqual(true)
     expect(Str.isUrl(amValid3)).toEqual(true)
     expect(Str.isUrl(amValid4)).toEqual(true)
-    
+
     expect(Str.isUrl(notValid1)).toEqual(false)
     expect(Str.isUrl(notValid2)).toEqual(false)
     expect(Str.isUrl(notValid3)).toEqual(false)
-
   })
-
 })

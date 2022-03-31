@@ -1,11 +1,9 @@
-/** @module Collection */
-
 import { updateColl } from './updateColl'
 
 /**
  * Searches an object based on the path param
- * <br> I.E. path = 'data.foo.bar' => will return obj.data.foo.bar.
- * <br> If bar does not exist, then will return obj.data.foo
+ * <br/>I.E. path = 'data.foo.bar' => will return obj.data.foo.bar.
+ * <br/>If bar does not exist, then will return obj.data.foo
  * @example
  * get(obj, 'data.foo.bar')
  * // Returns the value of bar
@@ -13,10 +11,10 @@ import { updateColl } from './updateColl'
  * get(obj, ['data', 'foo', 'bar'])
  * // Returns the value of bar
  * @function
- * @param {Object} obj - will search the object based on the path
- * @param {string|array} path - . separated string to search the object
- * @return the final value found from the path
+ * @param {Object} obj - Will search the object based on the path
+ * @param {String|Array<string>} path - Dot notation string or Array of string keys of the object
+ * @param {*} [fallback] - Separated string to search the object
+ * @return {*} - The final value found from the path
  */
-export const get = (obj, path, fallback) => (
+export const get = (obj, path, fallback) =>
   updateColl(obj, path, 'get', fallback)
-)

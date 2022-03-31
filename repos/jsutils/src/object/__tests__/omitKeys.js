@@ -1,11 +1,14 @@
 const Obj = require('../')
 
 describe('omitKeys', () => {
-
   beforeEach(() => jest.resetAllMocks())
 
   it('should return object without keys in passed in array', () => {
-    const obj = { test: 'I should exist', sub: [ 1, 2, 3 ], data: 'I should not exist' }
+    const obj = {
+      test: 'I should exist',
+      sub: [ 1, 2, 3 ],
+      data: 'I should not exist',
+    }
     const omitted = Obj.omitKeys(obj, [ 'data', 'sub' ])
 
     expect(omitted.sub).toEqual(undefined)
@@ -19,5 +22,4 @@ describe('omitKeys', () => {
     expect(Obj.isObj(emptyObj)).toBe(true)
     expect(Object.keys(emptyObj).length).toEqual(0)
   })
-
 })

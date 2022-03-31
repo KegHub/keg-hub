@@ -1,7 +1,6 @@
 const Bool = require('../')
 
 describe('convertToStrBool', () => {
-
   beforeEach(() => jest.resetAllMocks())
 
   it('should convert a boolean to a string boolean', () => {
@@ -20,5 +19,4 @@ describe('convertToStrBool', () => {
     expect(Bool.convertToStrBool({}) === 'true').toBe(true)
     expect(Bool.convertToStrBool([]) === 'true').toBe(true)
   })
-
 })

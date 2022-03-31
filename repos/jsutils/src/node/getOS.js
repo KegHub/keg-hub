@@ -1,12 +1,10 @@
-/** @module Node */
-
 const os = require('os')
 
 /**
  * Gets and normalizes the current operating system
  * @function
  *
- * @returns {string} - The current operating system
+ * @returns {String} - The current operating system
  */
 const getOS = () => {
   const system = (process.platform || os.platform()).toLowerCase()
@@ -19,7 +17,6 @@ const getOS = () => {
         : false
 }
 
-
 module.exports = {
-  getOS
+  getOS,
 }
