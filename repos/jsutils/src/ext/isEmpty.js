@@ -15,7 +15,7 @@ import { isNum } from '../number/isNum'
  * isEmpty([ 1 ])
  * // Returns false
  * @function
- * @param { object | array | number | string } val - value to check
+ * @param {*} val - value to check
  * @return {Boolean} if the value is empty
  */
 export const isEmpty = val =>
