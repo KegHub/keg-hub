@@ -3,7 +3,7 @@ const { findMax } = require('../')
 describe('findMax', () => {
   it('should find the maximum element in an array of objects, for a given selector', () => {
     const numbers = [ -500, 0, 1, 2, 3, 4.1234, 5.1 ]
-    const arrOfObjects = numbers.map(number => ({number}))
+    const arrOfObjects = numbers.map(number => ({ number }))
     const max = findMax(arrOfObjects, obj => obj.number)
     expect(max).toBe(arrOfObjects[arrOfObjects.length - 1])
     expect(max.number).toEqual(Math.max(...numbers))
@@ -17,7 +17,7 @@ describe('findMax', () => {
 
   it('should return one of the maximums if there are multiple', () => {
     const numbers = [ 5, 5, 5 ]
-    const arrOfObjects = numbers.map(number => ({number}))
+    const arrOfObjects = numbers.map(number => ({ number }))
     const max = findMax(arrOfObjects, obj => obj.number)
     expect(max.number).toEqual(Math.max(...numbers))
   })

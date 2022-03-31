@@ -11,7 +11,7 @@ import { reduceObj } from './reduceObj'
  * @returns {Object} - Object consisting of a subset of the entries from obj
  * @example: filterObj({a: 2, b: 3}, (k, v) => (v > 2)) returns: {b: 3}
  */
-export const filterObj = (obj, predicate, logError=true) => {
+export const filterObj = (obj, predicate, logError = true) => {
   if (!isObj(obj)) {
     logError && console.error(`First argument ${obj} must be an object.`)
     return obj
