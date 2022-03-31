@@ -1,5 +1,3 @@
-/** @module @keg-hub/jsutils */
-
 import { validate } from '../validation'
 import { isArr } from './isArr'
 
