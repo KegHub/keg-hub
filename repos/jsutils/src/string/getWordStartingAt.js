@@ -7,7 +7,7 @@
  * @param {Number} index
  * @param {Array<string>} delimiters
  */
-export const getNearestDelimiterIndex = (text, index, delimiters) => {
+export const getNearestDelimiterIndex = (text, index, delimiters = [' ']) => {
   const indices = delimiters.map(str => text.indexOf(str, index)).sort()
   return indices.find(idx => idx >= 0)
 }

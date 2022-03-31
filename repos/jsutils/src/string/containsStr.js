@@ -6,6 +6,7 @@ import { toStr } from './toStr'
  * @function
  * @param {String} string - value to be checked
  * @param {String} substring - value to search for
+ * @param {Number} [fromIndex] - Index of the string to search from
  * @return {Boolean} - if the substring exists string
  */
 export const containsStr = (str, substring, fromIndex) => {

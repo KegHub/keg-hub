@@ -5,7 +5,7 @@ import { isArr } from '../array/isArr'
  * Converts an array of strings to a matching key/value pair object.
  * @function
  * @param {Array} arr - to be converted to object
- * @param {String} toUpperCase - converts the key and value to uppercase
+ * @param {Boolean} toUpperCase - converts the key and value to uppercase
  * @return {Object} built object
  */
 export const keyMap = (arr, toUpperCase) =>

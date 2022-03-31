@@ -6,8 +6,8 @@ import { strToType } from '../ext/strToType'
  * Converts an array or string into an object.
  * @function
  * @param { array | string } val - to be converted to object
- * @param {String} divider - if string, what divides key from value
- * @param {String} split - if string, what splits each key/value pair
+ * @param {String} [divider] - if string, what divides key from value
+ * @param {String} [split] - if string, what splits each key/value pair
  * @return {Object} - Converted object
  */
 export const toObj = (val, divider, split) => {

@@ -39,7 +39,7 @@ describe('cloneFunc', () => {
     const testFunc = () => {
       return data
     }
-    const clone = Method.cloneFunc(test)
+    const clone = Method.cloneFunc(testFunc)
 
     expect(clone()).toBe(testFunc())
   })

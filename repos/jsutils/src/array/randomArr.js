@@ -7,7 +7,7 @@ import { isArr } from './isArr'
  * randomArr([1,2,3], 1)
  * // Returns an array with one of the values in the passed in array
  * @param {Array} arr - array to select values from
- * @param {Number} amount - number of values to select from the array
+ * @param {Number} [amount] - number of values to select from the array
  * @return {Array} - randomly sorted array
  */
 export const randomArr = (arr, amount) => {

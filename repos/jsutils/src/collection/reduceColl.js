@@ -10,7 +10,7 @@ import { isArr } from '../array/isArr'
  * @function
  * @param {Object|Array} obj - Object to loop over its keys
  * @param {Function} cb - Predicate function to call for each key of the collection
- * @param {*} reduce - Starting data passed to reduce method
+ * @param {*} [reduce] - Starting data passed to reduce method
  * @return {Object} - Last returned data from the loop
  */
 export const reduceColl = (coll, cb, reduce) =>

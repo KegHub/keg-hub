@@ -14,8 +14,8 @@ const isTest = process.env.NODE_ENV === 'test'
  * setLogs(true, 'dir', '[ DEV MODE ]')
  * @function
  * @param {Boolean} log - log values
- * @param {String} methDef - default log method
- * @param {String} prefix - string to add to all logs
+ * @param {String} [methDef] - default log method
+ * @param {String} [prefix] - string to add to all logs
  * @return { void }
  */
 export const setLogs = (log, methDef, prefix) => {

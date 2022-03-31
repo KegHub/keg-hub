@@ -4,7 +4,7 @@ import { isStr } from './isStr'
  * Converts first letter of a string to be capitalized.
  * @function
  * @param {String} string
- * @param {Boolean} lowercaseTail - if true, will also lowercase the all characters except the first
+ * @param {Boolean} [lowercaseTail=true] - if true, will also lowercase the all characters except the first
  * @return {String} - Passed in string, but capitalized
  */
 export const capitalize = (str, lowercaseTail = true) => {

@@ -28,7 +28,7 @@ export const uniqArrByReference = arr => {
  * uniqArr([ {a: 1} , { a: 1 }], element => element.a)
  * // Returns array [ { a: 1 } ]
  * @param {array} arr - array to remove duplicates from
- * @param {Function?} selector - optional function to specify the property uniqArr should use to check if another element exists
+ * @param {Function} [selector] - optional function to specify the property uniqArr should use to check if another element exists
  * @return {array} copy of passed in array, with duplicates removed
  */
 export const uniqArr = (arr, selector) => {

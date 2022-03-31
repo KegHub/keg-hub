@@ -12,16 +12,27 @@ import { validate } from '../validation'
  * const max = findExtrema([ { a: 1 }, { a: 2} ], (x, y) => x.a - y.a)
  * // max === { a: 2 }
  */
+// export const findExtrema = (arr, comparator) => {
+//   const [valid] = validate(
+//     { arr, comparator },
+//     { arr: isArr, $default: isFunc }
+//   )
+//   if (!valid) return null
+
+//   return arr.length
+//     ? arr.reduce((extremaSoFar, next) =>
+//       comparator(extremaSoFar, next) > 0 ? extremaSoFar : next
+//     )
+//     : null
+// }
+
 export const findExtrema = (arr, comparator) => {
-  const [valid] = validate(
-    { arr, comparator },
-    { arr: isArr, $default: isFunc }
-  )
+  const [ valid ] = validate({ arr, comparator }, { arr: isArr, $default: isFunc })
   if (!valid) return null
 
   return arr.length
-    ? arr.reduce((extremaSoFar, next) =>
-      comparator(extremaSoFar, next) > 0 ? extremaSoFar : next
-    )
+    ? arr.reduce(
+        (extremaSoFar, next) => (comparator(extremaSoFar, next) > 0 ? extremaSoFar : next)
+      )
     : null
 }

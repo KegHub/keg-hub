@@ -4,7 +4,7 @@
  * uuid()
  * // New uuid as a string
  * @function
- * @param {Number} start of the uuid
+ * @param {Number} [start] of the uuid
  * @return {String} - build uuid
  */
 export const uuid = a =>

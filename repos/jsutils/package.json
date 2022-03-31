@@ -22,7 +22,8 @@
   "homepage": "https://github.com/keg-hub/keg-hub#readme",
   "files": [
     "build",
-    "src/node"
+    "src/node",
+    "index.d.ts"
   ],
   "publishConfig": {
     "access": "public"

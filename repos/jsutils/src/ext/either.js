@@ -14,9 +14,9 @@ import { isFunc } from '../method/isFunc'
  * either(1, 2, (val1, val2) => { return true })
  * // Returns 1
  * @function
- * @param {*} val1 - return if passes in check method return true
- * @param {*} val2 - return if passed in check method returns false
- * @param {Function} check - called to determine which value to return
+ * @param {*} [val1] - return if passes in check method return true
+ * @param {*} [val2] - return if passed in check method returns false
+ * @param {Function} [check] - called to determine which value to return
  * @returns {*}
  */
 export const either = (val1, val2, check) =>
