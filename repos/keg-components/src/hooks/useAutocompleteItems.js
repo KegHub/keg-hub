@@ -73,9 +73,10 @@ export const getItemsMatchingText = (
       if (!formattedItem) return state
 
       const addItem =
+        selectedItem?.activeShowList ||
         (!text && emptyShowList) ||
-        textMatches(text, formattedItem) ||
-        selectedItem?.activeShowList
+        textMatches(text, formattedItem)
+
       // add the item if it matches the text and we haven't seen its key before
       if (addItem && !state.keys.has(formattedItem.key)) {
         state.keys.add(formattedItem.key)
