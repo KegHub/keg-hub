@@ -2,7 +2,7 @@
   "name": "@keg-hub/keg-core",
   "main": "node_modules/expo/AppEntry.js",
   "description": "A framework for developing cross-platform react apps, that is preconfigured to target both web, desktop, and mobile architectures.",
-  "version": "10.0.0",
+  "version": "10.0.1",
   "publishConfig": {
     "access": "public"
   },
