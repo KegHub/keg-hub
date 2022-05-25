@@ -6,18 +6,20 @@ import { useCompiledStyles } from '../hooks/useCompiledStyles'
 let __STYLE_INJECTOR_CONFIG__ = noOpObj
 
 /**
- * 
+ *
  * Joins the component config with the global style injector config
  * @param {Object} config - Component config
  *
  * @param {Object} config - Joined Component config
  */
 const buildConfig = config => {
-  const maxSelectors = config.kegComponent ? config.maxSelectors : __STYLE_INJECTOR_CONFIG__.maxSelectors
+  const maxSelectors = config.kegComponent
+    ? config.maxSelectors
+    : __STYLE_INJECTOR_CONFIG__.maxSelectors
   return {
     ...config,
     ...__STYLE_INJECTOR_CONFIG__,
-    maxSelectors: maxSelectors || 0
+    maxSelectors: maxSelectors || 0,
   }
 }
 
@@ -115,7 +117,6 @@ export const StyleInjector = (Component, config = noOpObj) => {
     )
   })
 }
-
 
 /**
  * Helper to set the global config object for reStyle
