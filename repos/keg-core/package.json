@@ -61,7 +61,7 @@
     "@babel/runtime": "7.16.7",
     "@expo/webpack-config": "0.16.15",
     "@keg-hub/jsutils": "9.0.3",
-    "@keg-hub/keg-components": "10.0.1",
+    "@keg-hub/keg-components": "10.0.2",
     "@keg-hub/re-theme": "10.0.1",
     "@keg-hub/tap-resolver": "9.1.0",
     "@testing-library/react-hooks": "7.0.2",
@@ -112,7 +112,7 @@
   },
   "resolutions": {
     "@keg-hub/jsutils": "9.0.3",
-    "@keg-hub/keg-components": "10.0.1",
+    "@keg-hub/keg-components": "10.0.2",
     "@keg-hub/re-theme": "10.0.1",
     "@keg-hub/tap-resolver": "9.1.0",
     "react": "17.0.2",
