@@ -1,6 +1,6 @@
 {
   "name": "@keg-hub/tap-resolver",
-  "version": "9.1.0",
+  "version": "9.1.1",
   "description": "Resolves tap files within the keg-core",
   "main": "babel.config.js",
   "author": "Lance Tipton",
