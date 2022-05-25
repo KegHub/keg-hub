@@ -13,6 +13,8 @@ import { useTextStyles } from '../../../hooks/useTextStyles'
 export const KegText = element => {
   // Build the Text Component with the StyleInjector
   const Text = StyleInjector(NativeText(element), {
+    maxSelectors: 0,
+    kegComponent: true,
     className: `keg-${element}`,
     displayName: capitalize(element),
   })

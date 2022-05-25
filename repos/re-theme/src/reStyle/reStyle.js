@@ -10,8 +10,6 @@ import {
   useShallowMemoMerge,
 } from './reStyleHooks'
 
-let __RE_STYLE_CONFIG__ = noOpObj
-
 /**
  * Builds a HOC, with custom styles injected into it
  * @function
@@ -25,7 +23,6 @@ export const reStyle = (Component, styleProp = 'style', config = noOpObj) => {
   const compName = getComponentName(Component)
   const InjectedComp = StyleInjector(Component, {
     className: compName,
-    ...__RE_STYLE_CONFIG__,
     displayName: compName,
     ...config,
   })
@@ -72,5 +69,6 @@ export const reStyle = (Component, styleProp = 'style', config = noOpObj) => {
 reStyle.setConfig = config => {
   if (!isObj(config))
     console.warn(`Restyle config must be an "Object". Instead got`, config)
-  __RE_STYLE_CONFIG__ = config
+
+  StyleInjector.setConfig(config)
 }

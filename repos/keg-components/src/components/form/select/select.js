@@ -16,6 +16,8 @@ import { StyleInjector } from '@keg-hub/re-theme/styleInjector'
  * <br/>This allows us to add the styles as css classes
  */
 const KegSelect = StyleInjector(InternalSelect, {
+  maxSelectors: 0,
+  kegComponent: true,
   displayName: 'Select',
   className: 'keg-select',
 })

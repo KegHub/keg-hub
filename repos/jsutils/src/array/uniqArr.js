@@ -39,8 +39,8 @@ export const uniqArr = (arr, selector) => {
   // we haven't encountered before
   // by checking with `selector` and the set
   const { unique } = arr.reduce(
-    (data, element) => {
-      const id = selector(element)
+    (data, element, index) => {
+      const id = selector(element, index)
       !data.set.has(id) && data.unique.push(element)
       data.set.add(id)
       return data

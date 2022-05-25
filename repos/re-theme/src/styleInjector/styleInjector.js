@@ -1,7 +1,25 @@
 import React from 'react'
 import { useStyleTag } from './useStyleTag'
-import { splitByKeys, noOpObj } from '@keg-hub/jsutils'
+import { splitByKeys, noOpObj, isObj } from '@keg-hub/jsutils'
 import { useCompiledStyles } from '../hooks/useCompiledStyles'
+
+let __STYLE_INJECTOR_CONFIG__ = noOpObj
+
+/**
+ * 
+ * Joins the component config with the global style injector config
+ * @param {Object} config - Component config
+ *
+ * @param {Object} config - Joined Component config
+ */
+const buildConfig = config => {
+  const maxSelectors = config.kegComponent ? config.maxSelectors : __STYLE_INJECTOR_CONFIG__.maxSelectors
+  return {
+    ...config,
+    ...__STYLE_INJECTOR_CONFIG__,
+    maxSelectors: maxSelectors || 0
+  }
+}
 
 /**
  * Helper component that actually calls the useStyleTag hook
@@ -55,6 +73,8 @@ const BuildWithStyles = React.forwardRef((props, ref) => {
  * @returns {Function} - Anonymous function that wraps the passed in Component
  */
 export const StyleInjector = (Component, config = noOpObj) => {
+  config = buildConfig(config)
+
   return React.forwardRef((allProps, ref) => {
     const styleProp = allProps.__reStyleStylePropKey__ || 'style'
 
@@ -94,4 +114,21 @@ export const StyleInjector = (Component, config = noOpObj) => {
       />
     )
   })
+}
+
+
+/**
+ * Helper to set the global config object for reStyle
+ * @param {Object} config - Config settings for global reStyle
+ * @param {string} config.className - Default className applied to components
+ * @param {string} [config.prefix=keg] - Class prefix to prefix to hashed classNames
+ * @param {Array} [config.filter] - Group of style rules that should be **ignored** by reStyle
+ * @param {string} [config.maxSelectors=1] - Number of selectors used when applying styles
+ * @param {Array} [config.important] - Group of style rules that should have `!important` appended to them
+ */
+StyleInjector.setConfig = config => {
+  if (!isObj(config))
+    console.warn(`Injector config must be an "Object". Instead got`, config)
+
+  __STYLE_INJECTOR_CONFIG__ = config
 }
