@@ -17,6 +17,8 @@ import './useClassName.native-32e8827d.js';
 
 var _excluded = ["className", "children", "disabled", "editable", "Element", "onChange", "onValueChange", "onChangeText", "onClick", "onPress", "readOnly", "type", "themePath", "style", "value"];
 var KegInput = StyleInjector(Input$1, {
+  maxSelectors: 0,
+  kegComponent: true,
   displayName: 'Input',
   className: 'keg-input'
 });

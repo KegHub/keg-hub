@@ -11,7 +11,7 @@ require('@keg-hub/re-theme/colors');
 require('@keg-hub/re-theme');
 require('./useThemeWithHeight.js');
 require('react-native');
-var touchable = require('./touchable-62a31fcc.js');
+var touchable = require('./touchable-ab081983.js');
 require('./view.native-6338852a.js');
 require('./useClassName.native-3d1a229b.js');
 require('./renderFromType.js');

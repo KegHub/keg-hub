@@ -1,6 +1,6 @@
 import { _ as _objectSpread2 } from './_rollupPluginBabelHelpers-eca9940e.js';
 import { reStyle } from '@keg-hub/re-theme/reStyle';
-import { V as View } from './view-86879139.js';
+import { V as View } from './view-23665db9.js';
 import './view.native-f56118b2.js';
 import 'react';
 import 'react-native-web';

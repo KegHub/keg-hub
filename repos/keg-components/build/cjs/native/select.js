@@ -32,6 +32,8 @@ var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 
 var _excluded = ["className", "children", "disabled", "readOnly", "onChange", "onValueChange", "style", "styles", "type", "themePath", "value"];
 var KegSelect = styleInjector.StyleInjector(select.Select, {
+  maxSelectors: 0,
+  kegComponent: true,
   displayName: 'Select',
   className: 'keg-select'
 });

@@ -13,7 +13,7 @@ require('./useThemeWithHeight.js');
 var useFromToAnimation = require('./useFromToAnimation.js');
 var useClassName = require('./useClassName-75c55cf8.js');
 var useClassList = require('./useClassList-89a8dbd4.js');
-var view = require('./view-cd2faea4.js');
+var view = require('./view-3370300d.js');
 require('@keg-hub/re-theme/styleInjector');
 require('@keg-hub/re-theme');
 require('./getPlatform-ec53cd5e.js');

@@ -2,8 +2,8 @@ import { d as _objectWithoutProperties, e as _extends } from './_rollupPluginBab
 import React__default from 'react';
 import { withTheme } from '@keg-hub/re-theme';
 import { Text } from './text.js';
-import { C as CheckboxWrapper } from './checkbox.wrapper-9755c974.js';
-import './kegText-fe67e05a.js';
+import { C as CheckboxWrapper } from './checkbox.wrapper-cedc521a.js';
+import './kegText-8ed80fa5.js';
 import '@keg-hub/jsutils';
 import './kegText.js';
 import './useClassName.native-32e8827d.js';

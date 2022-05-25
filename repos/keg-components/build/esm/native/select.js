@@ -24,6 +24,8 @@ import './useClassList.native-70068878.js';
 
 var _excluded = ["className", "children", "disabled", "readOnly", "onChange", "onValueChange", "style", "styles", "type", "themePath", "value"];
 var KegSelect = StyleInjector(Select$1, {
+  maxSelectors: 0,
+  kegComponent: true,
   displayName: 'Select',
   className: 'keg-select'
 });

@@ -17,7 +17,7 @@ import './useClassName.native-32e8827d.js';
 import './indicator.wrapper-e2c86f6b.js';
 import './getPlatform-e625f46a.js';
 import './text.js';
-import './kegText-fe67e05a.js';
+import './kegText-8ed80fa5.js';
 import './kegText.js';
 import './useTextAccessibility.js';
 import './useTextStyles.js';
@@ -25,6 +25,8 @@ import './isValidComponent.js';
 
 var _excluded = ["alt", "className", "children", "onClick", "onPress", "src", "source", "styles", "type", "themePath", "useLoading"];
 var KegImage = StyleInjector(Image$1, {
+  maxSelectors: 0,
+  kegComponent: true,
   displayName: 'Image',
   className: 'keg-image'
 });

@@ -3,7 +3,7 @@ import React__default from 'react';
 import { withTheme } from '@keg-hub/re-theme';
 import { get } from '@keg-hub/jsutils';
 import { Text } from './text.js';
-import './kegText-fe67e05a.js';
+import './kegText-8ed80fa5.js';
 import './kegText.js';
 import './useClassName.native-32e8827d.js';
 import 'react-native';

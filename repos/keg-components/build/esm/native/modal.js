@@ -1,7 +1,7 @@
 import { b as _slicedToArray, _ as _objectSpread2 } from './_rollupPluginBabelHelpers-eca9940e.js';
 import React__default, { useState, useEffect, useCallback } from 'react';
 import { Dimensions, Animated } from 'react-native';
-import { T as Touchable } from './touchable-7c6e36c1.js';
+import { T as Touchable } from './touchable-07dd63ff.js';
 import { isFunc, noOp } from '@keg-hub/jsutils';
 import '@keg-hub/re-theme/colors';
 import { useThemePath } from './useThemePath.js';

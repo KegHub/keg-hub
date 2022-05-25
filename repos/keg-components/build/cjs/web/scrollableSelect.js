@@ -14,7 +14,7 @@ require('@keg-hub/re-theme/colors');
 require('./useThemeWithHeight.js');
 require('react-native-web');
 require('./text.js');
-require('./kegText-e14b3c1f.js');
+require('./kegText-c47b7b6e.js');
 require('./kegText.native-d2f2e1a3.js');
 require('./useClassName-75c55cf8.js');
 require('./updateClassNames.js');
@@ -32,7 +32,7 @@ require('./useThemeTypeAsClass-43ee56b4.js');
 require('./colors-da502c66.js');
 require('./useClassList-89a8dbd4.js');
 require('@keg-hub/re-theme/reStyle');
-require('./view-cd2faea4.js');
+require('./view-3370300d.js');
 require('./view.native-a1d03d45.js');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }

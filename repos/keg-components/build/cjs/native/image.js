@@ -21,7 +21,7 @@ require('./useClassName.native-3d1a229b.js');
 require('./indicator.wrapper-f4b58c20.js');
 require('./getPlatform-24228c6c.js');
 require('./text.js');
-require('./kegText-d4479e6a.js');
+require('./kegText-c5d9c008.js');
 require('./kegText.js');
 require('./useTextAccessibility.js');
 require('./useTextStyles.js');
@@ -33,6 +33,8 @@ var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 
 var _excluded = ["alt", "className", "children", "onClick", "onPress", "src", "source", "styles", "type", "themePath", "useLoading"];
 var KegImage = styleInjector.StyleInjector(image.Image, {
+  maxSelectors: 0,
+  kegComponent: true,
   displayName: 'Image',
   className: 'keg-image'
 });

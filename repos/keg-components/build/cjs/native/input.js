@@ -25,6 +25,8 @@ var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 
 var _excluded = ["className", "children", "disabled", "editable", "Element", "onChange", "onValueChange", "onChangeText", "onClick", "onPress", "readOnly", "type", "themePath", "style", "value"];
 var KegInput = styleInjector.StyleInjector(input.Input, {
+  maxSelectors: 0,
+  kegComponent: true,
   displayName: 'Input',
   className: 'keg-input'
 });

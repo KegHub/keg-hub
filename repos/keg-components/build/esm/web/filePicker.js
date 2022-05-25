@@ -18,14 +18,14 @@ import { P } from './p.js';
 import './subtitle.js';
 import './text.js';
 import { Button } from './button.js';
-import { V as View } from './view-86879139.js';
+import { V as View } from './view-23665db9.js';
 import { StyleInjector } from '@keg-hub/re-theme/styleInjector';
 import { I as Input$1 } from './input.web-2c668800.js';
 import '@keg-hub/re-theme';
 import './colors-6402d3b3.js';
 import './useClassList-1d418045.js';
 import './ensureClassArray.js';
-import './kegText-d18b7a12.js';
+import './kegText-1ab95fab.js';
 import './kegText.native-ba7d1c9c.js';
 import './useClassName-52067a95.js';
 import './updateClassNames.js';
@@ -41,6 +41,8 @@ import './view.native-f56118b2.js';
 
 var _excluded = ["className", "onChange", "title", "children", "style", "showFile", "onFilePicked", "themePath", "buttonThemePath", "capture", "openOnMount"];
 var Input = StyleInjector(Input$1, {
+  maxSelectors: 0,
+  kegComponent: true,
   displayName: 'FilePickerInput',
   className: 'keg-file-picker-input'
 });

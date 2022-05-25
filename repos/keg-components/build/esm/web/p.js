@@ -1,5 +1,5 @@
 import React__default from 'react';
-import { K as KegText } from './kegText-d18b7a12.js';
+import { K as KegText } from './kegText-1ab95fab.js';
 import './_rollupPluginBabelHelpers-eca9940e.js';
 import '@keg-hub/jsutils';
 import './kegText.native-ba7d1c9c.js';

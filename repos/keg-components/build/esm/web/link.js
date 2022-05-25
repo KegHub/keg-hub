@@ -1,7 +1,7 @@
 import { d as _objectWithoutProperties, e as _extends } from './_rollupPluginBabelHelpers-eca9940e.js';
 import React__default from 'react';
 import { L as LinkWrapper } from './link.wrapper-2fd965cc.js';
-import { K as KegText } from './kegText-d18b7a12.js';
+import { K as KegText } from './kegText-1ab95fab.js';
 import { Touchable } from './touchable.js';
 import { g as getPlatform } from './getPlatform-95568099.js';
 import { u as useClassList } from './useClassList-1d418045.js';

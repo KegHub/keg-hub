@@ -1,6 +1,6 @@
 import { d as _objectWithoutProperties, e as _extends, a as _defineProperty } from './_rollupPluginBabelHelpers-eca9940e.js';
 import React__default from 'react';
-import { V as View } from './view-86879139.js';
+import { V as View } from './view-23665db9.js';
 import { S as Select$1 } from './select-1a68b99c.js';
 import '@keg-hub/jsutils';
 import { getValueFromChildren, getInputValueKey } from './getInputValue.js';
@@ -11,9 +11,9 @@ import './useThemeWithHeight.js';
 import 'react-native-web';
 import { u as useClassName } from './useClassName-52067a95.js';
 import { u as useThemeTypeAsClass } from './useThemeTypeAsClass-1d2ed78d.js';
-import './svgIcon-8b45e2a3.js';
-import { C as ChevronDown } from './chevronDown-8ce754f7.js';
-import { I as Icon } from './icon-ba691808.js';
+import './svgIcon-389f9d70.js';
+import { C as ChevronDown } from './chevronDown-ba9bb372.js';
+import { I as Icon } from './icon-b6da5cf9.js';
 import { StyleInjector } from '@keg-hub/re-theme/styleInjector';
 import './view.native-f56118b2.js';
 import './validateFunctions.js';
@@ -30,6 +30,8 @@ import './isValidComponent.js';
 
 var _excluded = ["className", "children", "disabled", "readOnly", "onChange", "onValueChange", "style", "styles", "type", "themePath", "value"];
 var KegSelect = StyleInjector(Select$1, {
+  maxSelectors: 0,
+  kegComponent: true,
   displayName: 'Select',
   className: 'keg-select'
 });

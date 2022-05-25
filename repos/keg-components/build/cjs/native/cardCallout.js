@@ -10,7 +10,7 @@ var useClassList_native = require('./useClassList.native-9e7810c9.js');
 require('./_rollupPluginBabelHelpers-d23df5c1.js');
 require('react-native');
 require('./useClassName.native-3d1a229b.js');
-require('./kegText-d4479e6a.js');
+require('./kegText-c5d9c008.js');
 require('./kegText.js');
 require('./useTextAccessibility.js');
 require('@keg-hub/re-theme/styleInjector');

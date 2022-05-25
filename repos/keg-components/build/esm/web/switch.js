@@ -1,5 +1,5 @@
 import { d as _objectWithoutProperties, b as _slicedToArray, _ as _objectSpread2, e as _extends } from './_rollupPluginBabelHelpers-eca9940e.js';
-import { V as View } from './view-86879139.js';
+import { V as View } from './view-23665db9.js';
 import './caption.js';
 import './h1.js';
 import './h2.js';
@@ -29,7 +29,7 @@ import './useClassName-52067a95.js';
 import './updateClassNames.js';
 import './ensureClassArray.js';
 import './handleRefUpdate.js';
-import './kegText-d18b7a12.js';
+import './kegText-1ab95fab.js';
 import './kegText.native-ba7d1c9c.js';
 import './useTextAccessibility.js';
 import './useTextStyles.js';
@@ -39,6 +39,8 @@ import './isValidComponent.js';
 
 var _excluded = ["className", "checked", "children", "elType", "disabled", "LeftComponent", "close", "onChange", "onValueChange", "RightComponent", "styles", "SwitchComponent", "setCheckedSetter", "type", "themePath", "thumbColor", "trackColor", "value"];
 var KegSwitch = StyleInjector(Switch$1, {
+  maxSelectors: 0,
+  kegComponent: true,
   displayName: 'Switch',
   className: 'keg-switch'
 });

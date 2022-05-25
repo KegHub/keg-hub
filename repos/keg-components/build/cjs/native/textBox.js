@@ -16,7 +16,7 @@ require('./useThemeWithHeight.js');
 var reactNative = require('react-native');
 var useThemeTypeAsClass_native = require('./useThemeTypeAsClass.native-90f04031.js');
 require('./useClassName.native-3d1a229b.js');
-require('./kegText-d4479e6a.js');
+require('./kegText-c5d9c008.js');
 require('./kegText.js');
 require('./useTextAccessibility.js');
 require('@keg-hub/re-theme/styleInjector');
@@ -26,7 +26,7 @@ require('./renderFromType.js');
 require('./isValidComponent.js');
 require('./useClassList.native-9e7810c9.js');
 require('./withTouch.js');
-require('./touchable-62a31fcc.js');
+require('./touchable-ab081983.js');
 require('./touchable.js');
 require('react-native-svg');
 

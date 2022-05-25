@@ -29,7 +29,7 @@ require('react-native');
 var _switch = require('./switch-804304c6.js');
 var styleInjector = require('@keg-hub/re-theme/styleInjector');
 require('./useClassName.native-3d1a229b.js');
-require('./kegText-d4479e6a.js');
+require('./kegText-c5d9c008.js');
 require('./kegText.js');
 require('./useTextAccessibility.js');
 require('./useTextStyles.js');
@@ -41,6 +41,8 @@ var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 
 var _excluded = ["className", "checked", "children", "elType", "disabled", "LeftComponent", "close", "onChange", "onValueChange", "RightComponent", "styles", "SwitchComponent", "setCheckedSetter", "type", "themePath", "thumbColor", "trackColor", "value"];
 var KegSwitch = styleInjector.StyleInjector(_switch.Switch, {
+  maxSelectors: 0,
+  kegComponent: true,
   displayName: 'Switch',
   className: 'keg-switch'
 });

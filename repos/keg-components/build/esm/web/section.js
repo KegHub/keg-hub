@@ -1,7 +1,7 @@
 import { d as _objectWithoutProperties, e as _extends } from './_rollupPluginBabelHelpers-eca9940e.js';
 import React__default from 'react';
 import { withTheme } from '@keg-hub/re-theme';
-import { V as View } from './view-86879139.js';
+import { V as View } from './view-23665db9.js';
 import { u as useClassList } from './useClassList-1d418045.js';
 import './view.native-f56118b2.js';
 import 'react-native-web';

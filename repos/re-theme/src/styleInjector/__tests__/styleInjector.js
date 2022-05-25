@@ -63,7 +63,7 @@ describe('styleInjector', () => {
 
     expect(argsArr[0]).toBe(mockProps.style)
     expect(argsArr[1]).toBe(mockConfig.className)
-    expect(argsArr[2]).toEqual({...mockConfig, maxSelectors: 0})
+    expect(argsArr[2]).toEqual({ ...mockConfig, maxSelectors: 0 })
   })
 
   test('should return the original component with the className, but without the original styles', () => {

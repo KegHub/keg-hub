@@ -1,7 +1,7 @@
 import { d as _objectWithoutProperties, b as _slicedToArray, e as _extends, a as _defineProperty, _ as _objectSpread2 } from './_rollupPluginBabelHelpers-eca9940e.js';
 import React__default from 'react';
 import { V as View } from './view.native-16eca0a6.js';
-import { T as Touchable } from './touchable-7c6e36c1.js';
+import { T as Touchable } from './touchable-07dd63ff.js';
 import './svgIcon.native-5fb8ae44.js';
 import { C as ChevronDown } from './chevronDown-7c76db3a.js';
 import { isNum, noOpObj } from '@keg-hub/jsutils';

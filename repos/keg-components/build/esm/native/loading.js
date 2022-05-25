@@ -12,7 +12,7 @@ import '@keg-hub/re-theme/colors';
 import { useThemePath } from './useThemePath.js';
 import './useThemeWithHeight.js';
 import './useClassName.native-32e8827d.js';
-import './kegText-fe67e05a.js';
+import './kegText-8ed80fa5.js';
 import './kegText.js';
 import './useTextAccessibility.js';
 import '@keg-hub/re-theme/styleInjector';

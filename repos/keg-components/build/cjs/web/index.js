@@ -26,21 +26,21 @@ var label = require('./label.js');
 var p = require('./p.js');
 var subtitle = require('./subtitle.js');
 var text = require('./text.js');
-var view = require('./view-cd2faea4.js');
+var view = require('./view-3370300d.js');
 var styleInjector = require('@keg-hub/re-theme/styleInjector');
 var input_web = require('./input.web-3e205b72.js');
-var checkbox = require('./checkbox-6c3b3fe3.js');
+var checkbox = require('./checkbox-62b5042d.js');
 var reTheme = require('@keg-hub/re-theme');
 var useClassList = require('./useClassList-89a8dbd4.js');
 var useChildrenWithRefs = require('./useChildrenWithRefs.js');
-var input = require('./input-1a5ad3ac.js');
+var input = require('./input-dfd0cc20.js');
 var select = require('./select-d72ff0ce.js');
 var getInputValue = require('./getInputValue.js');
 var useSelectHandlers = require('./useSelectHandlers.js');
 var useClassName = require('./useClassName-75c55cf8.js');
-require('./svgIcon-f66eed54.js');
-var chevronDown = require('./chevronDown-a11a32c6.js');
-var icon = require('./icon-24e9ba81.js');
+require('./svgIcon-ef322a2a.js');
+var chevronDown = require('./chevronDown-67e5a61e.js');
+var icon = require('./icon-96c32b96.js');
 var renderFromType = require('./renderFromType.js');
 var getOnChangeHandler = require('./getOnChangeHandler.js');
 var getChecked = require('./getChecked.js');
@@ -48,18 +48,18 @@ var _switch = require('./switch-443c3c2b.js');
 var itemHeader = require('./itemHeader.js');
 var appHeader = require('./appHeader.js');
 var touchableIcon = require('./touchableIcon.js');
-var cardMedia = require('./cardMedia-7bd48135.js');
+var cardMedia = require('./cardMedia-a4f3aac2.js');
 var grid = require('./grid.js');
 var row = require('./row.js');
 var column = require('./column.js');
 var link_wrapper = require('./link.wrapper-47b6721c.js');
-var kegText = require('./kegText-e14b3c1f.js');
+var kegText = require('./kegText-c47b7b6e.js');
 var touchable = require('./touchable.js');
 var getPlatform = require('./getPlatform-ec53cd5e.js');
 var loading = require('./loading.js');
 var modal = require('./modal.js');
 var scrollView = require('./scrollView.js');
-var sectionList = require('./sectionList-1175adee.js');
+var sectionList = require('./sectionList-d9b366b7.js');
 var section = require('./section.js');
 var isValidComponent = require('./isValidComponent.js');
 var sidebarToggle = require('./sidebarToggle.js');
@@ -102,7 +102,7 @@ require('./cardContainer.js');
 require('./cardSection.js');
 require('./colors-da502c66.js');
 require('./view.native-a1d03d45.js');
-require('./checkbox.wrapper-c96373fe.js');
+require('./checkbox.wrapper-90b47d6a.js');
 require('./input-fa8fdff1.js');
 require('./svgIcon.native-48f0d173.js');
 require('react-native-svg-web');
@@ -110,7 +110,7 @@ require('./image-1297b42f.js');
 require('./container.js');
 require('./kegText.native-d2f2e1a3.js');
 require('./useTextStyles.js');
-require('./indicator.wrapper-1eeb3eb7.js');
+require('./indicator.wrapper-a9a1aa52.js');
 require('./getScrollValues-f3b1bfa7.js');
 require('./useToggledStyles.js');
 require('@keg-hub/re-theme/reStyle');
@@ -148,6 +148,8 @@ var useKeyPress = function useKeyPress(targetKey) {
 
 var _excluded$6 = ["className", "onChange", "title", "children", "style", "showFile", "onFilePicked", "themePath", "buttonThemePath", "capture", "openOnMount"];
 var Input = styleInjector.StyleInjector(input_web.Input, {
+  maxSelectors: 0,
+  kegComponent: true,
   displayName: 'FilePickerInput',
   className: 'keg-file-picker-input'
 });
@@ -344,6 +346,8 @@ var Radio = function Radio(props) {
 
 var _excluded$2 = ["className", "children", "disabled", "readOnly", "onChange", "onValueChange", "style", "styles", "type", "themePath", "value"];
 var KegSelect = styleInjector.StyleInjector(select.Select, {
+  maxSelectors: 0,
+  kegComponent: true,
   displayName: 'Select',
   className: 'keg-select'
 });
@@ -399,6 +403,8 @@ var Slider = function Slider() {
 
 var _excluded$1 = ["className", "checked", "children", "elType", "disabled", "LeftComponent", "close", "onChange", "onValueChange", "RightComponent", "styles", "SwitchComponent", "setCheckedSetter", "type", "themePath", "thumbColor", "trackColor", "value"];
 var KegSwitch = styleInjector.StyleInjector(_switch.Switch, {
+  maxSelectors: 0,
+  kegComponent: true,
   displayName: 'Switch',
   className: 'keg-switch'
 });

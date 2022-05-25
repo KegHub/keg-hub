@@ -1,5 +1,5 @@
 import { d as _objectWithoutProperties, b as _slicedToArray, _ as _objectSpread2, e as _extends } from './_rollupPluginBabelHelpers-eca9940e.js';
-import { V as View } from './view-86879139.js';
+import { V as View } from './view-23665db9.js';
 import { get, noOpObj } from '@keg-hub/jsutils';
 import React__default, { useRef, useState, useCallback, useLayoutEffect } from 'react';
 import { g as getPlatform } from './getPlatform-95568099.js';
