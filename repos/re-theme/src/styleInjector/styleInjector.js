@@ -13,12 +13,11 @@ let __STYLE_INJECTOR_CONFIG__ = noOpObj
  * @param {Object} config - Joined Component config
  */
 const buildConfig = config => {
+  const maxSelectors = config.kegComponent ? config.maxSelectors : __STYLE_INJECTOR_CONFIG__.maxSelectors
   return {
     ...config,
     ...__STYLE_INJECTOR_CONFIG__,
-    maxSelectors: config.kegComponent
-      ? config.maxSelectors
-      : __STYLE_INJECTOR_CONFIG__.maxSelectors,
+    maxSelectors: maxSelectors || 0
   }
 }
 
