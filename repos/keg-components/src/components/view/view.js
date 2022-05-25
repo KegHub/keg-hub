@@ -10,6 +10,7 @@ import { StyleInjector } from '@keg-hub/re-theme/styleInjector'
  *
  */
 export const View = StyleInjector(KegView, {
+  kegComponent: true,
   displayName: 'View',
   className: 'keg-view',
 })

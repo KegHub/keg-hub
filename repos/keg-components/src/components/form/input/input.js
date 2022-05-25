@@ -14,6 +14,7 @@ import { StyleInjector } from '@keg-hub/re-theme/styleInjector'
  * <br/>This allows us to add the styles as css classes
  */
 const KegInput = StyleInjector(InternalInput, {
+  kegComponent: true,
   displayName: 'Input',
   className: 'keg-input',
 })

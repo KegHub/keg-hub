@@ -68,6 +68,7 @@ const useColor = (fill, stroke, color, border, style, theme) => {
  *
  */
 export const SvgIconInject = StyleInjector(KegSvgIcon, {
+  kegComponent: true,
   displayName: 'SvgIcon',
   className: 'keg-svg-icon',
 })
