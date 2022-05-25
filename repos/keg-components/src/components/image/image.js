@@ -11,6 +11,7 @@ import { getImgSrc, getPressHandler } from 'KegUtils'
 import { StyleInjector } from '@keg-hub/re-theme/styleInjector'
 
 const KegImage = StyleInjector(InternalImage, {
+  maxSelectors: 0,
   kegComponent: true,
   displayName: 'Image',
   className: 'keg-image',

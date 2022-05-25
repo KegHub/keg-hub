@@ -10,6 +10,7 @@ import { StyleInjector } from '@keg-hub/re-theme/styleInjector'
  *
  */
 export const Touchable = StyleInjector(KegTouchable, {
+  maxSelectors: 0,
   kegComponent: true,
   displayName: 'Touchable',
   className: 'keg-touchable',

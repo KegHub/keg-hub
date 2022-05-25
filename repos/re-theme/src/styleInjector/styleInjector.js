@@ -6,6 +6,23 @@ import { useCompiledStyles } from '../hooks/useCompiledStyles'
 let __STYLE_INJECTOR_CONFIG__ = noOpObj
 
 /**
+ * 
+ * Joins the component config with the global style injector config
+ * @param {Object} config - Component config
+ *
+ * @param {Object} config - Joined Component config
+ */
+const buildConfig = config => {
+  return {
+    ...config,
+    ...__STYLE_INJECTOR_CONFIG__,
+    maxSelectors: config.kegComponent
+      ? config.maxSelectors
+      : __STYLE_INJECTOR_CONFIG__.maxSelectors,
+  }
+}
+
+/**
  * Helper component that actually calls the useStyleTag hook
  * Call the useStyleTag hook here to allow calling the hook conditionally
  * and not break the rules of Hooks
@@ -57,8 +74,7 @@ const BuildWithStyles = React.forwardRef((props, ref) => {
  * @returns {Function} - Anonymous function that wraps the passed in Component
  */
 export const StyleInjector = (Component, config = noOpObj) => {
-
-  config = {...config, ...__STYLE_INJECTOR_CONFIG__}
+  config = buildConfig(config)
 
   return React.forwardRef((allProps, ref) => {
     const styleProp = allProps.__reStyleStylePropKey__ || 'style'

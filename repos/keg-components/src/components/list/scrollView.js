@@ -11,6 +11,7 @@ import { StyleInjector } from '@keg-hub/re-theme/styleInjector'
  *
  */
 export const ScrollView = StyleInjector(KegScrollView, {
+  maxSelectors: 0,
   kegComponent: true,
   displayName: 'Scroll-View',
   className: 'keg-scrollview',

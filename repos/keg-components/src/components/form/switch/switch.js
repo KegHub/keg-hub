@@ -20,6 +20,7 @@ import { StyleInjector } from '@keg-hub/re-theme/styleInjector'
  * <br/>This allows us to add the styles as css classes
  */
 const KegSwitch = StyleInjector(InternalSwitch, {
+  maxSelectors: 0,
   kegComponent: true,
   displayName: 'Switch',
   className: 'keg-switch',

@@ -41,6 +41,7 @@ const checkBoxStyles = {
  * <br/>This allows us to add the styles as css classes
  */
 const Input = StyleInjector(KegInput, {
+  maxSelectors: 0,
   kegComponent: true,
   displayName: 'Checkbox',
   className: 'keg-checkbox',
