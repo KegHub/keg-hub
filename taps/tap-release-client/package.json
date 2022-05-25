@@ -37,8 +37,8 @@
     "keg-core": "npm:@keg-hub/keg-core@0.2.1"
   },
   "devDependencies": {
-    "@keg-hub/jsutils": "8.8.0",
-    "@keg-hub/spawn-cmd": "0.0.1",
+    "@keg-hub/jsutils": "9.0.3",
+    "@keg-hub/spawn-cmd": "0.3.0",
     "rimraf": "3.0.2"
   }
 }

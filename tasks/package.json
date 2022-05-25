@@ -21,16 +21,16 @@
     "task": "node ./runTask.js"
   },
   "dependencies": {
-    "@keg-hub/args-parse": "7.0.0",
-    "@keg-hub/cli-utils": "0.4.2",
-    "@keg-hub/jsutils": "8.8.0",
-    "@keg-hub/parse-config": "^0.2.1",
-    "@keg-hub/spawn-cmd": "^0.2.0",
+    "@keg-hub/args-parse": "8.0.0",
+    "@keg-hub/cli-utils": "0.6.0",
+    "@keg-hub/jsutils": "9.0.3",
+    "@keg-hub/parse-config": "2.0.0",
+    "@keg-hub/spawn-cmd": "0.3.0",
     "semver": "7.3.5"
   },
   "resolutions": {
-    "@keg-hub/jsutils": "8.8.0",
-    "@keg-hub/args-parse": "7.0.0",
-    "@keg-hub/cli-utils": "0.4.2"
+    "@keg-hub/jsutils": "9.0.3",
+    "@keg-hub/args-parse": "8.0.0",
+    "@keg-hub/cli-utils": "0.6.0"
   }
 }
