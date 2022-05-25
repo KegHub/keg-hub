@@ -22,14 +22,14 @@ var p = require('./p.js');
 require('./subtitle.js');
 require('./text.js');
 var button = require('./button.js');
-var view = require('./view-cd2faea4.js');
+var view = require('./view-3370300d.js');
 var styleInjector = require('@keg-hub/re-theme/styleInjector');
 var input_web = require('./input.web-3e205b72.js');
 require('@keg-hub/re-theme');
 require('./colors-da502c66.js');
 require('./useClassList-89a8dbd4.js');
 require('./ensureClassArray.js');
-require('./kegText-e14b3c1f.js');
+require('./kegText-c47b7b6e.js');
 require('./kegText.native-d2f2e1a3.js');
 require('./useClassName-75c55cf8.js');
 require('./updateClassNames.js');
@@ -49,6 +49,8 @@ var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 
 var _excluded = ["className", "onChange", "title", "children", "style", "showFile", "onFilePicked", "themePath", "buttonThemePath", "capture", "openOnMount"];
 var Input = styleInjector.StyleInjector(input_web.Input, {
+  maxSelectors: 0,
+  kegComponent: true,
   displayName: 'FilePickerInput',
   className: 'keg-file-picker-input'
 });

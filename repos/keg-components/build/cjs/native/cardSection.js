@@ -11,7 +11,7 @@ var jsutils = require('@keg-hub/jsutils');
 require('@keg-hub/re-theme/colors');
 require('react-native');
 require('./useClassName.native-3d1a229b.js');
-require('./kegText-d4479e6a.js');
+require('./kegText-c5d9c008.js');
 require('./kegText.js');
 require('./useTextAccessibility.js');
 require('@keg-hub/re-theme/styleInjector');

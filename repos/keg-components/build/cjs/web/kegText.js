@@ -22,6 +22,8 @@ var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 
 var KegText = function KegText(element) {
   var Text = styleInjector.StyleInjector(kegText_native.KegText(element), {
+    maxSelectors: 0,
+    kegComponent: true,
     className: "keg-".concat(element),
     displayName: jsutils.capitalize(element)
   });

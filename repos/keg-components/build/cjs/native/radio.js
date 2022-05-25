@@ -7,7 +7,7 @@ var React = require('react');
 var reTheme = require('@keg-hub/re-theme');
 var jsutils = require('@keg-hub/jsutils');
 var text = require('./text.js');
-require('./kegText-d4479e6a.js');
+require('./kegText-c5d9c008.js');
 require('./kegText.js');
 require('./useClassName.native-3d1a229b.js');
 require('react-native');

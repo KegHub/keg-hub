@@ -13,7 +13,7 @@ import './useThemeWithHeight.js';
 import { Clipboard } from 'react-native';
 import { u as useThemeTypeAsClass } from './useThemeTypeAsClass.native-a05b9a50.js';
 import './useClassName.native-32e8827d.js';
-import './kegText-fe67e05a.js';
+import './kegText-8ed80fa5.js';
 import './kegText.js';
 import './useTextAccessibility.js';
 import '@keg-hub/re-theme/styleInjector';
@@ -23,7 +23,7 @@ import './renderFromType.js';
 import './isValidComponent.js';
 import './useClassList.native-70068878.js';
 import './withTouch.js';
-import './touchable-7c6e36c1.js';
+import './touchable-07dd63ff.js';
 import './touchable.js';
 import 'react-native-svg';
 

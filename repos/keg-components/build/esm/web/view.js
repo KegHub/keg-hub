@@ -10,6 +10,8 @@ import '@keg-hub/jsutils';
 import './handleRefUpdate.js';
 
 var View = StyleInjector(View$1, {
+  maxSelectors: 0,
+  kegComponent: true,
   displayName: 'View',
   className: 'keg-view'
 });

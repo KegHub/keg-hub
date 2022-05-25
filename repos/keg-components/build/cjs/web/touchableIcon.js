@@ -3,7 +3,7 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 var _rollupPluginBabelHelpers = require('./_rollupPluginBabelHelpers-d23df5c1.js');
-var icon = require('./icon-24e9ba81.js');
+var icon = require('./icon-96c32b96.js');
 var withTouch = require('./withTouch.js');
 require('react');
 require('@keg-hub/jsutils');
@@ -12,7 +12,7 @@ require('@keg-hub/re-theme');
 require('./useThemeWithHeight.js');
 require('react-native-web');
 var touchable = require('./touchable.js');
-require('./view-cd2faea4.js');
+require('./view-3370300d.js');
 require('./view.native-a1d03d45.js');
 require('./useClassName-75c55cf8.js');
 require('./updateClassNames.js');

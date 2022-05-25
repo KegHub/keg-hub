@@ -2,7 +2,7 @@ import { d as _objectWithoutProperties, _ as _objectSpread2 } from './_rollupPlu
 import React__default from 'react';
 import { useTheme } from '@keg-hub/re-theme';
 import { get } from '@keg-hub/jsutils';
-import { V as View } from './view-86879139.js';
+import { V as View } from './view-23665db9.js';
 import { renderFromType } from './renderFromType.js';
 import '@keg-hub/re-theme/colors';
 import { isValidComponent } from './isValidComponent.js';

@@ -3,7 +3,7 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 var React = require('react');
-var view = require('./view-cd2faea4.js');
+var view = require('./view-3370300d.js');
 var jsutils = require('@keg-hub/jsutils');
 var text = require('./text.js');
 var useClassList = require('./useClassList-89a8dbd4.js');
@@ -15,7 +15,7 @@ require('./updateClassNames.js');
 require('./ensureClassArray.js');
 require('./handleRefUpdate.js');
 require('@keg-hub/re-theme/styleInjector');
-require('./kegText-e14b3c1f.js');
+require('./kegText-c47b7b6e.js');
 require('./kegText.native-d2f2e1a3.js');
 require('./useTextAccessibility.js');
 require('./useTextStyles.js');

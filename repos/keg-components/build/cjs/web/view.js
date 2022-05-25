@@ -14,6 +14,8 @@ require('@keg-hub/jsutils');
 require('./handleRefUpdate.js');
 
 var View = styleInjector.StyleInjector(view_native.View, {
+  maxSelectors: 0,
+  kegComponent: true,
   displayName: 'View',
   className: 'keg-view'
 });

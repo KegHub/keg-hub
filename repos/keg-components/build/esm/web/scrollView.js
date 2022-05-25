@@ -20,6 +20,8 @@ var ScrollView$1 = React__default.forwardRef(function (_ref, ref) {
 });
 
 var ScrollView = StyleInjector(ScrollView$1, {
+  maxSelectors: 0,
+  kegComponent: true,
   displayName: 'Scroll-View',
   className: 'keg-scrollview'
 });

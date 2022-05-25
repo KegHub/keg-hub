@@ -9,7 +9,7 @@ import './useThemeWithHeight.js';
 import { useFromToAnimation } from './useFromToAnimation.js';
 import { u as useClassName } from './useClassName-52067a95.js';
 import { u as useClassList } from './useClassList-1d418045.js';
-import { V as View } from './view-86879139.js';
+import { V as View } from './view-23665db9.js';
 import '@keg-hub/re-theme/styleInjector';
 import '@keg-hub/re-theme';
 import './getPlatform-95568099.js';

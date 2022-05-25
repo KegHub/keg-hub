@@ -3,12 +3,12 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 var React = require('react');
-var view = require('./view-cd2faea4.js');
+var view = require('./view-3370300d.js');
 var text = require('./text.js');
 var jsutils = require('@keg-hub/jsutils');
-require('./icon-24e9ba81.js');
+require('./icon-96c32b96.js');
 var touchableIcon = require('./touchableIcon.js');
-var svgIcon = require('./svgIcon-f66eed54.js');
+var svgIcon = require('./svgIcon-ef322a2a.js');
 var _rollupPluginBabelHelpers = require('./_rollupPluginBabelHelpers-d23df5c1.js');
 require('@keg-hub/re-theme/colors');
 var useThemePath = require('./useThemePath.js');
@@ -21,7 +21,7 @@ require('./updateClassNames.js');
 require('./ensureClassArray.js');
 require('./handleRefUpdate.js');
 require('@keg-hub/re-theme/styleInjector');
-require('./kegText-e14b3c1f.js');
+require('./kegText-c47b7b6e.js');
 require('./kegText.native-d2f2e1a3.js');
 require('./useTextAccessibility.js');
 require('./useTextStyles.js');

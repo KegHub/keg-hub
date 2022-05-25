@@ -33,7 +33,7 @@ var getItemsMatchingText = function getItemsMatchingText(text, possibleValues, e
   var result = possibleValues.reduce(function (state, nextItem) {
     var formattedItem = formatItem(nextItem, state.counter);
     if (!formattedItem) return state;
-    var addItem = !text && emptyShowList || textMatches(text, formattedItem) || (selectedItem === null || selectedItem === void 0 ? void 0 : selectedItem.activeShowList);
+    var addItem = (selectedItem === null || selectedItem === void 0 ? void 0 : selectedItem.activeShowList) || !text && emptyShowList || textMatches(text, formattedItem);
     if (addItem && !state.keys.has(formattedItem.key)) {
       state.keys.add(formattedItem.key);
       state.arr.push(formattedItem);

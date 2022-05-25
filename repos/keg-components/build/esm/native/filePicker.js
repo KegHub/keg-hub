@@ -14,7 +14,7 @@ import './text.js';
 import './_rollupPluginBabelHelpers-eca9940e.js';
 import 'react-native';
 import './useClassName.native-32e8827d.js';
-import './kegText-fe67e05a.js';
+import './kegText-8ed80fa5.js';
 import '@keg-hub/jsutils';
 import './kegText.js';
 import './useTextAccessibility.js';

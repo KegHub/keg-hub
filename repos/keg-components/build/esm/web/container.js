@@ -1,6 +1,6 @@
 import { d as _objectWithoutProperties, c as _toConsumableArray, e as _extends } from './_rollupPluginBabelHelpers-eca9940e.js';
 import React__default, { useMemo } from 'react';
-import { V as View } from './view-86879139.js';
+import { V as View } from './view-23665db9.js';
 import { useStyle } from '@keg-hub/re-theme';
 import { ensureArr, pickKeys, noOpObj } from '@keg-hub/jsutils';
 import { g as getPlatform } from './getPlatform-95568099.js';

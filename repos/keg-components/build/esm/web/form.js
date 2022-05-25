@@ -1,6 +1,6 @@
 import { d as _objectWithoutProperties, e as _extends } from './_rollupPluginBabelHelpers-eca9940e.js';
 import React__default from 'react';
-import { V as View } from './view-86879139.js';
+import { V as View } from './view-23665db9.js';
 import { get } from '@keg-hub/jsutils';
 import '@keg-hub/re-theme/colors';
 import { useThemePath } from './useThemePath.js';

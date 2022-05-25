@@ -14,6 +14,8 @@ import '@keg-hub/re-theme';
 
 var KegText = function KegText(element) {
   var Text = StyleInjector(KegText$1(element), {
+    maxSelectors: 0,
+    kegComponent: true,
     className: "keg-".concat(element),
     displayName: capitalize(element)
   });

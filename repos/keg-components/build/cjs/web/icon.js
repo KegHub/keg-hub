@@ -6,7 +6,7 @@ var _rollupPluginBabelHelpers = require('./_rollupPluginBabelHelpers-d23df5c1.js
 var React = require('react');
 var reTheme = require('@keg-hub/re-theme');
 var jsutils = require('@keg-hub/jsutils');
-var view = require('./view-cd2faea4.js');
+var view = require('./view-3370300d.js');
 var renderFromType = require('./renderFromType.js');
 require('@keg-hub/re-theme/colors');
 var isValidComponent = require('./isValidComponent.js');

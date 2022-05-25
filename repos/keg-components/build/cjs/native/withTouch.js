@@ -4,7 +4,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var _rollupPluginBabelHelpers = require('./_rollupPluginBabelHelpers-d23df5c1.js');
 var React = require('react');
-var touchable = require('./touchable-62a31fcc.js');
+var touchable = require('./touchable-ab081983.js');
 var reTheme = require('@keg-hub/re-theme');
 var jsutils = require('@keg-hub/jsutils');
 require('./touchable.js');

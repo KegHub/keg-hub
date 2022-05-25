@@ -3,7 +3,7 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 var _rollupPluginBabelHelpers = require('./_rollupPluginBabelHelpers-d23df5c1.js');
-var view = require('./view-cd2faea4.js');
+var view = require('./view-3370300d.js');
 var loading = require('./loading.js');
 var jsutils = require('@keg-hub/jsutils');
 var image = require('./image-1297b42f.js');
@@ -22,10 +22,10 @@ require('./useClassName-75c55cf8.js');
 require('./updateClassNames.js');
 require('./ensureClassArray.js');
 require('./handleRefUpdate.js');
-require('./indicator.wrapper-1eeb3eb7.js');
+require('./indicator.wrapper-a9a1aa52.js');
 require('./getPlatform-ec53cd5e.js');
 require('./text.js');
-require('./kegText-e14b3c1f.js');
+require('./kegText-c47b7b6e.js');
 require('./kegText.native-d2f2e1a3.js');
 require('./useTextAccessibility.js');
 require('./useTextStyles.js');
@@ -37,6 +37,8 @@ var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 
 var _excluded = ["alt", "className", "children", "onClick", "onPress", "src", "source", "styles", "type", "themePath", "useLoading"];
 var KegImage = styleInjector.StyleInjector(image.Image, {
+  maxSelectors: 0,
+  kegComponent: true,
   displayName: 'Image',
   className: 'keg-image'
 });

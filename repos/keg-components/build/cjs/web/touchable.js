@@ -57,6 +57,8 @@ var Touchable$1 = React__default["default"].forwardRef(function (props, ref) {
 });
 
 var Touchable = styleInjector.StyleInjector(Touchable$1, {
+  maxSelectors: 0,
+  kegComponent: true,
   displayName: 'Touchable',
   className: 'keg-touchable',
   important: ['transitionDuration', 'WebkitTransitionDuration']

@@ -7,7 +7,7 @@ import '@keg-hub/re-theme/colors';
 import '@keg-hub/re-theme';
 import './useThemeWithHeight.js';
 import 'react-native';
-import { T as Touchable } from './touchable-7c6e36c1.js';
+import { T as Touchable } from './touchable-07dd63ff.js';
 import './view.native-16eca0a6.js';
 import './useClassName.native-32e8827d.js';
 import './renderFromType.js';

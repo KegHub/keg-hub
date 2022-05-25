@@ -1,6 +1,6 @@
 import { d as _objectWithoutProperties, e as _extends, _ as _objectSpread2 } from './_rollupPluginBabelHelpers-eca9940e.js';
-import { V as View } from './view-86879139.js';
-import { C as CheckboxWrapper, a as Check } from './checkbox.wrapper-925e23f8.js';
+import { V as View } from './view-23665db9.js';
+import { C as CheckboxWrapper, a as Check } from './checkbox.wrapper-a93c2d4b.js';
 import React__default, { forwardRef } from 'react';
 import { noPropObj } from '@keg-hub/jsutils';
 import { useStyle } from '@keg-hub/re-theme';
@@ -12,11 +12,11 @@ import './useClassName-52067a95.js';
 import './updateClassNames.js';
 import './ensureClassArray.js';
 import './handleRefUpdate.js';
-import './svgIcon-8b45e2a3.js';
+import './svgIcon-389f9d70.js';
 import './svgIcon.native-e0c41d6c.js';
 import 'react-native-svg-web';
 import './caption.js';
-import './kegText-d18b7a12.js';
+import './kegText-1ab95fab.js';
 import './kegText.native-ba7d1c9c.js';
 import './useTextAccessibility.js';
 import './useTextStyles.js';
@@ -68,6 +68,8 @@ var checkBoxStyles = {
   }
 };
 var Input = StyleInjector(Input$1, {
+  maxSelectors: 0,
+  kegComponent: true,
   displayName: 'Checkbox',
   className: 'keg-checkbox'
 });

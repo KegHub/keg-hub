@@ -4,7 +4,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var _rollupPluginBabelHelpers = require('./_rollupPluginBabelHelpers-d23df5c1.js');
 var React = require('react');
-var view = require('./view-cd2faea4.js');
+var view = require('./view-3370300d.js');
 var select = require('./select-d72ff0ce.js');
 require('@keg-hub/jsutils');
 var getInputValue = require('./getInputValue.js');
@@ -15,9 +15,9 @@ require('./useThemeWithHeight.js');
 require('react-native-web');
 var useClassName = require('./useClassName-75c55cf8.js');
 var useThemeTypeAsClass = require('./useThemeTypeAsClass-43ee56b4.js');
-require('./svgIcon-f66eed54.js');
-var chevronDown = require('./chevronDown-a11a32c6.js');
-var icon = require('./icon-24e9ba81.js');
+require('./svgIcon-ef322a2a.js');
+var chevronDown = require('./chevronDown-67e5a61e.js');
+var icon = require('./icon-96c32b96.js');
 var styleInjector = require('@keg-hub/re-theme/styleInjector');
 require('./view.native-a1d03d45.js');
 require('./validateFunctions.js');
@@ -38,6 +38,8 @@ var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 
 var _excluded = ["className", "children", "disabled", "readOnly", "onChange", "onValueChange", "style", "styles", "type", "themePath", "value"];
 var KegSelect = styleInjector.StyleInjector(select.Select, {
+  maxSelectors: 0,
+  kegComponent: true,
   displayName: 'Select',
   className: 'keg-select'
 });

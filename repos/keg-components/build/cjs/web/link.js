@@ -5,7 +5,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 var _rollupPluginBabelHelpers = require('./_rollupPluginBabelHelpers-d23df5c1.js');
 var React = require('react');
 var link_wrapper = require('./link.wrapper-47b6721c.js');
-var kegText = require('./kegText-e14b3c1f.js');
+var kegText = require('./kegText-c47b7b6e.js');
 var touchable = require('./touchable.js');
 var getPlatform = require('./getPlatform-ec53cd5e.js');
 var useClassList = require('./useClassList-89a8dbd4.js');

@@ -6,8 +6,8 @@ var _rollupPluginBabelHelpers = require('./_rollupPluginBabelHelpers-d23df5c1.js
 var React = require('react');
 var reTheme = require('@keg-hub/re-theme');
 var text = require('./text.js');
-var checkbox_wrapper = require('./checkbox.wrapper-e409fab6.js');
-require('./kegText-d4479e6a.js');
+var checkbox_wrapper = require('./checkbox.wrapper-2b647134.js');
+require('./kegText-c5d9c008.js');
 require('@keg-hub/jsutils');
 require('./kegText.js');
 require('./useClassName.native-3d1a229b.js');

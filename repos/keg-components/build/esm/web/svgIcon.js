@@ -33,6 +33,8 @@ var useColor = function useColor(fill, stroke, color, border, style, theme) {
   }, [fill, stroke, color, border, style]);
 };
 var SvgIconInject = StyleInjector(KegSvgIcon, {
+  maxSelectors: 0,
+  kegComponent: true,
   displayName: 'SvgIcon',
   className: 'keg-svg-icon'
 });

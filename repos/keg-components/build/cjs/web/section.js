@@ -5,7 +5,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 var _rollupPluginBabelHelpers = require('./_rollupPluginBabelHelpers-d23df5c1.js');
 var React = require('react');
 var reTheme = require('@keg-hub/re-theme');
-var view = require('./view-cd2faea4.js');
+var view = require('./view-3370300d.js');
 var useClassList = require('./useClassList-89a8dbd4.js');
 require('./view.native-a1d03d45.js');
 require('react-native-web');

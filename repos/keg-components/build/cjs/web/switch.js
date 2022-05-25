@@ -3,7 +3,7 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 var _rollupPluginBabelHelpers = require('./_rollupPluginBabelHelpers-d23df5c1.js');
-var view = require('./view-cd2faea4.js');
+var view = require('./view-3370300d.js');
 require('./caption.js');
 require('./h1.js');
 require('./h2.js');
@@ -33,7 +33,7 @@ require('./useClassName-75c55cf8.js');
 require('./updateClassNames.js');
 require('./ensureClassArray.js');
 require('./handleRefUpdate.js');
-require('./kegText-e14b3c1f.js');
+require('./kegText-c47b7b6e.js');
 require('./kegText.native-d2f2e1a3.js');
 require('./useTextAccessibility.js');
 require('./useTextStyles.js');
@@ -47,6 +47,8 @@ var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 
 var _excluded = ["className", "checked", "children", "elType", "disabled", "LeftComponent", "close", "onChange", "onValueChange", "RightComponent", "styles", "SwitchComponent", "setCheckedSetter", "type", "themePath", "thumbColor", "trackColor", "value"];
 var KegSwitch = styleInjector.StyleInjector(_switch.Switch, {
+  maxSelectors: 0,
+  kegComponent: true,
   displayName: 'Switch',
   className: 'keg-switch'
 });

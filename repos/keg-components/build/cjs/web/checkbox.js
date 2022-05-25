@@ -3,8 +3,8 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 var _rollupPluginBabelHelpers = require('./_rollupPluginBabelHelpers-d23df5c1.js');
-var view = require('./view-cd2faea4.js');
-var checkbox_wrapper = require('./checkbox.wrapper-c96373fe.js');
+var view = require('./view-3370300d.js');
+var checkbox_wrapper = require('./checkbox.wrapper-90b47d6a.js');
 var React = require('react');
 var jsutils = require('@keg-hub/jsutils');
 var reTheme = require('@keg-hub/re-theme');
@@ -16,11 +16,11 @@ require('./useClassName-75c55cf8.js');
 require('./updateClassNames.js');
 require('./ensureClassArray.js');
 require('./handleRefUpdate.js');
-require('./svgIcon-f66eed54.js');
+require('./svgIcon-ef322a2a.js');
 require('./svgIcon.native-48f0d173.js');
 require('react-native-svg-web');
 require('./caption.js');
-require('./kegText-e14b3c1f.js');
+require('./kegText-c47b7b6e.js');
 require('./kegText.native-d2f2e1a3.js');
 require('./useTextAccessibility.js');
 require('./useTextStyles.js');
@@ -76,6 +76,8 @@ var checkBoxStyles = {
   }
 };
 var Input = styleInjector.StyleInjector(input_web.Input, {
+  maxSelectors: 0,
+  kegComponent: true,
   displayName: 'Checkbox',
   className: 'keg-checkbox'
 });

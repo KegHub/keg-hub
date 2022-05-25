@@ -3,7 +3,7 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 var React = require('react');
-var kegText = require('./kegText-d4479e6a.js');
+var kegText = require('./kegText-c5d9c008.js');
 require('./_rollupPluginBabelHelpers-d23df5c1.js');
 require('@keg-hub/jsutils');
 require('./kegText.js');
