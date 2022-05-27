@@ -1,12 +1,14 @@
 import { useMemo } from 'react'
 import { addStylesToDom, getSelector, filterRules } from './injectHelpers'
 import {
-  eitherArr,
-  hyphenator,
   isArr,
   isObj,
   flatArr,
   noOpObj,
+  deepMerge,
+  eitherArr,
+  hyphenator,
+  isEmptyColl,
 } from '@keg-hub/jsutils'
 import { useTheme } from '../hooks/useTheme'
 import {
@@ -47,7 +49,7 @@ export const createBlock = (style, config) => {
     .sort()
     .join(';')
 
-  return `{${cssString}}`
+  return cssString.length ? `{${cssString};}` : `{}`
 }
 
 /**
@@ -57,26 +59,22 @@ export const createBlock = (style, config) => {
  * @returns {string} - Style rules Object converted into a style rules string
  */
 export const convertToCss = (style, config) => {
-  const stlArr = flatArr(eitherArr(style, [style]))
+  const stl = deepMerge(...flatArr(eitherArr(style, [style])))
+  const rules = { blocks: [], filtered: {} }
 
-  return stlArr.reduce(
-    (rules, stl) => {
-      if (!isObj(stl)) return rules
+  if (!isObj(stl)) return rules
 
-      const { style: cleanStyle, filtered } = filterRules(stl, config?.filter)
-      Object.assign(rules.filtered, filtered)
+  const { style: cleanStyle, filtered } = filterRules(stl, config?.filter)
+  Object.assign(rules.filtered, filtered)
 
-      // If all rules were filtered, then skip compiling them
-      if (!cleanStyle) return rules
+  // If all rules were filtered, then skip compiling them
+  if (!cleanStyle || isEmptyColl(cleanStyle)) return rules
 
-      const flat = flattenStyle(cleanStyle)
-      const compiled = createCompileableStyle(flat)
-      rules.blocks.push(createBlock(compiled, config))
+  const flat = flattenStyle(cleanStyle)
+  const compiled = createCompileableStyle(flat)
+  rules.blocks.push(createBlock(compiled, config))
 
-      return rules
-    },
-    { blocks: [], filtered: {} }
-  )
+  return rules
 }
 
 /**
@@ -111,19 +109,17 @@ export const useStyleTag = (style, className = '', config) => {
       config.maxSelectors
     )
 
+    const css = { all: '', rules: [] }
+
     // Adds the css selector ( className ) to each block
-    const css = blocks.reduce(
-      (css, block) => {
+    blocks.length &&
+      blocks.map((block) => {
         const fullBlock = `${selector}${block}`
         css.all += fullBlock
         css.rules.push(fullBlock)
+      })
 
-        return css
-      },
-      { all: '', rules: [] }
-    )
-
-    addStylesToDom(selector, css, themeKey)
+    css.all && addStylesToDom(selector, css)
 
     return {
       css,

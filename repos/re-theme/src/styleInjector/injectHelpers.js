@@ -108,11 +108,11 @@ const formatSelectors = (hashClass, classNames, prefix, maxSelectors) => {
     .reverse()
     .slice(0, selectorAmount)
     .sort()
+    .reduce((acc, sel) => sel ? acc.concat(sel.split(` `)) : acc, [])
 
   return {
     selector: `.${selectors.concat([hashClass]).join('.')}`.trim(),
-    classNames: classNames.concat([hashClass]).join(' ')
-      .trim(),
+    classNames: classNames.concat([hashClass]).join(' ').trim(),
   }
 }
 
@@ -151,13 +151,18 @@ export const getSelector = (className, cssString, prefix, maxSelectors) => {
  */
 export const addStylesToDom = (selector, css) => {
   // skip if these styles are already inserted
-  if (!domAccess || !css || selectorExists(selector)) return
+  if (!domAccess || !css || !css.all || selectorExists(selector)) return
 
-  // Cache the selector with the size
-  // So next time we can look up if the size changed
-  selectorCache.add(selector)
-  const KegSheet = getKegSheet()
-  KegSheet.sheet.insertRule(`@media all {${css.all}}`)
+  try {
+    // Cache the selector with the size
+    // So next time we can look up if the size changed
+    selectorCache.add(selector)
+    const KegSheet = getKegSheet()
+    KegSheet.sheet.insertRule(css.all)
+  }
+  catch(err){
+    console.error(err)
+  }
 }
 
 /**
