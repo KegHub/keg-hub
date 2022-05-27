@@ -24,9 +24,9 @@ var transition = function transition() {
     prop = isArr(prop) ? prop : [prop];
     amount = isNum(amount) && "".concat(amount, "s") || amount;
     return {
-      transitionProperty: prop.map(trainCase),
       transitionDuration: amount,
-      transitionTimingFunction: type
+      transitionTimingFunction: type,
+      transitionProperty: prop.map(trainCase).join(' ')
     };
   };
   __transition.move = function () {

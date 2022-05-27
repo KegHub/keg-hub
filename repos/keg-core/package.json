@@ -2,7 +2,7 @@
   "name": "@keg-hub/keg-core",
   "main": "node_modules/expo/AppEntry.js",
   "description": "A framework for developing cross-platform react apps, that is preconfigured to target both web, desktop, and mobile architectures.",
-  "version": "10.0.1",
+  "version": "10.1.0",
   "publishConfig": {
     "access": "public"
   },
@@ -61,8 +61,8 @@
     "@babel/runtime": "7.16.7",
     "@expo/webpack-config": "0.16.15",
     "@keg-hub/jsutils": "9.0.3",
-    "@keg-hub/keg-components": "10.0.2",
-    "@keg-hub/re-theme": "10.0.1",
+    "@keg-hub/keg-components": "10.1.0",
+    "@keg-hub/re-theme": "10.1.0",
     "@keg-hub/tap-resolver": "9.1.1",
     "@testing-library/react-hooks": "7.0.2",
     "app-root-path": "3.0.0",
@@ -112,8 +112,8 @@
   },
   "resolutions": {
     "@keg-hub/jsutils": "9.0.3",
-    "@keg-hub/keg-components": "10.0.2",
-    "@keg-hub/re-theme": "10.0.1",
+    "@keg-hub/keg-components": "10.1.0",
+    "@keg-hub/re-theme": "10.1.0",
     "@keg-hub/tap-resolver": "9.1.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
