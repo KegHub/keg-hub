@@ -108,7 +108,10 @@ const formatSelectors = (hashClass, classNames, prefix, maxSelectors) => {
     .reverse()
     .slice(0, selectorAmount)
     .sort()
-    .reduce((acc, sel) => sel ? acc.concat(sel.split(` `)) : acc, [])
+    .reduce((acc, sel) => {
+      sel && acc.push(...sel.split(` `))
+      return acc
+    }, [])
 
   return {
     selector: `.${selectors.concat([hashClass]).join('.')}`.trim(),
