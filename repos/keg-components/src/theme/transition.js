@@ -11,9 +11,9 @@ export const transition = (config = noOpObj) => {
     amount = (isNum(amount) && `${amount}s`) || amount
 
     return {
-      transitionProperty: prop.map(trainCase),
       transitionDuration: amount,
       transitionTimingFunction: type,
+      transitionProperty: prop.map(trainCase).join(' '),
     }
   }
 

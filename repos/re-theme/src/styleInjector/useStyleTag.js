@@ -1,4 +1,5 @@
 import { useMemo } from 'react'
+import { flattenStyle } from './flattenStyle'
 import { addStylesToDom, getSelector, filterRules } from './injectHelpers'
 import {
   isArr,
@@ -13,7 +14,6 @@ import {
 import { useTheme } from '../hooks/useTheme'
 import {
   prefixStyles,
-  flattenStyle,
   createReactDOMStyle,
   createCompileableStyle,
 } from './reactNativeWeb'
@@ -65,7 +65,7 @@ export const convertToCss = (style, config) => {
   if (!isObj(stl)) return rules
 
   const { style: cleanStyle, filtered } = filterRules(stl, config?.filter)
-  Object.assign(rules.filtered, filtered)
+  rules.filtered = filtered
 
   // If all rules were filtered, then skip compiling them
   if (!cleanStyle || isEmptyColl(cleanStyle)) return rules
@@ -99,7 +99,15 @@ export const useStyleTag = (style, className = '', config) => {
   const themeKey = theme?.RTMeta?.key
 
   return useMemo(() => {
+    const css = { all: '', rules: [] }
     const { blocks, filtered } = convertToCss(style, config)
+
+    if(!blocks.length)
+      return {
+        css,
+        filteredStyle: filtered,
+        classNames: eitherArr(className, [className]).join(' '),
+      }
 
     // Create a unique selector based on the className and built blocks
     const { selector, classNames } = getSelector(
@@ -109,10 +117,8 @@ export const useStyleTag = (style, className = '', config) => {
       config.maxSelectors
     )
 
-    const css = { all: '', rules: [] }
-
     // Adds the css selector ( className ) to each block
-    blocks.length &&
+    selector &&
       blocks.map((block) => {
         const fullBlock = `${selector}${block}`
         css.all += fullBlock
