@@ -13,7 +13,9 @@ describe('useStyleTag', () => {
     })
 
     it(`should convert a style object into a style string`, () => {
-      expect(createBlock({ color: '#111' })).toBe(`{color:rgba(17,17,17,1.00);}`)
+      expect(createBlock({ color: '#111' })).toBe(
+        `{color:rgba(17,17,17,1.00);}`
+      )
     })
 
     it(`should convert with multiple values`, () => {

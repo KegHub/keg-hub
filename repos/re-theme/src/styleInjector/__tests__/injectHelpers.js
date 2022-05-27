@@ -136,7 +136,7 @@ describe('injectHelpers', () => {
     })
 
     it('should append the styles to the Dom', () => {
-      addStylesToDom(`.test-styles`, {all: `.test-styles{ color: blue; }`})
+      addStylesToDom(`.test-styles`, { all: `.test-styles{ color: blue; }` })
       expect(KegStyleSheet.sheet.insertRule).toHaveBeenCalled()
     })
 

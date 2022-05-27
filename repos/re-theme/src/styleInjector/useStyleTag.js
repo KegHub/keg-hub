@@ -102,7 +102,7 @@ export const useStyleTag = (style, className = '', config) => {
     const css = { all: '', rules: [] }
     const { blocks, filtered } = convertToCss(style, config)
 
-    if(!blocks.length)
+    if (!blocks.length)
       return {
         css,
         filteredStyle: filtered,
@@ -119,7 +119,7 @@ export const useStyleTag = (style, className = '', config) => {
 
     // Adds the css selector ( className ) to each block
     selector &&
-      blocks.map((block) => {
+      blocks.map(block => {
         const fullBlock = `${selector}${block}`
         css.all += fullBlock
         css.rules.push(fullBlock)

@@ -7,8 +7,4 @@ import prefixStyles from 'react-native-web/dist/modules/prefixStyles'
 import createReactDOMStyle from 'react-native-web/dist/exports/StyleSheet/createReactDOMStyle'
 import createCompileableStyle from 'react-native-web/dist/exports/StyleSheet/createCompileableStyle'
 
-export {
-  prefixStyles,
-  createReactDOMStyle,
-  createCompileableStyle,
-}
+export { prefixStyles, createReactDOMStyle, createCompileableStyle }
