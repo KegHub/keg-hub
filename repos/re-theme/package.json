@@ -1,6 +1,6 @@
 {
   "name": "@keg-hub/re-theme",
-  "version": "10.0.1",
+  "version": "10.1.0",
   "description": "Simple Theme switcher / builder for React and React Native",
   "main": "build/cjs",
   "module": "build/esm",
