@@ -13,18 +13,18 @@ describe('useStyleTag', () => {
     })
 
     it(`should convert a style object into a style string`, () => {
-      expect(createBlock({ color: '#111' })).toBe(`{color:rgba(17,17,17,1.00)}`)
+      expect(createBlock({ color: '#111' })).toBe(`{color:rgba(17,17,17,1.00);}`)
     })
 
     it(`should convert with multiple values`, () => {
       expect(createBlock({ color: '#111', height: '50%' })).toBe(
-        `{color:rgba(17,17,17,1.00);height:50%}`
+        `{color:rgba(17,17,17,1.00);height:50%;}`
       )
     })
 
     it(`should convert camel case to train case`, () => {
       expect(createBlock({ backgroundColor: '#111', fontSize: 12 })).toBe(
-        `{background-color:rgba(17,17,17,1.00);font-size:12px}`
+        `{background-color:rgba(17,17,17,1.00);font-size:12px;}`
       )
     })
 
@@ -51,7 +51,7 @@ describe('useStyleTag', () => {
 
     it(`should add the convert styles to the blocks array`, () => {
       const styles = convertToCss({ color: '#111', height: '50%' })
-      expect(styles.blocks[0]).toBe(`{color:rgba(17,17,17,1.00);height:50%}`)
+      expect(styles.blocks[0]).toBe(`{color:rgba(17,17,17,1.00);height:50%;}`)
     })
 
     it(`should accept styles as an array and convert each one to a string`, () => {
@@ -59,9 +59,9 @@ describe('useStyleTag', () => {
         { color: '#111', height: '50%' },
         { backgroundColor: '#111', fontSize: 12 },
       ])
-      expect(styles.blocks[0]).toBe(`{color:rgba(17,17,17,1.00);height:50%}`)
-      expect(styles.blocks[1]).toBe(
-        `{background-color:rgba(17,17,17,1.00);font-size:12px}`
+
+      expect(styles.blocks[0]).toBe(
+        `{background-color:rgba(17,17,17,1.00);color:rgba(17,17,17,1.00);font-size:12px;height:50%;}`
       )
     })
 
@@ -71,9 +71,8 @@ describe('useStyleTag', () => {
         { color: '#111', height: '50%' },
         { backgroundColor: '#111', fontSize: 12 },
       ])
-      expect(styles.blocks[0]).toBe(`{color:rgba(17,17,17,1.00);height:50%}`)
-      expect(styles.blocks[1]).toBe(
-        `{background-color:rgba(17,17,17,1.00);font-size:12px}`
+      expect(styles.blocks[0]).toBe(
+        `{background-color:rgba(17,17,17,1.00);color:rgba(17,17,17,1.00);font-size:12px;height:50%;}`
       )
     })
   })

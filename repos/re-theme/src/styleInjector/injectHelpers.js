@@ -8,8 +8,8 @@ import {
   exists,
   noPropArr,
   hashString,
-  hasDomAccess,
   splitByKeys,
+  hasDomAccess,
 } from '@keg-hub/jsutils'
 
 /**
@@ -64,25 +64,37 @@ export const filterRules = (style, filter) => {
     ? ruleOverrides.filter.concat(filter)
     : ruleOverrides.filter
 
-  // Ensure the object is a style object, an not multi-layered object
-  const hasSubStyles = Boolean(
-    Object.entries(style).filter(
-      ([ key, val ]) =>
-        /**
-         * Some style rules are allowed to be object
-         * Those rules are defined in the allowedStyleObject Array
-         * So if the value is an object, but not in the allowedStyleObject Array
-         * Then it is assumed to be a multi-layered style object
-         * In this case, we don't want to process these styles
-         * They are skipped and passed on to the component
-         * @example
-         * const styles = {content: {item: {color: '#ffffff'}}}
-         */
-        isObj(val) && !ruleOverrides.allowedStyleObject.includes(key)
-    ).length
-  )
+    const primitives = {}
+    let subStyleProps = false
+    // Ensure the object is a style object, an not multi-layered object
+    // Split styles from multi-layer style object
+    const subStyleObjs = Object.entries(style).reduce((acc, [ key, val ]) => {
+    /**
+      * Some style rules are allowed to be object
+      * Those rules are defined in the allowedStyleObject Array
+      * So if the value is an object, but not in the allowedStyleObject Array
+      * Then it is assumed to be a multi-layered style object
+      * In this case, we don't want to process these styles
+      * They are skipped and passed on to the component
+      * @example
+      * const styles = {content: {item: {color: '#ffffff'}}}
+      */
+      if((!isObj(val) && !isArr(val)) || ruleOverrides.allowedStyleObject.includes(key)){
+        primitives[key] = val
+      }
+      else {
+        subStyleProps = true
+        acc[key] = val
+      }
 
-  if (hasSubStyles) return { filtered: style }
+      return acc
+    }, {})
+
+  if(subStyleProps)
+    return {
+      style: primitives,
+      filtered: subStyleObjs,
+    }
 
   const [ filtered, keep ] = splitByKeys(style, toFilter)
 
@@ -108,11 +120,14 @@ const formatSelectors = (hashClass, classNames, prefix, maxSelectors) => {
     .reverse()
     .slice(0, selectorAmount)
     .sort()
+    .reduce((acc, sel) => {
+      sel && acc.push(...sel.split(` `))
+      return acc
+    }, [])
 
   return {
     selector: `.${selectors.concat([hashClass]).join('.')}`.trim(),
-    classNames: classNames.concat([hashClass]).join(' ')
-      .trim(),
+    classNames: classNames.concat([hashClass]).join(' ').trim(),
   }
 }
 
@@ -151,13 +166,18 @@ export const getSelector = (className, cssString, prefix, maxSelectors) => {
  */
 export const addStylesToDom = (selector, css) => {
   // skip if these styles are already inserted
-  if (!domAccess || !css || selectorExists(selector)) return
+  if (!domAccess || !css || !css.all || selectorExists(selector)) return
 
-  // Cache the selector with the size
-  // So next time we can look up if the size changed
-  selectorCache.add(selector)
-  const KegSheet = getKegSheet()
-  KegSheet.sheet.insertRule(`@media all {${css.all}}`)
+  try {
+    // Cache the selector with the size
+    // So next time we can look up if the size changed
+    selectorCache.add(selector)
+    const KegSheet = getKegSheet()
+    KegSheet.sheet.insertRule(css.all)
+  }
+  catch(err){
+    console.error(err)
+  }
 }
 
 /**

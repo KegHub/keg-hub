@@ -86,8 +86,6 @@ const shared = (platform, ext) => ({
     'jsutils',
     '@keg-hub/jsutils',
     'react-native-web/dist/modules/prefixStyles',
-    'react-native-web/dist/modules/flattenArray',
-    'react-native-web/dist/exports/StyleSheet/flattenStyle',
     'react-native-web/dist/exports/StyleSheet/createReactDOMStyle',
     'react-native-web/dist/exports/StyleSheet/createCompileableStyle',
   ],

@@ -136,15 +136,17 @@ describe('injectHelpers', () => {
     })
 
     it('should append the styles to the Dom', () => {
-      addStylesToDom(`.test-styles`, `.test-styles{ color: blue; }`)
+      addStylesToDom(`.test-styles`, {all: `.test-styles{ color: blue; }`})
       expect(KegStyleSheet.sheet.insertRule).toHaveBeenCalled()
     })
 
-    it('should append styles that have already been added', () => {
+    it('should NOT append styles that have already been added', () => {
+      KegStyleSheet.sheet.insertRule = jest.fn()
+
       addStylesToDom(`.dup-test`, { all: `.dup-test{ color: blue; }` })
       addStylesToDom(`.dup-test`, { all: `.dup-test{ color: blue; }` })
 
-      expect(KegStyleSheet.sheet.insertRule).toHaveBeenCalledTimes(2)
+      expect(KegStyleSheet.sheet.insertRule).toHaveBeenCalledTimes(1)
     })
 
     it('should return undefined if no css is passed in', () => {
