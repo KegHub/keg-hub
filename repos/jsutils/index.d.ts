@@ -942,6 +942,13 @@ function throttle(func: any, wait?: number): (...params: any[]) => any;
 function throttleLast(func: (...params: any[]) => any, cb: (...params: any[]) => any, wait?: number): (...params: any[]) => any;
 
 /**
+ * <p>Throws an Error from the passed in error</p>
+ * @param {Object|string} error - The Error message or Object to throw
+ * @throws
+ */
+function throwError(error:string|Error):void
+
+/**
  * <p>Executes and times the function <code>fn</code>.</p>
  * @example
  * const [ result, executionTime ] = timedRun(() => http.get(url)))
