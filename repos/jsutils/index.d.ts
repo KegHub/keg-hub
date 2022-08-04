@@ -38,6 +38,7 @@ function areSetEqual(arr: any[], otherArr: any[]): void;
  * <li>copy of passed in array</li>
  * </ul>
  */
+function cloneArr<T=any>(arr: T[]): T[];
 function cloneArr(arr: any[]): any[];
 
 /**
@@ -57,6 +58,7 @@ function eitherArr(a?: any, b?: any): any;
  * @param val - <p>Value to check if its an array</p>
  * @returns <p>val if it's an array, or val in an array</p>
  */
+function ensureArr<T=any>(val: T[] | T): T[];
 function ensureArr(val: any[] | any): any[];
 
 /**
@@ -105,6 +107,11 @@ function findMin(arr: object[], propSelector: (prop:any) => any): void;
  * <li>Mutated original array now flattened, or a new flattened array based on options</li>
  * </ul>
  */
+function flatArr<T=any>(arr: any[], opts?: {
+    truthy: boolean;
+    exists: boolean;
+    mutate: boolean;
+}): T[];
 function flatArr(arr: any[], opts?: {
     truthy: boolean;
     exists: boolean;
@@ -139,6 +146,7 @@ function flatMap(arr: any[], mapFn: (current:any) => any): void;
  * <li>Flattened copy of passed in array arguments, with duplicates removed</li>
  * </ul>
  */
+function flatUnion<T=any>(...params: any[]): T[];
 function flatUnion(...params: any[]): any[];
 
 /**
@@ -156,7 +164,8 @@ function isArr(value: any): boolean;
 /**
  * <p>Returns a new array with the same elements as arr, excluding <code>count</code> elements beginning at index <code>startIndex</code></p>
  */
-function omitRange(arr: any[], startIndex: number, count: number): void;
+function omitRange<T=any[]>(arr: any[], startIndex: number, count: number): T[];
+function omitRange(arr: any[], startIndex: number, count: number): any[];
 
 /**
  * <p>Randomly selects values from a passed in array.</p>
@@ -169,6 +178,7 @@ function omitRange(arr: any[], startIndex: number, count: number): void;
  * <li>randomly sorted array</li>
  * </ul>
  */
+function randomArr<T=any>(arr: any[], amount?: number): T[];
 function randomArr(arr: any[], amount?: number): any[];
 
 /**
@@ -191,6 +201,7 @@ function randomizeArr(arr: any[]): any[];
  * @param arr - <p>array to remove duplicates from</p>
  * @returns <p>copy of passed in array, with duplicates removed</p>
  */
+function uniqArrByReference<T=any>(arr: any[]): T[];
 function uniqArrByReference(arr: any[]): any[];
 
 /**
@@ -205,6 +216,7 @@ function uniqArrByReference(arr: any[]): any[];
  * @param selector - <p>optional function to specify the property uniqArr should use to check if another element exists</p>
  * @returns <p>copy of passed in array, with duplicates removed</p>
  */
+function uniqArr<T=any>(arr: any[], selector: (element: any) => any): T[];
 function uniqArr(arr: any[], selector: (element: any) => any): any[];
 
 /**
@@ -215,7 +227,7 @@ function uniqArr(arr: any[], selector: (element: any) => any): any[];
  * @param val - <p>value to convert to string boolean</p>
  * @returns <p>'true' || 'false' based on passed in value</p>
  */
-function convertToStrBool(val: any): string;
+function convertToStrBool(val: any): 'true'|'false';
 
 /**
  * <p>Checks is value is a boolean.</p>
@@ -304,6 +316,8 @@ function cleanColl(coll: Record<any, any>|any[], recursive?: boolean): any | any
  * <li>Cloned Object</li>
  * </ul>
  */
+function deepClone<T=Record<any, any>|any[]>(obj: T): T;
+function deepClone<T=Record<any, any>|any[]>(obj: any): T;
 function deepClone(obj: Record<any, any>|any[]): Record<any, any>|any[];
 
 /**
@@ -340,6 +354,8 @@ function deepEqual(a: Record<any, any>|any[], b: Record<any, any>|any[]): boolea
  * <li>The final value found from the path</li>
  * </ul>
  */
+function get<T=any>(obj: Record<any, any>|any[], path: string | string[], fallback?: T): T;
+function get<T=any>(obj: Record<any, any>|any[], path: string | string[], fallback?: any): T|any;
 function get(obj: Record<any, any>|any[], path: string | string[], fallback?: any): any;
 
 /**
@@ -384,6 +400,7 @@ function isEmptyColl(obj: any): boolean;
  * @param coll - <p>Collection to loop over</p>
  * @returns <p>returns the same type of collection passed in</p>
  */
+function mapColl<T=Record<any, any>|any[]>(coll: Record<any, any>|any[]): T;
 function mapColl(coll: Record<any, any>|any[]): Record<any, any>|any[];
 
 /**
@@ -423,6 +440,7 @@ function mapFind(coll: Record<any, any>|any[], mapper: (...params: any[]) => any
  * <li>Last returned data from the loop</li>
  * </ul>
  */
+function reduceColl<T=any>(obj: Record<any, any>|any[], cb: (key:string, value:any, coll:Record<any, any>|any[], data:any) => any, reduce?: any): T;
 function reduceColl(obj: Record<any, any>|any[], cb: (key:string, value:any, coll:Record<any, any>|any[], data:any) => any, reduce?: any): any;
 
 /**
@@ -487,7 +505,7 @@ function set(obj: Record<any, any>|any[], path: string | string[], finalValue: a
  * <li>true or false if the objects keys values are equal</li>
  * </ul>
  */
-function shallowEqual(col1: Record<any, any>|any[], col2: Record<any, any>|any[], path: string|string[]): boolean;
+function shallowEqual(col1: Record<any, any>|any[], col2: Record<any, any>|any[], path?: string|string[]): boolean;
 
 /**
  * <p>Removes a path from an object.</p>
@@ -518,6 +536,7 @@ function unset(obj: Record<any, any>|any[], path: string|string[]): void;
  * @param val2 - <p>return if passed in check method returns false</p>
  * @param check - <p>called to determine which value to return</p>
  */
+function either<T=any>(val1?: any, val2?: any, check?: (v1:any, v2:any) => any): T;
 function either(val1?: any, val2?: any, check?: (v1:any, v2:any) => any): any;
 
 /**
@@ -617,7 +636,8 @@ const noOpArr: [];
  * @param val - <p>value to convert</p>
  * @returns <p>converted value || string if can't convert</p>
  */
-function strToType(val: any): any | string;
+function strToType<T=any>(val: any): T;
+function strToType(val: any): any;
 
 /**
  * <p>Gets the type of the passed in val.</p>
@@ -678,7 +698,9 @@ function applyToFunc(item: any, expression: any): void;
  * <li>whatever the passed in method returns</li>
  * </ul>
  */
-function checkCall(method: (...params: any[]) => any, params: any): any;
+function checkCall<T=any>(method: <M=any>(...params: any[]) => M, ...params:any[]): T;
+function checkCall<T=any>(method: (...params: any[]) => any, ...params:any[]): T;
+function checkCall(method: (...params: any[]) => any, ...params:any[]): any;
 
 /**
  * <p>Clones a function using the Function constructor and calling toString on the passed in function</p>
@@ -689,6 +711,7 @@ function checkCall(method: (...params: any[]) => any, params: any): any;
  * @param func - <p>function to clone</p>
  * @returns <p>cloned function</p>
  */
+function cloneFunc<T=any>(func: (...params: any[]) => any): T;
 function cloneFunc(func: (...params: any[]) => any): any;
 
 /**
@@ -766,6 +789,7 @@ function hasDomAccess(): boolean;
  * <p>A function that simply returns its input</p>
  * @returns <p>the input</p>
  */
+function identity<T=any>(x: T): T;
 function identity(x: any): any;
 
 /**
@@ -803,6 +827,7 @@ function isOrderable(x: any): boolean;
  * <li>Slot 1 =&gt; error, Slot 2 =&gt; response from promise</li>
  * </ul>
  */
+function limbo<T=any>(promise: Promise<any>): Promise<[err?:Error, response?:T]>;
 function limbo(promise: Promise<any>): Promise<[err?:Error, response?:any]>;
 
 /**
@@ -942,6 +967,13 @@ function throttle(func: any, wait?: number): (...params: any[]) => any;
 function throttleLast(func: (...params: any[]) => any, cb: (...params: any[]) => any, wait?: number): (...params: any[]) => any;
 
 /**
+ * <p>Throws an Error from the passed in error</p>
+ * @param {Object|string} error - The Error message or Object to throw
+ * @throws
+ */
+function throwError(error:string|Error):void
+
+/**
  * <p>Executes and times the function <code>fn</code>.</p>
  * @example
  * const [ result, executionTime ] = timedRun(() => http.get(url)))
@@ -977,7 +1009,14 @@ function uuid(start?: number): string;
  * <li>Resolves to the response from onFinish</li>
  * </ul>
  */
-function waitForIt(): Promise<any>;
+type TWait = {
+    check: (...params:any[]) => boolean,
+    onFinish: (...params:any[]) => any,
+    amount?:number,
+    wait?:number,
+    total?:number
+}
+function waitForIt(waitArgs:TWait, ...params:any[]): Promise<any>;
 
 /**
  * <p>Loop over the passed in ENVs, and add them to the current process
@@ -998,6 +1037,7 @@ function addToProcess(addEnvs: any, options: {
  * <li>Status of the found process</li>
  * </ul>
  */
+function findProc<T=any>(procName: string, opts: any): T;
 function findProc(procName: string, opts: any): any;
 
 /**
@@ -1328,6 +1368,7 @@ function clearObj(obj: Record<any, any>, filter?: string[]): void;
  * @param obj - <p>object to clone</p>
  * @returns <p>copy of original object</p>
  */
+function cloneJson<T=any>(obj: any): T;
 function cloneJson(obj: any): any;
 
 /**
@@ -1345,6 +1386,7 @@ function deepFreeze(obj: Record<any, any>): Record<any, any>;
  * <li>merged object or array</li>
  * </ul>
  */
+function deepMerge<T=any>(...sources: any[]): T;
 function deepMerge(...sources: any[]): Record<any, any> | any[];
 
 /**
@@ -1372,6 +1414,7 @@ function everyEntry(obj: Record<any, any>, predicate: (...params: any[]) => any,
  * <li>Object consisting of a subset of the entries from obj</li>
  * </ul>
  */
+function filterObj<T=Record<any, any>>(obj: Record<any, any>, predicate: (key:string, value:string) => boolean, logError?:boolean): T;
 function filterObj(obj: Record<any, any>, predicate: (key:string, value:string) => boolean, logError?:boolean): Record<any, any>;
 
 /**
@@ -1429,6 +1472,7 @@ function jsonEqual(one: any, two: any): boolean;
  * @param toUpperCase - <p>converts the key and value to uppercase</p>
  * @returns <p>built object</p>
  */
+function keyMap<T=Record<string, string>>(arr: string[], toUpperCase?: boolean): T;
 function keyMap(arr: string[], toUpperCase?: boolean): Record<string, string>;
 
 /**
@@ -1491,6 +1535,7 @@ function pickKeys(obj: Record<string, any>, keys: string[]): Record<string, any>
  * <li>updated object</li>
  * </ul>
  */
+function reduceObj<T=any>(obj: Record<string, any>, cb: (key: string, value: any, data: any) => any, start?:any): T;
 function reduceObj(obj: Record<string, any>, cb: (key: string, value: any, data: any) => any, start?:any): any;
 
 /**
@@ -1525,7 +1570,8 @@ function someEntry(obj: Record<string, any>, predicate: (key:string, value:strin
  * - Second object contains keys not matching keys of the keys argument</li>
  * </ul>
  */
-function splitByKeys(target: Record<string, any>, keys: string[]): Record<string, any>;
+function splitByKeys<T,S>(target: Record<string, any>, keys: string[]): [T, S];
+function splitByKeys(target: Record<string, any>, keys: string[]): [Record<string, any>, Record<string, any>];
 
 /**
  * <p>Converts an array or string into an object.</p>
@@ -1536,6 +1582,7 @@ function splitByKeys(target: Record<string, any>, keys: string[]): Record<string
  * <li>Converted object</li>
  * </ul>
  */
+function toObj<T=Record<string, any>>(val: string[]|string, divider?: string, split?: string): T;
 function toObj(val: string[]|string, divider?: string, split?: string): Record<string, any>;
 
 /**
@@ -1710,14 +1757,14 @@ function eitherStr(str1?: any, str2?: any): any;
  * @param index - <p>the exclusive ending index of the word to get</p>
  * @param delimiters - <p>optional array of strings that delimit the start of words. Defaults to the space character.</p>
  */
-function getWordEndingAt(text: string, index: number, delimiters?: string[]): void;
+function getWordEndingAt(text: string, index: number, delimiters?: string[]): string;
 
 /**
  * <p>Helper for <code>getWordStartingAt</code> that finds the
  * index of the exclusive end of the word, given the available
  * ending delimiters</p>
  */
-function getNearestDelimiterIndex(text: string, index: number, delimiters?: string[]): void;
+function getNearestDelimiterIndex(text: string, index: number, delimiters?: string[]): string;
 
 /**
  * <p>Gets the word in text starting at index</p>
@@ -1728,7 +1775,7 @@ function getNearestDelimiterIndex(text: string, index: number, delimiters?: stri
  * @param index - <p>the inclusive starting index of the word to get</p>
  * @param delimiters - <p>optional array of strings that delimit words. Defaults to the space character.</p>
  */
-function getWordStartingAt(text: string, index: number, delimiters?: string[]): void;
+function getWordStartingAt(text: string, index: number, delimiters?: string[]): string;
 
 /**
  * <p>Creates a hash from a passed in string consistently
@@ -1847,7 +1894,8 @@ function mapString(str: string, charMapper: (char:string) => any): string;
  * <li>JSON object</li>
  * </ul>
  */
-function parseJSON(string: string): any;
+function parseJSON<T=any>(string: string, throwErr:boolean): T;
+function parseJSON(string: string, throwErr:boolean): any;
 
 /**
  * <p>Adds an <code>s</code> to the end of a string, if one does not exist.</p>
@@ -1919,344 +1967,20 @@ function spaceJoin(original: string, toAdd: string | string[]): string;
 function styleCase(str: string): string;
 
 /**
- * <p>Simple template replace for ES6 template strings</p>
+ * <p>Helper to wrap the template method, and allow passing a custom regex argument.<br/>
+ * Custom regex is used instead the default regex of the template method</p>
  * @example
- * template('${ who } in ${ where }!', { who: 'goats', where: 'boats' })
+ * templateRx('${ who } in ${ where }!', { who: 'goats', where: 'boats' }, ``, /\[\[.*?\]\]]/g)
  * // Returns "goats in boats"
  * @param template - <p>String with ES6 syntax items to be replaced</p>
  * @param data - <p>Data used to replace the ES6 placeholders</p>
  * @param fallback - <p>Used it data does not contain key to be replaced</p>
+ * @param rx - <p>Custom regular expression to override the default</p>
  * @returns <ul>
  * <li>template with placeholder values filled</li>
  * </ul>
  */
-function template(template: string, data: Record<any, any>|any[], fallback?: any): string;
-
-/**
- * <p>Converts a passed in value to a string.</p>
- * @param val - <p>value to be converted</p>
- * @returns <ul>
- * <li>value converted into a string</li>
- * </ul>
- */
-function toStr(val: any): string;
-
-/**
- * <p>Converts a string to train case, I.E. marginTop =&gt; margin-top.</p>
- * @param string - <p>to be converted</p>
- * @returns <ul>
- * <li>string in train case format</li>
- * </ul>
- */
-function trainCase(string: string): string;
-
-/**
- * <p>Checks whether a given string is a valid filename</p>
- * @param fileName - <p>The file name to check if valid</p>
- */
-function validFilename(fileName: string): boolean;
-
-/**
- * <p>Converts all words in a string to be capitalized.</p>
- * @param string - <p>to be converted</p>
- * @returns <ul>
- * <li>string with all words capitalized</li>
- * </ul>
- */
-function wordCaps(string: string): string;
-
-/**
- * <p>Builds a string path from passed in args ( i.e. path/to/thing ).</p>
- * @returns <ul>
- * <li>built path from arguments</li>
- * </ul>
- */
-function buildPath(...args: any[]): string;
-
-/**
- * <p>Converts a string to camel case.</p>
- * @param string - <p>to be converted</p>
- * @returns <ul>
- * <li>string in camel case format</li>
- * </ul>
- */
-function camelCase(string: string): string;
-
-/**
- * <p>Turns a path string into a camel-cased string, if there is more than one
- * step in the path. If there isn't, just returns path.</p>
- * @example
- * camelCasePath('settings.agendaMap.Count') -> 'settingsAgendaMapCount'
- * camelCasePath('settings') -> 'settings'
- * @returns <p>camel-cased string</p>
- */
-function camelCasePath(path: string): string;
-
-/**
- * <p>Converts first letter of a string to be capitalized.</p>
- * @param lowercaseTail - <p>if true, will also lowercase the all characters except the first</p>
- * @returns <ul>
- * <li>Passed in string, but capitalized</li>
- * </ul>
- */
-function capitalize(string: string, lowercaseTail?: boolean): string;
-
-/**
- * <p>Converts <code>-</code> and <code>_</code> to white space and calls remove removeDot, to remove a period.</p>
- * @param string - <p>to be converted</p>
- * @returns <ul>
- * <li>cleaned string</li>
- * </ul>
- */
-function cleanStr(string: string): string;
-
-/**
- * <p>Checks if a string contains another string.</p>
- * @param string - <p>value to be checked</p>
- * @param substring - <p>value to search for</p>
- * @returns <ul>
- * <li>if the substring exists string</li>
- * </ul>
- */
-function containsStr(string: string, substring: string, fromIndex?: number): boolean;
-
-/**
- * <p>Converts a string into a delimted script based on the passed in arguments</p>
- * @example
- * delimitString('fooBar', '_') === 'foo_Bar'
- * @param str - <p>string of any casing</p>
- * @param delimiter - <p>How the string should be split e.g. '_'</p>
- * @param [delimiters] - <p>An array of delimiter characters on which this function searches and breaks.<br/>Defaults to checking -, _, and space</p>
- * @returns <ul>
- * <li>A new string with the specified delimiter delimiting each word</li>
- * </ul>
- */
-function delimitString(str: string, delimiter: string, delimiters?: string[]): string;
-
-/**
- * <p>Checks if the first param is a string, and returns it.
- * <br/>If it's not a string, the second param is returned</p>
- * @param str1 - <p>return if is string</p>
- * @param str2 - <p>use if first is not a string</p>
- */
-function eitherStr(str1?: any, str2?: any): any;
-
-/**
- * <p>Gets the word in text ending at index (exclusive)</p>
- * @example
- * const text = 'foo bar bin'
- * const word = getWordEndingAt(text, 3)
- * word === 'foo'
- * @param index - <p>the exclusive ending index of the word to get</p>
- * @param delimiters - <p>optional array of strings that delimit the start of words. Defaults to the space character.</p>
- */
-function getWordEndingAt(text: string, index: number, delimiters?: string[]): void;
-
-/**
- * <p>Helper for <code>getWordStartingAt</code> that finds the
- * index of the exclusive end of the word, given the available
- * ending delimiters</p>
- */
-function getNearestDelimiterIndex(text: string, index: number, delimiters?: string[]): void;
-
-/**
- * <p>Gets the word in text starting at index</p>
- * @example
- * const text = 'foo bar bin'
- * const word = getWordStartingAt(text, 4)
- * word === 'bar'
- * @param index - <p>the inclusive starting index of the word to get</p>
- * @param delimiters - <p>optional array of strings that delimit words. Defaults to the space character.</p>
- */
-function getWordStartingAt(text: string, index: number, delimiters?: string[]): void;
-
-/**
- * <p>Creates a hash from a passed in string consistently
- * <br/>Not intended to be secure
- * <br/>Value comes from being a pure function
- * <br/>Given the same input, it will always return the same output
- * <br/>There is no expectation to convert back from the hash to the original string</p>
- * @param str - <p>String to be hashed</p>
- * @param [maxLength] - <p>Max length of the returned hash</p>
- * @returns <ul>
- * <li>Hashed version of the string</li>
- * </ul>
- */
-function hashString(str: string, maxLength?: number): string;
-
-/**
- * <p>Converts a camelCase style rule into a hyphenated style rule
- * <br/>Caches the response to make future conversions faster</p>
- * @param str - <p>camelCase style rule rule</p>
- * @returns <ul>
- * <li>Hyphenated style rule</li>
- * </ul>
- */
-function hyphenator(str: string): string;
-
-/**
- * <p>Check if string is a email.</p>
- * @param string - <p>to check</p>
- * @returns <ul>
- * <li>if it's a email</li>
- * </ul>
- */
-function isEmail(string: string): boolean;
-
-/**
- * <p>Checks if a string is all lowercase letters</p>
- * @param str - <p>String to check if it's lowercase</p>
- * @returns <ul>
- * <li>True if str is lowercase</li>
- * </ul>
- */
-function isLowerCase(str: string): boolean;
-
-/**
- * <p>Check if string is a phone number.</p>
- * @param str - <p>string to check</p>
- * @returns <ul>
- * <li>True if str is a phone number</li>
- * </ul>
- */
-function isPhone(str: string): boolean;
-
-/**
- * <p>Checks if the string contains quoted text</p>
- * @example
- * isQuoted('foo') // false
- * @example
- * isQuoted('"foo"') // true
- * @param str - <p>string to check</p>
- * @param quotes - <p>optional array of valid quote strings to check with. Defaults to single and double quote characters.</p>
- * @returns <p>true if <code>str</code> is a quoted string</p>
- */
-function isQuoted(str: string, quotes?: string[]): boolean;
-
-/**
- * <p>Check if passed in value is a string.</p>
- * @param str - <p>param to check if type is a string</p>
- * @returns <ul>
- * <li>True if it's a string</li>
- * </ul>
- */
-function isStr(str: any): boolean;
-
-/**
- * <p>Checks if a string is all capital letters</p>
- * @param str - <p>String to check if it's uppercase</p>
- * @returns <ul>
- * <li>True if str is uppercase</li>
- * </ul>
- */
-function isUpperCase(str: string): boolean;
-
-/**
- * <p>Check if string is a url.</p>
- * @param string - <p>to check</p>
- * @returns <ul>
- * <li>if it's a url</li>
- * </ul>
- */
-function isUrl(string: string): boolean;
-
-/**
- * <p>Check if string is a uuid.</p>
- * @param str - <p>string to check</p>
- * @returns <ul>
- * <li>if it's a uuid</li>
- * </ul>
- */
-function isUuid(str: string): boolean;
-
-/**
- * <p>Maps a string by applying function <code>charMapper</code> to each character.</p>
- * @example
- * mapString("hello", c => c === 'h' ? 'x' : c) // returns 'xello'
- * @param str - <p>String to be mapped</p>
- * @param charMapper - <p>Function of form (character) =&gt; <some character or string></p>
- * @returns <ul>
- * <li>String with each character mapped by charMap.<br/>If str is not a string or charMapper not a function, just returns the passed in str argument</li>
- * </ul>
- */
-function mapString(str: string, charMapper: (char:string) => any): string;
-
-/**
- * <p>Convert JSON string into object, wrapped in a try / catch.</p>
- * @returns <ul>
- * <li>JSON object</li>
- * </ul>
- */
-function parseJSON(string: string): any;
-
-/**
- * <p>Adds an <code>s</code> to the end of a string, if one does not exist.</p>
- * @param str - <p>string to convert</p>
- * @returns <p>string as a plural</p>
- */
-function plural(str: string): string;
-
-/**
- * <p>Removes a <code>.</code> from the start and end of a string.</p>
- * @param str - <p>string to convert</p>
- * @returns <ul>
- * <li>string without the <code>.</code></li>
- * </ul>
- */
-function removeDot(str: string): string;
-
-/**
- * <p>Reverses string</p>
- * @example
- * reverseStr('foo') // 'oof'
- * @param str - <p>string to reverse</p>
- * @returns <p>reversed str</p>
- */
-function reverseStr(str: string): string;
-
-/**
- * <p>Sanitize a string of HTML content.</p>
- * @returns <ul>
- * <li>cleaned string</li>
- * </ul>
- */
-function sanitize(string: string): string;
-
-/**
- * <p>Remove an <code>s</code> at the end of a string, if the last char is an <code>s</code>,</p>
- * @param str - <p>string to convert</p>
- * @returns <p>string as singular</p>
- */
-function singular(str: string): string;
-
-/**
- * <p>Converts a string to snake_case.</p>
- * @example
- * snakeCase('fooBar') === 'foo_bar'
- * @param str - <p>String to be converted</p>
- * @returns <ul>
- * <li>The string in snake_case, or the input if it is not a string</li>
- * </ul>
- */
-function snakeCase(str: string): string;
-
-/**
- * <p>Joins strings and array of string together with spaces</p>
- * @param original - <p>The default string that other strings get added to</p>
- * @param toAdd - <p>String of Array of Strings to add to the original</p>
- * @returns <p>Joined strings seperated by space</p>
- */
-function spaceJoin(original: string, toAdd: string | string[]): string;
-
-/**
- * <p>Converts a string to css in js format.
- * Useful for converting css rules into js format, I.E. margin-top =&gt; marginTop.</p>
- * @param str - <p>string to be converted</p>
- * @returns <ul>
- * <li>string in style case format</li>
- * </ul>
- */
-function styleCase(str: string): string;
+function templateRx(template: string, data: Record<any, any>|any[], fallback?: any, rx?:RegExp):string
 
 /**
  * <p>Simple template replace for ES6 template strings</p>
@@ -2304,6 +2028,7 @@ function validFilename(fileName: string): boolean;
  * </ul>
  */
 function wordCaps(string: string): string;
+
 
 /**
  * <p>Gets the value for the URL parameter, if it's available.
