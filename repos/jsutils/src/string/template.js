@@ -3,7 +3,6 @@ import { isColl } from '../collection/isColl'
 import { get } from '../collection/get'
 import { isStr } from './isStr'
 
-
 /**
  * Helper to wrap the template method, and allow passing a custom regex argument
  * Custom regex is used instead the default regex of the template method
