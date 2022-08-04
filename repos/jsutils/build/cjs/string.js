@@ -2,7 +2,7 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var getWordEndingAt = require('./getWordEndingAt-23e1f47e.js');
+var getWordEndingAt = require('./getWordEndingAt-ea5c110e.js');
 var isStr = require('./isStr-8a57710e.js');
 var sanitize = require('./sanitize-0a18302d.js');
 var toStr = require('./toStr-8e499966.js');
@@ -45,6 +45,7 @@ exports.snakeCase = getWordEndingAt.snakeCase;
 exports.spaceJoin = getWordEndingAt.spaceJoin;
 exports.styleCase = getWordEndingAt.styleCase;
 exports.template = getWordEndingAt.template;
+exports.templateRx = getWordEndingAt.templateRx;
 exports.trainCase = getWordEndingAt.trainCase;
 exports.validFilename = getWordEndingAt.validFilename;
 exports.wordCaps = getWordEndingAt.wordCaps;
