@@ -175,6 +175,13 @@ const spaceJoin = (original, toAdd) => {
   }, isStr.isStr(original) ? original : '');
 };
 
+const templateRx = (tempStr, data, fallback = '', rx) => {
+  const orgRx = template.regex;
+  template.regex = rx || /{{([^}]*)}}/g;
+  const resp = template(tempStr, data, fallback);
+  template.regex = orgRx;
+  return resp;
+};
 const template = (tempStr, data, fallback = '') => {
   data = isColl.isColl(data) && data || {};
   const regex = template.regex || /\${(.*?)\}/g;
@@ -252,7 +259,8 @@ exports.snakeCase = snakeCase;
 exports.spaceJoin = spaceJoin;
 exports.styleCase = styleCase;
 exports.template = template;
+exports.templateRx = templateRx;
 exports.trainCase = trainCase;
 exports.validFilename = validFilename;
 exports.wordCaps = wordCaps;
-//# sourceMappingURL=getWordEndingAt-23e1f47e.js.map
+//# sourceMappingURL=getWordEndingAt-ea5c110e.js.map

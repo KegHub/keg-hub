@@ -173,6 +173,13 @@ const spaceJoin = (original, toAdd) => {
   }, isStr(original) ? original : '');
 };
 
+const templateRx = (tempStr, data, fallback = '', rx) => {
+  const orgRx = template.regex;
+  template.regex = rx || /{{([^}]*)}}/g;
+  const resp = template(tempStr, data, fallback);
+  template.regex = orgRx;
+  return resp;
+};
 const template = (tempStr, data, fallback = '') => {
   data = isColl(data) && data || {};
   const regex = template.regex || /\${(.*?)\}/g;
@@ -220,5 +227,5 @@ const getWordEndingAt = (text, index, delimiters = [' ']) => {
   return reverseStr(getWordStartingAt(reversed, reversedIndex, delimiters));
 };
 
-export { template as A, validFilename as B, isQuoted as C, reverseStr as D, getWordEndingAt as E, getNearestDelimiterIndex as F, getWordStartingAt as G, cleanStr as a, buildPath as b, camelCase as c, delimitString as d, capitalize as e, camelCasePath as f, containsStr as g, eitherStr as h, hyphenator as i, hashString as j, isEmail as k, isPhone as l, mapString as m, isUrl as n, isUuid as o, parseJSON as p, plural as q, removeDot as r, snakeCase as s, singular as t, styleCase as u, trainCase as v, wordCaps as w, isUpperCase as x, isLowerCase as y, spaceJoin as z };
-//# sourceMappingURL=getWordEndingAt-97b24ead.js.map
+export { templateRx as A, template as B, validFilename as C, isQuoted as D, reverseStr as E, getWordEndingAt as F, getNearestDelimiterIndex as G, getWordStartingAt as H, cleanStr as a, buildPath as b, camelCase as c, delimitString as d, capitalize as e, camelCasePath as f, containsStr as g, eitherStr as h, hyphenator as i, hashString as j, isEmail as k, isPhone as l, mapString as m, isUrl as n, isUuid as o, parseJSON as p, plural as q, removeDot as r, snakeCase as s, singular as t, styleCase as u, trainCase as v, wordCaps as w, isUpperCase as x, isLowerCase as y, spaceJoin as z };
+//# sourceMappingURL=getWordEndingAt-5d29f74b.js.map
