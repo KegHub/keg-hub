@@ -38,6 +38,7 @@ function areSetEqual(arr: any[], otherArr: any[]): void;
  * <li>copy of passed in array</li>
  * </ul>
  */
+function cloneArr<T>(arr: T[]): T[];
 function cloneArr(arr: any[]): any[];
 
 /**
@@ -57,6 +58,7 @@ function eitherArr(a?: any, b?: any): any;
  * @param val - <p>Value to check if its an array</p>
  * @returns <p>val if it's an array, or val in an array</p>
  */
+function ensureArr<T>(val: T[] | T): T[];
 function ensureArr(val: any[] | any): any[];
 
 /**
@@ -105,6 +107,11 @@ function findMin(arr: object[], propSelector: (prop:any) => any): void;
  * <li>Mutated original array now flattened, or a new flattened array based on options</li>
  * </ul>
  */
+function flatArr<T>(arr: any[], opts?: {
+    truthy: boolean;
+    exists: boolean;
+    mutate: boolean;
+}): T[];
 function flatArr(arr: any[], opts?: {
     truthy: boolean;
     exists: boolean;
@@ -139,6 +146,7 @@ function flatMap(arr: any[], mapFn: (current:any) => any): void;
  * <li>Flattened copy of passed in array arguments, with duplicates removed</li>
  * </ul>
  */
+function flatUnion<T>(...params: any[]): T[];
 function flatUnion(...params: any[]): any[];
 
 /**
@@ -156,7 +164,8 @@ function isArr(value: any): boolean;
 /**
  * <p>Returns a new array with the same elements as arr, excluding <code>count</code> elements beginning at index <code>startIndex</code></p>
  */
-function omitRange(arr: any[], startIndex: number, count: number): void;
+function omitRange<T>(arr: any[], startIndex: number, count: number): T[];
+function omitRange(arr: any[], startIndex: number, count: number): any[];
 
 /**
  * <p>Randomly selects values from a passed in array.</p>
@@ -169,6 +178,7 @@ function omitRange(arr: any[], startIndex: number, count: number): void;
  * <li>randomly sorted array</li>
  * </ul>
  */
+function randomArr<T>(arr: any[], amount?: number): T[];
 function randomArr(arr: any[], amount?: number): any[];
 
 /**
@@ -191,6 +201,7 @@ function randomizeArr(arr: any[]): any[];
  * @param arr - <p>array to remove duplicates from</p>
  * @returns <p>copy of passed in array, with duplicates removed</p>
  */
+function uniqArrByReference<T>(arr: any[]): T[];
 function uniqArrByReference(arr: any[]): any[];
 
 /**
@@ -205,6 +216,7 @@ function uniqArrByReference(arr: any[]): any[];
  * @param selector - <p>optional function to specify the property uniqArr should use to check if another element exists</p>
  * @returns <p>copy of passed in array, with duplicates removed</p>
  */
+function uniqArr<T>(arr: any[], selector: (element: any) => any): T[];
 function uniqArr(arr: any[], selector: (element: any) => any): any[];
 
 /**
@@ -215,7 +227,7 @@ function uniqArr(arr: any[], selector: (element: any) => any): any[];
  * @param val - <p>value to convert to string boolean</p>
  * @returns <p>'true' || 'false' based on passed in value</p>
  */
-function convertToStrBool(val: any): string;
+function convertToStrBool(val: any): 'true'|'false';
 
 /**
  * <p>Checks is value is a boolean.</p>
@@ -304,6 +316,8 @@ function cleanColl(coll: Record<any, any>|any[], recursive?: boolean): any | any
  * <li>Cloned Object</li>
  * </ul>
  */
+function deepClone<T>(obj: T): T;
+function deepClone<T>(obj: any): T;
 function deepClone(obj: Record<any, any>|any[]): Record<any, any>|any[];
 
 /**
@@ -340,6 +354,8 @@ function deepEqual(a: Record<any, any>|any[], b: Record<any, any>|any[]): boolea
  * <li>The final value found from the path</li>
  * </ul>
  */
+function get<T>(obj: Record<any, any>|any[], path: string | string[], fallback?: T): T;
+function get<T>(obj: Record<any, any>|any[], path: string | string[], fallback?: any): T|any;
 function get(obj: Record<any, any>|any[], path: string | string[], fallback?: any): any;
 
 /**
@@ -384,6 +400,7 @@ function isEmptyColl(obj: any): boolean;
  * @param coll - <p>Collection to loop over</p>
  * @returns <p>returns the same type of collection passed in</p>
  */
+function mapColl<T>(coll: Record<any, any>|any[]): T;
 function mapColl(coll: Record<any, any>|any[]): Record<any, any>|any[];
 
 /**
@@ -423,6 +440,7 @@ function mapFind(coll: Record<any, any>|any[], mapper: (...params: any[]) => any
  * <li>Last returned data from the loop</li>
  * </ul>
  */
+function reduceColl<T>(obj: Record<any, any>|any[], cb: (key:string, value:any, coll:Record<any, any>|any[], data:any) => any, reduce?: any): T;
 function reduceColl(obj: Record<any, any>|any[], cb: (key:string, value:any, coll:Record<any, any>|any[], data:any) => any, reduce?: any): any;
 
 /**
@@ -518,6 +536,7 @@ function unset(obj: Record<any, any>|any[], path: string|string[]): void;
  * @param val2 - <p>return if passed in check method returns false</p>
  * @param check - <p>called to determine which value to return</p>
  */
+function either<T>(val1?: any, val2?: any, check?: (v1:any, v2:any) => any): T;
 function either(val1?: any, val2?: any, check?: (v1:any, v2:any) => any): any;
 
 /**
@@ -617,6 +636,7 @@ const noOpArr: [];
  * @param val - <p>value to convert</p>
  * @returns <p>converted value || string if can't convert</p>
  */
+function strToType<T>(val: any): T;
 function strToType(val: any): any | string;
 
 /**
@@ -678,6 +698,8 @@ function applyToFunc(item: any, expression: any): void;
  * <li>whatever the passed in method returns</li>
  * </ul>
  */
+function checkCall<T>(method: <M>(...params: any[]) => M, ...params:any[]): T;
+function checkCall<T>(method: (...params: any[]) => any, ...params:any[]): T;
 function checkCall(method: (...params: any[]) => any, ...params:any[]): any;
 
 /**
@@ -689,6 +711,7 @@ function checkCall(method: (...params: any[]) => any, ...params:any[]): any;
  * @param func - <p>function to clone</p>
  * @returns <p>cloned function</p>
  */
+function cloneFunc<T>(func: (...params: any[]) => any): T;
 function cloneFunc(func: (...params: any[]) => any): any;
 
 /**
@@ -766,6 +789,7 @@ function hasDomAccess(): boolean;
  * <p>A function that simply returns its input</p>
  * @returns <p>the input</p>
  */
+function identity<T>(x: T): T;
 function identity(x: any): any;
 
 /**
@@ -985,7 +1009,14 @@ function uuid(start?: number): string;
  * <li>Resolves to the response from onFinish</li>
  * </ul>
  */
-function waitForIt(): Promise<any>;
+type TWait = {
+    check: (...params:any[]) => boolean,
+    onFinish: (...params:any[]) => any,
+    amount?:number,
+    wait?:number,
+    total?:number
+}
+function waitForIt(waitArgs:TWait, ...params:any[]): Promise<any>;
 
 /**
  * <p>Loop over the passed in ENVs, and add them to the current process
@@ -1006,6 +1037,7 @@ function addToProcess(addEnvs: any, options: {
  * <li>Status of the found process</li>
  * </ul>
  */
+function findProc<T>(procName: string, opts: any): T;
 function findProc(procName: string, opts: any): any;
 
 /**
@@ -1336,6 +1368,7 @@ function clearObj(obj: Record<any, any>, filter?: string[]): void;
  * @param obj - <p>object to clone</p>
  * @returns <p>copy of original object</p>
  */
+function cloneJson<T>(obj: any): T;
 function cloneJson(obj: any): any;
 
 /**
@@ -1381,6 +1414,7 @@ function everyEntry(obj: Record<any, any>, predicate: (...params: any[]) => any,
  * <li>Object consisting of a subset of the entries from obj</li>
  * </ul>
  */
+function filterObj<T>(obj: Record<any, any>, predicate: (key:string, value:string) => boolean, logError?:boolean): T;
 function filterObj(obj: Record<any, any>, predicate: (key:string, value:string) => boolean, logError?:boolean): Record<any, any>;
 
 /**
@@ -1438,6 +1472,7 @@ function jsonEqual(one: any, two: any): boolean;
  * @param toUpperCase - <p>converts the key and value to uppercase</p>
  * @returns <p>built object</p>
  */
+function keyMap<T>(arr: string[], toUpperCase?: boolean): T;
 function keyMap(arr: string[], toUpperCase?: boolean): Record<string, string>;
 
 /**
@@ -1500,6 +1535,7 @@ function pickKeys(obj: Record<string, any>, keys: string[]): Record<string, any>
  * <li>updated object</li>
  * </ul>
  */
+function reduceObj<T>(obj: Record<string, any>, cb: (key: string, value: any, data: any) => any, start?:any): T;
 function reduceObj(obj: Record<string, any>, cb: (key: string, value: any, data: any) => any, start?:any): any;
 
 /**
@@ -1534,6 +1570,7 @@ function someEntry(obj: Record<string, any>, predicate: (key:string, value:strin
  * - Second object contains keys not matching keys of the keys argument</li>
  * </ul>
  */
+function splitByKeys<T,S>(target: Record<string, any>, keys: string[]): [T, S];
 function splitByKeys(target: Record<string, any>, keys: string[]): [Record<string, any>, Record<string, any>];
 
 /**
@@ -1545,6 +1582,7 @@ function splitByKeys(target: Record<string, any>, keys: string[]): [Record<strin
  * <li>Converted object</li>
  * </ul>
  */
+function toObj<T>(val: string[]|string, divider?: string, split?: string): T;
 function toObj(val: string[]|string, divider?: string, split?: string): Record<string, any>;
 
 /**
@@ -1719,14 +1757,14 @@ function eitherStr(str1?: any, str2?: any): any;
  * @param index - <p>the exclusive ending index of the word to get</p>
  * @param delimiters - <p>optional array of strings that delimit the start of words. Defaults to the space character.</p>
  */
-function getWordEndingAt(text: string, index: number, delimiters?: string[]): void;
+function getWordEndingAt(text: string, index: number, delimiters?: string[]): string;
 
 /**
  * <p>Helper for <code>getWordStartingAt</code> that finds the
  * index of the exclusive end of the word, given the available
  * ending delimiters</p>
  */
-function getNearestDelimiterIndex(text: string, index: number, delimiters?: string[]): void;
+function getNearestDelimiterIndex(text: string, index: number, delimiters?: string[]): string;
 
 /**
  * <p>Gets the word in text starting at index</p>
@@ -1737,7 +1775,7 @@ function getNearestDelimiterIndex(text: string, index: number, delimiters?: stri
  * @param index - <p>the inclusive starting index of the word to get</p>
  * @param delimiters - <p>optional array of strings that delimit words. Defaults to the space character.</p>
  */
-function getWordStartingAt(text: string, index: number, delimiters?: string[]): void;
+function getWordStartingAt(text: string, index: number, delimiters?: string[]): string;
 
 /**
  * <p>Creates a hash from a passed in string consistently
@@ -1856,6 +1894,7 @@ function mapString(str: string, charMapper: (char:string) => any): string;
  * <li>JSON object</li>
  * </ul>
  */
+function parseJSON<T>(string: string, throwErr:boolean): T;
 function parseJSON(string: string, throwErr:boolean): any;
 
 /**
@@ -1941,7 +1980,7 @@ function styleCase(str: string): string;
  * <li>template with placeholder values filled</li>
  * </ul>
  */
-function templateRx(template: string, data: Record<any, any>|any[], fallback?: any, rx:RegExp):string
+function templateRx(template: string, data: Record<any, any>|any[], fallback?: any, rx?:RegExp):string
 
 /**
  * <p>Simple template replace for ES6 template strings</p>
@@ -2066,58 +2105,7 @@ function delimitString(str: string, delimiter: string, delimiters?: string[]): s
  */
 function eitherStr(str1?: any, str2?: any): any;
 
-/**
- * <p>Gets the word in text ending at index (exclusive)</p>
- * @example
- * const text = 'foo bar bin'
- * const word = getWordEndingAt(text, 3)
- * word === 'foo'
- * @param index - <p>the exclusive ending index of the word to get</p>
- * @param delimiters - <p>optional array of strings that delimit the start of words. Defaults to the space character.</p>
- */
-function getWordEndingAt(text: string, index: number, delimiters?: string[]): void;
 
-/**
- * <p>Helper for <code>getWordStartingAt</code> that finds the
- * index of the exclusive end of the word, given the available
- * ending delimiters</p>
- */
-function getNearestDelimiterIndex(text: string, index: number, delimiters?: string[]): void;
-
-/**
- * <p>Gets the word in text starting at index</p>
- * @example
- * const text = 'foo bar bin'
- * const word = getWordStartingAt(text, 4)
- * word === 'bar'
- * @param index - <p>the inclusive starting index of the word to get</p>
- * @param delimiters - <p>optional array of strings that delimit words. Defaults to the space character.</p>
- */
-function getWordStartingAt(text: string, index: number, delimiters?: string[]): void;
-
-/**
- * <p>Creates a hash from a passed in string consistently
- * <br/>Not intended to be secure
- * <br/>Value comes from being a pure function
- * <br/>Given the same input, it will always return the same output
- * <br/>There is no expectation to convert back from the hash to the original string</p>
- * @param str - <p>String to be hashed</p>
- * @param [maxLength] - <p>Max length of the returned hash</p>
- * @returns <ul>
- * <li>Hashed version of the string</li>
- * </ul>
- */
-function hashString(str: string, maxLength?: number): string;
-
-/**
- * <p>Converts a camelCase style rule into a hyphenated style rule
- * <br/>Caches the response to make future conversions faster</p>
- * @param str - <p>camelCase style rule rule</p>
- * @returns <ul>
- * <li>Hyphenated style rule</li>
- * </ul>
- */
-function hyphenator(str: string): string;
 
 /**
  * <p>Check if string is a email.</p>
