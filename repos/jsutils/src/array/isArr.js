@@ -1,3 +1,5 @@
+/** @module Array */
+
 /**
  * Checks if passed in value is an array.
  * @function

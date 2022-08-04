@@ -1,3 +1,5 @@
+/** @module Function */
+
 /**
  * Check if the passed in item is a function.
  * @example

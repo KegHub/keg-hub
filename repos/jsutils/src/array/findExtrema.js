@@ -1,3 +1,5 @@
+/** @module Array */
+
 import { isArr } from './isArr'
 import { isFunc } from '../method'
 import { validate } from '../validation'

@@ -1,3 +1,5 @@
+/** @module Node */
+
 const fs = require('fs')
 
 /**

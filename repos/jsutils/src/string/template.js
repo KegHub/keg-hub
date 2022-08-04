@@ -1,3 +1,5 @@
+/** @module String */
+
 import { isFunc } from '../method/isFunc'
 import { isColl } from '../collection/isColl'
 import { get } from '../collection/get'

@@ -1,3 +1,5 @@
+/** @module Log */
+
 'use strict'
 
 let SHOW_LOGS

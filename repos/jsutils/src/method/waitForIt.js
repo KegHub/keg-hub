@@ -1,3 +1,5 @@
+/** @module Function */
+
 /**
  * Helper to call waitForIt in-between check calls
  * @ignore

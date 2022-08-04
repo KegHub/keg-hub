@@ -1,3 +1,5 @@
+/** @module Array */
+
 import { isArr } from './isArr'
 import { isObj } from '../object/isObj'
 

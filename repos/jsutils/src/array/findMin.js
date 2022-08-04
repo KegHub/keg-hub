@@ -1,3 +1,5 @@
+/** @module Array */
+
 import { identity, compareTo } from '../method'
 import { findExtrema } from './findExtrema'
 

@@ -1,3 +1,5 @@
+/** @module Function */
+
 import { isStr } from '../string'
 import { isOrderable } from './isOrderable'
 import { validate } from '../validation'

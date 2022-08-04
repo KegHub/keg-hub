@@ -1,3 +1,5 @@
+/** @module String */
+
 /**
  * Builds a string path from passed in args ( i.e. path/to/thing ).
  * @function

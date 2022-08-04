@@ -1,3 +1,5 @@
+/** @module Object */
+
 import { isStr } from '../string/isStr'
 import { isArr } from '../array/isArr'
 import { strToType } from '../ext/strToType'

@@ -1,3 +1,5 @@
+/** @module Extra */
+
 import { isStr } from '../string/isStr'
 import { isNum } from '../number/isNum'
 import { toNum } from '../number/toNum'

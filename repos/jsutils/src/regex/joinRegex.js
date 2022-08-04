@@ -1,3 +1,5 @@
+/** @module RegEx */
+
 import { isStr } from '../string'
 import { isArr } from '../array'
 import { getRegexSource } from './getRegexSource'

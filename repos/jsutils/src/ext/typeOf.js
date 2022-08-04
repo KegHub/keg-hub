@@ -1,3 +1,5 @@
+/** @module Extra */
+
 /**
  * Gets the type of the passed in val.
  * @example

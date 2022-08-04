@@ -1,3 +1,5 @@
+/** @module Function */
+
 import { isArr } from '../array/isArr'
 import { typeOf } from '../ext/typeOf'
 import { isFunc } from './isFunc'

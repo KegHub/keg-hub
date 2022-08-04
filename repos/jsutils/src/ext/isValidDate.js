@@ -1,3 +1,5 @@
+/** @module Extra */
+
 /**
  * Checks is passed in date is a valid date.
  * @example

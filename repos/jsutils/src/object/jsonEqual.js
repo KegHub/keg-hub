@@ -1,3 +1,5 @@
+/** @module Object */
+
 /**
  * Compares two objects by converting to JSON, and checking string equality.
  * @function

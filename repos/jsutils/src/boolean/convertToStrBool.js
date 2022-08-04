@@ -1,3 +1,5 @@
+/** @module Boolean */
+
 import { toStr } from '../string/toStr'
 import { isBool } from './isBool'
 

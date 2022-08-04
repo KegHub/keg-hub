@@ -1,3 +1,5 @@
+/** @module Url */
+
 import { isArr } from '../array/isArr'
 
 /**

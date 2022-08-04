@@ -1,3 +1,5 @@
+/** @module Collection */
+
 /**
  * Checks if the value is a collection ( object || array ).
  * @example

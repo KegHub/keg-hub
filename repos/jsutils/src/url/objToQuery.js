@@ -1,3 +1,5 @@
+/** @module Url */
+
 import { reduceObj } from '../object/reduceObj'
 import { isStr } from '../string/isStr'
 import { isNum } from '../number/isNum'

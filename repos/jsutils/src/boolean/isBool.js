@@ -1,3 +1,5 @@
+/** @module Boolean */
+
 /**
  * Checks is value is a boolean.
  * @function

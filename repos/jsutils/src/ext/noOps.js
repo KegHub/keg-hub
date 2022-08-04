@@ -1,3 +1,5 @@
+/** @module Extra */
+
 import { deepFreeze } from '../object/deepFreeze'
 
 /**

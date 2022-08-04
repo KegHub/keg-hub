@@ -1,3 +1,5 @@
+/** @module Collection */
+
 import { updateColl } from './updateColl'
 
 /**

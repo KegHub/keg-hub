@@ -1,3 +1,5 @@
+/** @module String */
+
 import { isStr } from './isStr'
 
 /**

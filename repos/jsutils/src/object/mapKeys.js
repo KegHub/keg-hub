@@ -1,3 +1,5 @@
+/** @module Object */
+
 import { isObj } from './isObj'
 import { isFunc } from '../method/isFunc'
 import { mapEntries } from './mapEntries'

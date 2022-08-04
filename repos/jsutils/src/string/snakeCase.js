@@ -1,3 +1,5 @@
+/** @module String */
+
 import { delimitString } from './delimitString'
 
 /**

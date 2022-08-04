@@ -1,3 +1,5 @@
+/** @module Function */
+
 /**
  * Checks if there is access to the dom
  * @function

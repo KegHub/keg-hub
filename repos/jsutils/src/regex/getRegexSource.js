@@ -1,3 +1,5 @@
+/** @module RegEx */
+
 import { isRegex } from './isRegex'
 import { isStr } from '../string'
 

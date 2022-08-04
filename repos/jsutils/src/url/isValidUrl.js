@@ -1,3 +1,5 @@
+/** @module Url */
+
 /**
  * Checks if the given string is a valid URL
  * Must begin with ftp/http/https

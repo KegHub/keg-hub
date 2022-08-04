@@ -1,3 +1,5 @@
+/** @module String */
+
 /**
  * Checks if a string is all lowercase letters
  * @function

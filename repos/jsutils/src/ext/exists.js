@@ -1,3 +1,5 @@
+/** @module Extra */
+
 /**
  * Checks if a value exists. NOT undefined || null
  * @function

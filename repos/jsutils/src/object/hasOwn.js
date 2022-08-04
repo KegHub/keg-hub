@@ -1,3 +1,5 @@
+/** @module Object */
+
 /**
  * Checks if prop exists on the object.
  * @function
