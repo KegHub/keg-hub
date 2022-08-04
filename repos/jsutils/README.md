@@ -1,6 +1,6 @@
 # @keg-hub/jsutils
 A utility library for commonly used helper methods. Similar to lodash, underscore, etc...
-See docs [here](https://keghub.github.io/jsutils)
+See docs at [https://keg-hub.github.io/jsutils](https://keg-hub.github.io/jsutils/)
 
 ## Add to your project
 ```js
