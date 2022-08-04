@@ -487,7 +487,7 @@ function set(obj: Record<any, any>|any[], path: string | string[], finalValue: a
  * <li>true or false if the objects keys values are equal</li>
  * </ul>
  */
-function shallowEqual(col1: Record<any, any>|any[], col2: Record<any, any>|any[], path: string|string[]): boolean;
+function shallowEqual(col1: Record<any, any>|any[], col2: Record<any, any>|any[], path?: string|string[]): boolean;
 
 /**
  * <p>Removes a path from an object.</p>
@@ -678,7 +678,7 @@ function applyToFunc(item: any, expression: any): void;
  * <li>whatever the passed in method returns</li>
  * </ul>
  */
-function checkCall(method: (...params: any[]) => any, params: any): any;
+function checkCall(method: (...params: any[]) => any, ...params:any[]): any;
 
 /**
  * <p>Clones a function using the Function constructor and calling toString on the passed in function</p>
@@ -1352,6 +1352,8 @@ function deepFreeze(obj: Record<any, any>): Record<any, any>;
  * <li>merged object or array</li>
  * </ul>
  */
+//  TODO: need to investigate this
+// function deepMerge<T>(...sources: any[]): T;
 function deepMerge(...sources: any[]): Record<any, any> | any[];
 
 /**
@@ -1532,7 +1534,7 @@ function someEntry(obj: Record<string, any>, predicate: (key:string, value:strin
  * - Second object contains keys not matching keys of the keys argument</li>
  * </ul>
  */
-function splitByKeys(target: Record<string, any>, keys: string[]): Record<string, any>;
+function splitByKeys(target: Record<string, any>, keys: string[]): [Record<string, any>, Record<string, any>];
 
 /**
  * <p>Converts an array or string into an object.</p>
@@ -1854,7 +1856,7 @@ function mapString(str: string, charMapper: (char:string) => any): string;
  * <li>JSON object</li>
  * </ul>
  */
-function parseJSON(string: string): any;
+function parseJSON(string: string, throwErr:boolean): any;
 
 /**
  * <p>Adds an <code>s</code> to the end of a string, if one does not exist.</p>
@@ -1924,6 +1926,22 @@ function spaceJoin(original: string, toAdd: string | string[]): string;
  * </ul>
  */
 function styleCase(str: string): string;
+
+/**
+ * <p>Helper to wrap the template method, and allow passing a custom regex argument.<br/>
+ * Custom regex is used instead the default regex of the template method</p>
+ * @example
+ * template('${ who } in ${ where }!', { who: 'goats', where: 'boats' })
+ * // Returns "goats in boats"
+ * @param template - <p>String with ES6 syntax items to be replaced</p>
+ * @param data - <p>Data used to replace the ES6 placeholders</p>
+ * @param fallback - <p>Used it data does not contain key to be replaced</p>
+ * @param rx - <p>Custom regular expression to override the default</p>
+ * @returns <ul>
+ * <li>template with placeholder values filled</li>
+ * </ul>
+ */
+function templateRx(template: string, data: Record<any, any>|any[], fallback?: any, rx:RegExp):string
 
 /**
  * <p>Simple template replace for ES6 template strings</p>
