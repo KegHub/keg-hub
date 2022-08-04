@@ -803,6 +803,7 @@ function isOrderable(x: any): boolean;
  * <li>Slot 1 =&gt; error, Slot 2 =&gt; response from promise</li>
  * </ul>
  */
+function limbo<T>(promise: Promise<any>): Promise<[err?:Error, response?:T]>;
 function limbo(promise: Promise<any>): Promise<[err?:Error, response?:any]>;
 
 /**
@@ -1352,8 +1353,7 @@ function deepFreeze(obj: Record<any, any>): Record<any, any>;
  * <li>merged object or array</li>
  * </ul>
  */
-//  TODO: need to investigate this
-// function deepMerge<T>(...sources: any[]): T;
+function deepMerge<T>(...sources: any[]): T;
 function deepMerge(...sources: any[]): Record<any, any> | any[];
 
 /**
