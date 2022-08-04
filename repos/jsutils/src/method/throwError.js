@@ -8,8 +8,8 @@ const { isStr } = require('../string')
  *
  * @throws
  */
-export const throwError = (error) => {
-  if(!isStr(error) && error && error.stack && error.message) throw error
+export const throwError = error => {
+  if (!isStr(error) && error && error.stack && error.message) throw error
 
   throw new Error(error)
 }

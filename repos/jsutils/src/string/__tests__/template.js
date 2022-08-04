@@ -4,7 +4,6 @@ describe('Template methods', () => {
   beforeEach(() => jest.resetAllMocks())
 
   describe('template', () => {
-
     it('should replace the placeholder values', () => {
       const template = '${ who } in ${ where }'
       const data = { who: 'goats', where: 'boats' }
@@ -96,9 +95,10 @@ describe('Template methods', () => {
       }
 
       Str.template.regex = /{{([^}]*)}}/g
-      expect(Str.template(template, data)).toEqual('goats live in the boondocks')
+      expect(Str.template(template, data)).toEqual(
+        'goats live in the boondocks'
+      )
     })
-
   })
 
   describe('templateRx', () => {
@@ -109,7 +109,9 @@ describe('Template methods', () => {
         location: 'boondocks',
       }
 
-      expect(Str.templateRx(template, data)).toEqual('goats live in the boondocks')
+      expect(Str.templateRx(template, data)).toEqual(
+        'goats live in the boondocks'
+      )
     })
 
     it('should reset the original rx after being called', () => {
@@ -121,9 +123,10 @@ describe('Template methods', () => {
         location: 'boondocks',
       }
 
-      expect(Str.templateRx(template, data)).toEqual('goats live in the boondocks')
+      expect(Str.templateRx(template, data)).toEqual(
+        'goats live in the boondocks'
+      )
       expect(Str.template.regex).toBe(orgRx)
-
     })
 
     it('should allow passing custom rx as a forth argument', () => {
@@ -135,11 +138,10 @@ describe('Template methods', () => {
         location: 'boondocks',
       }
 
-      expect(Str.templateRx(template, data, ``, /\[\[([^\]]*)\]\]/g)).toEqual('goats live in the boondocks')
+      expect(Str.templateRx(template, data, ``, /\[\[([^\]]*)\]\]/g)).toEqual(
+        'goats live in the boondocks'
+      )
       expect(Str.template.regex).toBe(orgRx)
-
     })
-
   })
-
 })
