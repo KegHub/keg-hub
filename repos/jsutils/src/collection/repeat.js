@@ -1,3 +1,5 @@
+/** @module Collection */
+
 import { deepClone } from './deepClone'
 import { isFunc } from '../method/isFunc'
 import { isNum } from '../number/isNum'

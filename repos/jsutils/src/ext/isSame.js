@@ -1,3 +1,5 @@
+/** @module Extra */
+
 /**
  * Checks if the passed in values are exactly the same.
  * @example

@@ -1,8 +1,11 @@
+/** @module Function */
+
 import { isFunc } from './isFunc'
 
 /**
  * Response returned from a limbo promise
  * @typedef TLimboResponse
+ * @private
  * @type {Array}
  */
 
@@ -27,4 +30,25 @@ export const limbo = promise => {
         null,
       ]
     : promise.then(data => [ null, data ]).catch(err => [ err, undefined ])
+}
+
+
+/**
+ * Converts a method with a callback as the last argument into a promise
+ * @function
+ * @param {*} cb - method to wrap in a promise
+ * @param {*} args - Arguments to pass to the callback method
+ * @example
+ * limboify(fs.rename, 'my/file.txt', 'my/renamed-file.txt')
+ * @example
+ * limboify(fs.mkdir, 'my/new/directory', { recursive: true })
+ *
+ * @returns {Promise|*} - Success response of fs.rename method
+ */
+export const limboify = (cb, ...args) => {
+  return limbo(
+    new Promise((res, rej) =>
+      cb(...args, (err, success) => (err ? rej(err) : res(success || true)))
+    )
+  )
 }

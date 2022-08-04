@@ -1,3 +1,5 @@
+/** @module Promise */
+
 import { isObj } from '../object/isObj'
 import { isFunc } from '../method/isFunc'
 import { promisify } from './promisify'
@@ -35,6 +37,7 @@ const defObjProps = Array.from([
  * Loops an object and looks for any methods that belong to the object, then add an Async version
  * @param {Object} object
  * @return {Object} - object with Async methods added
+ * @private
  */
 const addAsync = object => {
   if (!object.__IS_PROMISIFIED__) {

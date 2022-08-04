@@ -1,3 +1,5 @@
+/** @module String */
+
 import { isStr } from './isStr'
 import { mapString } from './mapString'
 import { isLowerCase } from './isLowerCase'

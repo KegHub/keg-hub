@@ -1,3 +1,5 @@
+/** @module Object */
+
 /**
  * Removes all properties from an object.
  * @function

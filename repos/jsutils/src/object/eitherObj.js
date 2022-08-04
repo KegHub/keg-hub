@@ -1,3 +1,5 @@
+/** @module Object */
+
 import { isObj } from './isObj'
 
 /**

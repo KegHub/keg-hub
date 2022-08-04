@@ -1,3 +1,5 @@
+/** @module Extra */
+
 import { softFalsy } from '../boolean/softFalsy'
 import { isFunc } from '../method/isFunc'
 

@@ -1,3 +1,5 @@
+/** @module Function */
+
 /**
  * A function that simply returns its input
  * @function

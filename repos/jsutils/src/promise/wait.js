@@ -1,3 +1,5 @@
+/** @module Promise */
+
 'use strict'
 
 /**

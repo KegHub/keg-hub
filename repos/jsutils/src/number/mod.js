@@ -1,3 +1,5 @@
+/** @module Number */
+
 /**
  * Returns the result of evaluation `num` modulo `divisor`.
  * Javascript's built-in modulo (%) operator does not process values

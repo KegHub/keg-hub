@@ -1,3 +1,5 @@
+/** @module Collection */
+
 // Cache the prototype methods for faster access
 const isArray = Array.isArray
 const keyList = Object.keys

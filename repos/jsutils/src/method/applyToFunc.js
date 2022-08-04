@@ -1,3 +1,5 @@
+/** @module Function */
+
 import { isArr } from '../array/isArr'
 import { isFunc } from './isFunc'
 

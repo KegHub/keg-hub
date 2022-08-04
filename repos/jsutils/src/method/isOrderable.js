@@ -1,3 +1,5 @@
+/** @module Function */
+
 import { isStr } from '../string'
 import { isBool } from '../boolean'
 import { isNum } from '../number'

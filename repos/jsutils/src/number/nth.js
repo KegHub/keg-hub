@@ -1,3 +1,5 @@
+/** @module Number */
+
 import { equalsNaN } from './equalsNaN'
 import { isNum } from './isNum'
 import { getNums } from './getNums'

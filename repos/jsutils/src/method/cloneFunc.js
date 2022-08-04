@@ -1,3 +1,5 @@
+/** @module Function */
+
 import { get } from '../collection/get'
 
 /**

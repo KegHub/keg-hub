@@ -1,3 +1,5 @@
+/** @module Function */
+
 import { isStr } from '../string/isStr'
 import { isObj } from '../object/isObj'
 import { isEmpty } from '../ext/isEmpty'

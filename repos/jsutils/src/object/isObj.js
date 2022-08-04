@@ -1,3 +1,5 @@
+/** @module Object */
+
 /**
  * Checks if data is an object and not an array.
  * @function

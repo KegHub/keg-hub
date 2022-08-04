@@ -1,3 +1,5 @@
+/** @module String */
+
 /**
  * Removes a `.` from the start and end of a string.
  * @function

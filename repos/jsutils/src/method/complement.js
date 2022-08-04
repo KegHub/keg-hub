@@ -1,3 +1,5 @@
+/** @module Function */
+
 import { validate } from '../validation'
 import { isFunc } from '../method/isFunc'
 

@@ -1,3 +1,5 @@
+/** @module Collection */
+
 import { isFunc } from '../method/isFunc'
 import { cloneFunc } from '../method/cloneFunc'
 import { isArr } from '../array/isArr'

@@ -1,3 +1,5 @@
+/** @module Function */
+
 const { isStr } = require('../string')
 
 /**

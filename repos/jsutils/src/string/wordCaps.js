@@ -1,3 +1,5 @@
+/** @module String */
+
 import { isStr } from './isStr'
 import { cleanStr } from './cleanStr'
 import { capitalize } from './capitalize'

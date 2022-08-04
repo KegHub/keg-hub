@@ -1,3 +1,5 @@
+/** @module Object */
+
 import { isObj } from './isObj'
 import { exists } from '../ext/exists'
 import { toStr } from '../string/toStr'

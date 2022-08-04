@@ -1,3 +1,5 @@
+/** @module Extra */
+
 import { isObj } from '../object/isObj'
 import { isArr } from '../array/isArr'
 import { isStr } from '../string/isStr'

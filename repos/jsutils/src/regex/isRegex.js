@@ -1,3 +1,5 @@
+/** @module RegEx */
+
 /**
  * Checks if value is an instance of regex
  * @function

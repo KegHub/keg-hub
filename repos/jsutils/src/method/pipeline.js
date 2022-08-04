@@ -1,3 +1,5 @@
+/** @module Function */
+
 import { applyToFunc } from './applyToFunc'
 
 /**

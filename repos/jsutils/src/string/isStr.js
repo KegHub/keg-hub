@@ -1,3 +1,5 @@
+/** @module String */
+
 /**
  * Check if passed in value is a string.
  * @function

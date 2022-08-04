@@ -1,3 +1,5 @@
+/** @module Collection */
+
 import { isColl } from './isColl'
 import { isArr } from '../array/isArr'
 

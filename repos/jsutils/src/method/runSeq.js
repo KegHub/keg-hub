@@ -1,6 +1,8 @@
 import { validate } from '../validation/validate'
 import { isArr } from '../array/isArr'
 import { isFunc } from './isFunc'
+/** @module Function */
+
 import { deepClone } from '../collection/deepClone'
 
 /**

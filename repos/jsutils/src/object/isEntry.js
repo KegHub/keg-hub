@@ -1,3 +1,5 @@
+/** @module Object */
+
 import { isStr } from '../string/isStr'
 import { isNum } from '../number/isNum'
 import { isArr } from '../array/isArr'

@@ -1,3 +1,5 @@
+/** @module String */
+
 /**
  * Checks whether a given string is a valid filename
  * @function

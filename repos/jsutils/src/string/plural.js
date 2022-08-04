@@ -1,3 +1,5 @@
+/** @module String */
+
 /**
  * Adds an `s` to the end of a string, if one does not exist.
  * @function

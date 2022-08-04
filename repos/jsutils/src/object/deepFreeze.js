@@ -1,3 +1,5 @@
+/** @module Object */
+
 import { isFunc } from '../method/isFunc'
 
 /**

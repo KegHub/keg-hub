@@ -1,3 +1,5 @@
+/** @module Function */
+
 /**
  * Ensures the last call to the throttled function get called.
  * <br/>Will wait the allotted time, before calling the last call to it.

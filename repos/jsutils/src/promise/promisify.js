@@ -1,3 +1,5 @@
+/** @module Promise */
+
 import { isFunc } from '../method/isFunc'
 
 /**

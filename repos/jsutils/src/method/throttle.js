@@ -1,3 +1,5 @@
+/** @module Function */
+
 /**
  * Throttle function calls to only execute once over a wait period
  * @example

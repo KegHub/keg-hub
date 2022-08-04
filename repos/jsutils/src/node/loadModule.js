@@ -1,3 +1,5 @@
+/** @module Node */
+
 'use strict'
 
 const path = require('path')

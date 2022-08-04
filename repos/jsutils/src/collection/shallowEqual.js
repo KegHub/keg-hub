@@ -1,3 +1,5 @@
+/** @module Collection */
+
 import { get } from './get'
 import { isArr } from '../array/isArr'
 import { isStr } from '../string/isStr'
