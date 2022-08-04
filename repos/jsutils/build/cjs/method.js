@@ -3,7 +3,7 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 var hasOwn = require('./hasOwn-7999ca65.js');
-var parseErrorMessage = require('./parseErrorMessage-0b9fe873.js');
+var parseErrorMessage = require('./parseErrorMessage-24ceba2a.js');
 var identity = require('./identity-599bde17.js');
 var isFunc = require('./isFunc-f93803cb.js');
 var deepClone = require('./deepClone-84f6b191.js');
@@ -30,6 +30,7 @@ exports.doIt = parseErrorMessage.doIt;
 exports.eitherFunc = parseErrorMessage.eitherFunc;
 exports.hasDomAccess = parseErrorMessage.hasDomAccess;
 exports.limbo = parseErrorMessage.limbo;
+exports.limboify = parseErrorMessage.limboify;
 exports.memorize = parseErrorMessage.memorize;
 exports.noOp = parseErrorMessage.noOp;
 exports.parseErrorMessage = parseErrorMessage.parseErrorMessage;
