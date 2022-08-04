@@ -32,7 +32,6 @@ export const limbo = promise => {
     : promise.then(data => [ null, data ]).catch(err => [ err, undefined ])
 }
 
-
 /**
  * Converts a method with a callback as the last argument into a promise
  * @function
