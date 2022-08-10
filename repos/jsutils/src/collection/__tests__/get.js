@@ -67,6 +67,16 @@ describe('get', () => {
     expect(Coll.get(getObj, path) === 'duper').toBe(true)
   })
 
+  it('should handle array brackets in in the object path', () => {
+    const foo = () => {}
+    foo.boo = 'duper'
+    foo.doo = [1,2,{first: 'last'}]
+    const getObj = [{ foo }]
+
+    expect(Coll.get(getObj, '[0].foo.boo') === 'duper').toBe(true)
+    expect(Coll.get(getObj, '0.foo.doo.[2].first') === 'last').toBe(true)
+  })
+
   it('should return a fallback when get value does not exist', () => {
     const getObj = { data: [{ foo: 'duper' }] }
     const path = 'data.0.duper'
