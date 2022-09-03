@@ -21,15 +21,15 @@ describe('stackTracePaths', () => {
   })
 
   it('should allow overwriting the default filters with a filter function', () => {
-    let checkInternal
+    let checkJest
     const filterFunc = loc => {
-      if (loc.includes('node:internal')) checkInternal = true
+      if (loc.includes('node_modules/jest')) checkJest = true
       return loc !== currentFile
     }
 
     const paths = stackTracePaths(filterFunc)
     expect(paths.length).toBe(1)
     expect(paths.includes(currentFile)).toBe(true)
-    expect(checkInternal).toBe(true)
+    expect(checkJest).toBe(true)
   })
 })
