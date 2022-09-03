@@ -2,11 +2,10 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var isValidDate = require('./isValidDate-594b2a75.js');
+var either = require('./either-81805472.js');
 var noOps = require('./noOps-9b0be865.js');
-var isEmpty = require('./isEmpty-a16d6092.js');
+var isValidDate = require('./isValidDate-813b9419.js');
 var strToType = require('./strToType-00c4481f.js');
-var typeOf = require('./typeOf-51fe5771.js');
 var exists = require('./exists-c79204b1.js');
 require('./softFalsy-3d7ead1c.js');
 require('./isFunc-f93803cb.js');
@@ -22,15 +21,15 @@ require('./isBool-aa6af74e.js');
 
 
 
-exports.either = isValidDate.either;
-exports.isSame = isValidDate.isSame;
-exports.isValidDate = isValidDate.isValidDate;
+exports.either = either.either;
 exports.noOpArr = noOps.noOpArr;
 exports.noOpObj = noOps.noOpObj;
 exports.noPropArr = noOps.noPropArr;
 exports.noPropObj = noOps.noPropObj;
-exports.isEmpty = isEmpty.isEmpty;
+exports.isEmpty = isValidDate.isEmpty;
+exports.isSame = isValidDate.isSame;
+exports.isValidDate = isValidDate.isValidDate;
+exports.typeOf = isValidDate.typeOf;
 exports.strToType = strToType.strToType;
-exports.typeOf = typeOf.typeOf;
 exports.exists = exists.exists;
 //# sourceMappingURL=ext.js.map

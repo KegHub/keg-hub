@@ -2,7 +2,8 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var getWordEndingAt = require('./getWordEndingAt-ea5c110e.js');
+var getWordEndingAt = require('./getWordEndingAt-57a6690d.js');
+var isQuoted = require('./isQuoted-eb6994da.js');
 var isStr = require('./isStr-8a57710e.js');
 var sanitize = require('./sanitize-0a18302d.js');
 var toStr = require('./toStr-8e499966.js');
@@ -11,7 +12,8 @@ require('./isNonNegative-9959647c.js');
 require('./isNum-c7164b50.js');
 require('./isArr-39234014.js');
 require('./isColl-5757310a.js');
-require('./get-f4f562cf.js');
+require('./get-d588709a.js');
+require('./exists-c79204b1.js');
 
 
 
@@ -28,13 +30,6 @@ exports.getWordEndingAt = getWordEndingAt.getWordEndingAt;
 exports.getWordStartingAt = getWordEndingAt.getWordStartingAt;
 exports.hashString = getWordEndingAt.hashString;
 exports.hyphenator = getWordEndingAt.hyphenator;
-exports.isEmail = getWordEndingAt.isEmail;
-exports.isLowerCase = getWordEndingAt.isLowerCase;
-exports.isPhone = getWordEndingAt.isPhone;
-exports.isQuoted = getWordEndingAt.isQuoted;
-exports.isUpperCase = getWordEndingAt.isUpperCase;
-exports.isUrl = getWordEndingAt.isUrl;
-exports.isUuid = getWordEndingAt.isUuid;
 exports.mapString = getWordEndingAt.mapString;
 exports.parseJSON = getWordEndingAt.parseJSON;
 exports.plural = getWordEndingAt.plural;
@@ -49,6 +44,16 @@ exports.templateRx = getWordEndingAt.templateRx;
 exports.trainCase = getWordEndingAt.trainCase;
 exports.validFilename = getWordEndingAt.validFilename;
 exports.wordCaps = getWordEndingAt.wordCaps;
+exports.isEmail = isQuoted.isEmail;
+exports.isIp = isQuoted.isIp;
+exports.isIp4 = isQuoted.isIp4;
+exports.isIp6 = isQuoted.isIp6;
+exports.isLowerCase = isQuoted.isLowerCase;
+exports.isPhone = isQuoted.isPhone;
+exports.isQuoted = isQuoted.isQuoted;
+exports.isUpperCase = isQuoted.isUpperCase;
+exports.isUrl = isQuoted.isUrl;
+exports.isUuid = isQuoted.isUuid;
 exports.isStr = isStr.isStr;
 exports.sanitize = sanitize.sanitize;
 exports.toStr = toStr.toStr;
