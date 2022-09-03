@@ -5,7 +5,7 @@ import { t as toStr$1 } from './toStr-0e5fe94c.js';
 import { i as isNonNegative } from './isNonNegative-76ec0014.js';
 import { i as isArr } from './isArr-a4420764.js';
 import { i as isColl } from './isColl-15a1452b.js';
-import { g as get } from './get-b02e8c28.js';
+import { g as get } from './get-2e0bc293.js';
 
 const buildPath = (...args) => {
   const built = args.reduce((path, arg) => {
@@ -197,4 +197,4 @@ const getWordEndingAt = (text, index, delimiters = [' ']) => {
 };
 
 export { getWordStartingAt as A, cleanStr as a, buildPath as b, camelCase as c, delimitString as d, capitalize as e, camelCasePath as f, containsStr as g, eitherStr as h, hyphenator as i, hashString as j, plural as k, singular as l, mapString as m, styleCase as n, spaceJoin as o, parseJSON as p, templateRx as q, removeDot as r, snakeCase as s, trainCase as t, template as u, validFilename as v, wordCaps as w, reverseStr as x, getWordEndingAt as y, getNearestDelimiterIndex as z };
-//# sourceMappingURL=getWordEndingAt-5effb1df.js.map
+//# sourceMappingURL=getWordEndingAt-e4dc0e45.js.map

@@ -1,34 +1,32 @@
-'use strict';
-
-var isFunc = require('./isFunc-f93803cb.js');
-var validate = require('./validate-23297ec2.js');
-var isNum = require('./isNum-c7164b50.js');
-var jsonEqual = require('./jsonEqual-7e69ef6a.js');
-var isArr = require('./isArr-39234014.js');
-var deepClone = require('./deepClone-fd8678d3.js');
-var isStr = require('./isStr-8a57710e.js');
-var isObj = require('./isObj-6b3aa807.js');
-var isValidDate = require('./isValidDate-813b9419.js');
+import { i as isFunc } from './isFunc-40ceeef8.js';
+import { v as validate } from './validate-0a7295ee.js';
+import { i as isNum } from './isNum-cc6ad9ca.js';
+import { h as hasOwn } from './jsonEqual-911fc3f9.js';
+import { i as isArr } from './isArr-a4420764.js';
+import { d as deepClone } from './deepClone-06f4b810.js';
+import { i as isStr } from './isStr-481ce69b.js';
+import { i as isObj } from './isObj-2a71d1af.js';
+import { i as isEmpty } from './isValidDate-76b2dc77.js';
 
 const checkCall = (method, ...params) => {
-  return isFunc.isFunc(method) ? method(...params) : undefined;
+  return isFunc(method) ? method(...params) : undefined;
 };
 
 const complement = predicate => {
-  const [valid] = validate.validate({
+  const [valid] = validate({
     predicate
   }, {
-    predicate: isFunc.isFunc
+    predicate: isFunc
   });
   return valid ? (...args) => !predicate(...args) : null;
 };
 
-const eitherFunc = (func1, func2) => isFunc.isFunc(func1) && func1 || func2;
+const eitherFunc = (func1, func2) => isFunc(func1) && func1 || func2;
 
 const debounce = (func, wait = 250, immediate = false) => {
   let timeout;
   function wrapFunc(...args) {
-    if (!isFunc.isFunc(func)) return null;
+    if (!isFunc(func)) return null;
     const context = this;
     const later = () => {
       timeout = null;
@@ -37,7 +35,7 @@ const debounce = (func, wait = 250, immediate = false) => {
     const callNow = immediate && !timeout;
     clearTimeout(timeout);
     timeout = setTimeout(later, wait);
-    if (callNow) return isFunc.isFunc(func) && func.apply(context, args);
+    if (callNow) return isFunc(func) && func.apply(context, args);
   }
   return wrapFunc;
 };
@@ -47,7 +45,7 @@ const doIt = (...args) => {
   const num = params.shift();
   const bindTo = params.shift();
   const cb = params.pop();
-  if (!isNum.isNum(num) || !isFunc.isFunc(cb)) return [];
+  if (!isNum(num) || !isFunc(cb)) return [];
   const doItAmount = new Array(num);
   const responses = [];
   for (let i = 0; i < doItAmount.length; i++) {
@@ -59,13 +57,13 @@ const doIt = (...args) => {
 };
 
 const memorize = (func, getCacheKey, limit = 1) => {
-  if (!isFunc.isFunc(func) || getCacheKey && !isFunc.isFunc(getCacheKey)) return console.error('Error: Expected a function', func, getCacheKey);
+  if (!isFunc(func) || getCacheKey && !isFunc(getCacheKey)) return console.error('Error: Expected a function', func, getCacheKey);
   let memorized = function () {
     const cache = memorized.cache;
     const key = getCacheKey ? getCacheKey.apply(this, arguments) : arguments[0];
-    if (jsonEqual.hasOwn(cache, key)) return cache[key];
+    if (hasOwn(cache, key)) return cache[key];
     const result = func.apply(this, arguments);
-    isNum.isNum(limit) && Object.keys(cache).length < limit ? cache[key] = result : memorized.cache = {
+    isNum(limit) && Object.keys(cache).length < limit ? cache[key] = result : memorized.cache = {
       [key]: result
     };
     return result;
@@ -81,10 +79,10 @@ const memorize = (func, getCacheKey, limit = 1) => {
 };
 
 const runSeq = async (asyncFns = [], options = {}) => {
-  const [valid] = validate.validate({
+  const [valid] = validate({
     asyncFns
   }, {
-    asyncFns: isArr.isArr
+    asyncFns: isArr
   });
   if (!valid) return [];
   const {
@@ -93,17 +91,17 @@ const runSeq = async (asyncFns = [], options = {}) => {
   } = options;
   const results = [];
   for (const fn of asyncFns) {
-    const result = isFunc.isFunc(fn) ? await fn(results.length, cloneResults ? deepClone.deepClone(results) : results) : returnOriginal ? fn : undefined;
+    const result = isFunc(fn) ? await fn(results.length, cloneResults ? deepClone(results) : results) : returnOriginal ? fn : undefined;
     results.push(result);
   }
   return results;
 };
 
 const timedRun = async (fn, ...args) => {
-  const [valid] = validate.validate({
+  const [valid] = validate({
     fn
   }, {
-    fn: isFunc.isFunc
+    fn: isFunc
   });
   if (!valid) return [undefined, -1];
   const startTime = new Date();
@@ -136,7 +134,7 @@ const throttleLast = (func, cb, wait = 100) => {
 };
 
 const limbo = promise => {
-  return !promise || !isFunc.isFunc(promise.then) ? [new Error(`A promise or thenable is required as the first argument!`), null] : promise.then(data => [null, data]).catch(err => [err, undefined]);
+  return !promise || !isFunc(promise.then) ? [new Error(`A promise or thenable is required as the first argument!`), null] : promise.then(data => [null, data]).catch(err => [err, undefined]);
 };
 const limboify = (cb, ...args) => {
   return limbo(new Promise((res, rej) => cb(...args, (err, success) => err ? rej(err) : res(success || true))));
@@ -147,7 +145,7 @@ const uuid = a => a ? (a ^ Math.random() * 16 >> a / 4).toString(16) : ([1e7] + 
 const noOp = () => {};
 
 const parseErrorMessage = exception => {
-  return isStr.isStr(exception) && !isValidDate.isEmpty(exception) ? exception : isObj.isObj(exception) ? exception.message : null;
+  return isStr(exception) && !isEmpty(exception) ? exception : isObj(exception) ? exception.message : null;
 };
 
 const defFilters = [`node:internal`, `node_modules/jest`];
@@ -159,26 +157,11 @@ const stackTracePaths = (filter = defFilters) => {
   return stack.reduce((acc, cs) => {
     const loc = cs.getFileName();
     if (!loc) return acc;
-    const ignore = isFunc.isFunc(filter) ? filter(loc, cs, stack) : Boolean(filter.length && filter.find(filterLoc => loc.includes(filterLoc)));
+    const ignore = isFunc(filter) ? filter(loc, cs, stack) : Boolean(filter.length && filter.find(filterLoc => loc.includes(filterLoc)));
     !ignore && acc.push(loc);
     return acc;
   }, []);
 };
 
-exports.checkCall = checkCall;
-exports.complement = complement;
-exports.debounce = debounce;
-exports.doIt = doIt;
-exports.eitherFunc = eitherFunc;
-exports.limbo = limbo;
-exports.limboify = limboify;
-exports.memorize = memorize;
-exports.noOp = noOp;
-exports.parseErrorMessage = parseErrorMessage;
-exports.runSeq = runSeq;
-exports.stackTracePaths = stackTracePaths;
-exports.throttle = throttle;
-exports.throttleLast = throttleLast;
-exports.timedRun = timedRun;
-exports.uuid = uuid;
-//# sourceMappingURL=stackTracePaths-d8971a4a.js.map
+export { complement as a, doIt as b, checkCall as c, debounce as d, eitherFunc as e, throttle as f, throttleLast as g, limboify as h, limbo as l, memorize as m, noOp as n, parseErrorMessage as p, runSeq as r, stackTracePaths as s, timedRun as t, uuid as u };
+//# sourceMappingURL=stackTracePaths-753bb480.js.map

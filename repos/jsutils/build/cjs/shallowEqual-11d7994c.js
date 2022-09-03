@@ -7,9 +7,9 @@ var isArr = require('./isArr-39234014.js');
 var exists = require('./exists-c79204b1.js');
 var validate = require('./validate-23297ec2.js');
 var set = require('./set-046fe0c3.js');
-var deepClone = require('./deepClone-fd8678d3.js');
+var deepClone = require('./deepClone-ae664a21.js');
 var isNum = require('./isNum-c7164b50.js');
-var get = require('./get-d588709a.js');
+var get = require('./get-00626335.js');
 var isStr = require('./isStr-8a57710e.js');
 
 const cleanColl = (coll, recursive = true) => {
@@ -91,4 +91,4 @@ exports.reduceColl = reduceColl;
 exports.repeat = repeat;
 exports.shallowEqual = shallowEqual;
 exports.unset = unset;
-//# sourceMappingURL=shallowEqual-3ce48767.js.map
+//# sourceMappingURL=shallowEqual-11d7994c.js.map

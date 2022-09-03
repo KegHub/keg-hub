@@ -2,6 +2,7 @@
 
 import { exists } from '../ext/exists'
 import { isArr } from '../array/isArr'
+import { isStr } from '../string/isStr'
 
 /**
  * Searches an object based on the path param
@@ -20,11 +21,15 @@ import { isArr } from '../array/isArr'
  * @return {*} - The final value found from the path
  */
 export const get = (obj, path, fallback) => {
-  const parts = isArr(path) ? path : path.split('.')
+  const isPathArr = isArr(path)
+  if (!isStr(path) && !isPathArr) return exists(fallback) ? fallback : undefined
+
+  const parts = isPathArr ? path : path.split('.')
 
   const result = parts.reduce((obj, prop) => {
     const type = typeof obj
-    if (type !== 'object' && type !== 'function') return undefined
+    if (!exists(obj) || (type !== 'object' && type !== 'function'))
+      return undefined
 
     prop = prop.startsWith('[') ? prop.replace(/\D/g, '') : prop
     return obj[prop]

@@ -18,7 +18,6 @@ const runCmd = async cmd => {
   return await cmdExec(cmd, { cwd: rootPath })
 }
 
-
 /**
  * Runs the JSdocs executable to build the docs in the docs folder
  * Same as running `rm -rf ./docs && node_modules/.bin/jsdoc -c ./configs/jsdoc.json || true`

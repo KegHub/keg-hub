@@ -94,4 +94,28 @@ describe('get', () => {
       Coll.get(getObj, path, 'shallow_fallback') === 'shallow_fallback'
     ).toBe(true)
   })
+
+  it('should not throw when passed in value is undefined', () => {
+    const path = 'data.1.test'
+
+    expect(() => {
+      Coll.get(undefined, path, 'shallow_fallback') === 'shallow_fallback'
+    }).not.toThrow()
+  })
+
+  it('should not throw when passed in path is undefined', () => {
+    expect(() => {
+      Coll.get(undefined, undefined, 'shallow_fallback') === 'shallow_fallback'
+    }).not.toThrow()
+  })
+
+  it('should return undefined when no arguments is passed', () => {
+    expect(Coll.get() === undefined).toBe(true)
+  })
+
+  it('should return undefined when value is not found', () => {
+    const path = 'data.1.test'
+    const item = Coll.get({ data: {} }, path)
+    expect(item).toBe(undefined)
+  })
 })

@@ -7,7 +7,7 @@ var toStr$1 = require('./toStr-8e499966.js');
 var isNonNegative = require('./isNonNegative-9959647c.js');
 var isArr = require('./isArr-39234014.js');
 var isColl = require('./isColl-5757310a.js');
-var get = require('./get-d588709a.js');
+var get = require('./get-00626335.js');
 
 const buildPath = (...args) => {
   const built = args.reduce((path, arg) => {
@@ -225,4 +225,4 @@ exports.templateRx = templateRx;
 exports.trainCase = trainCase;
 exports.validFilename = validFilename;
 exports.wordCaps = wordCaps;
-//# sourceMappingURL=getWordEndingAt-57a6690d.js.map
+//# sourceMappingURL=getWordEndingAt-63d038a5.js.map

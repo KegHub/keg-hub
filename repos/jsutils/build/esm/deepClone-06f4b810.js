@@ -1,14 +1,12 @@
-'use strict';
-
-var isFunc = require('./isFunc-f93803cb.js');
-var get = require('./get-d588709a.js');
-var isArr = require('./isArr-39234014.js');
+import { i as isFunc } from './isFunc-40ceeef8.js';
+import { g as get } from './get-2e0bc293.js';
+import { i as isArr } from './isArr-a4420764.js';
 
 const cloneFunc = func => {
   const funcClone = function (...args) {
     return func instanceof funcClone ? (() => {
       return new func(...args);
-    })() : get.get(func.prototype, 'constructor.name') ? new func(...args) : func.apply(func, args);
+    })() : get(func.prototype, 'constructor.name') ? new func(...args) : func.apply(func, args);
   };
   for (let key in func) func.hasOwnProperty(key) && (funcClone[key] = func[key]);
   Object.defineProperty(funcClone, 'name', {
@@ -23,8 +21,8 @@ const deepClone = (obj, hash = new WeakMap()) => {
   if (Object(obj) !== obj) return obj;
   if (obj instanceof Set) return new Set(obj);
   if (hash.has(obj)) return hash.get(obj);
-  if (isArr.isArr(obj)) return obj.map(x => deepClone(x));
-  if (isFunc.isFunc(obj)) return cloneFunc(obj);
+  if (isArr(obj)) return obj.map(x => deepClone(x));
+  if (isFunc(obj)) return cloneFunc(obj);
   const result = obj instanceof Date ? new Date(obj) : obj instanceof RegExp ? new RegExp(obj.source, obj.flags) : !obj.constructor ? Object.create(null) : null;
   if (result === null) return cloneObjWithPrototypeAndProperties(obj);
   hash.set(obj, result);
@@ -46,7 +44,5 @@ const cloneObjWithPrototypeAndProperties = objectWithPrototype => {
   return clone;
 };
 
-exports.cloneFunc = cloneFunc;
-exports.cloneObjWithPrototypeAndProperties = cloneObjWithPrototypeAndProperties;
-exports.deepClone = deepClone;
-//# sourceMappingURL=deepClone-fd8678d3.js.map
+export { cloneFunc as a, cloneObjWithPrototypeAndProperties as c, deepClone as d };
+//# sourceMappingURL=deepClone-06f4b810.js.map
