@@ -41,7 +41,7 @@
     "clean:install": "yarn clean:full; yarn install --force",
     "clean:nm": "rimraf yarn.lock; rimraf package.lock; rimraf node_modules",
     "dev": "rollup -c ./configs/rollup.config.js -w",
-    "docs": "rimraf ./docs && ./node_modules/.bin/jsdoc -c ./configs/jsdoc.json || true",
+    "docs": "node ./scripts/buildDocs.js",
     "docs:move": "node ./scripts/moveDocs.js",
     "docs:git": "node ./scripts/docsSetupGit.js",
     "docs:publish": "yarn docs && yarn docs:git",
