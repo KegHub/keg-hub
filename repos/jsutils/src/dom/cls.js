@@ -1,5 +1,10 @@
 /** @module Dom */
 
+/**
+ * Formats the passed in classes
+ * @function
+ * @private
+ */
 const formatCls = classes =>
   classes
     .filter(item => typeof item === 'string' && Boolean(item))
@@ -8,6 +13,7 @@ const formatCls = classes =>
 
 /**
  * Formats the passed in classes argument into a space separated string of classNames
+ * @function
  * @param {Object|Array<string>|string} classes - Classes that should be formatted
  * @example
  * cls({ class1: true, class2: false }) === `class1`

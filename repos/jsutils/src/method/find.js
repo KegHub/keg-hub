@@ -1,3 +1,5 @@
+/** @module Function */
+
 import { exists } from '../ext'
 import { isObj } from '../object'
 
@@ -8,6 +10,7 @@ import { isObj } from '../object'
  * Works with Arrays and Objects
  * Item can be an a primitive of a collection ( Object | Array )
  * When item is an Object, a prop can be passed as the third argument to match against the object property
+ * @private
  * @param{Object|Array} items - Collection of items to search for a match
  * @param{Object|primitive} item - Item to match against
  * @param{string|number} prop - Property to match against when item is an object

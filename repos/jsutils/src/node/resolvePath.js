@@ -1,9 +1,12 @@
+/** @module Node */
+
 const os = require('os')
 const path = require('path')
 const homeDir = os.homedir()
 
 /**
  * Converts the local part of the passed in location to an absolute path
+ * @function
  * @param {string} location - Path to be resolved
  *
  * @returns {string} - Resolved location

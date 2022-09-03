@@ -46,8 +46,9 @@ import { isUuid } from '../string/isUuid'
 import { isValidUrl } from '../url/isValidUrl'
 
 /**
- * When called, if calls original function, then returns inverse of the functions result
- * Should be used with functions that return a boolean
+ * When called, it calls original function, then returns inverse of the functions result
+ * <br/>Should be used with functions that return a boolean
+ * @function
  * @param {Function} func - Function call and invert its response
  *
  * @returns {Function} - Calls the passed in function then returns True if the passed in function returns falsy, otherwise false

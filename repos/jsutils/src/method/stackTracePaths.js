@@ -1,9 +1,12 @@
+/** @module Function */
+
 import { isFunc } from './isFunc'
 
 const defFilters = [ `node:internal`, `node_modules/jest` ]
 
 /**
  * Gets the paths from a stacktrace as CallSites and returns them
+ * @function
  * @param {Array|Function} filter - List of paths to ignore, or function that returns truthy to ignore
  *
  * @returns {Array<string>} - List of paths from the stackTrace
