@@ -1,19 +1,19 @@
 /** @module Function */
 
-import { isBool } from './boolean/isBool'
-import { isStrBool } from './boolean/isStrBool'
+import { isBool } from '../boolean/isBool'
+import { isStrBool } from '../boolean/isStrBool'
 
-import { isColl } from './collection/isColl'
-import { isEmptyColl } from './collection/isEmptyColl'
-import { deepEqual } from './collection/deepEqual'
+import { isColl } from '../collection/isColl'
+import { isEmptyColl } from '../collection/isEmptyColl'
+import { deepEqual } from '../collection/deepEqual'
 
 
-import { isDom } from './dom/hasDomAccess'
+import { isDom } from '../dom/hasDomAccess'
 
-import { exists } from './ext/exists'
-import { isEmpty } from './ext/isEmpty'
-import { isSame } from './ext/isSame'
-import { isValidDate } from './ext/isValidDate'
+import { exists } from '../ext/exists'
+import { isEmpty } from '../ext/isEmpty'
+import { isSame } from '../ext/isSame'
+import { isValidDate } from '../ext/isValidDate'
 
 import { isFunc } from './isFunc'
 import { identity } from './identity'
@@ -26,25 +26,25 @@ import { isNum } from '../number/isNum'
 import { isNegative } from '../number/isNegative'
 import { isPositive } from '../number/isPositive'
 
-import { hasOwn } from './object/hasOwn'
-import { isEntry } from './object/isEntry'
-import { isArrMap } from './object/isArrMap'
-import { isObj } from './object/isObj'
-import { jsonEqual } from './object/jsonEqual'
+import { hasOwn } from '../object/hasOwn'
+import { isEntry } from '../object/isEntry'
+import { isArrMap } from '../object/isArrMap'
+import { isObj } from '../object/isObj'
+import { jsonEqual } from '../object/jsonEqual'
 
-import { isRegex } from './regex/isRegex'
+import { isRegex } from '../regex/isRegex'
 
-import { isEmail } from './string/isEmail'
-import { isIp } from './string/isIp'
-import { isLowerCase } from './string/isLowerCase'
-import { isPhone } from './string/isPhone'
-import { isQuoted } from './string/isQuoted'
-import { isStr } from './string/isStr'
-import { isUpperCase } from './string/isUpperCase'
-import { isUrl } from './string/isUrl'
-import { isUuid } from './string/isUuid'
+import { isEmail } from '../string/isEmail'
+import { isIp } from '../string/isIp'
+import { isLowerCase } from '../string/isLowerCase'
+import { isPhone } from '../string/isPhone'
+import { isQuoted } from '../string/isQuoted'
+import { isStr } from '../string/isStr'
+import { isUpperCase } from '../string/isUpperCase'
+import { isUrl } from '../string/isUrl'
+import { isUuid } from '../string/isUuid'
 
-import { isValidUrl } from './url/isValidUrl'
+import { isValidUrl } from '../url/isValidUrl'
 
 /**
  * When called, if calls original function, then returns inverse of the functions result
