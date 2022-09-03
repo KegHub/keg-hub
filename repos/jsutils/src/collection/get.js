@@ -3,7 +3,6 @@
 import { exists } from '../ext/exists'
 import { isArr } from '../array/isArr'
 
-
 /**
  * Searches an object based on the path param
  * <br/>I.E. path = 'data.foo.bar' => will return obj.data.foo.bar.
@@ -25,11 +24,11 @@ export const get = (obj, path, fallback) => {
 
   const result = parts.reduce((obj, prop) => {
     const type = typeof obj
-    if(type !== 'object' && type !== 'function') return undefined
-    
-    prop = prop.startsWith("[") ? prop.replace(/\D/g, "") : prop
+    if (type !== 'object' && type !== 'function') return undefined
+
+    prop = prop.startsWith('[') ? prop.replace(/\D/g, '') : prop
     return obj[prop]
   }, obj)
 
-  return exists(result) ? result : fallback 
+  return exists(result) ? result : fallback
 }

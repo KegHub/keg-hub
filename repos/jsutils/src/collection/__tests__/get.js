@@ -70,7 +70,7 @@ describe('get', () => {
   it('should handle array brackets in in the object path', () => {
     const foo = () => {}
     foo.boo = 'duper'
-    foo.doo = [1,2,{first: 'last'}]
+    foo.doo = [ 1, 2, { first: 'last' }]
     const getObj = [{ foo }]
 
     expect(Coll.get(getObj, '[0].foo.boo') === 'duper').toBe(true)
