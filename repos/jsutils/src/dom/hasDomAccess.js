@@ -1,4 +1,4 @@
-/** @module Function */
+/** @module Dom */
 
 /**
  * Checks if there is access to the dom
@@ -22,3 +22,5 @@ export const hasDomAccess = () => {
     return false
   }
 }
+
+export { hasDomAccess as isDom }

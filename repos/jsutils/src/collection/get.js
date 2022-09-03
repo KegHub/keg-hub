@@ -1,6 +1,7 @@
 /** @module Collection */
 
-import { updateColl } from './updateColl'
+import { exists } from '../ext/exists'
+import { isArr } from '../array/isArr'
 
 /**
  * Searches an object based on the path param
@@ -18,5 +19,16 @@ import { updateColl } from './updateColl'
  * @param {*} [fallback] - Separated string to search the object
  * @return {*} - The final value found from the path
  */
-export const get = (obj, path, fallback) =>
-  updateColl(obj, path, 'get', fallback)
+export const get = (obj, path, fallback) => {
+  const parts = isArr(path) ? path : path.split('.')
+
+  const result = parts.reduce((obj, prop) => {
+    const type = typeof obj
+    if (type !== 'object' && type !== 'function') return undefined
+
+    prop = prop.startsWith('[') ? prop.replace(/\D/g, '') : prop
+    return obj[prop]
+  }, obj)
+
+  return exists(result) ? result : fallback
+}
