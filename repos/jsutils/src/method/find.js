@@ -1,6 +1,8 @@
 import { exists } from '../ext'
 import { isObj } from '../object'
 
+// TODO - Add tests. Method is not included in current export / build due to no tests
+
 /**
  * Helper method to find an item in a list of items
  * Works with Arrays and Objects

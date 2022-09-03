@@ -2203,41 +2203,41 @@ declare module "@keg-hub/jsutils" {
   */
   function not(func:(...args:any[]) => any):(...arg:any[]) => boolean
   export namespace not {
-    function isBool(...args:any[]): boolean
-    function isStrBool(...args:any[]): boolean
-    function isColl(...args:any[]): boolean
+    function bool(...args:any[]): boolean
+    function strBool(...args:any[]): boolean
+    function coll(...args:any[]): boolean
     function deepEqual(...args:any[]): boolean
-    function isEmptyColl(...args:any[]): boolean
-    function isDom(...args:any[]): boolean
+    function emptyColl(...args:any[]): boolean
+    function dom(...args:any[]): boolean
     function exists(...args:any[]): boolean
-    function isEmpty(...args:any[]): boolean
-    function isSame(...args:any[]): boolean
-    function isValidDate(...args:any[]): boolean
-    function isFunc(...args:any[]): boolean
+    function empty(...args:any[]): boolean
+    function same(...args:any[]): boolean
+    function validDate(...args:any[]): boolean
+    function func(...args:any[]): boolean
     function identity(...args:any[]): boolean
-    function isOrderable(...args:any[]): boolean
+    function orderable(...args:any[]): boolean
     function equalsNaN(...args:any[]): boolean
-    function isFloat(...args:any[]): boolean
-    function isInt(...args:any[]): boolean
-    function isNum(...args:any[]): boolean
-    function isNegative(...args:any[]): boolean
-    function isPositive(...args:any[]): boolean
+    function float(...args:any[]): boolean
+    function int(...args:any[]): boolean
+    function num(...args:any[]): boolean
+    function negative(...args:any[]): boolean
+    function positive(...args:any[]): boolean
     function hasOwn(...args:any[]): boolean
-    function isEntry(...args:any[]): boolean
-    function isArrMap(...args:any[]): boolean
-    function isObj(...args:any[]): boolean
+    function entry(...args:any[]): boolean
+    function arrMap(...args:any[]): boolean
+    function obj(...args:any[]): boolean
     function jsonEqual(...args:any[]): boolean
-    function isRegex(...args:any[]): boolean
-    function isEmail(...args:any[]): boolean
-    function isIp(...args:any[]): boolean
-    function isLowerCase(...args:any[]): boolean
-    function isPhone(...args:any[]): boolean
-    function isQuoted(...args:any[]): boolean
-    function isStr(...args:any[]): boolean
-    function isUpperCase(...args:any[]): boolean
-    function isUrl(...args:any[]): boolean
-    function isUuid(...args:any[]): boolean
-    function isValidUrl(...args:any[]): boolean
+    function regex(...args:any[]): boolean
+    function email(...args:any[]): boolean
+    function ip(...args:any[]): boolean
+    function lowerCase(...args:any[]): boolean
+    function phone(...args:any[]): boolean
+    function quoted(...args:any[]): boolean
+    function str(...args:any[]): boolean
+    function upperCase(...args:any[]): boolean
+    function url(...args:any[]): boolean
+    function uuid(...args:any[]): boolean
+    function validUrl(...args:any[]): boolean
   }
 
 }
