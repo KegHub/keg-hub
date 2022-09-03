@@ -9,7 +9,7 @@ describe('cloneArr', () => {
 
     expect(Array.isArray(cloned)).toBe(true)
     expect(cloned === arr).toBe(false)
-    arr.map((item, index) => expect(cloned[index] === item))
+    arr.map((item, index) => expect(cloned[index]).toEqual(item))
   })
 
   it('should handle non array / object arguments by returning an empty array and not throw', () => {
@@ -27,6 +27,6 @@ describe('cloneArr', () => {
 
     expect(Array.isArray(cloned)).toBe(true)
     expect(cloned === arr).toBe(false)
-    cloned.map(([ key, value ], index) => expect(arr[key] === value))
+    cloned.map(([ key, value ], index) => expect(arr[key]).toEqual(value))
   })
 })

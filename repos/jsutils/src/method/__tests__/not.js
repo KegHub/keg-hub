@@ -16,14 +16,14 @@ describe('not', () => {
     const validStr = isStr(ip)
     const oppStr = not(isStr)(ip)
     expect(validStr).toBe(!oppStr)
-    
+
     const invalidIp = isIp(ipBad)
     const oppIp = not(isIp)(ipBad)
     expect(invalidIp).toBe(!oppIp)
   })
-  
+
   it('should work with non-boolean responses', () => {
-    const method = (value) => (value)
+    const method = value => value
     const validStr = method(`test-response`)
     const oppStr = not(method)(`test-response`)
     expect(!!validStr).toBe(!oppStr)
@@ -32,5 +32,4 @@ describe('not', () => {
     const oppUndefined = not(method)()
     expect(!!validUndefined).toBe(!oppUndefined)
   })
-
 })

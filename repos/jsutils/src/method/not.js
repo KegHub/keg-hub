@@ -7,7 +7,6 @@ import { isColl } from '../collection/isColl'
 import { isEmptyColl } from '../collection/isEmptyColl'
 import { deepEqual } from '../collection/deepEqual'
 
-
 import { isDom } from '../dom/hasDomAccess'
 
 import { exists } from '../ext/exists'
@@ -53,7 +52,7 @@ import { isValidUrl } from '../url/isValidUrl'
  *
  * @returns {Function} - Calls the passed in function then returns True if the passed in function returns falsy, otherwise false
  */
-export const not = (func) => {
+export const not = func => {
   return (...args) => !func.apply(null, args)
 }
 

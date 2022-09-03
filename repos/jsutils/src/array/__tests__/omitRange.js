@@ -30,7 +30,7 @@ describe('omitRange', () => {
     console.error = jest.fn()
     const result = Arr.omitRange(1, 2, 3)
     expect(result).toEqual(1)
-    expect(console.error).toBeCalled()
+    expect(console.error).toHaveBeenCalled()
   })
 
   it('should console error with invalid range input', () => {
@@ -45,7 +45,7 @@ describe('omitRange', () => {
       console.error = jest.fn()
       const result = Arr.omitRange(arr, start, count)
       expect(result).toEqual(['x'])
-      expect(console.error).toBeCalled()
+      expect(console.error).toHaveBeenCalled()
     })
   })
 })
