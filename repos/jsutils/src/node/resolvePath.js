@@ -18,7 +18,9 @@ const resolvePath = (location, rootDir = process.cwd()) => {
       ? rootDir
       : location.startsWith(`./`)
         ? path.resolve(path.join(`${rootDir}/`, location.replace(`./`, ``)))
-        : path.resolve(path.join(rootDir, location))
+        : location.startsWith(`/`)
+          ? path.resolve(location)
+          : path.resolve(path.join(rootDir, location))
 }
 
 module.exports = {
