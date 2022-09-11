@@ -26,8 +26,14 @@ describe('resolvePath', () => {
     expect(resolvePath(`./`)).toBe(cwd)
   })
 
-  it('should "./" paths to the rootDir', () => {
+  it('should resolve "./" paths to the rootDir', () => {
     expect(resolvePath(`./some/path`)).toBe(`${cwd}/some/path`)
     expect(resolvePath(`./`)).toBe(cwd)
   })
+  
+  it('should resolve "/" paths from the root of the file system', () => {
+    expect(resolvePath(`/some/path`)).toBe(`/some/path`)
+    expect(resolvePath(`/`)).toBe(`/`)
+  })
+
 })
