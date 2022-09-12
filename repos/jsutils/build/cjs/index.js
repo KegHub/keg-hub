@@ -2,7 +2,7 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var flatUnion = require('./flatUnion-e1a0d433.js');
+var flatUnion = require('./flatUnion-44331f9b.js');
 var ensureArr = require('./ensureArr-ae68c041.js');
 var isArr = require('./isArr-39234014.js');
 var isBool = require('./isBool-aa6af74e.js');
@@ -14,6 +14,7 @@ var isColl = require('./isColl-5757310a.js');
 var deepEqual = require('./deepEqual-adba847a.js');
 var set = require('./set-046fe0c3.js');
 var deepClone = require('./deepClone-ae664a21.js');
+var not = require('./not-16fa9c85.js');
 var either = require('./either-81805472.js');
 var noOps = require('./noOps-9b0be865.js');
 var isValidDate = require('./isValidDate-813b9419.js');
@@ -22,8 +23,7 @@ var exists = require('./exists-c79204b1.js');
 var log = require('./log-37bbfac6.js');
 var pipeline = require('./pipeline-e65bdaae.js');
 var stackTracePaths = require('./stackTracePaths-9941d2a6.js');
-var compareTo = require('./compareTo-1c9e2a5a.js');
-var not = require('./not-cd3c0538.js');
+var compareTo = require('./compareTo-d69e4abf.js');
 var isFunc = require('./isFunc-f93803cb.js');
 var isNonNegative = require('./isNonNegative-9959647c.js');
 var isInt = require('./isInt-94ce4199.js');
@@ -36,7 +36,7 @@ var jsonEqual = require('./jsonEqual-7e69ef6a.js');
 var isObj = require('./isObj-6b3aa807.js');
 var reduceObj = require('./reduceObj-f41cbf8d.js');
 var wait = require('./wait-8ca88995.js');
-var joinRegex = require('./joinRegex-9b67e691.js');
+var joinRegex = require('./joinRegex-712103ec.js');
 var getWordEndingAt = require('./getWordEndingAt-63d038a5.js');
 var isQuoted = require('./isQuoted-eb6994da.js');
 var isStr = require('./isStr-8a57710e.js');
@@ -46,7 +46,14 @@ var validate = require('./validate-23297ec2.js');
 var getURLParam = require('./getURLParam-201ef5fe.js');
 var isValidUrl = require('./isValidUrl-a77135f0.js');
 
-
+const formatCls = classes => classes.filter(item => typeof item === 'string' && Boolean(item)).join(` `).trim();
+const cls = (...classGroup) => {
+  return formatCls(classGroup.map(classes => {
+    return Array.isArray(classes) ? cls(...classes) : typeof classes !== `object` ? formatCls([classes]) : formatCls(Object.entries(classes).map(([item, val]) => {
+      return typeof val === 'boolean' ? val && formatCls([item]) : cls(val);
+    }));
+  }));
+};
 
 exports.areCountMapsEqual = flatUnion.areCountMapsEqual;
 exports.areFrequencyEqual = flatUnion.areFrequencyEqual;
@@ -87,6 +94,13 @@ exports.set = set.set;
 exports.cloneFunc = deepClone.cloneFunc;
 exports.cloneObjWithPrototypeAndProperties = deepClone.cloneObjWithPrototypeAndProperties;
 exports.deepClone = deepClone.deepClone;
+exports.hasDomAccess = not.hasDomAccess;
+exports.identity = not.identity;
+exports.isDom = not.hasDomAccess;
+exports.isOrderable = not.isOrderable;
+exports.isRegex = not.isRegex;
+exports.match = not.match;
+exports.not = not.not;
 exports.either = either.either;
 exports.noOpArr = noOps.noOpArr;
 exports.noOpObj = noOps.noOpObj;
@@ -120,11 +134,6 @@ exports.throttleLast = stackTracePaths.throttleLast;
 exports.timedRun = stackTracePaths.timedRun;
 exports.uuid = stackTracePaths.uuid;
 exports.compareTo = compareTo.compareTo;
-exports.identity = not.identity;
-exports.isOrderable = not.isOrderable;
-exports.isRegex = not.isRegex;
-exports.match = not.match;
-exports.not = not.not;
 exports.isFunc = isFunc.isFunc;
 exports.isNonNegative = isNonNegative.isNonNegative;
 exports.isFloat = isInt.isFloat;
@@ -214,4 +223,5 @@ exports.getURLParam = getURLParam.getURLParam;
 exports.objToQuery = getURLParam.objToQuery;
 exports.queryToObj = getURLParam.queryToObj;
 exports.isValidUrl = isValidUrl.isValidUrl;
+exports.cls = cls;
 //# sourceMappingURL=index.js.map

@@ -1,5 +1,5 @@
 import { i as isStr } from './isStr-481ce69b.js';
-import { i as isOrderable } from './not-8920c559.js';
+import { i as isOrderable } from './not-abeaf606.js';
 import { v as validate } from './validate-0a7295ee.js';
 
 const compareTo = (x, y) => {
@@ -14,4 +14,4 @@ const compareTo = (x, y) => {
 };
 
 export { compareTo as c };
-//# sourceMappingURL=compareTo-a5e8c5ab.js.map
+//# sourceMappingURL=compareTo-22fdd98a.js.map

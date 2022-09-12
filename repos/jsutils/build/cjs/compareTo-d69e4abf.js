@@ -1,7 +1,7 @@
 'use strict';
 
 var isStr = require('./isStr-8a57710e.js');
-var not = require('./not-cd3c0538.js');
+var not = require('./not-16fa9c85.js');
 var validate = require('./validate-23297ec2.js');
 
 const compareTo = (x, y) => {
@@ -16,4 +16,4 @@ const compareTo = (x, y) => {
 };
 
 exports.compareTo = compareTo;
-//# sourceMappingURL=compareTo-1c9e2a5a.js.map
+//# sourceMappingURL=compareTo-d69e4abf.js.map

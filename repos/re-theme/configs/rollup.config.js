@@ -87,7 +87,7 @@ const shared = (platform, ext) => ({
     '@keg-hub/jsutils',
     'react-native-web/dist/modules/prefixStyles',
     'react-native-web/dist/exports/StyleSheet/createReactDOMStyle',
-    'react-native-web/dist/exports/StyleSheet/createCompileableStyle',
+    'react-native-web/dist/exports/StyleSheet/preprocess',
   ],
   watch: {
     clearScreen: false

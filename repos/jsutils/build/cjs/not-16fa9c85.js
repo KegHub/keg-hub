@@ -84,9 +84,10 @@ not.url = not(isQuoted.isUrl);
 not.uuid = not(isQuoted.isUuid);
 not.validUrl = not(isValidUrl.isValidUrl);
 
+exports.hasDomAccess = hasDomAccess;
 exports.identity = identity;
 exports.isOrderable = isOrderable;
 exports.isRegex = isRegex;
 exports.match = match;
 exports.not = not;
-//# sourceMappingURL=not-cd3c0538.js.map
+//# sourceMappingURL=not-16fa9c85.js.map
