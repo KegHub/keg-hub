@@ -15,7 +15,7 @@ import { useTheme } from '../hooks/useTheme'
 import {
   prefixStyles,
   createReactDOMStyle,
-  createCompileableStyle,
+  preprocess,
 } from './reactNativeWeb'
 import { ruleOverrides } from '../constants/ruleOverrides'
 
@@ -71,7 +71,7 @@ export const convertToCss = (style, config) => {
   if (!cleanStyle || isEmptyColl(cleanStyle)) return rules
 
   const flat = flattenStyle(cleanStyle)
-  const compiled = createCompileableStyle(flat)
+  const compiled = preprocess(flat)
   rules.blocks.push(createBlock(compiled, config))
 
   return rules

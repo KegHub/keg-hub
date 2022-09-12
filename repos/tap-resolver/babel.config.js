@@ -61,7 +61,7 @@ const babelSetup = options => {
 
   return {
     ...babel,
-    // Merge the babel.env config with the generated babel config for the current environemtn
+    // Merge the babel.env config with the generated babel config for the current environment
     // This ensures any custom env config options are added
     // By default babel will replace the default config with items defined for the environment
     // By merging here, we can ensure the both the custom and generated configs are added

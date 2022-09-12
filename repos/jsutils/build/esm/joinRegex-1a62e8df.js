@@ -2,7 +2,7 @@ import { i as isStr } from './isStr-481ce69b.js';
 import { i as isArr } from './isArr-a4420764.js';
 import './validate-0a7295ee.js';
 import './noOps-e78de2aa.js';
-import { b as isRegex } from './not-8920c559.js';
+import { b as isRegex } from './not-abeaf606.js';
 
 const getRegexSource = maybeRx => isRegex(maybeRx) ? maybeRx.source : isStr(maybeRx) ? maybeRx : null;
 
@@ -23,4 +23,4 @@ const joinRegex = (...args) => {
 };
 
 export { getRegexSource as g, joinRegex as j };
-//# sourceMappingURL=joinRegex-89dc1093.js.map
+//# sourceMappingURL=joinRegex-1a62e8df.js.map

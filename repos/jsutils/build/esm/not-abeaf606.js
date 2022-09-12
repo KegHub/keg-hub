@@ -82,5 +82,5 @@ not.url = not(isUrl);
 not.uuid = not(isUuid);
 not.validUrl = not(isValidUrl);
 
-export { identity as a, isRegex as b, isOrderable as i, match as m, not as n };
-//# sourceMappingURL=not-8920c559.js.map
+export { identity as a, isRegex as b, hasDomAccess as h, isOrderable as i, match as m, not as n };
+//# sourceMappingURL=not-abeaf606.js.map

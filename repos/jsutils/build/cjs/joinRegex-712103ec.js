@@ -4,7 +4,7 @@ var isStr = require('./isStr-8a57710e.js');
 var isArr = require('./isArr-39234014.js');
 require('./validate-23297ec2.js');
 require('./noOps-9b0be865.js');
-var not = require('./not-cd3c0538.js');
+var not = require('./not-16fa9c85.js');
 
 const getRegexSource = maybeRx => not.isRegex(maybeRx) ? maybeRx.source : isStr.isStr(maybeRx) ? maybeRx : null;
 
@@ -26,4 +26,4 @@ const joinRegex = (...args) => {
 
 exports.getRegexSource = getRegexSource;
 exports.joinRegex = joinRegex;
-//# sourceMappingURL=joinRegex-9b67e691.js.map
+//# sourceMappingURL=joinRegex-712103ec.js.map
