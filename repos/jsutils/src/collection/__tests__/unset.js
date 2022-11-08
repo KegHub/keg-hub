@@ -19,11 +19,12 @@ describe('unset', () => {
     expect(getObj.data[0].foo === undefined).toBe(true)
   })
 
-  it('should return true if the value was removed', () => {
+  it('should return the passed in object with the value removed', () => {
     const getObj = { data: [{ foo: 'duper' }] }
     const path = 'data.0.foo'
     const res = Coll.unset(getObj, path)
 
-    expect(res).toBe(true)
+    expect(res).toBe(getObj)
+    expect(res.data[0].foo === undefined).toBe(true)
   })
 })

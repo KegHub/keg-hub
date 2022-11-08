@@ -39,7 +39,6 @@ declare module "@keg-hub/jsutils" {
   * </ul>
   */
   function cloneArr<T=any>(arr: T[]): T[];
-  function cloneArr(arr: any[]): any[];
 
   /**
   * <p>Returns a if it is an Array, else returns b</p>
@@ -48,7 +47,7 @@ declare module "@keg-hub/jsutils" {
   * const bar = eitherArr([ 2 ], 1) // returns [ 2 ]
   * @returns <p>either a, if it's an array, or b</p>
   */
-  function eitherArr(a?: any, b?: any): any;
+  function eitherArr<T=any>(a?: any, b?: any): T;
 
   /**
   * <p>Ensures the passed in value is an array, else it returns it in an array</p>
@@ -58,8 +57,7 @@ declare module "@keg-hub/jsutils" {
   * @param val - <p>Value to check if its an array</p>
   * @returns <p>val if it's an array, or val in an array</p>
   */
-  function ensureArr<T=any>(val: T[] | T): T[];
-  function ensureArr(val: any[] | any): any[];
+  function ensureArr<T=any>(val: any[] | any): T[];
 
   /**
   * <p>Finds the extremum (e.g. max, min) element within array <code>arr</code> as defined by the <code>comparator</code> function</p>
@@ -112,11 +110,6 @@ declare module "@keg-hub/jsutils" {
       exists: boolean;
       mutate: boolean;
   }): T[];
-  function flatArr(arr: any[], opts?: {
-      truthy: boolean;
-      exists: boolean;
-      mutate: boolean;
-  }): any[];
 
   /**
   * <p>Maps each element using mapping function <code>mapFn</code>, but returns the result as a flattened array.
@@ -147,7 +140,6 @@ declare module "@keg-hub/jsutils" {
   * </ul>
   */
   function flatUnion<T=any>(...params: any[]): T[];
-  function flatUnion(...params: any[]): any[];
 
   /**
   * <p>Checks if passed in value is an array.</p>
@@ -159,14 +151,12 @@ declare module "@keg-hub/jsutils" {
   * <li>T/F value is an array</li>
   * </ul>
   */
-  function isArr<T>(value: any): value is T[];
-  function isArr(value: any): value is any[];
+  function isArr<T=any[]>(value: any): value is T;
 
   /**
   * <p>Returns a new array with the same elements as arr, excluding <code>count</code> elements beginning at index <code>startIndex</code></p>
   */
   function omitRange<T=any[]>(arr: any[], startIndex: number, count: number): T[];
-  function omitRange(arr: any[], startIndex: number, count: number): any[];
 
   /**
   * <p>Randomly selects values from a passed in array.</p>
@@ -180,7 +170,6 @@ declare module "@keg-hub/jsutils" {
   * </ul>
   */
   function randomArr<T=any>(arr: any[], amount?: number): T[];
-  function randomArr(arr: any[], amount?: number): any[];
 
   /**
   * <p>Randomly sorts an arrays items.</p>
@@ -192,7 +181,7 @@ declare module "@keg-hub/jsutils" {
   * <li>randomly sorted array</li>
   * </ul>
   */
-  function randomizeArr(arr: any[]): any[];
+  function randomizeArr<T=any>(arr: any[]): T[];
 
   /**
   * <p>Removes duplicates from an array, checking by reference-equality</p>
@@ -203,7 +192,6 @@ declare module "@keg-hub/jsutils" {
   * @returns <p>copy of passed in array, with duplicates removed</p>
   */
   function uniqArrByReference<T=any>(arr: any[]): T[];
-  function uniqArrByReference(arr: any[]): any[];
 
   /**
   * <p>Removes duplicates from an array.</p>
@@ -218,7 +206,6 @@ declare module "@keg-hub/jsutils" {
   * @returns <p>copy of passed in array, with duplicates removed</p>
   */
   function uniqArr<T=any>(arr: any[], selector: (element: any) => any): T[];
-  function uniqArr(arr: any[], selector: (element: any) => any): any[];
 
   /**
   * <p>Converts a value to a boolean as a string.</p>
@@ -241,7 +228,7 @@ declare module "@keg-hub/jsutils" {
   * @param val - <p>value to check if is a number</p>
   * @returns <p>True if val is a boolean</p>
   */
-  function isBool(val: any): val is boolean;
+  function isBool<T=boolean>(val: any): val is T;
 
   /**
   * <p>Checks is value is a boolean as a string.</p>
@@ -254,7 +241,7 @@ declare module "@keg-hub/jsutils" {
   * @param val - <p>value to check if boolean as a string</p>
   * @returns <p>True if val is a string boolean</p>
   */
-  function isStrBool(val: any):val is string;
+  function isStrBool<T=string>(val: any):val is T;
 
   /**
   * <p>Checks if a value is falsy, excluding empty string and 0.</p>
@@ -272,7 +259,7 @@ declare module "@keg-hub/jsutils" {
   * <li>True if val is truthy, an empty string or 0</li>
   * </ul>
   */
-  function softFalsy(val: any): boolean;
+  function softFalsy<T=any>(val: any): T;
 
   /**
   * <p>Converts a value to a boolean.</p>
@@ -317,9 +304,7 @@ declare module "@keg-hub/jsutils" {
   * <li>Cloned Object</li>
   * </ul>
   */
-  function deepClone<T=Record<any, any>|any[]>(obj: T): T;
   function deepClone<T=Record<any, any>|any[]>(obj: any): T;
-  function deepClone(obj: Record<any, any>|any[]): Record<any, any>|any[];
 
   /**
   * <p>Recursively checks if two collections are equal
@@ -336,7 +321,7 @@ declare module "@keg-hub/jsutils" {
   * @param a - <p>Object to check</p>
   * @param b - <p>Object to check against</p>
   */
-  function deepEqual(a: Record<any, any>|any[], b: Record<any, any>|any[]): boolean;
+  function deepEqual<T=Record<any, any>|any[], M=Record<any, any>|any[]>(a: T, b: M): boolean;
 
   /**
   * <p>Searches an object based on the path param
@@ -356,8 +341,6 @@ declare module "@keg-hub/jsutils" {
   * </ul>
   */
   function get<T=any>(obj: Record<any, any>|any[], path: string | string[], fallback?: T): T;
-  function get<T=any>(obj: Record<any, any>|any[], path: string | string[], fallback?: any): T|any;
-  function get(obj: Record<any, any>|any[], path: string | string[], fallback?: any): any;
 
   /**
   * <p>Checks if the value is a collection ( object || array ).</p>
@@ -373,7 +356,7 @@ declare module "@keg-hub/jsutils" {
   * @param val - <p>Value to check</p>
   * @returns <p>True if the value is a collection (Object || Array)</p>
   */
-  function isColl(val: any): val is Record<any, any>|any[];
+  function isColl<T=Record<any, any>|any[]>(val: any): val is T;
 
   /**
   * <p>Checks if passed in obj || array is empty.</p>
@@ -391,7 +374,7 @@ declare module "@keg-hub/jsutils" {
   * <li>True if the passed in collection is empty</li>
   * </ul>
   */
-  function isEmptyColl(obj: any): obj is Record<any, any>|any[];
+  function isEmptyColl<T=Record<any, any>|any[]>(obj: any): obj is T;
 
   /**
   * <p>Loops over a collection and calls a passed in function for each one.</p>
@@ -402,7 +385,6 @@ declare module "@keg-hub/jsutils" {
   * @returns <p>returns the same type of collection passed in</p>
   */
   function mapColl<T=Record<any, any>|any[]>(coll: Record<any, any>|any[]): T;
-  function mapColl(coll: Record<any, any>|any[]): Record<any, any>|any[];
 
   /**
   * <p>Finds the first element in coll whose mapped value passes the testFunc function, then returns
@@ -442,7 +424,6 @@ declare module "@keg-hub/jsutils" {
   * </ul>
   */
   function reduceColl<T=any>(obj: Record<any, any>|any[], cb: (key:string, value:any, coll:Record<any, any>|any[], data:any) => any, reduce?: any): T;
-  function reduceColl(obj: Record<any, any>|any[], cb: (key:string, value:any, coll:Record<any, any>|any[], data:any) => any, reduce?: any): any;
 
   /**
   * <p>Returns an array composed of element repeated &quot;times&quot; times. If element is a function, it will be called.
@@ -478,7 +459,7 @@ declare module "@keg-hub/jsutils" {
   * <li>The obj with the passed in value set to the passed in path</li>
   * </ul>
   */
-  function set(obj: Record<any, any>|any[], path: string | string[], finalValue: any): any;
+  function set<T=Record<any, any>|any[], V=any>(obj: T, path: string | string[], finalValue: V): T;
 
   /**
   * <p>Compares a collection's keys / values with another collections keys / values</p>
@@ -519,7 +500,7 @@ declare module "@keg-hub/jsutils" {
   * <li>The passed in object, with the attribute found at the path removed</li>
   * </ul>
   */
-  function unset(obj: Record<any, any>|any[], path: string|string[]): void;
+  function unset<T=Record<any, any>|any[]>(obj: T, path: string|string[]): T;
 
   /**
   * <p>Determines the correct value to return, by calling the passed in check function.
@@ -538,7 +519,6 @@ declare module "@keg-hub/jsutils" {
   * @param check - <p>called to determine which value to return</p>
   */
   function either<T=any>(val1?: any, val2?: any, check?: (v1:any, v2:any) => any): T;
-  function either(val1?: any, val2?: any, check?: (v1:any, v2:any) => any): any;
 
   /**
   * <p>Checks if a value exists. NOT undefined || null</p>
@@ -557,8 +537,7 @@ declare module "@keg-hub/jsutils" {
   * <li>If the item exists or not</li>
   * </ul>
   */
-  function exists<T>(value: any): value is T;
-  function exists(value: any): boolean;
+  function exists<T=any>(value: any): value is T;
 
   /**
   * <p>Checks if the value is empty.</p>
@@ -574,7 +553,7 @@ declare module "@keg-hub/jsutils" {
   * @param val - <p>value to check</p>
   * @returns <p>if the value is empty</p>
   */
-  function isEmpty(val: any): boolean;
+  function isEmpty<T=boolean>(val: any): val is T;
 
   /**
   * <p>Checks if the passed in values are exactly the same.</p>
@@ -601,7 +580,7 @@ declare module "@keg-hub/jsutils" {
   * @param date - <p>value to check</p>
   * @returns <p>T/F - if passed in date is a valid date</p>
   */
-  function isValidDate(date: any): date is Date;
+  function isValidDate<T=Date>(date: any): date is T;
 
   /**
   * <p>Reuseable empty, frozen object</p>
@@ -625,6 +604,12 @@ declare module "@keg-hub/jsutils" {
   const noOpArr: any[];
 
   /**
+  * <p>Reusable, empty frozen array.
+  * Renamed for consistency</p>
+  */
+  const emptyArr: any[];
+
+  /**
   * <p>Converts a string to its own type if possible.</p>
   * @example
   * strToType('12345678')
@@ -639,7 +624,6 @@ declare module "@keg-hub/jsutils" {
   * @returns <p>converted value || string if can't convert</p>
   */
   function strToType<T=any>(val: any): T;
-  function strToType(val: any): any;
 
   /**
   * <p>Gets the type of the passed in val.</p>
@@ -714,7 +698,6 @@ declare module "@keg-hub/jsutils" {
   * @returns <p>cloned function</p>
   */
   function cloneFunc<T=any>(func: (...params: any[]) => any): T;
-  function cloneFunc(func: (...params: any[]) => any): any;
 
   /**
   * <p>Generic compare to method that works for strings, numbers, and booleans</p>
@@ -792,7 +775,6 @@ declare module "@keg-hub/jsutils" {
   * @returns <p>the input</p>
   */
   function identity<T=any>(x: T): T;
-  function identity(x: any): any;
 
   /**
   * <p>Check if the passed in item is a function.</p>
@@ -804,8 +786,7 @@ declare module "@keg-hub/jsutils" {
   * // Returns false
   * @returns <p>is a function</p>
   */
-  function isFunc<T>(test: any): test is T;
-  function isFunc(test: any): test is Function;
+  function isFunc<T=(...args:any[])=>any>(test: any): test is T;
 
   /**
   * <p>Checks if param is an orderable primitive</p>
@@ -848,8 +829,7 @@ declare module "@keg-hub/jsutils" {
   * <li>Success response of executed Promise</li>
   * </ul>
   */
-  function limboify<T>(cb:(...params:any[]) => any, ...args:any[]): (...args:any[]) => Promise<[err?:Error, response?:T]>;
-  function limboify(cb:(...params:any[]) => any, ...args:any[]): (...args:any[]) => Promise<[err?:Error, response?:any]>;
+  function limboify<T=any>(cb:(...params:any[]) => any, ...args:any[]): Promise<[err?:Error, response?:T]>;
 
 
   /**
@@ -892,8 +872,7 @@ declare module "@keg-hub/jsutils" {
   * <li>the return value of the first entry with a matching check value, else null</li>
   * </ul>
   */
-  function match<T>(matchArg: any, entries: any[]): T;
-  function match(matchArg: any, entries: any[]): any;
+  function match<T=any>(matchArg: any, entries: any[]): T;
 
   /**
   * <p>Creates a method to memorize passed in methods output</p>
@@ -1188,8 +1167,7 @@ declare module "@keg-hub/jsutils" {
   * @param filePath - <p>path to file. You should use an absolute path</p>
   * @returns <p>the at path, if it exists, null otherwise</p>
   */
-  function tryRequireSync<T>(filePath: string): T;
-  function tryRequireSync(filePath: string): any;
+  function tryRequireSync<T=any>(filePath: string): T;
 
   /**
   * <p>Tries to asynchronously require the path, returning null if unable to.
@@ -1200,8 +1178,7 @@ declare module "@keg-hub/jsutils" {
   * @param filePath - <p>path to file. You should use an absolute path</p>
   * @returns <p>the at path, if it exists, null otherwise</p>
   */
-  function tryRequire<T>(filePath: string): Promise<T>;
-  function tryRequire(filePath: string): Promise<any>;
+  function tryRequire<T=any>(filePath: string): Promise<T>;
 
   /**
   * <p>Checks if a value is NaN.</p>
@@ -1240,7 +1217,7 @@ declare module "@keg-hub/jsutils" {
   * @param num - <p>value to check</p>
   * @returns <p>true or false - value is an Float</p>
   */
-  function isFloat(val: any): val is number;
+  function isFloat<T=number>(val: any): val is T;
 
   /**
   * <p>Checks if a number is an integer.</p>
@@ -1253,7 +1230,7 @@ declare module "@keg-hub/jsutils" {
   * @param num - <p>value to check</p>
   * @returns <p>true or false - value is an Int</p>
   */
-  function isInt(val: any): val is number;
+  function isInt<T=number>(val: any): val is T;
 
   /**
   * @example
@@ -1262,7 +1239,7 @@ declare module "@keg-hub/jsutils" {
   * isNegative(0) // false
   * @returns <p>true if x is a negative number</p>
   */
-  function isNegative(val: any): val is number;
+  function isNegative<T=number>(val: any): val is T;
 
   /**
   * <p>Checks if val is a non-negative number</p>
@@ -1275,7 +1252,7 @@ declare module "@keg-hub/jsutils" {
   * <li>True if val is non negative number</li>
   * </ul>
   */
-  function isNonNegative(val: any): val is number;
+  function isNonNegative<T=number>(val: any): val is T;
 
   /**
   * <p>Checks is value is a number.</p>
@@ -1291,7 +1268,7 @@ declare module "@keg-hub/jsutils" {
   * @param val - <p>value to check if is a number</p>
   * @returns <p>T/F - if value is a number</p>
   */
-  function isNum(val: any): val is number;
+  function isNum<T=number>(val: any): val is T;
 
   /**
   * @example
@@ -1300,7 +1277,7 @@ declare module "@keg-hub/jsutils" {
   * isPositive(1) // true
   * @returns <p>true if x is a positive number</p>
   */
-  function isPositive(val: any): val is number;
+  function isPositive<T=number>(val: any): val is T;
 
   /**
   * <p>Returns the result of evaluation <code>num</code> modulo <code>divisor</code>.
@@ -1404,7 +1381,7 @@ declare module "@keg-hub/jsutils" {
   * <li>frozen Object</li>
   * </ul>
   */
-  function deepFreeze(obj: Record<any, any>): Record<any, any>;
+  function deepFreeze<T=Record<any, any>>(obj: Record<any, any>): T;
 
   /**
   * <p>Deep merges an array of objects together.</p>
@@ -1421,6 +1398,7 @@ declare module "@keg-hub/jsutils" {
   * @param obj1 - <p>return if is object</p>
   * @param obj2 - <p>use if first is not an object</p>
   */
+  function eitherObj<T, M>(obj1?: T, obj2?: M): T | M;
   function eitherObj(obj1?: Record<any, any>, obj2?: any): any;
 
   /**
@@ -1442,7 +1420,6 @@ declare module "@keg-hub/jsutils" {
   * </ul>
   */
   function filterObj<T=Record<any, any>>(obj: Record<any, any>, predicate: (key:string, value:string) => boolean, logError?:boolean): T;
-  function filterObj(obj: Record<any, any>, predicate: (key:string, value:string) => boolean, logError?:boolean): Record<any, any>;
 
   /**
   * <p>Checks if prop exists on the object.</p>
@@ -1477,15 +1454,13 @@ declare module "@keg-hub/jsutils" {
   * <li>True if it is an entry, false otherwise</li>
   * </ul>
   */
-  function isEntry<T,V>(maybeEntry: any): maybeEntry is [T, V];
-  function isEntry(maybeEntry: any): maybeEntry is [any, any];
+  function isEntry<T=any,V=any>(maybeEntry: any): maybeEntry is [T, V];
 
   /**
   * <p>Checks if data is an object and not an array.</p>
   * @param obj - <p>data to check</p>
   */
-  function isObj<T>(obj: any): obj is T;
-  function isObj(obj: any): obj is Record<any, any>;
+  function isObj<T=Record<any, any>>(obj: any): obj is T;
 
   /**
   * <p>Compares two objects by converting to JSON, and checking string equality.</p>
@@ -1502,7 +1477,6 @@ declare module "@keg-hub/jsutils" {
   * @returns <p>built object</p>
   */
   function keyMap<T=Record<string, string>>(arr: string[], toUpperCase?: boolean): T;
-  function keyMap(arr: string[], toUpperCase?: boolean): Record<string, string>;
 
   /**
   * <p>Returns a new object, each entry of which is the result of applying the cb function to input's corresponding entry</p>
@@ -1520,7 +1494,7 @@ declare module "@keg-hub/jsutils" {
   * <li>new object with mapping applied, or the original obj if input was invalid</li>
   * </ul>
   */
-  function mapEntries(obj: any | any[], cb: (key:string, value:any) => [string, any]): Record<string, any>;
+  function mapEntries<T=Record<string, any>>(obj: any | any[], cb: (key:string, value:any) => [string, any]): T;
 
   /**
   * <p>Shortcut helper for mapping just the keys of an object.</p>
@@ -1530,7 +1504,7 @@ declare module "@keg-hub/jsutils" {
   * <li>The new object with each key mapped to the response of keyMapper</li>
   * </ul>
   */
-  function mapKeys(obj: Record<string, any>, keyMapper: (key:string) => any): Record<string, any>;
+  function mapKeys<T=Record<string, any>>(obj: Record<string, any>, keyMapper: (key:string) => any): T;
 
   /**
   * <p>Map over and objects props and values.</p>
@@ -1548,7 +1522,7 @@ declare module "@keg-hub/jsutils" {
   * @param keys - <p>keys to not add to new object</p>
   * @returns <p>new object with only keys not in array</p>
   */
-  function omitKeys(target: Record<string, any>, keys: string[]): Record<string, any>;
+  function omitKeys<T=Record<string, any>>(target: Partial<T>, keys: string[]): T;
 
   /**
   * <p>Creates a new object from passed in object with keys defined from array.</p>
@@ -1556,7 +1530,7 @@ declare module "@keg-hub/jsutils" {
   * @param keys - <p>keys to add to new object</p>
   * @returns <p>new object with only keys from passed in keys array</p>
   */
-  function pickKeys(obj: Record<string, any>, keys: string[]): Record<string, any>;
+  function pickKeys<T=Record<string, any>>(obj: Partial<T>, keys: string[]): T;
 
   /**
   * <p>Loop over and objects props and values and reduce to new object.</p>
@@ -1565,7 +1539,6 @@ declare module "@keg-hub/jsutils" {
   * </ul>
   */
   function reduceObj<T=any>(obj: Record<string, any>, cb: (key: string, value: any, data: any) => any, start?:any): T;
-  function reduceObj(obj: Record<string, any>, cb: (key: string, value: any, data: any) => any, start?:any): any;
 
   /**
   * <p>Sanitizes all html strings in an object's properties.</p>
@@ -1599,8 +1572,7 @@ declare module "@keg-hub/jsutils" {
   * - Second object contains keys not matching keys of the keys argument</li>
   * </ul>
   */
-  function splitByKeys<T,S>(target: Record<string, any>, keys: string[]): [T, S];
-  function splitByKeys(target: Record<string, any>, keys: string[]): [Record<string, any>, Record<string, any>];
+  function splitByKeys<T=Record<string, any>,S=Record<string, any>>(target: Record<string, any>, keys: string[]): [T, S];
 
   /**
   * <p>Converts an array or string into an object.</p>
@@ -1612,7 +1584,6 @@ declare module "@keg-hub/jsutils" {
   * </ul>
   */
   function toObj<T=Record<string, any>>(val: string[]|string, divider?: string, split?: string): T;
-  function toObj(val: string[]|string, divider?: string, split?: string): Record<string, any>;
 
   /**
   * <p>Trims objects string fields.</p>
@@ -1716,7 +1687,7 @@ declare module "@keg-hub/jsutils" {
   * <li>string in camel case format</li>
   * </ul>
   */
-  function camelCase(string: string): string;
+  function camelCase<T=string>(string: string): T;
 
   /**
   * <p>Turns a path string into a camel-cased string, if there is more than one
@@ -1726,7 +1697,7 @@ declare module "@keg-hub/jsutils" {
   * camelCasePath('settings') -> 'settings'
   * @returns <p>camel-cased string</p>
   */
-  function camelCasePath(path: string): string;
+  function camelCasePath<T=string>(path: string): T;
 
   /**
   * <p>Converts first letter of a string to be capitalized.</p>
@@ -1735,7 +1706,7 @@ declare module "@keg-hub/jsutils" {
   * <li>Passed in string, but capitalized</li>
   * </ul>
   */
-  function capitalize(string: string, lowercaseTail?: boolean): string;
+  function capitalize<T=string>(string: string, lowercaseTail?: boolean): T;
 
   /**
   * <p>Converts <code>-</code> and <code>_</code> to white space and calls remove removeDot, to remove a period.</p>
@@ -1744,7 +1715,7 @@ declare module "@keg-hub/jsutils" {
   * <li>cleaned string</li>
   * </ul>
   */
-  function cleanStr(string: string): string;
+  function cleanStr<T=string>(string: string): T;
 
   /**
   * <p>Checks if a string contains another string.</p>
@@ -1767,7 +1738,7 @@ declare module "@keg-hub/jsutils" {
   * <li>A new string with the specified delimiter delimiting each word</li>
   * </ul>
   */
-  function delimitString(str: string, delimiter: string, delimiters?: string[]): string;
+  function delimitString<T=string>(str: string, delimiter: string, delimiters?: string[]): T;
 
   /**
   * <p>Checks if the first param is a string, and returns it.
@@ -1775,7 +1746,7 @@ declare module "@keg-hub/jsutils" {
   * @param str1 - <p>return if is string</p>
   * @param str2 - <p>use if first is not a string</p>
   */
-  function eitherStr(str1?: any, str2?: any): any;
+  function eitherStr<T=string>(str1?: any, str2?: any): T;
 
   /**
   * <p>Gets the word in text ending at index (exclusive)</p>
@@ -1786,14 +1757,14 @@ declare module "@keg-hub/jsutils" {
   * @param index - <p>the exclusive ending index of the word to get</p>
   * @param delimiters - <p>optional array of strings that delimit the start of words. Defaults to the space character.</p>
   */
-  function getWordEndingAt(text: string, index: number, delimiters?: string[]): string;
+  function getWordEndingAt<T=string>(text: string, index: number, delimiters?: string[]): T;
 
   /**
   * <p>Helper for <code>getWordStartingAt</code> that finds the
   * index of the exclusive end of the word, given the available
   * ending delimiters</p>
   */
-  function getNearestDelimiterIndex(text: string, index: number, delimiters?: string[]): string;
+  function getNearestDelimiterIndex<T=string>(text: string, index: number, delimiters?: string[]): T;
 
   /**
   * <p>Gets the word in text starting at index</p>
@@ -1804,7 +1775,7 @@ declare module "@keg-hub/jsutils" {
   * @param index - <p>the inclusive starting index of the word to get</p>
   * @param delimiters - <p>optional array of strings that delimit words. Defaults to the space character.</p>
   */
-  function getWordStartingAt(text: string, index: number, delimiters?: string[]): string;
+  function getWordStartingAt<T=string>(text: string, index: number, delimiters?: string[]): T;
 
   /**
   * <p>Creates a hash from a passed in string consistently
@@ -1818,7 +1789,7 @@ declare module "@keg-hub/jsutils" {
   * <li>Hashed version of the string</li>
   * </ul>
   */
-  function hashString(str: string, maxLength?: number): string;
+  function hashString<T=string>(str: string, maxLength?: number): T;
 
   /**
   * <p>Converts a camelCase style rule into a hyphenated style rule
@@ -1828,7 +1799,7 @@ declare module "@keg-hub/jsutils" {
   * <li>Hyphenated style rule</li>
   * </ul>
   */
-  function hyphenator(str: string): string;
+  function hyphenator<T=string>(str: string): T;
 
   /**
   * <p>Check if string is a email.</p>
@@ -1837,7 +1808,7 @@ declare module "@keg-hub/jsutils" {
   * <li>if it's a email</li>
   * </ul>
   */
-  function isEmail(string: string):string is string;
+  function isEmail<T=string>(string: string):string is T;
 
   /**
   * <p>Checks if a string is all lowercase letters</p>
@@ -1846,7 +1817,7 @@ declare module "@keg-hub/jsutils" {
   * <li>True if str is lowercase</li>
   * </ul>
   */
-  function isLowerCase(str: string): str is string;
+  function isLowerCase<T=string>(str: string): str is T;
 
   /**
   * <p>Check if string is a phone number.</p>
@@ -1855,7 +1826,7 @@ declare module "@keg-hub/jsutils" {
   * <li>True if str is a phone number</li>
   * </ul>
   */
-  function isPhone(str: string): str is string;
+  function isPhone<T=string>(str: string): str is T;
 
   /**
   * <p>Checks if the string contains quoted text</p>
@@ -1867,7 +1838,7 @@ declare module "@keg-hub/jsutils" {
   * @param quotes - <p>optional array of valid quote strings to check with. Defaults to single and double quote characters.</p>
   * @returns <p>true if <code>str</code> is a quoted string</p>
   */
-  function isQuoted(str: string, quotes?: string[]): str is string;
+  function isQuoted<T=string>(str: string, quotes?: string[]): str is T;
 
   /**
   * <p>Check if passed in value is a string.</p>
@@ -1876,7 +1847,7 @@ declare module "@keg-hub/jsutils" {
   * <li>True if it's a string</li>
   * </ul>
   */
-  function isStr(str: any): str is string;
+  function isStr<T=string>(str: any): str is T;
 
   /**
   * <p>Checks if a string is all capital letters</p>
@@ -1885,7 +1856,7 @@ declare module "@keg-hub/jsutils" {
   * <li>True if str is uppercase</li>
   * </ul>
   */
-  function isUpperCase(str: string): str is string;
+  function isUpperCase<T=string>(str: string): str is T;
 
   /**
   * <p>Check if string is a url.</p>
@@ -1894,7 +1865,7 @@ declare module "@keg-hub/jsutils" {
   * <li>if it's a url</li>
   * </ul>
   */
-  function isUrl(str: string): str is string;
+  function isUrl<T=string>(str: string): str is T;
 
   /**
   * <p>Check if string is a uuid.</p>
@@ -1903,7 +1874,7 @@ declare module "@keg-hub/jsutils" {
   * <li>if it's a uuid</li>
   * </ul>
   */
-  function isUuid(str: string): str is string;
+  function isUuid<T=string>(str: string): str is T;
 
   /**
   * <p>Maps a string by applying function <code>charMapper</code> to each character.</p>
@@ -1924,7 +1895,6 @@ declare module "@keg-hub/jsutils" {
   * </ul>
   */
   function parseJSON<T=any>(string: string, throwErr?:boolean): T;
-  function parseJSON(string: string, throwErr?:boolean): any;
 
   /**
   * <p>Adds an <code>s</code> to the end of a string, if one does not exist.</p>
@@ -1932,7 +1902,6 @@ declare module "@keg-hub/jsutils" {
   * @returns <p>string as a plural</p>
   */
   function plural<T=string>(str: string): T;
-  function plural(str: string): string;
 
   /**
   * <p>Removes a <code>.</code> from the start and end of a string.</p>
@@ -1942,7 +1911,6 @@ declare module "@keg-hub/jsutils" {
   * </ul>
   */
   function removeDot<T=string>(str: string): T;
-  function removeDot(str: string): string;
 
   /**
   * <p>Reverses string</p>
@@ -1952,7 +1920,6 @@ declare module "@keg-hub/jsutils" {
   * @returns <p>reversed str</p>
   */
   function reverseStr<T=string>(str: string): T;
-  function reverseStr(str: string): string;
 
   /**
   * <p>Sanitize a string of HTML content.</p>
@@ -1961,7 +1928,6 @@ declare module "@keg-hub/jsutils" {
   * </ul>
   */
   function sanitize<T=string>(string: string): T;
-  function sanitize(string: string): string;
 
   /**
   * <p>Remove an <code>s</code> at the end of a string, if the last char is an <code>s</code>,</p>
@@ -1969,7 +1935,6 @@ declare module "@keg-hub/jsutils" {
   * @returns <p>string as singular</p>
   */
   function singular<T=string>(str: string): T;
-  function singular(str: string): string;
 
   /**
   * <p>Converts a string to snake_case.</p>
@@ -1981,7 +1946,6 @@ declare module "@keg-hub/jsutils" {
   * </ul>
   */
   function snakeCase<T=string>(str: string): T;
-  function snakeCase(str: string): string;
 
   /**
   * <p>Joins strings and array of string together with spaces</p>
@@ -1990,7 +1954,6 @@ declare module "@keg-hub/jsutils" {
   * @returns <p>Joined strings seperated by space</p>
   */
   function spaceJoin<T=string>(str: string, toAdd: string | string[]): T;
-  function spaceJoin(original: string, toAdd: string | string[]): string;
 
   /**
   * <p>Converts a string to css in js format.
@@ -2001,7 +1964,6 @@ declare module "@keg-hub/jsutils" {
   * </ul>
   */
   function styleCase<T=string>(str: string): T;
-  function styleCase(str: string): string;
 
   /**
   * <p>Helper to wrap the template method, and allow passing a custom regex argument.<br/>
@@ -2017,7 +1979,7 @@ declare module "@keg-hub/jsutils" {
   * <li>template with placeholder values filled</li>
   * </ul>
   */
-  function templateRx(template: string, data: Record<any, any>|any[], fallback?: any, rx?:RegExp):string
+  function templateRx<T=string>(template: string, data: Record<any, any>|any[], fallback?: any, rx?:RegExp):T
 
   /**
   * <p>Simple template replace for ES6 template strings</p>
@@ -2031,7 +1993,7 @@ declare module "@keg-hub/jsutils" {
   * <li>template with placeholder values filled</li>
   * </ul>
   */
-  function template(template: string, data: Record<any, any>|any[], fallback?: any): string;
+  function template<T=string>(template: string, data: Record<any, any>|any[], fallback?: any): T;
 
   /**
   * <p>Converts a passed in value to a string.</p>
@@ -2041,8 +2003,7 @@ declare module "@keg-hub/jsutils" {
   * </ul>
   */
   function toStr<T=string>(val: any): T;
-  function toStr(val: any): string;
-
+  
   /**
   * <p>Converts a string to train case, I.E. marginTop =&gt; margin-top.</p>
   * @param string - <p>to be converted</p>
@@ -2050,8 +2011,8 @@ declare module "@keg-hub/jsutils" {
   * <li>string in train case format</li>
   * </ul>
   */
-  function trainCase<T>(string: string): T;
-  function trainCase(string: string): string;
+  function trainCase<T=string>(string: string): T;
+  
 
   /**
   * <p>Checks whether a given string is a valid filename</p>
@@ -2067,8 +2028,7 @@ declare module "@keg-hub/jsutils" {
   * </ul>
   */
   
-  function wordCaps<T>(string: string): T;
-  function wordCaps(string: string): string;
+  function wordCaps<T=string>(string: string): T;
 
 
   /**
@@ -2084,27 +2044,27 @@ declare module "@keg-hub/jsutils" {
   * <li>value for the url parameter</li>
   * </ul>
   */
-  function getURLParam(paramKey: string): string;
+  function getURLParam<T=string>(paramKey: string): T;
 
   /**
   * <p>Checks if the given string is a valid URL
   * Must begin with ftp/http/https</p>
   * @param string - <p>any string to check if it's a valid url</p>
   */
-  function isValidUrl(string: string): string is string;
+  function isValidUrl<T=string>(string: string): string is T;
 
   /**
   * <p>Converts the input object to url querystring</p>
   * @param obj - <p>object with kvp to convert into a querystring</p>
   * @returns <p>querystring</p>
   */
-  function objToQuery(obj: Record<string, any>): string;
+  function objToQuery<T=string>(obj: Record<string, any>): T;
 
   /**
   * <p>takes a raw querystring input and converts it to an object</p>
   * @param string - <p>querystring to parse into an object</p>
   */
-  function queryToObj(string: string): Record<string, any>;
+  function queryToObj<T=Record<string, any>>(string: string): T;
 
 
   /**

@@ -10,6 +10,12 @@ import { updateColl } from './updateColl'
  * @function
  * @param {Object} obj - Object to have the attribute removed
  * @param {String|Array} path - Path of attribute to be removed, separated by string
+ *
  * @return {Object} - The passed in object, with the attribute found at the path removed
  */
-export const unset = (obj, path) => updateColl(obj, path, 'unset')
+export const unset = (obj, path) => {
+  updateColl(obj, path, 'unset')
+
+  return obj
+}
+

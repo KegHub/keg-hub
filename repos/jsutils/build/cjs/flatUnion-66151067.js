@@ -1,12 +1,14 @@
-import { v as validate } from './validate-0a7295ee.js';
-import { i as isArr } from './isArr-a4420764.js';
-import { i as isObj } from './isObj-2a71d1af.js';
-import { i as isFunc } from './isFunc-40ceeef8.js';
-import { c as compareTo } from './compareTo-22fdd98a.js';
-import { a as identity } from './not-abeaf606.js';
-import { i as isNonNegative } from './isNonNegative-76ec0014.js';
-import { n as noOpObj } from './noOps-e78de2aa.js';
-import { e as exists } from './exists-bf542cb8.js';
+'use strict';
+
+var validate = require('./validate-23297ec2.js');
+var isArr = require('./isArr-39234014.js');
+var isObj = require('./isObj-6b3aa807.js');
+var isFunc = require('./isFunc-f93803cb.js');
+var compareTo = require('./compareTo-d69e4abf.js');
+var not = require('./not-16fa9c85.js');
+var isNonNegative = require('./isNonNegative-9959647c.js');
+var noOps = require('./noOps-5b6bf1e9.js');
+var exists = require('./exists-c79204b1.js');
 
 const buildElementCountMap = arr => {
   const counts = new Map();
@@ -27,11 +29,11 @@ const areCountMapsEqual = (mapA, mapB) => {
   return true;
 };
 const areFrequencyEqual = (arr, otherArr) => {
-  const [valid] = validate({
+  const [valid] = validate.validate({
     arr,
     otherArr
   }, {
-    $default: isArr
+    $default: isArr.isArr
   });
   if (!valid) return null;
   if (arr === otherArr) return true;
@@ -42,11 +44,11 @@ const areFrequencyEqual = (arr, otherArr) => {
 };
 
 const areSetEqual = (arr, otherArr) => {
-  const [valid] = validate({
+  const [valid] = validate.validate({
     arr,
     otherArr
   }, {
-    $default: isArr
+    $default: isArr.isArr
   });
   if (!valid) return null;
   if (arr === otherArr) return true;
@@ -60,61 +62,61 @@ const areSetEqual = (arr, otherArr) => {
 };
 
 const cloneArr = arr => Array.from([
-...(isArr(arr) && arr || isObj(arr) && Object.entries(arr) || [])]);
+...(isArr.isArr(arr) && arr || isObj.isObj(arr) && Object.entries(arr) || [])]);
 
-const eitherArr = (a, b) => isArr(a) ? a : b;
+const eitherArr = (a, b) => isArr.isArr(a) ? a : b;
 
 const flatten = (arr, result, opts) => {
   for (let i = 0; i < arr.length; i++) {
     const value = arr[i];
-    isArr(value) ? flatten(value, result, opts) : opts.exists && !exists(value) || opts.truthy && !value ? result : result.push(value);
+    isArr.isArr(value) ? flatten(value, result, opts) : opts.exists && !exists.exists(value) || opts.truthy && !value ? result : result.push(value);
   }
   if (!opts.mutate) return result;
   Object.assign(arr, result).splice(result.length);
   return arr;
 };
-const flatArr = (arr, opts) => flatten(arr, [], isObj(opts) ? opts : noOpObj);
+const flatArr = (arr, opts) => flatten(arr, [], isObj.isObj(opts) ? opts : noOps.noOpObj);
 
 const flatMap = (arr, mapFn) => {
-  const [inputIsValid] = validate({
+  const [inputIsValid] = validate.validate({
     arr,
     mapFn
   }, {
-    arr: isArr,
-    mapFn: isFunc
+    arr: isArr.isArr,
+    mapFn: isFunc.isFunc
   });
   if (!inputIsValid) return arr;
   return arr.reduce((finalArr, current) => {
     const result = mapFn(current);
-    isArr(result) ? result.map(el => finalArr.push(el)) : finalArr.push(result);
+    isArr.isArr(result) ? result.map(el => finalArr.push(el)) : finalArr.push(result);
     return finalArr;
   }, []);
 };
 
 const findExtrema = (arr, comparator) => {
-  const [valid] = validate({
+  const [valid] = validate.validate({
     arr,
     comparator
   }, {
-    arr: isArr,
-    $default: isFunc
+    arr: isArr.isArr,
+    $default: isFunc.isFunc
   });
   if (!valid) return null;
   return arr.length ? arr.reduce((extremaSoFar, next) => comparator(extremaSoFar, next) > 0 ? extremaSoFar : next) : null;
 };
 
-const findMax = (arr = [], propSelector = identity) => findExtrema(arr, (x, y) => compareTo(propSelector(x), propSelector(y)));
+const findMax = (arr = [], propSelector = not.identity) => findExtrema(arr, (x, y) => compareTo.compareTo(propSelector(x), propSelector(y)));
 
-const findMin = (arr = [], propSelector = identity) => findExtrema(arr, (x, y) => compareTo(propSelector(y), propSelector(x)));
+const findMin = (arr = [], propSelector = not.identity) => findExtrema(arr, (x, y) => compareTo.compareTo(propSelector(y), propSelector(x)));
 
 const omitRange = (arr, startIndex, count) => {
-  const [inputIsValid] = validate({
+  const [inputIsValid] = validate.validate({
     arr,
     startIndex,
     count
   }, {
-    arr: isArr,
-    $default: isNonNegative
+    arr: isArr.isArr,
+    $default: isNonNegative.isNonNegative
   });
   if (!inputIsValid) return arr;
   const nextArr = [...arr];
@@ -123,7 +125,7 @@ const omitRange = (arr, startIndex, count) => {
 };
 
 const randomArr = (arr, amount) => {
-  if (!isArr(arr)) return arr;
+  if (!isArr.isArr(arr)) return arr;
   const useAmount = amount || 1;
   const randoms = [];
   for (let i = 0; i < useAmount; i++) {
@@ -132,10 +134,10 @@ const randomArr = (arr, amount) => {
   return !amount ? randoms[0] : randoms;
 };
 
-const randomizeArr = arr => !isArr(arr) && arr || arr.sort(() => 0.5 - Math.random());
+const randomizeArr = arr => !isArr.isArr(arr) && arr || arr.sort(() => 0.5 - Math.random());
 
 const uniqArrByReference = arr => {
-  return !isArr(arr) ? arr : arr.filter((e, i, arr) => arr.indexOf(e) == i);
+  return !isArr.isArr(arr) ? arr : arr.filter((e, i, arr) => arr.indexOf(e) == i);
 };
 const uniqArr = (arr, selector) => {
   if (!selector) return uniqArrByReference(arr);
@@ -158,12 +160,28 @@ const flatUnion = (...args) => {
   const opts = {
     exists: true
   };
-  const compare = isFunc(last) ? last : args.push(last) && undefined;
+  const compare = isFunc.isFunc(last) ? last : args.push(last) && undefined;
   return args.reduce((merged, arr) => {
-    if (!isArr(arr)) return merged;
+    if (!isArr.isArr(arr)) return merged;
     return uniqArr(flatArr([...merged, ...arr], opts), compare);
   }, []);
 };
 
-export { areCountMapsEqual as a, buildElementCountMap as b, areFrequencyEqual as c, areSetEqual as d, cloneArr as e, eitherArr as f, flatArr as g, flatMap as h, findExtrema as i, findMax as j, findMin as k, randomizeArr as l, uniqArr as m, flatUnion as n, omitRange as o, randomArr as r, uniqArrByReference as u };
-//# sourceMappingURL=flatUnion-8bbd1a6d.js.map
+exports.areCountMapsEqual = areCountMapsEqual;
+exports.areFrequencyEqual = areFrequencyEqual;
+exports.areSetEqual = areSetEqual;
+exports.buildElementCountMap = buildElementCountMap;
+exports.cloneArr = cloneArr;
+exports.eitherArr = eitherArr;
+exports.findExtrema = findExtrema;
+exports.findMax = findMax;
+exports.findMin = findMin;
+exports.flatArr = flatArr;
+exports.flatMap = flatMap;
+exports.flatUnion = flatUnion;
+exports.omitRange = omitRange;
+exports.randomArr = randomArr;
+exports.randomizeArr = randomizeArr;
+exports.uniqArr = uniqArr;
+exports.uniqArrByReference = uniqArrByReference;
+//# sourceMappingURL=flatUnion-66151067.js.map
