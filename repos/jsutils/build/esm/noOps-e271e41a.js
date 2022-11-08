@@ -6,6 +6,7 @@ const noPropObj = deepFreeze({
 });
 const noPropArr = deepFreeze([]);
 const noOpArr = noPropArr;
+const emptyArr = noPropArr;
 
-export { noPropObj as a, noPropArr as b, noOpArr as c, noOpObj as n };
-//# sourceMappingURL=noOps-e78de2aa.js.map
+export { noPropObj as a, noPropArr as b, noOpArr as c, emptyArr as e, noOpObj as n };
+//# sourceMappingURL=noOps-e271e41a.js.map

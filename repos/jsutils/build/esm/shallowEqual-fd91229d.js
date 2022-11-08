@@ -4,7 +4,7 @@ import { i as isFunc } from './isFunc-40ceeef8.js';
 import { i as isArr } from './isArr-a4420764.js';
 import { e as exists } from './exists-bf542cb8.js';
 import { v as validate } from './validate-0a7295ee.js';
-import { u as updateColl } from './set-e8f4486d.js';
+import { u as updateColl } from './set-5b974590.js';
 import { d as deepClone } from './deepClone-06f4b810.js';
 import { i as isNum } from './isNum-cc6ad9ca.js';
 import { g as get } from './get-2e0bc293.js';
@@ -54,7 +54,10 @@ const mapFind = (coll, mapper, testFunc = exists) => {
 
 const reduceColl = (coll, cb, reduce) => isFunc(cb) && isColl(coll) ? Object.keys(coll).reduce((data, key) => cb(key, coll[key], coll, data), reduce) : isArr(coll) ? [] : {};
 
-const unset = (obj, path) => updateColl(obj, path, 'unset');
+const unset = (obj, path) => {
+  updateColl(obj, path, 'unset');
+  return obj;
+};
 
 const repeat = (element, times, cloneDeep = false) => {
   if (!times || times <= 0) return [];
@@ -83,4 +86,4 @@ const shallowEqual = (col1, col2, path) => {
 };
 
 export { mapFind as a, repeat as b, cleanColl as c, mapColl as m, reduceColl as r, shallowEqual as s, unset as u };
-//# sourceMappingURL=shallowEqual-4bea68c3.js.map
+//# sourceMappingURL=shallowEqual-fd91229d.js.map
