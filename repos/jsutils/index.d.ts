@@ -47,7 +47,7 @@ declare module "@keg-hub/jsutils" {
   * const bar = eitherArr([ 2 ], 1) // returns [ 2 ]
   * @returns <p>either a, if it's an array, or b</p>
   */
-  function eitherArr(a?: any, b?: any): any;
+  function eitherArr<T=any>(a?: any, b?: any): T;
 
   /**
   * <p>Ensures the passed in value is an array, else it returns it in an array</p>
@@ -228,7 +228,7 @@ declare module "@keg-hub/jsutils" {
   * @param val - <p>value to check if is a number</p>
   * @returns <p>True if val is a boolean</p>
   */
-  function isBool<T=any>(val: any): val is T;
+  function isBool<T=boolean>(val: any): val is T;
 
   /**
   * <p>Checks is value is a boolean as a string.</p>
@@ -241,7 +241,7 @@ declare module "@keg-hub/jsutils" {
   * @param val - <p>value to check if boolean as a string</p>
   * @returns <p>True if val is a string boolean</p>
   */
-  function isStrBool<T=any>(val: any):val is T;
+  function isStrBool<T=string>(val: any):val is T;
 
   /**
   * <p>Checks if a value is falsy, excluding empty string and 0.</p>
@@ -341,8 +341,6 @@ declare module "@keg-hub/jsutils" {
   * </ul>
   */
   function get<T=any>(obj: Record<any, any>|any[], path: string | string[], fallback?: T): T;
-  function get<T=any>(obj: Record<any, any>|any[], path: string | string[], fallback?: any): T|any;
-  function get(obj: Record<any, any>|any[], path: string | string[], fallback?: any): any;
 
   /**
   * <p>Checks if the value is a collection ( object || array ).</p>
@@ -461,7 +459,7 @@ declare module "@keg-hub/jsutils" {
   * <li>The obj with the passed in value set to the passed in path</li>
   * </ul>
   */
-  function set(obj: Record<any, any>|any[], path: string | string[], finalValue: any): any;
+  function set<T=Record<any, any>|any[], V=any>(obj: T, path: string | string[], finalValue: V): T;
 
   /**
   * <p>Compares a collection's keys / values with another collections keys / values</p>
@@ -502,7 +500,7 @@ declare module "@keg-hub/jsutils" {
   * <li>The passed in object, with the attribute found at the path removed</li>
   * </ul>
   */
-  function unset(obj: Record<any, any>|any[], path: string|string[]): void;
+  function unset<T=Record<any, any>|any[]>(obj: T, path: string|string[]): T;
 
   /**
   * <p>Determines the correct value to return, by calling the passed in check function.
@@ -782,7 +780,7 @@ declare module "@keg-hub/jsutils" {
   * // Returns false
   * @returns <p>is a function</p>
   */
-  function isFunc<T=Function>(test: any): test is T;
+  function isFunc<T=(...args:any[])=>any>(test: any): test is T;
 
   /**
   * <p>Checks if param is an orderable primitive</p>
@@ -825,7 +823,7 @@ declare module "@keg-hub/jsutils" {
   * <li>Success response of executed Promise</li>
   * </ul>
   */
-  function limboify<T>(cb:(...params:any[]) => any, ...args:any[]): (...args:any[]) => Promise<[err?:Error, response?:T]>;
+  function limboify<T=any>(cb:(...params:any[]) => any, ...args:any[]): Promise<[err?:Error, response?:T]>;
 
 
   /**
@@ -1742,7 +1740,7 @@ declare module "@keg-hub/jsutils" {
   * @param str1 - <p>return if is string</p>
   * @param str2 - <p>use if first is not a string</p>
   */
-  function eitherStr<T=any>(str1?: any, str2?: any): T;
+  function eitherStr<T=string>(str1?: any, str2?: any): T;
 
   /**
   * <p>Gets the word in text ending at index (exclusive)</p>
