@@ -6,7 +6,7 @@ var isFunc = require('./isFunc-f93803cb.js');
 var isArr = require('./isArr-39234014.js');
 var exists = require('./exists-c79204b1.js');
 var validate = require('./validate-23297ec2.js');
-var set = require('./set-046fe0c3.js');
+var set = require('./set-c0a98b21.js');
 var deepClone = require('./deepClone-ae664a21.js');
 var isNum = require('./isNum-c7164b50.js');
 var get = require('./get-00626335.js');
@@ -56,7 +56,10 @@ const mapFind = (coll, mapper, testFunc = exists.exists) => {
 
 const reduceColl = (coll, cb, reduce) => isFunc.isFunc(cb) && isColl.isColl(coll) ? Object.keys(coll).reduce((data, key) => cb(key, coll[key], coll, data), reduce) : isArr.isArr(coll) ? [] : {};
 
-const unset = (obj, path) => set.updateColl(obj, path, 'unset');
+const unset = (obj, path) => {
+  set.updateColl(obj, path, 'unset');
+  return obj;
+};
 
 const repeat = (element, times, cloneDeep = false) => {
   if (!times || times <= 0) return [];
@@ -91,4 +94,4 @@ exports.reduceColl = reduceColl;
 exports.repeat = repeat;
 exports.shallowEqual = shallowEqual;
 exports.unset = unset;
-//# sourceMappingURL=shallowEqual-11d7994c.js.map
+//# sourceMappingURL=shallowEqual-eaf2262d.js.map

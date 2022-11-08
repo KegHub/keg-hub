@@ -31,3 +31,11 @@ export const noPropArr = deepFreeze([])
  * @type {Array}
  */
 export const noOpArr = noPropArr
+
+/**
+ * Reusable, empty frozen array.
+ * Renamed for legibility
+ * @array
+ * @type {Array}
+ */
+export const emptyArr = noPropArr

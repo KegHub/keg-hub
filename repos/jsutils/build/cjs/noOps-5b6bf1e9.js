@@ -8,9 +8,11 @@ const noPropObj = deepFreeze.deepFreeze({
 });
 const noPropArr = deepFreeze.deepFreeze([]);
 const noOpArr = noPropArr;
+const emptyArr = noPropArr;
 
+exports.emptyArr = emptyArr;
 exports.noOpArr = noOpArr;
 exports.noOpObj = noOpObj;
 exports.noPropArr = noPropArr;
 exports.noPropObj = noPropObj;
-//# sourceMappingURL=noOps-9b0be865.js.map
+//# sourceMappingURL=noOps-5b6bf1e9.js.map

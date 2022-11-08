@@ -3,7 +3,7 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 var either = require('./either-81805472.js');
-var noOps = require('./noOps-9b0be865.js');
+var noOps = require('./noOps-5b6bf1e9.js');
 var isValidDate = require('./isValidDate-813b9419.js');
 var strToType = require('./strToType-00c4481f.js');
 var exists = require('./exists-c79204b1.js');
@@ -22,6 +22,7 @@ require('./isBool-aa6af74e.js');
 
 
 exports.either = either.either;
+exports.emptyArr = noOps.emptyArr;
 exports.noOpArr = noOps.noOpArr;
 exports.noOpObj = noOps.noOpObj;
 exports.noPropArr = noOps.noPropArr;

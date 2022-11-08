@@ -25,8 +25,11 @@ const updateColl = (obj, path, type, val) => {
   (obj[key] = val) && org || org;
 };
 
-const set = (obj, path, val) => updateColl(obj, path, 'set', val);
+const set = (obj, path, val) => {
+  updateColl(obj, path, 'set', val);
+  return obj;
+};
 
 exports.set = set;
 exports.updateColl = updateColl;
-//# sourceMappingURL=set-046fe0c3.js.map
+//# sourceMappingURL=set-c0a98b21.js.map
