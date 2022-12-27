@@ -2,7 +2,7 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var splitByKeys = require('./splitByKeys-1817682f.js');
+var splitByKeys = require('./splitByKeys-d0160002.js');
 var deepFreeze = require('./deepFreeze-d73ccc57.js');
 var jsonEqual = require('./jsonEqual-7e69ef6a.js');
 var isObj = require('./isObj-6b3aa807.js');
@@ -35,6 +35,7 @@ exports.deepMerge = splitByKeys.deepMerge;
 exports.eitherObj = splitByKeys.eitherObj;
 exports.everyEntry = splitByKeys.everyEntry;
 exports.filterObj = splitByKeys.filterObj;
+exports.hashObj = splitByKeys.hashObj;
 exports.keyMap = splitByKeys.keyMap;
 exports.mapEntries = splitByKeys.mapEntries;
 exports.mapKeys = splitByKeys.mapKeys;
