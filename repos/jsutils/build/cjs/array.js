@@ -2,7 +2,7 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var flatUnion = require('./flatUnion-66151067.js');
+var intersect = require('./intersect-77d7e821.js');
 var ensureArr = require('./ensureArr-ae68c041.js');
 var isArr = require('./isArr-39234014.js');
 require('./validate-23297ec2.js');
@@ -24,28 +24,29 @@ require('./jsonEqual-7e69ef6a.js');
 require('./isQuoted-eb6994da.js');
 require('./isValidUrl-a77135f0.js');
 require('./isNonNegative-9959647c.js');
-require('./noOps-5b6bf1e9.js');
+require('./noOps-c9732e8e.js');
 require('./deepFreeze-d73ccc57.js');
 
 
 
-exports.areCountMapsEqual = flatUnion.areCountMapsEqual;
-exports.areFrequencyEqual = flatUnion.areFrequencyEqual;
-exports.areSetEqual = flatUnion.areSetEqual;
-exports.buildElementCountMap = flatUnion.buildElementCountMap;
-exports.cloneArr = flatUnion.cloneArr;
-exports.eitherArr = flatUnion.eitherArr;
-exports.findExtrema = flatUnion.findExtrema;
-exports.findMax = flatUnion.findMax;
-exports.findMin = flatUnion.findMin;
-exports.flatArr = flatUnion.flatArr;
-exports.flatMap = flatUnion.flatMap;
-exports.flatUnion = flatUnion.flatUnion;
-exports.omitRange = flatUnion.omitRange;
-exports.randomArr = flatUnion.randomArr;
-exports.randomizeArr = flatUnion.randomizeArr;
-exports.uniqArr = flatUnion.uniqArr;
-exports.uniqArrByReference = flatUnion.uniqArrByReference;
+exports.areCountMapsEqual = intersect.areCountMapsEqual;
+exports.areFrequencyEqual = intersect.areFrequencyEqual;
+exports.areSetEqual = intersect.areSetEqual;
+exports.buildElementCountMap = intersect.buildElementCountMap;
+exports.cloneArr = intersect.cloneArr;
+exports.eitherArr = intersect.eitherArr;
+exports.findExtrema = intersect.findExtrema;
+exports.findMax = intersect.findMax;
+exports.findMin = intersect.findMin;
+exports.flatArr = intersect.flatArr;
+exports.flatMap = intersect.flatMap;
+exports.flatUnion = intersect.flatUnion;
+exports.intersect = intersect.intersect;
+exports.omitRange = intersect.omitRange;
+exports.randomArr = intersect.randomArr;
+exports.randomizeArr = intersect.randomizeArr;
+exports.uniqArr = intersect.uniqArr;
+exports.uniqArrByReference = intersect.uniqArrByReference;
 exports.ensureArr = ensureArr.ensureArr;
 exports.isArr = isArr.isArr;
 //# sourceMappingURL=array.js.map

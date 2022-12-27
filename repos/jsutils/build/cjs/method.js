@@ -3,7 +3,7 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 var pipeline = require('./pipeline-e65bdaae.js');
-var stackTracePaths = require('./stackTracePaths-9941d2a6.js');
+var stackTracePaths = require('./stackTracePaths-58b768d2.js');
 var compareTo = require('./compareTo-d69e4abf.js');
 var not = require('./not-16fa9c85.js');
 var isFunc = require('./isFunc-f93803cb.js');
@@ -35,6 +35,8 @@ exports.complement = stackTracePaths.complement;
 exports.debounce = stackTracePaths.debounce;
 exports.doIt = stackTracePaths.doIt;
 exports.eitherFunc = stackTracePaths.eitherFunc;
+exports.ife = stackTracePaths.checkCall;
+exports.iife = stackTracePaths.checkCall;
 exports.limbo = stackTracePaths.limbo;
 exports.limboify = stackTracePaths.limboify;
 exports.memorize = stackTracePaths.memorize;

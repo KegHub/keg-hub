@@ -3,6 +3,7 @@
 var deepFreeze = require('./deepFreeze-d73ccc57.js');
 
 const noOpObj = Object.freeze({});
+const emptyObj = noOpObj;
 const noPropObj = deepFreeze.deepFreeze({
   content: {}
 });
@@ -11,8 +12,9 @@ const noOpArr = noPropArr;
 const emptyArr = noPropArr;
 
 exports.emptyArr = emptyArr;
+exports.emptyObj = emptyObj;
 exports.noOpArr = noOpArr;
 exports.noOpObj = noOpObj;
 exports.noPropArr = noPropArr;
 exports.noPropObj = noPropObj;
-//# sourceMappingURL=noOps-5b6bf1e9.js.map
+//# sourceMappingURL=noOps-c9732e8e.js.map
