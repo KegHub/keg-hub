@@ -17,3 +17,8 @@ export const checkCall = (method, ...params) => {
     ? method(...params)
     : undefined
 }
+
+export {
+  checkCall as ife,
+  checkCall as iife,
+}
