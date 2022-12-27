@@ -4,4 +4,5 @@ module.exports = {
   ...require('./tryRequire'),
   ...require('./loadModule'),
   ...require('./resolvePath'),
+  ...require('./inDocker'),
 }

@@ -25,7 +25,7 @@ declare module "@keg-hub/jsutils" {
   * but element frequencies don't matter.
   * Does this with one pass over each array and an auxilliary set.</p>
   */
-  function areSetEqual(arr: any[], otherArr: any[]): void;
+  function areSetEqual(arr: any[], otherArr: any[]): boolean;
 
   /**
   * <p>Creates a copy of the passed in array.
@@ -152,6 +152,15 @@ declare module "@keg-hub/jsutils" {
   * </ul>
   */
   function isArr<T=any[]>(value: any): value is T;
+
+
+  /**
+  * <p>Creates and returns a new array of all items that exist in both passed in arrays</p>
+  * @example
+  * intersect([1,2], [1]) === [1]
+  */
+  function intersect<T=any[], M=any[], N=any[]>(arr1: M, arr2:N):T;
+
 
   /**
   * <p>Returns a new array with the same elements as arr, excluding <code>count</code> elements beginning at index <code>startIndex</code></p>
@@ -684,6 +693,7 @@ declare module "@keg-hub/jsutils" {
   * <li>whatever the passed in method returns</li>
   * </ul>
   */
+  function checkCall<P=unknown, T=unknown>(method: (param?:P, ...params:any[]) => T, param?:P, ...params:any[]): T;
   function checkCall<T=any>(method: <M=any>(...params: any[]) => M, ...params:any[]): T;
   function checkCall<T=any>(method: (...params: any[]) => any, ...params:any[]): T;
   function checkCall(method: (...params: any[]) => any, ...params:any[]): any;
@@ -732,7 +742,7 @@ declare module "@keg-hub/jsutils" {
   * @param wait - <p>how long to wait between function calls</p>
   * @param immediate - <p>should call immediately</p>
   */
-  function debounce(func: (...params: any[]) => any, wait: number, immediate: boolean): void;
+  function debounce<T=(...args:any[])=> any>(func: (...params: any[]) => any, wait?: number, immediate?: boolean): T;
 
   /**
   * <p>Execute a method n times.
@@ -966,7 +976,15 @@ declare module "@keg-hub/jsutils" {
   * @param [wait = 100] - <p>time to wait until executing func param</p>
   * @returns <p>throttled function</p>
   */
-  function throttleLast(func: (...params: any[]) => any, cb: (...params: any[]) => any, wait?: number): (...params: any[]) => any;
+  function throttleLast(
+    func: (...params: any[]) => any,
+    wait?: number
+  ): (...params: any[]) => any;
+  function throttleLast(
+    func: (...params: any[]) => any,
+    cb?: (...params: any[]) => any,
+    wait?: number
+  ): (...params: any[]) => any;
 
   /**
   * <p>Throws an Error from the passed in error</p>
@@ -1383,6 +1401,15 @@ declare module "@keg-hub/jsutils" {
   */
   function deepFreeze<T=Record<any, any>>(obj: Record<any, any>): T;
 
+
+  /**
+  * <p>Creates a consistent hash string from the passed in object or array.</p>
+  * @returns <ul>
+  * <li>hash string</li>
+  * </ul>
+  */
+  function hashObj(obj: Record<any, any>): string;
+
   /**
   * <p>Deep merges an array of objects together.</p>
   * @param sources - <p>array of objects to join</p>
@@ -1398,6 +1425,7 @@ declare module "@keg-hub/jsutils" {
   * @param obj1 - <p>return if is object</p>
   * @param obj2 - <p>use if first is not an object</p>
   */
+  function eitherObj<T>(obj1?: T, obj2?: T): T;
   function eitherObj<T, M>(obj1?: T, obj2?: M): T | M;
   function eitherObj(obj1?: Record<any, any>, obj2?: any): any;
 
@@ -2129,7 +2157,7 @@ declare module "@keg-hub/jsutils" {
   * @returns {string} - Formatted class names 
   */
   function cls(...classes: TClsProps[]): string;
-  type TClsProps = string | TClsRecord | TClsArr;
+  type TClsProps = string | TClsRecord | TClsArr | undefined;
   type TClsRecord = {
       [x: string]: boolean | TClsProps;
   };
