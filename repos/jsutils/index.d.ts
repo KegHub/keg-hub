@@ -602,6 +602,11 @@ declare module "@keg-hub/jsutils" {
   const noPropObj: Object;
 
   /**
+  * <p>Reuseable empty, frozen object</p>
+  */
+  const emptyObj: Object;
+
+  /**
   * <p>Reusable, empty frozen array</p>
   */
   const noPropArr: any[];
@@ -1550,7 +1555,7 @@ declare module "@keg-hub/jsutils" {
   * @param keys - <p>keys to not add to new object</p>
   * @returns <p>new object with only keys not in array</p>
   */
-  function omitKeys<T=Record<string, any>>(target: Partial<T>, keys: string[]): T;
+  function omitKeys<T=Record<string, any>>(target: Record<string, any>, keys: string[]): T;
 
   /**
   * <p>Creates a new object from passed in object with keys defined from array.</p>
@@ -1558,7 +1563,7 @@ declare module "@keg-hub/jsutils" {
   * @param keys - <p>keys to add to new object</p>
   * @returns <p>new object with only keys from passed in keys array</p>
   */
-  function pickKeys<T=Record<string, any>>(obj: Partial<T>, keys: string[]): T;
+  function pickKeys<T=Record<string, any>>(obj: Record<string, any>, keys: string[]): T;
 
   /**
   * <p>Loop over and objects props and values and reduce to new object.</p>
