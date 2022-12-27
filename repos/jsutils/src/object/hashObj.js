@@ -1,3 +1,4 @@
+/** @module Object */
 
 const pad = (hash, len) => {
   while (hash.length < len)

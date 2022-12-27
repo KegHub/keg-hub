@@ -10,6 +10,13 @@ import { deepFreeze } from '../object/deepFreeze'
 export const noOpObj = Object.freeze({})
 
 /**
+ * Reuseable empty, frozen object
+ * @object
+ * @type {Object}
+ */
+export const emptyObj = noOpObj
+
+/**
  * Reusable frozen object that contains a `content` object. Useful
  * @object
  * for themes that rely on the content key.
