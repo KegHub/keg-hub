@@ -4,6 +4,7 @@ import { i as isNum } from './isNum-cc6ad9ca.js';
 import { h as hasOwn } from './jsonEqual-911fc3f9.js';
 import { i as isArr } from './isArr-a4420764.js';
 import { d as deepClone } from './deepClone-06f4b810.js';
+import { e as emptyObj } from './noOps-3942ab96.js';
 import { i as isStr } from './isStr-481ce69b.js';
 import { i as isObj } from './isObj-2a71d1af.js';
 import { i as isEmpty } from './isValidDate-76b2dc77.js';
@@ -137,8 +138,8 @@ const throttleLast = (func, cb, wait = 100) => {
   };
 };
 
-const limbo = promise => {
-  return !promise || !isFunc(promise.then) ? [new Error(`A promise or thenable is required as the first argument!`), null] : promise.then(data => [null, data]).catch(err => [err, undefined]);
+const limbo = (promise, asObject = false) => {
+  return !promise || !isFunc(promise.then) ? [new Error(`A promise or thenable is required as the first argument!`), asObject ? emptyObj : undefined] : promise.then(data => [null, data]).catch(err => [err, asObject ? emptyObj : undefined]);
 };
 const limboify = (cb, ...args) => {
   return limbo(new Promise((res, rej) => cb(...args, (err, success) => err ? rej(err) : res(success || true))));
@@ -168,4 +169,4 @@ const stackTracePaths = (filter = defFilters) => {
 };
 
 export { complement as a, doIt as b, checkCall as c, debounce as d, eitherFunc as e, throttle as f, throttleLast as g, limboify as h, limbo as l, memorize as m, noOp as n, parseErrorMessage as p, runSeq as r, stackTracePaths as s, timedRun as t, uuid as u };
-//# sourceMappingURL=stackTracePaths-6df29ac8.js.map
+//# sourceMappingURL=stackTracePaths-b8a4dbc2.js.map

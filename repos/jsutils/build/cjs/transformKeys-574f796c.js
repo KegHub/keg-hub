@@ -1,25 +1,28 @@
-import { l as logData } from './log-8543c007.js';
-import { i as isObj } from './isObj-2a71d1af.js';
-import { i as isFunc } from './isFunc-40ceeef8.js';
-import { d as deepClone, a as cloneFunc } from './deepClone-06f4b810.js';
-import { i as isArr } from './isArr-a4420764.js';
-import { i as isColl } from './isColl-15a1452b.js';
-import { s as set } from './set-5b974590.js';
-import { i as isEntry } from './jsonEqual-911fc3f9.js';
-import { r as reduceObj } from './reduceObj-efaed709.js';
-import { s as sanitize } from './sanitize-2f5be6f2.js';
-import { i as isStr } from './isStr-481ce69b.js';
-import { s as strToType } from './strToType-a1482d08.js';
-import { p as pipeline } from './pipeline-e3f70bbe.js';
-import { e as exists } from './exists-bf542cb8.js';
-import { t as toStr } from './toStr-0e5fe94c.js';
-import { e as ensureArr } from './ensureArr-d2e17773.js';
+'use strict';
+
+var log = require('./log-37bbfac6.js');
+var isObj = require('./isObj-6b3aa807.js');
+var isFunc = require('./isFunc-f93803cb.js');
+var deepClone = require('./deepClone-ae664a21.js');
+var isArr = require('./isArr-39234014.js');
+var isColl = require('./isColl-5757310a.js');
+var set = require('./set-c0a98b21.js');
+var jsonEqual = require('./jsonEqual-7e69ef6a.js');
+var reduceObj = require('./reduceObj-f41cbf8d.js');
+var sanitize = require('./sanitize-0a18302d.js');
+var isStr = require('./isStr-8a57710e.js');
+var strToType = require('./strToType-00c4481f.js');
+var pipeline = require('./pipeline-e65bdaae.js');
+var exists = require('./exists-c79204b1.js');
+var toStr = require('./toStr-8e499966.js');
+var ensureArr = require('./ensureArr-ae68c041.js');
+var noOps = require('./noOps-b5f3c7e4.js');
 
 const cloneJson = obj => {
   try {
     return JSON.parse(JSON.stringify(obj));
   } catch (e) {
-    logData(e.message, 'error');
+    log.logData(e.message, 'error');
     return null;
   }
 };
@@ -33,144 +36,144 @@ const clearObj = (obj, filter) => {
   });
 };
 
-const eitherObj = (obj1, obj2) => isObj(obj1) && obj1 || obj2;
+const eitherObj = (obj1, obj2) => isObj.isObj(obj1) && obj1 || obj2;
 
 const deepMerge = (...sources) => {
   return sources.reduce((merged, source) => {
-    const srcCopy = deepClone(source);
-    return isArr(srcCopy) ?
-    [...(isArr(merged) && merged || []), ...srcCopy] :
-    isObj(srcCopy) ?
+    const srcCopy = deepClone.deepClone(source);
+    return isArr.isArr(srcCopy) ?
+    [...(isArr.isArr(merged) && merged || []), ...srcCopy] :
+    isObj.isObj(srcCopy) ?
     Object.entries(srcCopy).reduce((joined, [key, value]) => ({ ...joined,
-      [key]: isFunc(value) ? cloneFunc(value) :
-      isColl(value) && key in joined ?
+      [key]: isFunc.isFunc(value) ? deepClone.cloneFunc(value) :
+      isColl.isColl(value) && key in joined ?
       deepMerge(joined[key], value) :
-      deepClone(value)
+      deepClone.deepClone(value)
     }), merged) :
     merged;
-  }, isArr(sources[0]) && [] || {});
+  }, isArr.isArr(sources[0]) && [] || {});
 };
 
 const applyToCloneOf = (obj, mutatorCb) => {
   let error;
   if (!obj) error = 'object (Argument 1) in applyToCloneOf, must be defined!';
-  if (!isObj(obj)) error = 'object (Argument 1) in applyToCloneOf, must be an object!';
+  if (!isObj.isObj(obj)) error = 'object (Argument 1) in applyToCloneOf, must be an object!';
   if (!mutatorCb) error = 'mutator (Argument 2) in applyToCloneOf, must be defined!';
-  if (!isFunc(mutatorCb)) error = 'mutator (Argument 2) arg in applyToCloneOf, must be a function!';
+  if (!isFunc.isFunc(mutatorCb)) error = 'mutator (Argument 2) arg in applyToCloneOf, must be a function!';
   if (error) {
     console.warn(error);
     return obj;
   }
-  const clone = deepClone(obj);
+  const clone = deepClone.deepClone(obj);
   mutatorCb(clone);
   return clone;
 };
 
 const mapEntries = (obj, cb) => {
-  if (!isArr(obj) && !isObj(obj)) {
+  if (!isArr.isArr(obj) && !isObj.isObj(obj)) {
     console.error(obj, `Expected array or object for obj. Found ${typeof obj}`);
     return obj;
   }
-  if (!isFunc(cb)) {
+  if (!isFunc.isFunc(cb)) {
     console.error(`Expected function for cb. Found ${typeof cb}`);
     return obj;
   }
   const entries = Object.entries(obj);
-  const initialValue = isArr(obj) ? [] : {};
+  const initialValue = isArr.isArr(obj) ? [] : {};
   return entries.reduce((obj, [key, value]) => {
     const result = cb(key, value);
-    if (!isEntry(result)) {
+    if (!jsonEqual.isEntry(result)) {
       console.error(`Callback function must return entry. Found: ${result}. Using current entry instead.`);
-      return set(obj, key, value);
+      return set.set(obj, key, value);
     }
-    return set(obj, result[0], result[1]);
+    return set.set(obj, result[0], result[1]);
   }, initialValue);
 };
 
 const mapKeys = (obj, keyMapper) => {
-  if (!isObj(obj) || !isFunc(keyMapper)) return obj;
+  if (!isObj.isObj(obj) || !isFunc.isFunc(keyMapper)) return obj;
   return mapEntries(obj, (key, value) => [keyMapper(key), value]);
 };
 
 const mapObj = (obj, cb) => {
-  if (!isObj(obj)) return [];
+  if (!isObj.isObj(obj)) return [];
   const entries = Object.entries(obj);
-  return isFunc(cb) ? entries.map(([key, value]) => cb(key, value)) : entries;
+  return isFunc.isFunc(cb) ? entries.map(([key, value]) => cb(key, value)) : entries;
 };
 
-const omitKeys = (obj = {}, keys = []) => isObj(obj) && reduceObj(obj, (key, _, updated) => {
+const omitKeys = (obj = {}, keys = []) => isObj.isObj(obj) && reduceObj.reduceObj(obj, (key, _, updated) => {
   keys.indexOf(key) === -1 && (updated[key] = obj[key]);
   return updated;
 }, {}) || {};
 
-const pickKeys = (obj = {}, keys = []) => isObj(obj) && keys.reduce((updated, key) => {
+const pickKeys = (obj = {}, keys = []) => isObj.isObj(obj) && keys.reduce((updated, key) => {
   key in obj && (updated[key] = obj[key]);
   return updated;
 }, {}) || {};
 
-const sanitizeCopy = obj => JSON.parse(sanitize(JSON.stringify(obj)));
+const sanitizeCopy = obj => JSON.parse(sanitize.sanitize(JSON.stringify(obj)));
 
 const trimStringFields = object => Object.entries(object).reduce((cleaned, [key, value]) => {
-  cleaned[key] = isStr(value) ? value.trim() : value;
+  cleaned[key] = isStr.isStr(value) ? value.trim() : value;
   return cleaned;
 }, object);
 
 const toObj = (val, divider, split) => {
-  if (isArr(val)) return Object.keys(val).reduce((obj, key) => {
+  if (isArr.isArr(val)) return Object.keys(val).reduce((obj, key) => {
     obj[key] = val[key];
     return obj;
   }, {});
-  if (!isStr(val)) return {};
+  if (!isStr.isStr(val)) return {};
   divider = divider || '=';
   split = split || '&';
   return val.toString().split(split).reduce((obj, item) => {
     const sep = item.split(divider);
-    obj[sep[0].trim()] = strToType(sep[1].trim());
+    obj[sep[0].trim()] = strToType.strToType(sep[1].trim());
     return obj;
   }, {});
 };
 
-const keyMap = (arr, toUpperCase) => isArr(arr) && arr.reduce((obj, key) => {
-  if (!isStr(key)) return obj;
+const keyMap = (arr, toUpperCase) => isArr.isArr(arr) && arr.reduce((obj, key) => {
+  if (!isStr.isStr(key)) return obj;
   const use = toUpperCase && key.toUpperCase() || key;
   obj[use] = use;
   return obj;
 }, {}) || {};
 
 const everyEntry = (obj, predicate, logError = true) => {
-  if (!isObj(obj)) {
+  if (!isObj.isObj(obj)) {
     logError && console.error(`First argument ${obj} must be an object.`);
     return false;
   }
-  if (!isFunc(predicate)) {
+  if (!isFunc.isFunc(predicate)) {
     logError && console.error(`Second argument ${predicate}, must a function`);
     return false;
   }
-  return pipeline(obj, Object.entries, entries => entries.every(([key, value]) => predicate(key, value)));
+  return pipeline.pipeline(obj, Object.entries, entries => entries.every(([key, value]) => predicate(key, value)));
 };
 
 const someEntry = (obj, predicate, logError = true) => {
-  if (!isObj(obj)) {
+  if (!isObj.isObj(obj)) {
     logError && console.error(`First argument ${obj} must be an object.`);
     return false;
   }
-  if (!isFunc(predicate)) {
+  if (!isFunc.isFunc(predicate)) {
     logError && console.error(`Second argument ${predicate}, must a function`);
     return false;
   }
-  return pipeline(obj, Object.entries, entries => entries.some(([key, value]) => predicate(key, value)));
+  return pipeline.pipeline(obj, Object.entries, entries => entries.some(([key, value]) => predicate(key, value)));
 };
 
 const filterObj = (obj, predicate, logError = true) => {
-  if (!isObj(obj)) {
+  if (!isObj.isObj(obj)) {
     logError && console.error(`First argument ${obj} must be an object.`);
     return obj;
   }
-  if (!isFunc(predicate)) {
+  if (!isFunc.isFunc(predicate)) {
     logError && console.error(`Second argument ${predicate}, must a function`);
     return obj;
   }
-  return reduceObj(obj, (key, value, data) => {
+  return reduceObj.reduceObj(obj, (key, value, data) => {
     if (predicate(key, value)) data[key] = value;
     return data;
   }, {});
@@ -220,12 +223,42 @@ const splitByKeys = (obj = {}, keys) => {
   if (!keys) return [{}, { ...obj
   }];
   const intersect = [{}, {}];
-  const compareKeys = ensureArr(keys);
-  return isObj(obj) ? reduceObj(obj, (key, _, updated) => {
-    exists(compareKeys.find(k => exists(k) && toStr(k) === key)) ? updated[0][key] = obj[key] : updated[1][key] = obj[key];
+  const compareKeys = ensureArr.ensureArr(keys);
+  return isObj.isObj(obj) ? reduceObj.reduceObj(obj, (key, _, updated) => {
+    exists.exists(compareKeys.find(k => exists.exists(k) && toStr.toStr(k) === key)) ? updated[0][key] = obj[key] : updated[1][key] = obj[key];
     return updated;
   }, intersect) : intersect;
 };
 
-export { clearObj as a, applyToCloneOf as b, cloneJson as c, deepMerge as d, eitherObj as e, mapKeys as f, mapObj as g, toObj as h, everyEntry as i, someEntry as j, keyMap as k, filterObj as l, mapEntries as m, hashObj as n, omitKeys as o, pickKeys as p, splitByKeys as q, sanitizeCopy as s, trimStringFields as t };
-//# sourceMappingURL=splitByKeys-12a1457f.js.map
+const transformKeys = (obj = noOps.emptyObj, keyMap = noOps.emptyObj, opts = noOps.emptyObj) => {
+  const {
+    strict = false
+  } = opts;
+  return Object.entries(obj).reduce((acc, [key, value]) => {
+    const ref = keyMap[key] || (!strict ? key : undefined);
+    ref && (acc[ref] = value);
+    return acc;
+  }, {});
+};
+
+exports.applyToCloneOf = applyToCloneOf;
+exports.clearObj = clearObj;
+exports.cloneJson = cloneJson;
+exports.deepMerge = deepMerge;
+exports.eitherObj = eitherObj;
+exports.everyEntry = everyEntry;
+exports.filterObj = filterObj;
+exports.hashObj = hashObj;
+exports.keyMap = keyMap;
+exports.mapEntries = mapEntries;
+exports.mapKeys = mapKeys;
+exports.mapObj = mapObj;
+exports.omitKeys = omitKeys;
+exports.pickKeys = pickKeys;
+exports.sanitizeCopy = sanitizeCopy;
+exports.someEntry = someEntry;
+exports.splitByKeys = splitByKeys;
+exports.toObj = toObj;
+exports.transformKeys = transformKeys;
+exports.trimStringFields = trimStringFields;
+//# sourceMappingURL=transformKeys-574f796c.js.map

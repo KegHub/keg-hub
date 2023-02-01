@@ -1,6 +1,7 @@
 /** @module Function */
 
 import { isFunc } from './isFunc'
+import { emptyObj } from '../ext/noOps'
 
 /**
  * Response returned from a limbo promise
@@ -21,15 +22,16 @@ import { isFunc } from './isFunc'
  * // * data will be the response from the promiseFunction
  * @function
  * @param {Promise<Function>} promise - Promise to be resolved
+ * @param {boolean} [asObject=false] - 2nd argument in resp array should be an object when an error is caught
  * @return {Promise<TLimboResponse>} - Slot 1 => error, Slot 2 => response from promise
  */
-export const limbo = promise => {
+export const limbo = (promise, asObject=false) => {
   return !promise || !isFunc(promise.then)
     ? [
         new Error(`A promise or thenable is required as the first argument!`),
-        null,
+        asObject ? emptyObj : undefined,
       ]
-    : promise.then(data => [ null, data ]).catch(err => [ err, undefined ])
+    : promise.then(data => [ null, data ]).catch(err => [ err, asObject ? emptyObj : undefined ])
 }
 
 /**

@@ -6,6 +6,7 @@ var isNum = require('./isNum-c7164b50.js');
 var jsonEqual = require('./jsonEqual-7e69ef6a.js');
 var isArr = require('./isArr-39234014.js');
 var deepClone = require('./deepClone-ae664a21.js');
+var noOps = require('./noOps-b5f3c7e4.js');
 var isStr = require('./isStr-8a57710e.js');
 var isObj = require('./isObj-6b3aa807.js');
 var isValidDate = require('./isValidDate-813b9419.js');
@@ -139,8 +140,8 @@ const throttleLast = (func, cb, wait = 100) => {
   };
 };
 
-const limbo = promise => {
-  return !promise || !isFunc.isFunc(promise.then) ? [new Error(`A promise or thenable is required as the first argument!`), null] : promise.then(data => [null, data]).catch(err => [err, undefined]);
+const limbo = (promise, asObject = false) => {
+  return !promise || !isFunc.isFunc(promise.then) ? [new Error(`A promise or thenable is required as the first argument!`), asObject ? noOps.emptyObj : undefined] : promise.then(data => [null, data]).catch(err => [err, asObject ? noOps.emptyObj : undefined]);
 };
 const limboify = (cb, ...args) => {
   return limbo(new Promise((res, rej) => cb(...args, (err, success) => err ? rej(err) : res(success || true))));
@@ -185,4 +186,4 @@ exports.throttle = throttle;
 exports.throttleLast = throttleLast;
 exports.timedRun = timedRun;
 exports.uuid = uuid;
-//# sourceMappingURL=stackTracePaths-58b768d2.js.map
+//# sourceMappingURL=stackTracePaths-a7780a09.js.map

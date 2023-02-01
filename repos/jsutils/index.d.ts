@@ -106,9 +106,9 @@ declare module "@keg-hub/jsutils" {
   * </ul>
   */
   function flatArr<T=any>(arr: any[], opts?: {
-      truthy: boolean;
-      exists: boolean;
-      mutate: boolean;
+      truthy?: boolean;
+      exists?: boolean;
+      mutate?: boolean;
   }): T[];
 
   /**
@@ -703,6 +703,16 @@ declare module "@keg-hub/jsutils" {
   function checkCall<T=any>(method: (...params: any[]) => any, ...params:any[]): T;
   function checkCall(method: (...params: any[]) => any, ...params:any[]): any;
 
+  function ife<P=unknown, T=unknown>(method: (param?:P, ...params:any[]) => T, param?:P, ...params:any[]): T;
+  function ife<T=any>(method: <M=any>(...params: any[]) => M, ...params:any[]): T;
+  function ife<T=any>(method: (...params: any[]) => any, ...params:any[]): T;
+  function ife(method: (...params: any[]) => any, ...params:any[]): any;
+
+  function iife<P=unknown, T=unknown>(method: (param?:P, ...params:any[]) => T, param?:P, ...params:any[]): T;
+  function iife<T=any>(method: <M=any>(...params: any[]) => M, ...params:any[]): T;
+  function iife<T=any>(method: (...params: any[]) => any, ...params:any[]): T;
+  function iife(method: (...params: any[]) => any, ...params:any[]): any;
+
   /**
   * <p>Clones a function using the Function constructor and calling toString on the passed in function</p>
   * @example
@@ -821,14 +831,19 @@ declare module "@keg-hub/jsutils" {
   * // returns an array
   * // * err will be undefined if no error was thrown
   * // * data will be the response from the promiseFunction
+  * @example
+  * const [ err, data ] = await limbo(promiseFunction(), true)
+  * // returns an array
+  * // * err will be undefined if no error was thrown
+  * // * data will be the response from the promiseFunction or an empty object
   * @param promise - <p>Promise to be resolved</p>
   * @returns <ul>
-  * <li>Slot 1 =&gt; error, Slot 2 =&gt; response from promise</li>
+  * <li>Slot 1 =&gt; error, Slot 2 =&gt; response from promise or empty object</li>
   * </ul>
   */
-  function limbo<T=any, E=Error>(promise: Promise<any>): Promise<[err?:E, response?:T]>;
-  function limbo<T=any>(promise: Promise<any>): Promise<[err?:Error, response?:T]>;
-  function limbo(promise: Promise<any>): Promise<[err?:Error, response?:any]>;
+  function limbo<T=any, E=Error>(promise: Promise<any>, asObj?:boolean): Promise<[err?:E, response?:T]>;
+  function limbo<T=any>(promise: Promise<any>, asObj?:boolean): Promise<[err?:Error, response?:T]>;
+  function limbo(promise: Promise<any>, asObj?:boolean): Promise<[err?:Error, response?:any]>;
 
 
   /**
@@ -1625,6 +1640,22 @@ declare module "@keg-hub/jsutils" {
   * </ul>
   */
   function trimStringFields(object: Record<string, any>): Record<string, any>;
+
+
+/**
+ * <p>Transforms the keys of an object to a matching key value in keyMap object.</p>
+ * <p>Keys not in the keyMap are included as is, unless strict === true option is passed.</p>
+ * @example
+ * transformKeys({my_key: `1234`, other_key: `4321`}, {my_key: `myKey`}) === { myKey: `1234`, other_key: `4321` }
+ * @example
+ * const opts = { strict: true }
+ * transformKeys({my_key: `1234`, other_key: `4321`}, {my_key: `myKey`}, opts) === { myKey: `1234` }
+ */
+  function transformKeys<T=Record<string, any>>(
+    obj: T,
+    keyMap: Record<string, string>,
+    opts?: Record<'strict', boolean>,
+  ): T;
 
   /**
   * <p>Converts a standard callback method into Promise</p>
