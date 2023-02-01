@@ -2193,9 +2193,9 @@ declare module "@keg-hub/jsutils" {
   * @returns {string} - Formatted class names 
   */
   function cls(...classes: TClsProps[]): string;
-  type TClsProps = string | TClsRecord | TClsArr | undefined;
+  type TClsProps = string | boolean | TClsRecord | TClsArr | undefined;
   type TClsRecord = {
-      [x: string]: boolean | TClsProps;
+    [x: string]: TClsProps;
   };
   type TClsArr = TClsProps[];
 
