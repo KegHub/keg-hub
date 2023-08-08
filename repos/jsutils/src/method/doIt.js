@@ -9,17 +9,27 @@ import { isFunc } from './isFunc'
  * @function
  * @example
  * doIt(10, window, [], (index, arr) => { arr.push(index) }) === [ 0,1,2 ... 8,9 ]
+ * @example
+ * doIt(10, () => console.log(`Hello`)) // Logs `Hello` 10 times
  * @param {Number} args.0 - number of times to call the callback
  * @param {parent} args.1 - value to bind the method call to ( this )
- * @param {Function} last arg of args array - method to call
+ * @param {Function} args.last arg of args array - method to call
  * @return { void }
  */
 export const doIt = (...args) => {
   const params = args.slice()
-  const num = params.shift()
-  const bindTo = params.shift()
-  const cb = params.pop()
-  if (!isNum(num) || !isFunc(cb)) return []
+
+  const num = params.find(p => isNum(p))
+  if(!num) return []
+  params.splice(params.indexOf(num), 1)
+
+  const bindTo = params.find(p => !isNum(p))
+  bindTo && params.splice(params.indexOf(bindTo), 1)
+
+  const reverse = [...params].reverse()
+  const cb = reverse.find(p => isFunc(p))
+  cb && params.splice(params.indexOf(cb), 1)
+  if (!isFunc(cb)) return []
 
   const doItAmount = new Array(num)
   const responses = []

@@ -214,7 +214,7 @@ declare module "@keg-hub/jsutils" {
   * @param selector - <p>optional function to specify the property uniqArr should use to check if another element exists</p>
   * @returns <p>copy of passed in array, with duplicates removed</p>
   */
-  function uniqArr<T=any>(arr: any[], selector: (element: any) => any): T[];
+  function uniqArr<T=any>(arr: any[], selector?: (element: any) => any): T[];
 
   /**
   * <p>Converts a value to a boolean as a string.</p>
@@ -768,7 +768,34 @@ declare module "@keg-hub/jsutils" {
   * @param args.1 - <p>value to bind the method call to ( this )</p>
   * @param last - <p>arg of args array - method to call</p>
   */
-  function doIt(last: (...params: any[]) => any): void;
+  function doIt<F extends (...params: any[]) => any=(...params: any[]) => any>(
+    num:number,
+    bindTo:any,
+    last:F
+  ): ReturnType<F>[];
+  function doIt<F extends (...params: any[]) => any=(...params: any[]) => any>(
+    bindTo:any,
+    num:number,
+    last:F
+  ): ReturnType<F>[];
+  function doIt<F extends (...params: any[]) => any=(...params: any[]) => any>(
+    bindTo:any,
+    last:F,
+    num:number,
+  ): ReturnType<F>[];
+  function doIt<F extends (...params: any[]) => any=(...params: any[]) => any>(
+    num:number,
+    last:F
+  ): ReturnType<F>[];
+  function doIt<F extends (...params: any[]) => any=(...params: any[]) => any>(
+    last:F,
+    num:number,
+  ): ReturnType<F>[];
+  function doIt<F extends (...params: any[]) => any=(...params: any[]) => any>(
+    last:F,
+    bindTo:any,
+    num:number,
+  ): ReturnType<F>[];
 
   /**
   * <p>Returns the first param if it's a function.
@@ -1734,7 +1761,7 @@ declare module "@keg-hub/jsutils" {
   * const joined = joinRegex([ ...allMyRegEx ], 'gi')
   * @param expressions - <p>array of regex instances.</p>
   */
-  function joinRegex(...expressions: RegExp[]): void;
+  function joinRegex(...expressions: [RegExp|string]): RegExp;
 
   /**
   * <p>Builds a string path from passed in args ( i.e. path/to/thing ).</p>
@@ -1941,48 +1968,56 @@ declare module "@keg-hub/jsutils" {
   function isUuid<T=string>(str: string): str is T;
 
   /**
-  * <p>Maps a string by applying function <code>charMapper</code> to each character.</p>
-  * @example
-  * mapString("hello", c => c === 'h' ? 'x' : c) // returns 'xello'
-  * @param str - <p>String to be mapped</p>
-  * @param charMapper - <p>Function of form (character) =&gt; <some character or string></p>
-  * @returns <ul>
-  * <li>String with each character mapped by charMap.<br/>If str is not a string or charMapper not a function, just returns the passed in str argument</li>
-  * </ul>
-  */
+   * <p>Maps a string by applying function <code>charMapper</code> to each character.</p>
+   * @example
+   * mapString("hello", c => c === 'h' ? 'x' : c) // returns 'xello'
+   * @param str - <p>String to be mapped</p>
+   * @param charMapper - <p>Function of form (character) =&gt; <some character or string></p>
+   * @returns <ul>
+   * <li>String with each character mapped by charMap.<br/>If str is not a string or charMapper not a function, just returns the passed in str argument</li>
+   * </ul>
+   */
   function mapString(str: string, charMapper: (char:string) => any): string;
 
   /**
-  * <p>Convert JSON string into object, wrapped in a try / catch.</p>
-  * @returns <ul>
-  * <li>JSON object</li>
-  * </ul>
-  */
+   * <p>Convert JSON string into object, wrapped in a try / catch.</p>
+   * @returns <ul>
+   * <li>JSON object</li>
+   * </ul>
+   */
   function parseJSON<T=any>(string: string, throwErr?:boolean): T;
 
   /**
-  * <p>Adds an <code>s</code> to the end of a string, if one does not exist.</p>
-  * @param str - <p>string to convert</p>
-  * @returns <p>string as a plural</p>
-  */
+   * <p>Adds an <code>s</code> to the end of a string, if one does not exist.</p>
+   * @param str - <p>string to convert</p>
+   * @returns <p>string as a plural</p>
+   */
   function plural<T=string>(str: string): T;
 
   /**
-  * <p>Removes a <code>.</code> from the start and end of a string.</p>
-  * @param str - <p>string to convert</p>
-  * @returns <ul>
-  * <li>string without the <code>.</code></li>
-  * </ul>
-  */
+   * <p>Removes a <code>.</code> from the start and end of a string.</p>
+   * @param str - <p>string to convert</p>
+   * @returns <ul>
+   * <li>string without the <code>.</code></li>
+   * </ul>
+   */
   function removeDot<T=string>(str: string): T;
 
   /**
-  * <p>Reverses string</p>
-  * @example
-  * reverseStr('foo') // 'oof'
-  * @param str - <p>string to reverse</p>
-  * @returns <p>reversed str</p>
-  */
+   * Remove single and double quotes from a string's starting and ending
+   * @param {string} str - String containing single or double quotes at the start and end
+   *
+   * @returns {string} - Passed in arg string with start and end quotes removed
+   */
+  function removeQuotes<T=string>(str:string): T;
+
+  /**
+   * <p>Reverses string</p>
+   * @example
+   * reverseStr('foo') // 'oof'
+   * @param str - <p>string to reverse</p>
+   * @returns <p>reversed str</p>
+   */
   function reverseStr<T=string>(str: string): T;
 
   /**
