@@ -1,5 +1,4 @@
 module.exports = {
-  parser: '@babel/eslint-parser',
   root: true,
   ignorePatterns: ['build', 'dist', 'node_modules', 'examples', 'scripts'],
   globals: {
@@ -14,10 +13,7 @@ module.exports = {
     sourceType: 'module',
     ecmaFeatures: {
       jsx: true,
-    },
-    babelOptions: {
-      configFile: './configs/babel.config.js',
-    },
+    }
   },
   env: {
     es6: true,
